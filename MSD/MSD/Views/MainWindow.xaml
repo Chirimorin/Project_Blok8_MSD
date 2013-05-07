@@ -1,8 +1,17 @@
 ﻿<Window x:Class="MSD.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="540" Width="960">
+    <Grid Background="#FFFFFCEE" RenderTransformOrigin="0.50,0.5">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="250"/>
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+		<Grid Grid.Column="2">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="50"/>
+				<RowDefinition />
+			</Grid.RowDefinitions>
+		</Grid>
+		</Grid>
 </Window>
