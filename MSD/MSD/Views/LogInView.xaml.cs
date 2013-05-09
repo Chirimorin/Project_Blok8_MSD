@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MSD.Views;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -23,5 +24,18 @@ namespace MSD
 			
 			// Insert code required on object creation below this point.
 		}
+
+        private void WachtwoordVergeten(object sender, RoutedEventArgs e)
+        {
+            //open de wachtwoordvergetenusercontrol in de loginview
+        }
+
+        private void LogIn(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.Show();
+            this.Close();
+
+        }
 	}
 }

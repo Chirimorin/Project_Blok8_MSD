@@ -6,7 +6,40 @@
 	mc:Ignorable="d"
 	x:Class="MSD.MatchInvoerView"
 	x:Name="UserControl"
-	d:DesignWidth="640" d:DesignHeight="480">
+	d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="510">
 
-	<Grid x:Name="LayoutRoot"/>
+    <Grid x:Name="LayoutRoot">
+
+        <Label Content="Match maken" Margin="310,36,312.506,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+
+        <Label Content="Zoeken" HorizontalAlignment="Left" Margin="42,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
+
+        <TextBox HorizontalAlignment="Left" Margin="42,119.28,0,0" TextWrapping="Wrap" Text="2053021" VerticalAlignment="Top" Width="124.84"/>
+
+        <Button Content="Matchen" Margin="0,0,47.324,37.04" VerticalAlignment="Bottom" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" HorizontalAlignment="Right" Width="75"/>
+
+        <DataGrid HorizontalAlignment="Left" Margin="42,196,0,0" VerticalAlignment="Top" Height="192" Width="662.676">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn x:Name="Studentnummer"/>
+
+                <DataGridTextColumn x:Name="Naam_student"/>
+
+                <DataGridTextColumn x:Name="Soort"/>
+
+                <DataGridTextColumn x:Name="Bedrijf"/>
+
+                <DataGridCheckBoxColumn x:Name="Opdracht"/>
+
+                <DataGridCheckBoxColumn x:Name="Voorlopige_toestemming"/>
+
+                <DataGridCheckBoxColumn x:Name="Toestemming"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </Grid>
+
 </UserControl>

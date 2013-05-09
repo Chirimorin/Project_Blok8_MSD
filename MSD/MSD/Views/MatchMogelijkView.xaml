@@ -6,7 +6,52 @@
 	mc:Ignorable="d"
 	x:Class="MSD.MatchMogelijkView"
 	x:Name="UserControl"
-	d:DesignWidth="640" d:DesignHeight="480">
+	d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="510">
 
-	<Grid x:Name="LayoutRoot"/>
+    <Grid x:Name="LayoutRoot">
+
+        <Label Content="Mogelijke matchen" Margin="283,36,290.473,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+
+        <Label Content="Student" HorizontalAlignment="Left" Margin="52,89,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
+        <Label Content="Begeleiding" HorizontalAlignment="Left" Margin="210,89,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
+
+        <Label Content="Studentnummer" HorizontalAlignment="Left" Margin="52,133,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Voornaam" HorizontalAlignment="Left" Margin="52,162.96,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Achternaam" HorizontalAlignment="Left" Margin="52,192.92,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Opleiding" HorizontalAlignment="Left" Margin="52,0,0,242.04" VerticalAlignment="Bottom"/>
+
+        <Label Content="Jaar" HorizontalAlignment="Left" Margin="52,0,0,211.08" VerticalAlignment="Bottom"/>
+
+        <Button Content="Matchen" Margin="0,0,38,36.04" VerticalAlignment="Bottom" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" HorizontalAlignment="Right" Width="75"/>
+
+        <Button Content="Details" Margin="0,0,139.324,36.04" VerticalAlignment="Bottom" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" HorizontalAlignment="Right" Width="75"/>
+
+        <Label Content="Soort" HorizontalAlignment="Left" Margin="52,303.92,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Bedrijf" HorizontalAlignment="Left" Margin="52,347.76,0,0" VerticalAlignment="Top"/>
+
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="266.72" Margin="52,120.28,0,0" VerticalAlignment="Top" Width="133"/>
+
+        <DataGrid HorizontalAlignment="Left" Margin="210,120.28,0,0" VerticalAlignment="Top" Height="266.72" Width="238">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn x:Name="Naam"/>
+
+                <DataGridTextColumn x:Name="Opleiding"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Tweede lezer" HorizontalAlignment="Left" Margin="476,89,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
+        <DataGrid HorizontalAlignment="Left" Margin="476,120.28,0,0" VerticalAlignment="Top" Height="266.72" Width="238">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="Naam1"/>
+                <DataGridTextColumn x:Name="Opleiding1"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+
 </UserControl>
