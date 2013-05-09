@@ -61,11 +61,38 @@
     <Compile Include="Services\IMainWindowService.cs" />
     <Compile Include="Services\MainWindowService.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
+    <Compile Include="Views\DocentView.xaml.cs">
+      <DependentUpon>DocentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GebruikerView.xaml.cs">
+      <DependentUpon>GebruikerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LogInView.xaml.cs">
       <DependentUpon>LogInView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchInvoerView.xaml.cs">
+      <DependentUpon>MatchInvoerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchMogelijkView.xaml.cs">
+      <DependentUpon>MatchMogelijkView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentBedrijfView.xaml.cs">
+      <DependentUpon>StudentBedrijfView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentPersoonView.xaml.cs">
+      <DependentUpon>StudentPersoonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentView.xaml.cs">
+      <DependentUpon>StudentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WachtwoordView.xaml.cs">
+      <DependentUpon>WachtwoordView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +125,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\DocentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GebruikerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\LogInView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,6 +140,34 @@
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MatchInvoerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MatchMogelijkView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StudentBedrijfView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StudentPersoonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StudentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WachtwoordView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
