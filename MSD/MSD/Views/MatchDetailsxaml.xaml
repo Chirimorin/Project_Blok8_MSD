@@ -1,0 +1,91 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="MSD.MatchDetailsxaml"
+	x:Name="UserControl"
+	d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="509">
+
+	<Grid x:Name="LayoutRoot">
+		<TextBox TextWrapping="Wrap" Text="Match details" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" TextAlignment="Center" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="46" Margin="281,14.807,0,0" HorizontalAlignment="Left" Width="153"/>
+		<Button Content="Match maken" HorizontalAlignment="Left" Margin="603,431,0,0" VerticalAlignment="Top" Background="#FFEA8104" BorderBrush="#FFA65A00" Foreground="Black" RenderTransformOrigin="1.107,1.211" Width="133" Height="66" FontStyle="Italic" FontSize="21.333"/>
+		<Ellipse Fill="#FFEA8104" Margin="13,108,693,355" Stroke="#FFA65A00" StrokeThickness="4" Height="46"/>
+		<Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="14,0,0,272" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
+		<Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,106" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
+		<TextBox HorizontalAlignment="Left" Margin="64,108,0,0" TextWrapping="Wrap" Text="&#xA;Student" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic">
+			<TextBox.BorderBrush>
+				<ImageBrush Stretch="None"/>
+			</TextBox.BorderBrush>
+			<TextBox.Background>
+				<ImageBrush Stretch="None"/>
+			</TextBox.Background>
+		</TextBox>
+		<TextBox HorizontalAlignment="Left" Margin="65,191,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;Begeleider&#xA;" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic">
+			<TextBox.BorderBrush>
+				<ImageBrush Stretch="None"/>
+			</TextBox.BorderBrush>
+			<TextBox.Background>
+				<ImageBrush Stretch="None"/>
+			</TextBox.Background>
+		</TextBox>
+		<TextBox HorizontalAlignment="Left" Margin="67,357,0,0" TextWrapping="Wrap" Text="&#xA;Bedrijf" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic">
+			<TextBox.BorderBrush>
+				<ImageBrush Stretch="None"/>
+			</TextBox.BorderBrush>
+			<TextBox.Background>
+				<ImageBrush Stretch="None"/>
+			</TextBox.Background>
+		</TextBox>
+		<TextBox HorizontalAlignment="Right" Margin="0,21,21,0" TextWrapping="Wrap" Text="Katinka Janssen" VerticalAlignment="Top" Height="26" Width="108" Foreground="Black" FontSize="12" FontStyle="Italic">
+			<TextBox.BorderBrush>
+				<ImageBrush Stretch="None"/>
+			</TextBox.BorderBrush>
+			<TextBox.Background>
+				<ImageBrush Stretch="None"/>
+			</TextBox.Background>
+		</TextBox>
+		<DataGrid HorizontalAlignment="Left" Margin="164,108,0,0" VerticalAlignment="Top" Height="46" Width="550" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}">
+			<DataGrid.Columns>
+				<DataGridTextColumn Binding="{Binding naam}" Header="naam"/>
+				<DataGridTextColumn Binding="{Binding NAW_gegevens}" Header="NAW_gegevens"/>
+				<DataGridTextColumn Binding="{Binding Studie}" Header="Studie"/>
+				<DataGridTextColumn Binding="{Binding woonplaats}" Header="woonplaats"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<DataGrid Margin="165,191,37,272" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}" Height="46">
+			<DataGrid.Columns>
+				<DataGridTextColumn Binding="{Binding naam}" Header="naam"/>
+				<DataGridTextColumn Binding="{Binding NAW_gegevens}" Header="NAW_gegevens"/>
+				<DataGridTextColumn Binding="{Binding Studie}" Header="Studie"/>
+				<DataGridTextColumn Binding="{Binding woonplaats}" Header="woonplaats"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<DataGrid HorizontalAlignment="Left" Margin="164,358,0,0" VerticalAlignment="Top" Height="46" Width="550" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}">
+			<DataGrid.Columns>
+				<DataGridTextColumn Binding="{Binding naam}" Header="naam"/>
+				<DataGridTextColumn Binding="{Binding NAW_gegevens}" Header="NAW_gegevens"/>
+				<DataGridTextColumn Binding="{Binding Studie}" Header="Studie"/>
+				<DataGridTextColumn Binding="{Binding woonplaats}" Header="woonplaats"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,188" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4" Opacity="0.35"/>
+		<TextBox HorizontalAlignment="Left" Margin="64,275,0,0" TextWrapping="Wrap" Text="&#xA;Tweede Lezer" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic" Opacity="0.35">
+			<TextBox.BorderBrush>
+				<ImageBrush Stretch="None"/>
+			</TextBox.BorderBrush>
+			<TextBox.Background>
+				<ImageBrush Stretch="None"/>
+			</TextBox.Background>
+		</TextBox>
+		<DataGrid HorizontalAlignment="Left" Margin="164,275,0,0" VerticalAlignment="Top" Height="46" Width="550" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}" Opacity="0.35">
+			<DataGrid.Columns>
+				<DataGridTextColumn Binding="{Binding naam}" Header="naam"/>
+				<DataGridTextColumn Binding="{Binding NAW_gegevens}" Header="NAW_gegevens"/>
+				<DataGridTextColumn Binding="{Binding Studie}" Header="Studie"/>
+				<DataGridTextColumn Binding="{Binding woonplaats}" Header="woonplaats"/>
+			</DataGrid.Columns>
+		</DataGrid>
+	</Grid>
+</UserControl>

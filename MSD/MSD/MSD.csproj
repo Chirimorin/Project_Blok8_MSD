@@ -72,12 +72,19 @@
     </Compile>
     <Compile Include="Views\MatchMogelijkView.xaml.cs">
       <DependentUpon>MatchMogelijkView.xaml</DependentUpon>
+    <Compile Include="Views\MatchDetailsxaml.xaml.cs">
+      <DependentUpon>MatchDetailsxaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchSucces .xaml.cs">
+      <DependentUpon>MatchSucces .xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WachtwoordView.xaml.cs">
       <DependentUpon>WachtwoordView.xaml</DependentUpon>
+    <Compile Include="Views\StageView .xaml.cs">
+      <DependentUpon>StageView .xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +130,11 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MatchMogelijkView.xaml">
+    <Page Include="Views\MatchDetailsxaml.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MatchSucces .xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -131,12 +143,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\WachtwoordView.xaml">
+    <Page Include="Views\StageView .xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
