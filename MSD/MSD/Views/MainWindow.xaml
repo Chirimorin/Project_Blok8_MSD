@@ -4,11 +4,12 @@
         Title="MainWindow" Height="540" Width="960">
     <Grid Background="#FFFFFCEE" RenderTransformOrigin="0.50,0.5">
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="200"/>
+			<ColumnDefinition Width="250"/>
 			<ColumnDefinition />
 		</Grid.ColumnDefinitions>
-		<Grid Grid.Column="1">
+		<Grid Grid.Column="2">
 			<Grid.RowDefinitions>
+				<RowDefinition Height="50"/>
 				<RowDefinition />
 			</Grid.RowDefinitions>
 		</Grid>
