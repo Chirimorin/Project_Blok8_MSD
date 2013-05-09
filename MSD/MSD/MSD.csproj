@@ -61,9 +61,6 @@
     <Compile Include="Services\IMainWindowService.cs" />
     <Compile Include="Services\MainWindowService.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
-    <Compile Include="Views\DocentView.xaml.cs">
-      <DependentUpon>DocentView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\LogInView.xaml.cs">
       <DependentUpon>LogInView.xaml</DependentUpon>
     </Compile>
@@ -83,9 +80,6 @@
     </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\StudentView.xaml.cs">
-      <DependentUpon>StudentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WachtwoordView.xaml.cs">
       <DependentUpon>WachtwoordView.xaml</DependentUpon>
@@ -123,10 +117,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\DocentView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\LogInView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -149,10 +139,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MenuView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\StudentView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
