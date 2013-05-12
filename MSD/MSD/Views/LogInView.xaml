@@ -9,7 +9,7 @@
     <Grid x:Name="LayoutRoot">
         <Label Content="Inloggen" HorizontalAlignment="Left" Margin="130.123,21,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
 
-        <TextBox Margin="32.123,146.96,39.324,176.08" TextWrapping="Wrap" Text="TextBox">
+        <TextBox Margin="32,147,39,173" TextWrapping="Wrap">
 
             <TextBox.BorderBrush>
 
@@ -19,10 +19,10 @@
                 </LinearGradientBrush>
             </TextBox.BorderBrush>
         </TextBox>
-        <Label Content="Wachtwoord" HorizontalAlignment="Left" Margin="32.123,0,0,132.04" VerticalAlignment="Bottom" FontSize="16"/>
-        <Label Content="Naam" HorizontalAlignment="Left" Margin="32.123,111.68,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Wachtwoord" HorizontalAlignment="Left" Margin="32,0,0,124" VerticalAlignment="Bottom" FontSize="16"/>
+        <Label Content="Naam" HorizontalAlignment="Left" Margin="32,116,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.542,0.989"/>
 
-        <Button Content="Log in" Click="LogIn" HorizontalAlignment="Right" Margin="0,0,39.324,34.04" VerticalAlignment="Bottom" Width="75" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00"/>
+        <Button Content="Log in" Command="{Binding login}" HorizontalAlignment="Right" Margin="0,0,39.324,34.04" VerticalAlignment="Bottom" Width="75" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00"/>
 
         <Label Content="*U heeft niet de juiste gegevens ingevoerd&#xA;probeer het opnieuw" HorizontalAlignment="Right" Margin="0,69.76,99.393,0" VerticalAlignment="Top" Foreground="#FFC20000"/>
 
@@ -44,7 +44,7 @@
 
         </PasswordBox>
 
-        <Button Content="Wachtwoord vergeten" Click="WachtwoordVergeten" HorizontalAlignment="Right" Margin="0,0,148.447,34.04" VerticalAlignment="Bottom" Width="161.18" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00"/>
+        <Button Name="wachtwoordvergeten" Command="{Binding wachtwoordvergeten}" Content="Wachtwoord vergeten" HorizontalAlignment="Right" Margin="0,0,148.447,34.04" VerticalAlignment="Bottom" Width="161.18" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00"/>
 
     </Grid>
 

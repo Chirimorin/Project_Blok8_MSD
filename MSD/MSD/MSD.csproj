@@ -35,7 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>MSD.App</StartupObject>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -63,7 +64,17 @@
     </Compile>
     <Compile Include="Services\IMainWindowService.cs" />
     <Compile Include="Services\MainWindowService.cs" />
+    <Compile Include="ViewModels\DocentViewModel.cs" />
+    <Compile Include="ViewModels\GebruikerViewModel.cs" />
+    <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
+    <Compile Include="ViewModels\MatchInvoerViewModel.cs" />
+    <Compile Include="ViewModels\MatchMogelijkViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\StudentBedrijfViewModel.cs" />
+    <Compile Include="ViewModels\StudentPersoonViewModel.cs" />
+    <Compile Include="ViewModels\StudentViewModel.cs" />
+    <Compile Include="ViewModels\WachtwoordViewModel.cs" />
     <Compile Include="Views\DocentView.xaml.cs">
       <DependentUpon>DocentView.xaml</DependentUpon>
     </Compile>
