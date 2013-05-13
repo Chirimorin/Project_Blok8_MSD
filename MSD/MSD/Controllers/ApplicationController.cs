@@ -17,6 +17,8 @@ namespace MSD.Controllers
         {
             _mainWindow = new MainWindow();
             _mainWindowService = new MainWindowService(_mainWindow);
+
+            Models.Database database = new Models.Database();
         }
 
     }
