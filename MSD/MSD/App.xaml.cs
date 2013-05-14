@@ -15,10 +15,17 @@ namespace MSD
     public partial class App : Application
     {
         private ApplicationController _applicationController;
+        private LogInView login;
 
         public App()
         {
             _applicationController = new ApplicationController();
+        }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            login = new LogInView();
+            login.Show();
         }
 
     }
