@@ -19,7 +19,7 @@ namespace MSD
 
         public App()
         {
-            _applicationController = new ApplicationController();
+            _applicationController = new ApplicationController(this);
         }
         
 

@@ -1,4 +1,5 @@
-﻿using MSD.Models;
+﻿using MSD.Controllers;
+using MSD.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,13 @@ using System.Threading.Tasks;
 
 namespace MSD.ViewModels
 {
-    class DocentViewModel : PropertyChangedBase
+    public class DocentViewModel : PropertyChangedBase
     {
+        private readonly IApplicationController _app;
+
+        public DocentViewModel(IApplicationController app)
+        {
+            _app = app;
+        }
     }
 }
