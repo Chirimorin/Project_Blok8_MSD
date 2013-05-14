@@ -10,13 +10,12 @@ namespace MSD.Controllers
 {
     class ApplicationController : IApplicationController
     {
-        private MainWindowService _mainWindowService;
-        private MainWindow _mainWindow;
+        private LogInView _login;
 
         public ApplicationController()
         {
-            _mainWindow = new MainWindow();
-            _mainWindowService = new MainWindowService(_mainWindow);
+
+            _login = new LogInView();
 
             Models.Database database = new Models.Database();
         }

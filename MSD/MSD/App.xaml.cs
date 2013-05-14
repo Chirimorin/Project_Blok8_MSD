@@ -21,12 +21,7 @@ namespace MSD
         {
             _applicationController = new ApplicationController();
         }
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-            login = new LogInView();
-            login.Show();
-        }
+        
 
     }
 }
