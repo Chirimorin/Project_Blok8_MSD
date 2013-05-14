@@ -22,6 +22,7 @@ namespace MSD.ViewModels
         public MenuViewModel(IApplicationController app)
         {
             _app = app;
+            this._ShowDocentCommand = new RelayCommand(ShowDocent);
         }
         
         public RelayCommand ShowDocentCommand { get { return _ShowDocentCommand; } }
