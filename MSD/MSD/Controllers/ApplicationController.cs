@@ -16,7 +16,7 @@ namespace MSD.Controllers
         {
 
             _login = new LogInView();
-
+            _login.Show();
             Models.Database database = new Models.Database();
         }
 

@@ -9,13 +9,14 @@
     <Grid x:Name="LayoutRoot">
         <Label Content="Inloggen" HorizontalAlignment="Left" Margin="130.123,21,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
 
-        <TextBox Margin="32,147,39,173" TextWrapping="Wrap">
+        <TextBox Margin="32,147,39,171" TextWrapping="Wrap">
 
             <TextBox.BorderBrush>
 
                 <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
                     <GradientStop Color="#FFABADB3" Offset="0.05"/>
                     <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                    <GradientStop Color="#FFAEAEAE" Offset="1"/>
                 </LinearGradientBrush>
             </TextBox.BorderBrush>
         </TextBox>
@@ -24,7 +25,7 @@
 
         <Button Content="Log in" Command="{Binding login}" HorizontalAlignment="Right" Margin="0,0,39.324,34.04" VerticalAlignment="Bottom" Width="75" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00"/>
 
-        <Label Content="*U heeft niet de juiste gegevens ingevoerd&#xA;probeer het opnieuw" HorizontalAlignment="Right" Margin="0,69.76,99.393,0" VerticalAlignment="Top" Foreground="#FFC20000"/>
+        <Label DataContext="{Binding Melding}" HorizontalAlignment="Right" Margin="0,67,325,0" VerticalAlignment="Top" Foreground="#FFC20000"/>
 
         <PasswordBox Height="21.96" Margin="32.124,0,39.324,102" VerticalAlignment="Bottom">
 
