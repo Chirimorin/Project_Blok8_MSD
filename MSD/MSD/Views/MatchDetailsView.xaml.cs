@@ -24,5 +24,7 @@ namespace MSD.Views
         {
             InitializeComponent();
         }
+
+       
     }
 }
