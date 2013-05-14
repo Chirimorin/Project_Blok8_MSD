@@ -68,6 +68,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Database.cs" />
+    <Compile Include="Models\PropertyChangedBase.cs" />
+    <Compile Include="Models\RelayCommand.cs" />
     <Compile Include="Services\IMainWindowService.cs" />
     <Compile Include="Services\MainWindowService.cs" />
     <Compile Include="ViewModels\DocentKwalificatieViewModel.cs" />
