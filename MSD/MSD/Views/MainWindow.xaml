@@ -19,6 +19,7 @@
               Grid.RowSpan="2">
             <v:MenuView Grid.Row="1"
                         DataContext="{Binding MenuView}"/>
+            
         </Grid>
 		</Grid>
 </Window>

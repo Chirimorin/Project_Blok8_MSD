@@ -8,5 +8,17 @@ namespace MSD.ViewModels
 {
     class MenuViewModel
     {
+       
+
+        public MenuViewModel()
+        {
+
+        }
+        //username komt uit de database
+        public string UserName
+        {
+            get { return UserName; }
+        }
+        
     }
 }
