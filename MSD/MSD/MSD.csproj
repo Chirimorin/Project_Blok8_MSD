@@ -84,7 +84,6 @@
     <Compile Include="ViewModels\MatchInvoerViewModel.cs" />
     <Compile Include="ViewModels\MatchMogelijkViewModel.cs" />
     <Compile Include="ViewModels\MatchSuccesViewModel.cs" />
-    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\StageViewModel.cs" />
     <Compile Include="ViewModels\StudentBedrijfViewModel.cs" />
     <Compile Include="ViewModels\StudentPersoonViewModel.cs" />
@@ -125,9 +124,6 @@
     </Compile>
     <Compile Include="Views\MatchSuccesView.xaml.cs">
       <DependentUpon>MatchSuccesView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MenuView.xaml.cs">
-      <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StageView.xaml.cs">
       <DependentUpon>StageView.xaml</DependentUpon>
@@ -222,10 +218,6 @@
     <Page Include="Views\MatchSuccesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MenuView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\StageView.xaml">
       <SubType>Designer</SubType>
