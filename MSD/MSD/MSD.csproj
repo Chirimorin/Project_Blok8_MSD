@@ -68,6 +68,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Factories\ModelFactory.cs" />
+    <Compile Include="Factories\ViewFactory.cs" />
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\PropertyChangedBase.cs" />
     <Compile Include="Models\RelayCommand.cs" />

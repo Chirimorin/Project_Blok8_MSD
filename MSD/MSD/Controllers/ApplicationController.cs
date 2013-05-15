@@ -28,7 +28,6 @@ namespace MSD.Controllers
             _mainVM = new MainWindowModel(this);
             _main.DataContext = _mainVM;
             _main.Closed += OnMainWindowClose;
-            //MainWindow = _main;
 
             _main.Show();
             Models.Database database = new Models.Database();
