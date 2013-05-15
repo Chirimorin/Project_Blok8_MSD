@@ -17,7 +17,7 @@ namespace MSD.ViewModels
         private readonly RelayCommand _ShowStudentCommand;
         private readonly RelayCommand _ShowMatchCommand;
         private readonly RelayCommand _ShowStageCommand;
-        private readonly RelayCommand _ShowGebruikersCommand;
+        private readonly RelayCommand _ShowGebruikerCommand;
 
         private PropertyChangedBase content;
 
@@ -25,6 +25,9 @@ namespace MSD.ViewModels
         {
             _app = app;
             this._ShowDocentCommand = new RelayCommand(ShowDocent);
+            this._ShowGebruikerCommand = new RelayCommand(ShowGebruiker);
+            this._ShowMatchCommand = new RelayCommand(ShowMatchInvoer);
+            this._ShowStageCommand = new RelayCommand(ShowStage);
         }
         
         public RelayCommand ShowDocentCommand { get { return _ShowDocentCommand; } }
@@ -32,9 +35,29 @@ namespace MSD.ViewModels
         {
             _app.ShowDocentView();
         }
+
+        public RelayCommand ShowStudentCommand { get { return _ShowStudentCommand; } }
         public void ShowStudent(object command)
         {
             _app.ShowStudentView();
+        }
+
+        public RelayCommand ShowStageCommand { get { return _ShowStageCommand; } }
+        public void ShowStage(object command)
+        {
+            _app.ShowStageView();
+        }
+
+        public RelayCommand ShowMatchCommand { get { return _ShowMatchCommand; } }
+        public void ShowMatchInvoer(object command)
+        {
+            _app.ShowMatchInvoerView();
+        }
+
+        public RelayCommand ShowGebruikerCommand { get { return _ShowGebruikerCommand; } }
+        public void ShowGebruiker(object command)
+        {
+            _app.ShowGebruikerView();
         }
 
         //username komt uit de database

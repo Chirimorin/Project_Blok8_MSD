@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MSD
+namespace MSD.Views
 {
 	/// <summary>
 	/// Interaction logic for LogInView.xaml

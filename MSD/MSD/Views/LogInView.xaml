@@ -1,7 +1,7 @@
 ﻿<Window
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	x:Class="MSD.LogInView"
+	x:Class="MSD.Views.LogInView"
 	x:Name="Window"
 	Title="LogInView"
 	Width="375" Height="375" Background="#FFFFFCEE">

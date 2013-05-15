@@ -58,10 +58,7 @@ namespace MSD
 
         public void ShowDocentView()
         {
-            DocentView docentView = new DocentView();
-            DocentViewModel docentViewModel = new DocentViewModel(this);
-            docentView.DataContext = docentViewModel;
-            _mainVM.Content = docentViewModel;
+            _mainVM.Content = new DocentViewModel(this);
             //MessageBox.Show("DocentView");
         }
 
@@ -77,7 +74,7 @@ namespace MSD
 
         public void ShowGebruikerView()
         {
-            throw new NotImplementedException();
+            _mainVM.Content = new GebruikerViewModel(this);
         }
 
         public void ShowMatchDetailsView()
@@ -102,7 +99,7 @@ namespace MSD
 
         public void ShowStageView()
         {
-            throw new NotImplementedException();
+            _mainVM.Content = new StageViewModel(this);
         }
 
         public void ShowStudentBedrijfView()
