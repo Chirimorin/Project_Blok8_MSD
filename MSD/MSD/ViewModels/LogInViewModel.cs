@@ -1,4 +1,6 @@
-﻿using MSD.Views;
+﻿using MSD.Controllers;
+using MSD.Models;
+using MSD.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +10,15 @@ using System.Threading.Tasks;
 
 namespace MSD.ViewModels
 {
-    class LogInViewModel
+    class LogInViewModel : PropertyChangedBase
     {
+        private readonly IApplicationController _app;
         private MainWindow mainwindow = new MainWindow();
         private string foutmelding;
 
-        public LogInViewModel()
+        public LogInViewModel(IApplicationController app)
         {
+            _app = app;
             foutmelding = "*U heeft niet de juiste gegevens ingevoerd&#xA;probeer het opnieuw";
         }
         public string Melding
