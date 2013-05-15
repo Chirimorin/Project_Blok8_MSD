@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MSD.Controllers
 {
-    interface IApplicationController
+    public interface IApplicationController
     {
         void ShowDocentKwalificatieView();
         void ShowDocentPersoonView();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MSD.Models
 {
-    class PropertyChangedBase : INotifyPropertyChanged
+    public class PropertyChangedBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

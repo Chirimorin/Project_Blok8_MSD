@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace MSD.ViewModels
 {
-    public class DocentViewModel
+    public class DocentViewModel : PropertyChangedBase
     {
         private readonly IApplicationController _app;
 
-        /*public DocentViewModel(IApplicationController app)
+        public DocentViewModel(IApplicationController app)
         {
             _app = app;
-        }*/
+        }
     }
 }

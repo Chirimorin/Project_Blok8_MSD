@@ -16,7 +16,7 @@ namespace MSD.Models
 
         public Database()
         {
-            sqlConnection();
+            //sqlConnection();
         }
 
         public void sqlConnection()

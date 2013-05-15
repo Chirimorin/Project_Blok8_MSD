@@ -34,12 +34,17 @@ namespace MSD
             _main = new MainWindow();
             _mainVM = new MainWindowModel(this);
             _main.DataContext = _mainVM;
+            _main.Closed += OnMainWindowClose;
             MainWindow = _main;
 
             _main.Show();
             Models.Database database = new Models.Database();
         }
 
+        public void OnMainWindowClose(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
 
         public void ShowDocentKwalificatieView()
         {
@@ -53,8 +58,11 @@ namespace MSD
 
         public void ShowDocentView()
         {
-            //_mainVM.Content = new DocentViewModel(this);
-            Console.WriteLine("showdocentview");
+            DocentView docentView = new DocentView();
+            DocentViewModel docentViewModel = new DocentViewModel(this);
+            docentView.DataContext = docentViewModel;
+            _mainVM.Content = docentViewModel;
+            //MessageBox.Show("DocentView");
         }
 
         public void ShowGebruikerAccountView()
