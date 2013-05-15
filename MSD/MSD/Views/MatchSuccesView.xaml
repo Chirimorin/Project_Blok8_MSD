@@ -16,7 +16,7 @@
                 <ImageBrush Stretch="None"/>
             </TextBox.Background>
         </TextBox>
-        <Button Content="Terug" Margin="604,457,41,0" VerticalAlignment="Top" Background="#FFEA8104" BorderBrush="#FFA65A00" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
+        <Button Command="{Binding TerugCommand}" Content="Terug" Margin="604,457,41,0" VerticalAlignment="Top" Background="#FFEA8104" BorderBrush="#FFA65A00" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
         <Label Content="    Succesvol" HorizontalAlignment="Left" Height="30" Margin="288,64,0,0" VerticalAlignment="Top" Width="144" FontSize="18.667" RenderTransformOrigin="0.673,0.433" Foreground="#FF00FA00" FontWeight="Bold"/>
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,350" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,278" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>

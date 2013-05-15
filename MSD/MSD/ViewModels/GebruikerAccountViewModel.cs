@@ -11,10 +11,18 @@ namespace MSD.ViewModels
     class GebruikerAccountViewModel : PropertyChangedBase
     {
         private readonly IApplicationController _app;
+        private readonly RelayCommand _verderCommand;
 
         public GebruikerAccountViewModel(IApplicationController app)
         {
             _app = app;
+            _verderCommand = new RelayCommand(Verder);
+        }
+
+        public RelayCommand VerderCommand { get { return _verderCommand; } }
+        public void Verder(object command)
+        {
+            _app.ShowGebruikerContactView();
         }
     }
 }

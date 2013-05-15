@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace MSD.Models
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         #region Fields
 
