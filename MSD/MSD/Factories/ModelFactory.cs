@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MSD.Factories
 {
-    class ModelFactory
+    public abstract class ModelFactory
     {
     }
 }

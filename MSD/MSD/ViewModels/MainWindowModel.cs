@@ -19,12 +19,13 @@ namespace MSD.ViewModels
         private readonly RelayCommand _ShowStageCommand;
         private readonly RelayCommand _ShowGebruikerCommand;
 
-        private PropertyChangedBase content;
+        private PropertyChangedBase contents;
 
         public MainWindowModel(IApplicationController app)
         {
             _app = app;
             this._ShowDocentCommand = new RelayCommand(ShowDocent);
+            this._ShowStudentCommand = new RelayCommand(ShowStudent);
             this._ShowGebruikerCommand = new RelayCommand(ShowGebruiker);
             this._ShowMatchCommand = new RelayCommand(ShowMatchInvoer);
             this._ShowStageCommand = new RelayCommand(ShowStage);
@@ -66,13 +67,13 @@ namespace MSD.ViewModels
             get { return ""; }
         }
 
-        public PropertyChangedBase Content
+        public PropertyChangedBase Contents
         {
-            get { return content; }
+            get { return contents; }
             set
             {
-                content = value;
-                OnPropertyChanged("Content");
+                contents = value;
+                OnPropertyChanged("Contents");
             }
         }
 

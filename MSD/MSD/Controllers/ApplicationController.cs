@@ -1,4 +1,5 @@
-﻿using MSD.ViewModels;
+﻿using MSD.Factories;
+using MSD.ViewModels;
 using MSD.Views;
 using System;
 using System.Collections.Generic;
@@ -10,26 +11,12 @@ namespace MSD.Controllers
 {
     class ApplicationController : IApplicationController
     {
-        private LogInView _login;
-        private LogInViewModel _loginVM;
-
-        private MainWindow _main;
-        private MainWindowModel _mainVM;
 
         public ApplicationController()
         {
-            _login = new LogInView();
-            _loginVM = new LogInViewModel();
-            _login.Show();
+            ViewFactory.getViewModel(this, "mainWindowModel");
+            ViewFactory.getViewModel(this, "logInViewModel");
 
-            _login.DataContext = _loginVM;
-
-            _main = new MainWindow();
-            _mainVM = new MainWindowModel(this);
-            _main.DataContext = _mainVM;
-            _main.Closed += OnMainWindowClose;
-
-            _main.Show();
             Models.Database database = new Models.Database();
         }
 
@@ -40,78 +27,88 @@ namespace MSD.Controllers
 
         public void ShowDocentKwalificatieView()
         {
-            throw new NotImplementedException();
+            ShowView("docentKwalificatieViewModel");
         }
 
         public void ShowDocentPersoonView()
         {
-            throw new NotImplementedException();
+            ShowView("docentPersoonViewModel");
         }
 
         public void ShowDocentView()
         {
-            _mainVM.Content = new DocentViewModel(this);
-            //MessageBox.Show("DocentView");
+            ShowView("docentViewModel");
         }
 
         public void ShowGebruikerAccountView()
         {
-            throw new NotImplementedException();
+            ShowView("gebruikerAccountViewModel");
         }
 
         public void ShowGebruikerContactView()
         {
-            throw new NotImplementedException();
+            ShowView("gebruikerContactViewModel");
         }
 
         public void ShowGebruikerView()
         {
-            _mainVM.Content = new GebruikerViewModel(this);
+            ShowView("gebruikerViewModel");
         }
 
         public void ShowMatchDetailsView()
         {
-            throw new NotImplementedException();
+            ShowView("matchDetailsViewModel");
         }
 
         public void ShowMatchInvoerView()
         {
-            throw new NotImplementedException();
+            ShowView("matchInvoerViewModel");
         }
 
         public void ShowMatchMogelijkView()
         {
-            throw new NotImplementedException();
+            ShowView("matchMogelijkViewModel");
         }
 
         public void ShowMatchSuccesView()
         {
-            throw new NotImplementedException();
+            ShowView("matchSuccesViewModel");
         }
 
         public void ShowStageView()
         {
-            _mainVM.Content = new StageViewModel(this);
+            ShowView("stageViewModel");
         }
 
         public void ShowStudentBedrijfView()
         {
-            throw new NotImplementedException();
+            ShowView("studentBedrijfViewModel");
         }
 
         public void ShowStudentPersoonView()
         {
-            throw new NotImplementedException();
+            ShowView("studentPersoonViewModel");
         }
 
         public void ShowStudentView()
         {
-            throw new NotImplementedException();
+            ShowView("studentViewModel");
         }
 
         public void ShowWachtwoordView()
         {
-            throw new NotImplementedException();
+            ShowView("wachtwoordViewModel");
         }
+        
+        /// <summary>
+        /// Will show the view that belongs to the given view model name
+        /// </summary>
+        /// <param name="viewModelName">Name of the viewModel that belongs to the view.</param>
+        private void ShowView(string viewModelName)
+        {
+            MainWindowModel mainWindowModel = (MainWindowModel)ViewFactory.getViewModel(this, "mainWindowModel");
+            mainWindowModel.Contents = ViewFactory.getViewModel(this, viewModelName);
+        }
+
     }
 }
