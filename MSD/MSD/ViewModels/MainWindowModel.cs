@@ -39,7 +39,7 @@ namespace MSD.ViewModels
         //username komt uit de database
         public string UserName
         {
-            get { return UserName; }
+            get { return ""; }
         }
 
         public PropertyChangedBase Content

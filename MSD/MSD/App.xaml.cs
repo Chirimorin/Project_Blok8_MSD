@@ -32,7 +32,7 @@ namespace MSD
             _login.DataContext = _loginVM;
 
             _main = new MainWindow();
-            _mainVM = new MainWindowModel();
+            _mainVM = new MainWindowModel(this);
             _main.DataContext = _mainVM;
             MainWindow = _main;
 
