@@ -1,37 +1,23 @@
-﻿using MSD.Controllers;
-using MSD.ViewModels;
+﻿using MSD.ViewModels;
 using MSD.Views;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
-namespace MSD
+namespace MSD.Controllers
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    class ApplicationController : IApplicationController
     {
-
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-            ApplicationController applicationController = new ApplicationController();
-        }
-        /*
         private LogInView _login;
         private LogInViewModel _loginVM;
 
         private MainWindow _main;
         private MainWindowModel _mainVM;
 
-        protected override void OnStartup(StartupEventArgs e)
+        public ApplicationController()
         {
-            base.OnStartup(e);
             _login = new LogInView();
             _loginVM = new LogInViewModel();
             _login.Show();
@@ -42,7 +28,7 @@ namespace MSD
             _mainVM = new MainWindowModel(this);
             _main.DataContext = _mainVM;
             _main.Closed += OnMainWindowClose;
-            MainWindow = _main;
+            //MainWindow = _main;
 
             _main.Show();
             Models.Database database = new Models.Database();
@@ -128,7 +114,5 @@ namespace MSD
         {
             throw new NotImplementedException();
         }
-        */
-
     }
 }
