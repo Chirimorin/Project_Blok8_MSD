@@ -14,7 +14,7 @@ namespace MSD.Controllers
 
         public ApplicationController()
         {
-            ViewFactory.getViewModel(this, "mainWindowModel");
+            
             ViewFactory.getViewModel(this, "logInViewModel");
 
             Models.Database database = new Models.Database();
@@ -110,5 +110,17 @@ namespace MSD.Controllers
             mainWindowModel.Contents = ViewFactory.getViewModel(this, viewModelName);
         }
 
+
+
+        public void ShowMainWindow()
+        {
+            ViewFactory.getViewModel(this, "mainWindowModel");
+
+        }
+
+        public void ShowLoginView()
+        {
+            ViewFactory.getViewModel(this, "logInViewModel");
+        }
     }
 }

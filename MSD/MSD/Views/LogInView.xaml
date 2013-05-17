@@ -23,7 +23,7 @@
         <Label Content="Wachtwoord" HorizontalAlignment="Left" Margin="32,0,0,124" VerticalAlignment="Bottom" FontSize="16"/>
         <Label Content="Naam" HorizontalAlignment="Left" Margin="32,116,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.542,0.989"/>
 
-        <Button Content="Log in" Command="{Binding login}" HorizontalAlignment="Right" Margin="0,0,39.324,34.04" VerticalAlignment="Bottom" Width="75" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00"/>
+        <Button Content="Log in" Command="{Binding ShowMainWindowCommand}" HorizontalAlignment="Right" Margin="0,0,39.324,34.04" VerticalAlignment="Bottom" Width="75" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00"/>
 
         <Label DataContext="{Binding Melding}" HorizontalAlignment="Right" Margin="0,67,325,0" VerticalAlignment="Top" Foreground="#FFC20000"/>
 

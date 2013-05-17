@@ -24,5 +24,8 @@ namespace MSD.Controllers
         void ShowStudentPersoonView();
         void ShowStudentView();
         void ShowWachtwoordView();
+
+        void ShowMainWindow();
+        void ShowLoginView();
     }
 }
