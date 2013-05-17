@@ -6,7 +6,26 @@
 	mc:Ignorable="d"
 	x:Class="MSD.Views.StudentPersoonView"
 	x:Name="UserControl"
-	d:DesignWidth="640" d:DesignHeight="480">
+	d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="509">
 
-	<Grid x:Name="LayoutRoot"/>
+    <Grid x:Name="LayoutRoot">
+        <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,350" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
+        <Label Content="Gegevens" HorizontalAlignment="Left" Margin="64,113,0,0" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"/>
+
+        <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,152" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4" Opacity="0.35"/>
+        <Label Content="Stagebedrijf" HorizontalAlignment="Left" Margin="64,311,0,0"  VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic" Opacity="0.35"/>
+
+        <Label Content="Studentgegevens" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold"  Foreground="Black" FontSize="18.667" Height="45" Margin="285,22.807,285,0"/>
+        <Button Command="{Binding VerderCommand}" Content="Verder" Margin="604,457,41,0" VerticalAlignment="Top" Background="#FFEA8104" BorderBrush="#FFA65A00" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
+        <Grid Height="383" Margin="122,87,110,0" VerticalAlignment="Top">
+
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,56,52,0" Text="Achternaam" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" Text="Voornaam" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="52,15,52,0"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,142,52,0" Text="Studentnummer" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,231,52,0" Text="Jaar" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,100,52,0" Text="E-mail" BorderBrush="#FFAEAEAE"/>
+            <ComboBox  HorizontalAlignment="Left" Margin="145,187,0,0" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Opleiding" HorizontalAlignment="Left" Margin="52,184,0,0" VerticalAlignment="Top"/>
+        </Grid>
+    </Grid>
 </UserControl>
