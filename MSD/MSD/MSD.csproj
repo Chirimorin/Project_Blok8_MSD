@@ -135,9 +135,6 @@
     <Compile Include="Views\StageView.xaml.cs">
       <DependentUpon>StageView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StudentBedrijfView.xaml.cs">
-      <DependentUpon>StudentBedrijfView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\StudentPersoonView.xaml.cs">
       <DependentUpon>StudentPersoonView.xaml</DependentUpon>
     </Compile>
@@ -233,10 +230,6 @@
     <Page Include="Views\StageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\StudentBedrijfView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\StudentPersoonView.xaml">
       <Generator>MSBuild:Compile</Generator>

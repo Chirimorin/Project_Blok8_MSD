@@ -13,23 +13,26 @@
 		<Label Content="Gegevens" HorizontalAlignment="Left" Margin="64,113,0,0" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"/>
 
 		<Label Content="Stagebedrijf" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" FontSize="18.667" Height="45" Margin="285,22.807,285,0"/>
-		<Button Command="{Binding VerderCommand}" Content="Terug" Margin="604,457,41,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
+		<Button Command="{Binding VerderCommand}" Content="Opslaan" Margin="604,457,41,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
 		<Grid Height="383" Margin="122,87,110,0" VerticalAlignment="Top">
+			<TextBox Height="20" TextWrapping="Wrap" Text="&#xA;" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="129.5,15,30.5,0"/>
 			<TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,55,30.5,0" BorderBrush="#FFAEAEAE"/>
-			<TextBox Height="20" TextWrapping="Wrap" Text="&#xD;&#xA;" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="129.5,15,30.5,0"/>
-			<TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,142,30.5,0" BorderBrush="#FFAEAEAE"/>
-			<TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,179,30.5,0" BorderBrush="#FFAEAEAE"/>
-			<TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,216,30.5,0" BorderBrush="#FFAEAEAE"/>
-			<TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,253,30.5,0" BorderBrush="#FFAEAEAE"/>
-			<TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,98,30.5,0" BorderBrush="#FFAEAEAE"/>
+			<TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,93,30.5,0" BorderBrush="#FFAEAEAE"/>
+			<TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,136,30.5,0" BorderBrush="#FFAEAEAE"/>
+			<TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,180,30.5,0" BorderBrush="#FFAEAEAE"/>
+			<TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,217,30.5,0" BorderBrush="#FFAEAEAE"/>
+			<TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,254,30.5,0" BorderBrush="#FFAEAEAE"/>
+			<TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,291,30.5,0" BorderBrush="#FFAEAEAE"/>
 		</Grid>
 		<Label Content="Naam bedrijf" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,100,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Adres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,138,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Plaats" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,180,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Contactpersoon" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,225,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Email- adres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,261,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Telefoon" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,300,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Branch" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,335,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Website" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,139,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Adres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,176,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Plaats" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,218,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Contactpersoon" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,263,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Email- adres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,299,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Telefoon" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,338,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Branch" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,373,0,0" VerticalAlignment="Top" Width="100"/>
 		<Label Content="1" HorizontalAlignment="Left" Height="30" Margin="27,114,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="-0.3,-0.3"/>
+		<Button Command="{Binding VerderCommand}" Content="Terug" Margin="454,457,191,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
 	</Grid>
 </UserControl>

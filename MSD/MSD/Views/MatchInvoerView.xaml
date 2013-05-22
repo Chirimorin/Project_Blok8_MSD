@@ -14,9 +14,9 @@
 
         <Label Content="Zoeken" HorizontalAlignment="Left" Margin="42,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
 
-        <TextBox HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" Text="2053021" VerticalAlignment="Top" Width="125" Height="26"/>
+        <TextBox HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="26"/>
 
-        <Button Command="{Binding MatchenCommand}" Content="Matchen" Margin="0,0,47.324,37.04" VerticalAlignment="Bottom" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" HorizontalAlignment="Right" Width="75"/>
+        <Button Command="{Binding MatchenCommand}" Content="Matchen" Margin="0,0,47.324,37.04" VerticalAlignment="Bottom" FontSize="14.667"  HorizontalAlignment="Right" Width="75"/>
 
         <DataGrid HorizontalAlignment="Left" Margin="42,196,0,0" VerticalAlignment="Top" Height="192" Width="662.676">
 
@@ -39,7 +39,7 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="0,0,476,365" VerticalAlignment="Bottom" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" HorizontalAlignment="Right" Width="75"/>
+        <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="0,0,476,365" VerticalAlignment="Bottom" FontSize="14.667"  HorizontalAlignment="Right" Width="75"/>
 
     </Grid>
 
