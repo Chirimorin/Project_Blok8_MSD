@@ -135,6 +135,7 @@ namespace MSD.Factories
                         _logInViewModel = new LogInViewModel(app);
                         _loginView = new LogInView();
                         _loginView.DataContext = _logInViewModel;
+                        _loginView.Closed += app.OnMainWindowClose;
                     }
                     if (_mainWindow != null)
                     {
