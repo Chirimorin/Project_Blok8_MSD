@@ -129,6 +129,9 @@
     <Compile Include="Views\MatchSuccesView.xaml.cs">
       <DependentUpon>MatchSuccesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\StagebedrijfOverzichtView.xaml.cs">
+      <DependentUpon>StagebedrijfOverzichtView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StageBedrijfView.xaml.cs">
       <DependentUpon>StageBedrijfView.xaml</DependentUpon>
     </Compile>
@@ -222,6 +225,10 @@
     <Page Include="Views\MatchSuccesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StagebedrijfOverzichtView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\StageBedrijfView.xaml">
       <Generator>MSBuild:Compile</Generator>
