@@ -9,6 +9,8 @@ namespace MSD.Controllers
     public interface IApplicationController
     {
         void OnMainWindowClose(object sender, EventArgs e);
+        void ShowBedrijfView();
+        void ShowBedrijfOverzichtView();
         void ShowDocentKwalificatieView();
         void ShowDocentPersoonView();
         void ShowDocentView();

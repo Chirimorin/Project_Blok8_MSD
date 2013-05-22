@@ -25,6 +25,16 @@ namespace MSD.Controllers
             Environment.Exit(0);
         }
 
+        public void ShowBedrijfView()
+        {
+            ShowView("stageBedrijfViewModel");
+        }
+
+        public void ShowBedrijfOverzichtView()
+        {
+            ShowView("stageBedrijfOverzichtViewModel");
+        }
+
         public void ShowDocentKwalificatieView()
         {
             ShowView("docentKwalificatieViewModel");

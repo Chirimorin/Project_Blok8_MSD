@@ -14,6 +14,7 @@ namespace MSD.ViewModels
     {
 
         private readonly IApplicationController _app;
+        private readonly RelayCommand _ShowBedrijfCommand;
         private readonly RelayCommand _ShowDocentCommand;
         private readonly RelayCommand _ShowStudentCommand;
         private readonly RelayCommand _ShowMatchCommand;
@@ -28,6 +29,7 @@ namespace MSD.ViewModels
         public MainWindowModel(IApplicationController app)
         {
             _app = app;
+            this._ShowBedrijfCommand = new RelayCommand(ShowBedrijf);
             this._ShowDocentCommand = new RelayCommand(ShowDocent);
             this._ShowStudentCommand = new RelayCommand(ShowStudent);
             this._ShowGebruikerCommand = new RelayCommand(ShowGebruiker);
@@ -35,7 +37,13 @@ namespace MSD.ViewModels
             this._ShowStageCommand = new RelayCommand(ShowStage);
             this._LogoutCommand = new RelayCommand(Logout);
         }
-        
+
+        public RelayCommand ShowBedrijfCommand { get { return _ShowBedrijfCommand; } }
+        public void ShowBedrijf(object command)
+        {
+            _app.ShowBedrijfOverzichtView();
+        }
+
         public RelayCommand ShowDocentCommand { get { return _ShowDocentCommand; } }
         public void ShowDocent(object command)
         {

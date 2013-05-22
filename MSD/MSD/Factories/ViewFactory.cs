@@ -12,6 +12,8 @@ namespace MSD.Factories
 {
     public abstract class ViewFactory
     {
+        private static StageBedrijfViewModel _stageBedrijfView;
+        private static StagebedrijfOverzichtViewModel _stageBedrijfOverzichtView;
         private static DocentKwalificatieViewModel _docentKwalificatieView;
         private static DocentPersoonViewModel _docentPersoonView;
         private static DocentViewModel _docentView;
@@ -25,7 +27,6 @@ namespace MSD.Factories
         private static MatchMogelijkViewModel _matchMogelijkView;
         private static MatchSuccesViewModel _matchSuccesView;
         private static StageViewModel _stageView;
-        private static StudentBedrijfViewModel _studentBedrijfView;
         private static StudentPersoonViewModel _studentPersoonView;
         private static StudentViewModel _studentView;
         private static WachtwoordViewModel _wachtwoordViewModel;
@@ -44,6 +45,14 @@ namespace MSD.Factories
         {
             switch (name)
             {
+                case ("stageBedrijfViewModel"):
+                    if (_stageBedrijfView == null)
+                        _stageBedrijfView = new StageBedrijfViewModel(app);
+                    return _stageBedrijfView;
+                case ("stageBedrijfOverzichtViewModel"):
+                    if (_stageBedrijfOverzichtView == null)
+                        _stageBedrijfOverzichtView = new StagebedrijfOverzichtViewModel(app);
+                    return _stageBedrijfOverzichtView;
                 case ("docentKwalificatieViewModel"):
                     if (_docentKwalificatieView == null)
                         _docentKwalificatieView = new DocentKwalificatieViewModel(app);
@@ -88,10 +97,6 @@ namespace MSD.Factories
                     if (_stageView == null)
                         _stageView = new StageViewModel(app);
                     return _stageView;
-                case ("studentBedrijfViewModel"):
-                    if (_studentBedrijfView == null)
-                        _studentBedrijfView = new StudentBedrijfViewModel(app);
-                    return _studentBedrijfView;
                 case ("studentPersoonViewModel"):
                     if (_studentPersoonView == null)
                         _studentPersoonView = new StudentPersoonViewModel(app);
@@ -101,19 +106,10 @@ namespace MSD.Factories
                         _studentView = new StudentViewModel(app);
                     return _studentView;
                 case ("wachtwoordViewModel"):
-                   if (_wachtwoordView != null)
-                    {
-                        _wachtwoordView = null;
-                    }
-                   else if (_wachtwoordView == null)
-                    {
-                        _wachtwoordViewModel = new WachtwoordViewModel(app);
-                        _wachtwoordView = new WachtwoordView();
-                        _wachtwoordView.DataContext = _wachtwoordViewModel;
-                        _wachtwoordView.Show();
-                    }
-
-                    
+                    _wachtwoordViewModel = new WachtwoordViewModel(app);
+                    _wachtwoordView = new WachtwoordView();
+                    _wachtwoordView.DataContext = _wachtwoordViewModel;
+                    _wachtwoordView.Show();
                     return _wachtwoordViewModel;
                 case ("mainWindowModel"):
                     if (_mainWindowModel == null)
@@ -147,7 +143,5 @@ namespace MSD.Factories
                     return null;
             }
         }
-
-
     }
 }

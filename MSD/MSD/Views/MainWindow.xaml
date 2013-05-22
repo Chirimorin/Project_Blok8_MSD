@@ -35,6 +35,12 @@
         <DataTemplate DataType="{x:Type m:MatchSuccesViewModel}">
             <v:MatchSuccesView DataContext="{Binding}" />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type m:StageBedrijfViewModel}">
+            <v:StageBedrijfView DataContext="{Binding}" />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type m:StagebedrijfOverzichtViewModel}">
+            <v:StagebedrijfOverzichtView DataContext="{Binding}" />
+        </DataTemplate>
         <DataTemplate DataType="{x:Type m:StageViewModel}">
             <v:StageView DataContext="{Binding}" />
         </DataTemplate>
