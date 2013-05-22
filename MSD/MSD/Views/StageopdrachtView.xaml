@@ -8,5 +8,23 @@
 	x:Name="UserControl"
 	d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="509">
 
-	<Grid x:Name="LayoutRoot"/>
+	<Grid x:Name="LayoutRoot">
+		<Label Content="Stage opdracht" Margin="295.23,35,291.066,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+		<Label Content="Opdracht goedgekeurd" HorizontalAlignment="Left" Margin="204.175,109.84,0,0" VerticalAlignment="Top"/>
+		<Label Content="Voorlopige toestemming" HorizontalAlignment="Left" Margin="204.175,140.8,0,0" VerticalAlignment="Top"/>
+		<Label Content="Toestemming" HorizontalAlignment="Left" Margin="207.23,171.76,0,0" VerticalAlignment="Top"/>
+		<CheckBox Content="" HorizontalAlignment="Left" Margin="362.67,146.76,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+		<CheckBox Content="" HorizontalAlignment="Left" Margin="362.67,177.72,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+		<CheckBox Content="" HorizontalAlignment="Left" Margin="362.67,115.8,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+		<Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,350" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4" Opacity="0.35"/>
+		<Label Content="Gegevens" HorizontalAlignment="Left" Margin="64,121,0,0" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic" Opacity="0.35"/>
+		<Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,152" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
+		<Label Content="Stageopdracht" HorizontalAlignment="Left" Margin="64,322,0,0"  VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"/>
+		<Label Content="1&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25" Opacity="0.35"/>
+		<Label Content="2&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,322,0,0" VerticalAlignment="Top" Width="25"/>
+		<Button Command="{Binding VerderCommand}" Content="Opslaan" Margin="604,457,41,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
+		<Label Content="Opdracht besand:" HorizontalAlignment="Left" Margin="207.23,203.76,0,0" VerticalAlignment="Top"/>
+		<Button Command="{Binding VerderCommand}" Content="Terug" Margin="454,457,189,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
+		<TextBox HorizontalAlignment="Left" Height="195" Margin="204,244,0,0" TextWrapping="Wrap" Text="Hier komt de stageopdracht" VerticalAlignment="Top" Width="507"/>
+	</Grid>
 </UserControl>
