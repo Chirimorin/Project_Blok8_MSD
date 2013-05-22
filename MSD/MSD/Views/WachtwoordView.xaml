@@ -4,13 +4,13 @@
 	x:Class="MSD.WachtwoordView"
 	x:Name="Window"
 	Title="WachtwoordView"
-	Width="375" Height="375" Background="#FFFFFCEE">
+	Width="375" Height="223" Background="#FFFFFCEE">
 
 	<Grid x:Name="LayoutRoot">
-		<Label Content="E-mailadres" HorizontalAlignment="Left" Margin="39.616,126.72,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
-		<Button Content="Verzend" Margin="229.169,0,0,29.04" VerticalAlignment="Bottom" Background="#FFEA8104" BorderBrush="#FFA65A00" FontSize="14.667" HorizontalAlignment="Left" Width="94"/>
+		<Label Content="E-mailadres" HorizontalAlignment="Left" Margin="39.616,76.72,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
+		<Button Content="Verzend" Margin="230,0,0,22" VerticalAlignment="Bottom" Background="#FFEA8104" BorderBrush="#FFA65A00" FontSize="14.667" HorizontalAlignment="Left" Width="94" RenderTransformOrigin="0.594,-4.486"/>
 		<Label Content="Wachtwoord vergeten" Margin="67.616,26,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold" HorizontalAlignment="Left" Width="214.553"/>
-		<TextBox Margin="39.616,162,0,0" TextWrapping="Wrap" Text="test@email.com" SelectionBrush="{x:Null}" HorizontalAlignment="Left" Width="283.553" Height="21.96" VerticalAlignment="Top">
+		<TextBox Margin="39.616,112,0,0" TextWrapping="Wrap" Text="test@email.com" SelectionBrush="{x:Null}" HorizontalAlignment="Left" Width="283.553" Height="21.96" VerticalAlignment="Top">
 			<TextBox.BorderBrush>
 				<LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
 					<GradientStop Color="#FFABADB3" Offset="0.05"/>
@@ -19,6 +19,5 @@
 				</LinearGradientBrush>
 			</TextBox.BorderBrush>
 		</TextBox>
-		<Button Content="Terug" Margin="114.169,0,0,29.04" VerticalAlignment="Bottom" Background="#FFEA8104" BorderBrush="#FFA65A00" FontSize="14.667" HorizontalAlignment="Left" Width="94"/>
 	</Grid>
 </Window>

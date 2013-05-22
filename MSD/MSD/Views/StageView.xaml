@@ -19,7 +19,7 @@
 				<DataGridTextColumn Binding="{Binding Property6}" Header="Stagecoordinator"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Stage" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="297,32.807,0,0" HorizontalAlignment="Left" Width="153"/>
+        <Label Content="Stage" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="297,32.807,0,0" HorizontalAlignment="Left" Width="153"/>
         <Button Content="Exporteren" Margin="606,445,39,0" VerticalAlignment="Top" Background="#FFEA8104" BorderBrush="#FFA65A00" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="25" FontStyle="Italic"/>
     </Grid>
 </UserControl>

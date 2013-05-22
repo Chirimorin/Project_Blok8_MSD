@@ -18,9 +18,12 @@
                 <RowDefinition Height="185*"/>
                 <RowDefinition Height="138*"/>
             </Grid.RowDefinitions>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,52,52,0" Text="Wachtwoord" BorderBrush="#FFAEAEAE" Width="500"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,89,52,0" Text="Wachtwoord herhalen" BorderBrush="#FFAEAEAE" Width="500"/>
-            <TextBox Height="20" TextWrapping="Wrap" Text="Gebruikersnaam" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Width="500" Margin="52,15,52,0"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="168.36,58.333,28.64,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="168.36,17.333,28.64,0"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="168.36,102.334,28.64,0" BorderBrush="#FFAEAEAE"/>
+            <Label Content="Gebruikersnaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="25.666,14.332,0,0" VerticalAlignment="Top" Width="140.667"/>
+            <Label Content="Wachtwoord" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="25.666,55.666,0,0" VerticalAlignment="Top" Width="140.667"/>
+            <Label Content="Wachtwoord herhalen" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="25.666,98.666,0,0" VerticalAlignment="Top" Width="140.667"/>
         </Grid>
     </Grid>
 </UserControl>

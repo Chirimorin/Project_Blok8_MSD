@@ -16,16 +16,24 @@
         <Label Content="Docentgegevens" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" FontSize="18.667" Height="45" Margin="285,22.807,285,0"/>
         <Button Command="{Binding VerderCommand}" Content="Verder" Margin="604,457,41,0" VerticalAlignment="Top" Background="#FFEA8104" BorderBrush="#FFA65A00" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
         <Grid Height="383" Margin="122,87,110,0" VerticalAlignment="Top">
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,55,52,0" Text="Achternaam" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="20" TextWrapping="Wrap" Text="Voornaam" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="52,15,52,0"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,142,52,0" Text="E-mail" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,179,52,0" Text="Telefoonnummer" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,216,52,0" Text="Mobiel" BorderBrush="#FFAEAEAE" Grid.RowSpan="2"/>
-            <ComboBox  HorizontalAlignment="Left" Margin="52,98,0,0" VerticalAlignment="Top" Width="120"/>
-            <ComboBox HorizontalAlignment="Left" Margin="198,98,0,0" VerticalAlignment="Top" Width="120"/>
-            <ComboBox HorizontalAlignment="Left" Margin="348,98,0,0" VerticalAlignment="Top" Width="120"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,253,52,0" Text="Adres" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,291,52,0" Text="Woonplaats" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="151.021,8.333,48.64,0"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="151.021,49.333,48.64,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="151.021,129.333,48.64,0"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="151.021,170.333,48.64,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="148.36,214.334,48.64,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="149.027,255.34,47.973,0" BorderBrush="#FFAEAEAE"/>
+            <Label Content="Voornaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="5.666,5.332,0,0" VerticalAlignment="Top" Width="140.667"/>
+            <Label Content="Achternaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="5.666,46.666,0,0" VerticalAlignment="Top" Width="140.667"/>
+            <Label Content="Geboortedatum" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="4.999,85.664,0,0" VerticalAlignment="Top" Width="140.667"/>
+            <Label Content="E-mail" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="5.666,126.332,0,0" VerticalAlignment="Top" Width="140.667"/>
+            <Label Content="Telefoonnummer" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="5.666,167.666,0,0" VerticalAlignment="Top" Width="140.667"/>
+            <Label Content="Telefoonnummer" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="5.666,210.666,0,0" VerticalAlignment="Top" Width="140.667"/>
+            <Label Content="Mobiel" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="6.333,251.653,0,0" VerticalAlignment="Top" Width="140.667"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="148.36,294.334,48.64,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="149.027,335.34,47.973,0" BorderBrush="#FFAEAEAE"/>
+            <Label Content="Adres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="5.666,290.666,0,0" VerticalAlignment="Top" Width="140.667"/>
+            <Label Content="Woonplaats" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="6.333,331.653,0,0" VerticalAlignment="Top" Width="140.667"/>
+            <DatePicker HorizontalAlignment="Left" Height="33" Margin="151,86,0,0" VerticalAlignment="Top" Width="322"/>
         </Grid>
     </Grid>
 </UserControl>

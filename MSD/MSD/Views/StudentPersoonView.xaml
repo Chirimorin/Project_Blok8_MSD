@@ -19,13 +19,18 @@
         <Button Command="{Binding VerderCommand}" Content="Verder" Margin="604,457,41,0" VerticalAlignment="Top" Background="#FFEA8104" BorderBrush="#FFA65A00" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
         <Grid Height="383" Margin="122,87,110,0" VerticalAlignment="Top">
 
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,56,52,0" Text="Achternaam" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="20" TextWrapping="Wrap" Text="Voornaam" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="52,15,52,0"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,142,52,0" Text="Studentnummer" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,231,52,0" Text="Jaar" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="52,100,52,0" Text="E-mail" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,56,52,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="145,15,52,0"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,142,52,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,231,52,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,100,52,0" BorderBrush="#FFAEAEAE"/>
             <ComboBox  HorizontalAlignment="Left" Margin="145,187,0,0" VerticalAlignment="Top" Width="120"/>
-            <Label Content="Opleiding" HorizontalAlignment="Left" Margin="52,184,0,0" VerticalAlignment="Top"/>
+            <Label Content="Voornaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,14,0,0" VerticalAlignment="Top" Width="80"/>
+            <Label Content="Achternaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,54,0,0" VerticalAlignment="Top" Width="80"/>
+            <Label Content="E-mail" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,97,0,0" VerticalAlignment="Top" Width="80"/>
+            <Label Content="Studentnummer" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,140,0,0" VerticalAlignment="Top" Width="80"/>
+            <Label Content="Opleiding" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,184,0,0" VerticalAlignment="Top" Width="80"/>
+            <Label Content="Jaar" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,228,0,0" VerticalAlignment="Top" Width="80"/>
         </Grid>
     </Grid>
 </UserControl>
