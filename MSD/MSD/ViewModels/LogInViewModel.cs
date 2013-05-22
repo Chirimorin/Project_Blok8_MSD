@@ -20,7 +20,7 @@ namespace MSD.ViewModels
         private readonly RelayCommand _ShowMainWindow;
         private readonly RelayCommand _WachtwoordVergeten;
 
-        private string _name;
+        private string _email;
         private string _password;
 
         public LogInViewModel(IApplicationController app)
@@ -35,16 +35,24 @@ namespace MSD.ViewModels
             private set { _errorMessage = value; }
         }
 
-        public string Name
+        public string Email
         {
             get
             {
-                return _name;
+                return _email;
             }
             set
             {
-                _name = value;
-                OnPropertyChanged("Name");
+                _email = value;
+                OnPropertyChanged("Email");
+            }
+        }
+
+        public string UserName
+        {
+            get
+            {
+                return Email.Split(new String[] { "@" }, StringSplitOptions.None)[0];
             }
         }
 
@@ -66,7 +74,7 @@ namespace MSD.ViewModels
         public void ShowMainWindow(object command)
         {
             MainWindowModel mainWindowModel = (MainWindowModel)ViewFactory.getViewModel(_app, "mainWindowModel");
-            mainWindowModel.UserName = Name;
+            mainWindowModel.UserName = UserName;
             _app.ShowMainWindow();
         }
 

@@ -78,7 +78,7 @@ namespace MSD.ViewModels
         public void Logout(object command)
         {
             LogInViewModel loginViewModel = (LogInViewModel)ViewFactory.getViewModel(_app, "logInViewModel");
-            loginViewModel.Name = "";
+            loginViewModel.Email = "";
             _app.ShowLoginView();
         }
 

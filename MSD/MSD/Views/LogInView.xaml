@@ -13,8 +13,8 @@
         <Label Content="Inloggen" HorizontalAlignment="Left" Margin="130.123,21,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
         <Label Content="{Binding Message}" HorizontalAlignment="Right" Margin="0,67,325,0" VerticalAlignment="Top" Foreground="#FFC20000"/>
 
-        <Label Content="Naam" HorizontalAlignment="Left" Margin="32,116,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.542,0.989"/>
-        <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" Height="21.96" Margin="32,147,39,171" TextWrapping="Wrap">
+        <Label Content="E-mail" HorizontalAlignment="Left" Margin="32,116,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.542,0.989"/>
+        <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="21.96" Margin="32,147,39,171" TextWrapping="Wrap">
             <TextBox.BorderBrush>
                 <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
                     <GradientStop Color="#FFABADB3" Offset="0.05"/>
