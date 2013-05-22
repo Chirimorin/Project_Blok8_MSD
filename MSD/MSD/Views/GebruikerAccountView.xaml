@@ -25,7 +25,7 @@
             <Label Content="Wachtwoord" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="25.666,55.666,0,0" VerticalAlignment="Top" Width="140.667"/>
             <Label Content="Wachtwoord herhalen" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="25.666,98.666,0,0" VerticalAlignment="Top" Width="140.667"/>
         </Grid>
-        <Button Command="{Binding VerderCommand}" Content="Terug" Margin="454,457,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667" HorizontalAlignment="Left" Width="104.924"/>
+        <Button Command="{Binding TerugCommand}" Content="Terug" Margin="454,457,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667" HorizontalAlignment="Left" Width="104.924"/>
         <Label Content="1&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25"/>
         <Label Content="2&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,322,0,0" VerticalAlignment="Top" Width="25"/>
     </Grid>
