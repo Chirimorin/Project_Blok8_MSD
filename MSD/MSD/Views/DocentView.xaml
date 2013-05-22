@@ -14,15 +14,21 @@
 		<Button Command="{Binding DocentAanpassenCommand}" Content="Aanpassen" Margin="621.169,0,0,34.04" VerticalAlignment="Bottom" FontSize="14.667" HorizontalAlignment="Left" Width="94"/>
 		<Label Content="Details" Margin="272.397,83.87,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" HorizontalAlignment="Left" Width="63.519"/>
 		<Button Command ="{Binding NieuweDocentCommand}" Content="Nieuwe docent" Margin="474.169,0,0,34.04" VerticalAlignment="Bottom" FontSize="14.667" HorizontalAlignment="Left" Width="116"/>
-		<ListBox HorizontalAlignment="Left" Height="278" Margin="33,120.15,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE"/>
+		<ListBox HorizontalAlignment="Left" Height="278" Margin="33,120.15,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE" >
+			<ListBoxItem>
+				Jos Verstappen
+			</ListBoxItem>
+
+
+		</ListBox>
 		<Border BorderBrush="#FFAEAEAE" BorderThickness="1" HorizontalAlignment="Left" Height="278" Margin="271,120.15,0,0" VerticalAlignment="Top" Width="393.169"/>
-		<Label Content="Voornaam" HorizontalAlignment="Left" Margin="292.175,135,0,0" VerticalAlignment="Top" Width="65.568"/>
-		<Label Content="Achternaam" HorizontalAlignment="Left" Margin="368.58,135,0,0" VerticalAlignment="Top" Width="74.546"/>
-		<Label Content="Opleiding" HorizontalAlignment="Left" Margin="516.73,135,0,0" VerticalAlignment="Top" Width="62.537"/>
-		<Label Content="Adres" HorizontalAlignment="Left" Margin="295.23,200.96,0,0" VerticalAlignment="Top" Width="40.686"/>
-		<Label Content="Woonplaats" HorizontalAlignment="Left" Margin="295.23,231.92,0,0" VerticalAlignment="Top" Width="74.004"/>
-		<Label Content="Kennisgebieden" HorizontalAlignment="Left" Margin="293.833,298.186,0,0" VerticalAlignment="Top" Width="95.317"/>
-		<Label Content="Uren over" HorizontalAlignment="Left" Margin="293.833,267.226,0,0" VerticalAlignment="Top" Width="62.513"/>
-		<Label Content="Emailadres" HorizontalAlignment="Left" Margin="295.23,170,0,0" VerticalAlignment="Top" Width="67.602"/>
+		<Label Content="Jos" HorizontalAlignment="Left" Margin="292.175,135,0,0" VerticalAlignment="Top" Width="65.568"/>
+		<Label Content="Verstappen" HorizontalAlignment="Left" Margin="368.58,135,0,0" VerticalAlignment="Top" Width="74.546"/>
+		<Label Content="Informatica" HorizontalAlignment="Left" Margin="516.73,135,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Kalverstraat 16" HorizontalAlignment="Left" Margin="295.23,200.96,0,0" VerticalAlignment="Top" Width="200"/>
+		<Label Content="Amsterdam" HorizontalAlignment="Left" Margin="295.23,231.92,0,0" VerticalAlignment="Top" Width="74.004"/>
+		<Label Content="F1 racen" HorizontalAlignment="Left" Margin="293.833,298.186,0,0" VerticalAlignment="Top" Width="200"/>
+		<Label Content="59 uren over" HorizontalAlignment="Left" Margin="293.833,267.226,0,0" VerticalAlignment="Top" Width="200"/>
+		<Label Content="Jverst@avans.nl" HorizontalAlignment="Left" Margin="295.23,170,0,0" VerticalAlignment="Top" Width="100"/>
 	</Grid>
 </UserControl>
