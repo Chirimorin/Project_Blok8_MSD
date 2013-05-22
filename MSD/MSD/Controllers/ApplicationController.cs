@@ -95,10 +95,6 @@ namespace MSD.Controllers
             ShowView("studentViewModel");
         }
 
-        public void ShowWachtwoordView()
-        {
-            ShowView("wachtwoordViewModel");
-        }
         
         /// <summary>
         /// Will show the view that belongs to the given view model name
@@ -121,6 +117,11 @@ namespace MSD.Controllers
         public void ShowLoginView()
         {
             ViewFactory.getViewModel(this, "logInViewModel");
+        }
+
+        public void ShowWachtwoordView()
+        {
+            ViewFactory.getViewModel(this, "wachtwoordViewModel");
         }
     }
 }
