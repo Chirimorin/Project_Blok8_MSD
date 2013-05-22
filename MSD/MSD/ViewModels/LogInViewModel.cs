@@ -75,7 +75,6 @@ namespace MSD.ViewModels
         public void ShowWachtwoordView(object command)
         {
             WachtwoordViewModel wachtwoordview = (WachtwoordViewModel)ViewFactory.getViewModel(_app, "wachtwoordViewModel");
-            _app.ShowWachtwoordView();
         }
     }
 }
