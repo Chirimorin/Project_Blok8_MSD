@@ -22,7 +22,7 @@ namespace MSD.Controllers
         void ShowMatchMogelijkView();
         void ShowMatchSuccesView();
         void ShowStageView();
-        void ShowStudentBedrijfView();
+        void ShowStageopdrachtView();
         void ShowStudentPersoonView();
         void ShowStudentView();
         void ShowWachtwoordView();

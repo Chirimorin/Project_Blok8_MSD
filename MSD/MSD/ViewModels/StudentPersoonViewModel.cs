@@ -21,7 +21,7 @@ namespace MSD.ViewModels
         public RelayCommand VerderCommand { get { return _verderCommand; } }
         public void Verder(object command)
         {
-            _app.ShowStudentBedrijfView();
+            _app.ShowStageopdrachtView();
         }
     }
 }

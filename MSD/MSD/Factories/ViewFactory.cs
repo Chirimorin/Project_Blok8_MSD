@@ -27,6 +27,7 @@ namespace MSD.Factories
         private static MatchMogelijkViewModel _matchMogelijkView;
         private static MatchSuccesViewModel _matchSuccesView;
         private static StageViewModel _stageView;
+        private static StageopdrachtViewModel _stageopdrachtView;
         private static StudentPersoonViewModel _studentPersoonView;
         private static StudentViewModel _studentView;
         private static WachtwoordViewModel _wachtwoordViewModel;
@@ -97,6 +98,10 @@ namespace MSD.Factories
                     if (_stageView == null)
                         _stageView = new StageViewModel(app);
                     return _stageView;
+                case ("stageopdrachtViewModel"):
+                    if (_stageopdrachtView == null)
+                        _stageopdrachtView = new StageopdrachtViewModel(app);
+                    return _stageopdrachtView;
                 case ("studentPersoonViewModel"):
                     if (_studentPersoonView == null)
                         _studentPersoonView = new StudentPersoonViewModel(app);

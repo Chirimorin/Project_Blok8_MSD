@@ -90,9 +90,9 @@ namespace MSD.Controllers
             ShowView("stageViewModel");
         }
 
-        public void ShowStudentBedrijfView()
+        public void ShowStageopdrachtView()
         {
-            ShowView("studentBedrijfViewModel");
+            ShowView("stageopdrachtViewModel");
         }
 
         public void ShowStudentPersoonView()
