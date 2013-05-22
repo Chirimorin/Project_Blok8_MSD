@@ -22,11 +22,17 @@
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="124,17,14,0" BorderBrush="#FFAEAEAE"/>
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="124,57,14,0" BorderBrush="#FFAEAEAE"/>
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="124,96,14,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="124,134,14,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="124,174,14,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="124,213,14,0" BorderBrush="#FFAEAEAE" Grid.RowSpan="2"/>
         </Grid>
         <Label Content="Kwalificatie 1" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,100,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Kwalificatie 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,140,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Kwalificatie 3" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,178,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="1&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25"/>
         <Label Content="2&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,322,0,0" VerticalAlignment="Top" Width="25"/>
+        <Label Content="Kwalificatie 4" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,219,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Kwalificatie 5" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,259,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Kwalificatie 6" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,297,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </UserControl>
