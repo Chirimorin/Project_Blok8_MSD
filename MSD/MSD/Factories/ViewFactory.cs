@@ -28,10 +28,11 @@ namespace MSD.Factories
         private static StudentBedrijfViewModel _studentBedrijfView;
         private static StudentPersoonViewModel _studentPersoonView;
         private static StudentViewModel _studentView;
-        private static WachtwoordViewModel _wachtwoordView;
+        private static WachtwoordViewModel _wachtwoordViewModel;
 
         private static LogInView _loginView;
         private static MainWindow _mainWindow;
+        private static WachtwoordView _wachtwoordView;
 
         /// <summary>
         /// Returns the viewModel. It will be made if it doesn't exist yet.
@@ -100,9 +101,20 @@ namespace MSD.Factories
                         _studentView = new StudentViewModel(app);
                     return _studentView;
                 case ("wachtwoordViewModel"):
-                    if (_wachtwoordView == null)
-                        _wachtwoordView = new WachtwoordViewModel(app);
-                    return _wachtwoordView;
+                   if (_wachtwoordView != null)
+                    {
+                        _wachtwoordView = null;
+                    }
+                   else if (_wachtwoordView == null)
+                    {
+                        _wachtwoordViewModel = new WachtwoordViewModel(app);
+                        _wachtwoordView = new WachtwoordView();
+                        _wachtwoordView.DataContext = _wachtwoordViewModel;
+                        _wachtwoordView.Show();
+                    }
+
+                    
+                    return _wachtwoordViewModel;
                 case ("mainWindowModel"):
                     if (_mainWindowModel == null)
                     {
