@@ -39,6 +39,10 @@ namespace MSD.ViewModels
         {
             get
             {
+                if (_email == null)
+                {
+                    return "";
+                }
                 return _email;
             }
             set
