@@ -12,12 +12,15 @@
 		<Label Content="Gebruikers" Margin="316.654,36,318.35,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
 		<Button Command="{Binding GebruikerAanpassenCommand}"  Content="Aanpassen" Margin="621.169,0,0,35.918" VerticalAlignment="Bottom"  FontSize="14.667" HorizontalAlignment="Left" Width="94" Height="26"/>
 		<Button Command="{Binding NieuweGebruikerCommand}" Content="Nieuwe gebruiker" Margin="462.835,0,0,35.918" VerticalAlignment="Bottom"  FontSize="14.667" HorizontalAlignment="Left" Width="131" Height="26"/>
-		<ListBox HorizontalAlignment="Left" Height="278" Margin="37,115.692,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE"/>
-		<Label Content="Gebruikers" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="16" FontStyle="Italic" Margin="0,83.87,631.146,0"/>
-		<Border BorderBrush="#FFAEAEAE" BorderThickness="1" HorizontalAlignment="Left" Height="278" Margin="272.397,115.692,0,0" VerticalAlignment="Top" Width="442.772"/>
-		<Label Content="Details" Margin="272.397,83.87,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" HorizontalAlignment="Left" Width="63.519"/>
-		<Label Content="Voornaam" HorizontalAlignment="Left" Margin="292.175,135,0,0" VerticalAlignment="Top" Width="65.568"/>
-		<Label Content="Achternaam" HorizontalAlignment="Left" Margin="368.58,135,0,0" VerticalAlignment="Top" Width="74.546"/>
-		<Label Content="Emailadres" HorizontalAlignment="Left" Margin="292.175,165.96,0,0" VerticalAlignment="Top" Width="67.602"/>
+		<!--<ListBox HorizontalAlignment="Left" Height="278" Margin="37,115.692,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE"/>-->
+        <ListBox Height="278" Margin="37,116,0,0" VerticalAlignment="Top" BorderBrush="#FFAEAEAE" HorizontalAlignment="Left" Width="678">
+            <ListBoxItem Content="tjwvoogt@student.avans.nl" Selector.IsSelected="True"/>
+        </ListBox>
+        <Label Content="Gebruikers" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="16" FontStyle="Italic" Margin="0,83.87,631.146,0"/>
+		<!--<Border BorderBrush="#FFAEAEAE" BorderThickness="1" HorizontalAlignment="Left" Height="278" Margin="272.397,115.692,0,0" VerticalAlignment="Top" Width="442.772"/>-->
+		<!--<Label Content="Details" Margin="272.397,83.87,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" HorizontalAlignment="Left" Width="63.519"/>-->
+		<!--<Label Content="Voornaam" HorizontalAlignment="Left" Margin="292.175,135,0,0" VerticalAlignment="Top" Width="65.568"/>-->
+		<!--<Label Content="Achternaam" HorizontalAlignment="Left" Margin="368.58,135,0,0" VerticalAlignment="Top" Width="74.546"/>-->
+		<!--<Label Content="Emailadres" HorizontalAlignment="Left" Margin="292.175,165.96,0,0" VerticalAlignment="Top" Width="67.602"/>-->
 	</Grid>
 </UserControl>

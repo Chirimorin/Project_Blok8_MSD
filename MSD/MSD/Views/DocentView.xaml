@@ -15,11 +15,7 @@
 		<Label Content="Details" Margin="272.397,83.87,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" HorizontalAlignment="Left" Width="63.519"/>
 		<Button Command ="{Binding NieuweDocentCommand}" Content="Nieuwe docent" Margin="474.169,0,0,34.04" VerticalAlignment="Bottom" FontSize="14.667" HorizontalAlignment="Left" Width="116" Height="26"/>
 		<ListBox HorizontalAlignment="Left" Height="278" Margin="33,120.15,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE" >
-			<ListBoxItem>
-				Jos Verstappen
-			</ListBoxItem>
-
-
+            <ListBoxItem Content="Jos Verstappen" Selector.IsSelected="True" />
 		</ListBox>
 		<Border BorderBrush="#FFAEAEAE" BorderThickness="1" HorizontalAlignment="Left" Height="278" Margin="271,120.15,0,0" VerticalAlignment="Top" Width="393.169"/>
 		<Label Content="Jos" HorizontalAlignment="Left" Margin="292.175,135,0,0" VerticalAlignment="Top" Width="65.568"/>
