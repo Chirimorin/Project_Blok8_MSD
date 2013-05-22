@@ -1,4 +1,5 @@
 ﻿using MSD.Controllers;
+using MSD.Factories;
 using MSD.Models;
 using System;
 using System.Collections.Generic;
@@ -24,12 +25,16 @@ namespace MSD.ViewModels
         public RelayCommand NieuweDocentCommand { get { return _NieuweDocentCommand; } }
         public void NieuweDocent(object command)
         {
+            DocentPersoonViewModel vm = (DocentPersoonViewModel)ViewFactory.getViewModel(_app, "docentPersoonViewModel");
+            vm.Title = "Nieuwe Docent";
             _app.ShowDocentPersoonView();
         }
 
         public RelayCommand DocentAanpassenCommand { get { return _DocentAanpassenCommand; } }
         public void DocentAanpassen(object command)
         {
+            DocentPersoonViewModel vm = (DocentPersoonViewModel)ViewFactory.getViewModel(_app, "docentPersoonViewModel");
+            vm.Title = "Docent Aanpassen";
             _app.ShowDocentPersoonView();
         }
     }

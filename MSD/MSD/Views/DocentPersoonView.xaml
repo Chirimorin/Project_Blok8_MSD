@@ -13,21 +13,21 @@
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,152" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4" Opacity="0.35"/>
         <Label Content="Kwalificaties" HorizontalAlignment="Left" Margin="64,311,0,0"  VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic" Opacity="0.35"/>
 
-        <Label Content="Docentgegevens" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" FontSize="18.667" Height="45" Margin="285,22.807,285,0"/>
+        <Label Content="{Binding Title}" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" FontSize="18.667" Height="45" Margin="285,22.807,285,0"/>
         <Button Command="{Binding VerderCommand}" Content="Verder" Margin="604,457,41,0" VerticalAlignment="Top"  Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
         <Grid Height="383" Margin="122,87,110,0" VerticalAlignment="Top">
-            <TextBox Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="150,8.333,48.64,0"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="150,49.333,48.64,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="150,93.333,48.64,0"/>
-            <DatePicker HorizontalAlignment="Left" Height="33" Margin="150,128,0,0" VerticalAlignment="Top" Width="322"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="150,170.333,48.64,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="150,214.334,48.64,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="150,255.34,47.973,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="150,294.334,48.64,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="150,335.34,47.973,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="150,8.333,48.64,0"/>
+            <TextBox Text="{Binding Path=Tussenvoegsel, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="150,49.333,48.64,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=LastName, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="150,93.333,48.64,0"/>
+            <DatePicker DisplayDate="{Binding Path=Birthday, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="33" Margin="150,128,0,0" VerticalAlignment="Top" Width="322"/>
+            <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="150,170.333,48.64,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="150,214.334,48.64,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Mobile, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="150,255.34,48.64,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Adress, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="150,294.334,48.64,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="150,335.34,48.64,0" BorderBrush="#FFAEAEAE"/>
             <Label Content="Voornaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="5.666,5.332,0,0" VerticalAlignment="Top" Width="140.667"/>
             <Label Content="Tussenvoegsel" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="5.666,46.666,0,0" VerticalAlignment="Top" Width="140.667"/>
-            <Label Content="Achtenaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="4.999,85.664,0,0" VerticalAlignment="Top" Width="140.667"/>
+            <Label Content="Achternaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="4.999,85.664,0,0" VerticalAlignment="Top" Width="140.667"/>
             <Label Content="Geboortedatum" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="5.666,126.332,0,0" VerticalAlignment="Top" Width="140.667"/>
             <Label Content="Email" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="5.666,167.666,0,0" VerticalAlignment="Top" Width="140.667"/>
             <Label Content="Telefoonnummer" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="5.666,210.666,0,0" VerticalAlignment="Top" Width="140.667"/>
@@ -37,6 +37,6 @@
         </Grid>
         <Label Content="1&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25"/>
         <Label Content="2&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,322,0,0" VerticalAlignment="Top" Width="25"/>
-        <Button Command="{Binding VerderCommand}" Content="Terug" Margin="454,457,191,0" VerticalAlignment="Top"  Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
+        <Button Command="{Binding TerugCommand}" Content="Terug" Margin="454,457,191,0" VerticalAlignment="Top"  Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
     </Grid>
 </UserControl>
