@@ -1,4 +1,5 @@
 ﻿using MSD.Controllers;
+using MSD.Factories;
 using MSD.Models;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,11 @@ namespace MSD.ViewModels
         private readonly RelayCommand _ShowMatchCommand;
         private readonly RelayCommand _ShowStageCommand;
         private readonly RelayCommand _ShowGebruikerCommand;
+        private readonly RelayCommand _LogoutCommand;
 
-        private PropertyChangedBase contents;
+        private string _username;
+
+        private PropertyChangedBase _contents;
 
         public MainWindowModel(IApplicationController app)
         {
@@ -29,6 +33,7 @@ namespace MSD.ViewModels
             this._ShowGebruikerCommand = new RelayCommand(ShowGebruiker);
             this._ShowMatchCommand = new RelayCommand(ShowMatchInvoer);
             this._ShowStageCommand = new RelayCommand(ShowStage);
+            this._LogoutCommand = new RelayCommand(Logout);
         }
         
         public RelayCommand ShowDocentCommand { get { return _ShowDocentCommand; } }
@@ -61,18 +66,35 @@ namespace MSD.ViewModels
             _app.ShowGebruikerView();
         }
 
+        public RelayCommand LogoutCommand { get { return _LogoutCommand; } }
+        public void Logout(object command)
+        {
+            LogInViewModel loginViewModel = (LogInViewModel)ViewFactory.getViewModel(_app, "logInViewModel");
+            loginViewModel.Name = "";
+            _app.ShowLoginView();
+        }
+
         //username komt uit de database
         public string UserName
         {
-            get { return ""; }
+            get
+            {
+                Debug.WriteLine("UserName get, returned " + _username);
+                return _username;
+            }
+            set
+            {
+                _username = value;
+                OnPropertyChanged("UserName");
+            }
         }
 
         public PropertyChangedBase Contents
         {
-            get { return contents; }
+            get { return _contents; }
             set
             {
-                contents = value;
+                _contents = value;
                 OnPropertyChanged("Contents");
             }
         }

@@ -18,8 +18,8 @@ namespace MSD.Factories
         private static GebruikerAccountViewModel _gebruikerAccountView;
         private static GebruikerContactViewModel _gebruikerContactView;
         private static GebruikerViewModel _gebruikerView;
-        private static LogInViewModel _logInView;
-        private static MainWindowModel _mainWindow;
+        private static LogInViewModel _logInViewModel;
+        private static MainWindowModel _mainWindowModel;
         private static MatchDetailsViewModel _matchDetailsView;
         private static MatchInvoerViewModel _matchInvoerView;
         private static MatchMogelijkViewModel _matchMogelijkView;
@@ -29,6 +29,9 @@ namespace MSD.Factories
         private static StudentPersoonViewModel _studentPersoonView;
         private static StudentViewModel _studentView;
         private static WachtwoordViewModel _wachtwoordView;
+
+        private static LogInView _loginView;
+        private static MainWindow _mainWindow;
 
         /// <summary>
         /// Returns the viewModel. It will be made if it doesn't exist yet.
@@ -101,24 +104,32 @@ namespace MSD.Factories
                         _wachtwoordView = new WachtwoordViewModel(app);
                     return _wachtwoordView;
                 case ("mainWindowModel"):
-                    if (_mainWindow == null)
+                    if (_mainWindowModel == null)
                     {
-                        _mainWindow = new MainWindowModel(app);
-                        MainWindow mainWindow = new MainWindow();
-                        mainWindow.Show();
-                        mainWindow.DataContext = _mainWindow;
-                        mainWindow.Closed += app.OnMainWindowClose;
+                        _mainWindowModel = new MainWindowModel(app);
+                        _mainWindow = new MainWindow();
+                        _mainWindow.DataContext = _mainWindowModel;
+                        _mainWindow.Closed += app.OnMainWindowClose;
                     }
-                    return _mainWindow;
+                    if (_loginView != null)
+                    {
+                        _loginView.Hide();
+                    }
+                    _mainWindow.Show();
+                    return _mainWindowModel;
                 case ("logInViewModel"):
-                    if (_logInView == null)
+                    if (_logInViewModel == null)
                     {
-                        _logInView = new LogInViewModel(app);
-                        LogInView loginView = new LogInView();
-                        loginView.Show();
-                        loginView.DataContext = _logInView;
+                        _logInViewModel = new LogInViewModel(app);
+                        _loginView = new LogInView();
+                        _loginView.DataContext = _logInViewModel;
                     }
-                    return _logInView;
+                    if (_mainWindow != null)
+                    {
+                        _mainWindow.Hide();
+                    }
+                    _loginView.Show();
+                    return _logInViewModel;
                 default:
                     return null;
             }

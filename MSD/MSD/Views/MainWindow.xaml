@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:v="clr-namespace:MSD.Views"
         xmlns:m="clr-namespace:MSD.ViewModels"
-        Title="MainWindow" Height="540" Width="960">
+        Title="Match Studenten aan Docenten" Height="540" Width="960">
     <Window.Resources>
         <DataTemplate DataType="{x:Type m:DocentKwalificatieViewModel}">
             <v:DocentKwalificatieView DataContext="{Binding}" />
@@ -51,29 +51,33 @@
             <v:WachtwoordView DataContext="{Binding}" />
         </DataTemplate>
     </Window.Resources>
-    <Grid Background="#FFFFFCEE" RenderTransformOrigin="0.50,0.5">
+    <Grid Background="#FFFFFCEE" RenderTransformOrigin="0.50,0.5" ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0"
               Grid.Row="0">
-
-            <Label Content="MSD" Margin="60.91,22,58.616,0" VerticalAlignment="Top" FontSize="26.667" FontWeight="Bold"/>
-
-            <Button Command="{Binding ShowMatchCommand}" Content="Matchen" Margin="37,150,38,0" VerticalAlignment="Top" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
-
-            <Button Command="{Binding ShowUitloggenCommand}" Content="Uitloggen" Margin="37,0,38,40" VerticalAlignment="Bottom" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
-
-            <Button Command="{Binding ShowStageCommand}" Content="Stage" Margin="37,200,38,0" VerticalAlignment="Top" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
-
-            <Button Command="{Binding ShowGebruikerCommand}" Content="Gebruikers" Margin="37,0,38,90" VerticalAlignment="Bottom" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
-
-            <Label DataContext="{Binding UserName}"  Margin="37,81.83,40.616,0" VerticalAlignment="Top" FontSize="14.667"/>
-            <Button Command="{Binding ShowDocentCommand}" Content="Docenten" Margin="37,250,38,0" VerticalAlignment="Top" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
-            <Button Command="{Binding ShowStudentCommand}" Content="Studenten" Margin="37,300,38,0" VerticalAlignment="Top" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
-
-
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label Content="{Binding UserName}" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14.667" Grid.Row="0"/>
+                <Button Command="{Binding ShowMatchCommand}" Grid.Row="1" Content="Matchen" VerticalAlignment="Center" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
+                <Button Command="{Binding ShowStageCommand}" Grid.Row="2" Content="Stage" VerticalAlignment="Center" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
+                <Button Command="{Binding ShowDocentCommand}" Grid.Row="3" Content="Docenten" VerticalAlignment="Center" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
+                <Button Command="{Binding ShowStudentCommand}" Grid.Row="4" Content="Studenten" VerticalAlignment="Center" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
+                <Button Command="{Binding ShowBedrijfCommand}" Grid.Row="5" Content="Bedrijven" VerticalAlignment="Center" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
+                <Button Command="{Binding ShowGebruikerCommand}" Grid.Row="6" Content="Gebruikers" VerticalAlignment="Center" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
+                <Button Command="{Binding LogoutCommand}" Grid.Row="7" Content="Uitloggen" VerticalAlignment="Center" FontSize="14.667" Background="#FFEA8104" BorderBrush="#FFA65A00" Width="125" Height="25"/>
+            </Grid>
         </Grid>
         <ContentControl Grid.Column="1"
                         Name="Contents"
