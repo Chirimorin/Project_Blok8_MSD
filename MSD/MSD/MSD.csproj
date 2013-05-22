@@ -89,6 +89,7 @@
     <Compile Include="ViewModels\MatchSuccesViewModel.cs" />
     <Compile Include="ViewModels\StagebedrijfOverzichtViewModel.cs" />
     <Compile Include="ViewModels\StageBedrijfViewModel.cs" />
+    <Compile Include="ViewModels\StageopdrachtViewModel.cs" />
     <Compile Include="ViewModels\StageViewModel.cs" />
     <Compile Include="ViewModels\StudentPersoonViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />

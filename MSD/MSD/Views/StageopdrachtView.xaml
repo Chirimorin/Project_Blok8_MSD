@@ -23,8 +23,8 @@
 		<Label Content="1&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25" Opacity="0.35"/>
 		<Label Content="2&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,322,0,0" VerticalAlignment="Top" Width="25"/>
 		<Button Command="{Binding VerderCommand}" Content="Opslaan" Margin="604,457,41,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
-		<Label Content="Opdracht besand:" HorizontalAlignment="Left" Margin="207.23,203.76,0,0" VerticalAlignment="Top"/>
+		<Label Content="Stage opdracht:" HorizontalAlignment="Left" Margin="207.23,203.76,0,0" VerticalAlignment="Top"/>
 		<Button Command="{Binding VerderCommand}" Content="Terug" Margin="454,457,189,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
-		<TextBox HorizontalAlignment="Left" Height="195" Margin="204,244,0,0" TextWrapping="Wrap" Text="Hier komt de stageopdracht" VerticalAlignment="Top" Width="507"/>
+		<TextBox HorizontalAlignment="Left" Height="195" Margin="204,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="507"/>
 	</Grid>
 </UserControl>
