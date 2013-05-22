@@ -38,9 +38,6 @@
         <DataTemplate DataType="{x:Type m:StageViewModel}">
             <v:StageView DataContext="{Binding}" />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type m:StudentBedrijfViewModel}">
-            <v:StudentBedrijfView DataContext="{Binding}" />
-        </DataTemplate>
         <DataTemplate DataType="{x:Type m:StudentPersoonViewModel}">
             <v:StudentPersoonView DataContext="{Binding}" />
         </DataTemplate>

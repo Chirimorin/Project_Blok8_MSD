@@ -11,10 +11,10 @@
         <DataTemplate DataType="{x:Type m:WachtwoordViewModel}">
             <v:WachtwoordView DataContext="{Binding}" />
         </DataTemplate>
-        <Window.Resources/>
+    </Window.Resources>
 
-        <Grid x:Name="LayoutRoot">
-        
+    <Grid x:Name="LayoutRoot">
+
         <Label Content="Inloggen" HorizontalAlignment="Left" Margin="130.123,21,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
         <Label Content="{Binding Message}" HorizontalAlignment="Right" Margin="0,67,325,0" VerticalAlignment="Top" Foreground="#FFC20000"/>
 
@@ -28,7 +28,7 @@
                 </LinearGradientBrush>
             </TextBox.BorderBrush>
         </TextBox>
-        
+
         <Label Content="Wachtwoord" HorizontalAlignment="Left" Margin="32,0,0,124" VerticalAlignment="Bottom" FontSize="16"/>
         <PasswordBox Height="21.96" Margin="32.124,0,39.324,102" VerticalAlignment="Bottom">
             <PasswordBox.BorderBrush>
@@ -41,7 +41,7 @@
         </PasswordBox>
 
         <Button Content="Log in" Command="{Binding ShowMainWindowCommand}" HorizontalAlignment="Right" Margin="0,0,39.324,34.04" VerticalAlignment="Bottom" Width="75" FontSize="14.667" />
-        <Button Name="wachtwoordvergeten" Command="{Binding wachtwoordvergeten}" Content="Wachtwoord vergeten" HorizontalAlignment="Right" Margin="0,0,148.447,34.04" VerticalAlignment="Bottom" Width="161.18" FontSize="14.667" />
+        <Button Command="{Binding ShowWachtwoordVergeten}" Content="Wachtwoord vergeten" HorizontalAlignment="Right" Margin="0,0,149,34" VerticalAlignment="Bottom" Width="161" FontSize="14.667" />
 
     </Grid>
 

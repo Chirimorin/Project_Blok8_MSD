@@ -18,6 +18,7 @@ namespace MSD.ViewModels
         //private MainWindow mainwindow = new MainWindow();
         private string _errorMessage;
         private readonly RelayCommand _ShowMainWindow;
+        private readonly RelayCommand _WachtwoordVergeten;
 
         private string _name;
         private string _password;
@@ -26,6 +27,7 @@ namespace MSD.ViewModels
         {
             _app = app;
             this._ShowMainWindow = new RelayCommand(ShowMainWindow);
+            this._WachtwoordVergeten = new RelayCommand(ShowWachtwoordView);
         }
         public string Message
         {
@@ -66,6 +68,14 @@ namespace MSD.ViewModels
             MainWindowModel mainWindowModel = (MainWindowModel)ViewFactory.getViewModel(_app, "mainWindowModel");
             mainWindowModel.UserName = Name;
             _app.ShowMainWindow();
+        }
+
+        public RelayCommand ShowWachtwoordVergeten { get { return _WachtwoordVergeten; } }
+
+        public void ShowWachtwoordView(object command)
+        {
+            WachtwoordViewModel wachtwoordview = (WachtwoordViewModel)ViewFactory.getViewModel(_app, "wachtwoordViewModel");
+            _app.ShowWachtwoordView();
         }
     }
 }
