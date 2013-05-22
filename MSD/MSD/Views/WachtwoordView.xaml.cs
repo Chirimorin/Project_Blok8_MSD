@@ -8,19 +8,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MSD.Views
+namespace MSD
 {
 	/// <summary>
 	/// Interaction logic for WachtwoordView.xaml
 	/// </summary>
-	public partial class WachtwoordView : UserControl
+	public partial class WachtwoordView : Window
 	{
 		public WachtwoordView()
 		{
 			this.InitializeComponent();
+			
+			// Insert code required on object creation below this point.
 		}
 	}
 }
