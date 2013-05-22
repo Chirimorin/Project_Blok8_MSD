@@ -19,6 +19,7 @@ namespace MSD.ViewModels
             _app = app;
             _verderCommand = new RelayCommand(Verder);
             _terugCommand = new RelayCommand(Terug);
+            _birthday = new DateTime(2013, 1, 1);
         }
 
         public RelayCommand VerderCommand { get { return _verderCommand; } }
