@@ -9,8 +9,8 @@
     <Grid x:Name="LayoutRoot">
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,350" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4" Opacity="0.35"/>
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,152" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
-        <Label Content="Nieuwe gebruiker" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="285,22.807,285,0"/>
-        <Button Command="{Binding OpslaanCommand}" Content="Opslaan" Margin="604,457,41,0" VerticalAlignment="Top" Background="#FFEA8104" BorderBrush="#FFA65A00" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667"/>
+        <Label Content="Nieuwe gebruiker" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="285,22.807,285,0"><Label.Effect> <DropShadowEffect ShadowDepth="0" Direction="330" Color="White" Opacity="2" BlurRadius="1"/> </Label.Effect></Label>
+        <Button Command="{Binding OpslaanCommand}" Content="Opslaan" Margin="604,457,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667" HorizontalAlignment="Left" Width="107"/>
         <Grid Height="383" Margin="122,87,110,0" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="185*"/>
@@ -23,15 +23,19 @@
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="149.021,179.333,50.64,0" BorderBrush="#FFAEAEAE"/>
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="146.36,3.969,50.64,0" BorderBrush="#FFAEAEAE" Grid.Row="1"/>
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="147.027,44.975,49.973,0" BorderBrush="#FFAEAEAE" Grid.Row="1"/>
-            <Label Content="Voornaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="3.666,14.332,0,0" VerticalAlignment="Top" Width="140.667"/>
-            <Label Content="Tussenvoegsel" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="3.666,55.666,0,0" VerticalAlignment="Top" Width="140.667"/>
-            <Label Content="Achternaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="2.999,94.664,0,0" VerticalAlignment="Top" Width="140.667"/>
-            <Label Content="Functie" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="3.666,135.332,0,0" VerticalAlignment="Top" Width="140.667"/>
-            <Label Content="Telefoonnummer" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="3.666,176.666,0,0" VerticalAlignment="Top" Width="140.667"/>
-            <Label Content="Werkplek" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="3.666,0.301,0,0" VerticalAlignment="Top" Width="140.667" Grid.Row="1"/>
-            <Label Content="E-Mail" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="4.333,41.288,0,0" VerticalAlignment="Top" Width="140.667" Grid.Row="1"/>
+            <Label  Content="Voornaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="3.666,14.332,0,0" VerticalAlignment="Top" Width="140.667"><Label.Effect> <DropShadowEffect ShadowDepth="0" Direction="330" Color="White" Opacity="2" BlurRadius="1"/> </Label.Effect></Label>
+            <Label Content="Tussenvoegsel" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="3.666,55.666,0,0" VerticalAlignment="Top" Width="140.667"><Label.Effect> <DropShadowEffect ShadowDepth="0" Direction="330" Color="White" Opacity="2" BlurRadius="1"/> </Label.Effect></Label>
+            <Label Content="Achternaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="2.999,94.664,0,0" VerticalAlignment="Top" Width="140.667"><Label.Effect> <DropShadowEffect ShadowDepth="0" Direction="330" Color="White" Opacity="2" BlurRadius="1"/> </Label.Effect></Label>
+            <Label Content="Functie" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="3.666,135.332,0,0" VerticalAlignment="Top" Width="140.667"><Label.Effect> <DropShadowEffect ShadowDepth="0" Direction="330" Color="White" Opacity="2" BlurRadius="1"/> </Label.Effect></Label>
+            <Label Content="Telefoonnummer" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="3.666,176.666,0,0" VerticalAlignment="Top" Width="140.667"><Label.Effect> <DropShadowEffect ShadowDepth="0" Direction="330" Color="White" Opacity="2" BlurRadius="1"/> </Label.Effect></Label>
+            <Label Content="Werkplek" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="3.666,0.301,0,0" VerticalAlignment="Top" Width="140.667" Grid.Row="1"><Label.Effect> <DropShadowEffect ShadowDepth="0" Direction="330" Color="White" Opacity="2" BlurRadius="1"/> </Label.Effect></Label>
+            <Label Content="E-Mail" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="4.333,41.288,0,0" VerticalAlignment="Top" Width="140.667" Grid.Row="1"><Label.Effect> <DropShadowEffect ShadowDepth="0" Direction="330" Color="White" Opacity="2" BlurRadius="1"/> </Label.Effect></Label>
         </Grid>
-        <Label Content="Accountgegevens" HorizontalAlignment="Left" Margin="64,123,0,0" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"  Opacity="0.35"/>
-        <Label Content="Contactgegevens" HorizontalAlignment="Left" Margin="64,321,0,0" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"/>
+        <Label Content="Accountgegevens" HorizontalAlignment="Left" Margin="64,123,0,0" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"  Opacity="0.35"><Label.Effect> <DropShadowEffect ShadowDepth="0" Direction="330" Color="White" Opacity="0.35
+		" BlurRadius="1"/> </Label.Effect></Label>
+        <Label Content="Contactgegevens" HorizontalAlignment="Left" Margin="64,321,0,0" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"><Label.Effect> <DropShadowEffect ShadowDepth="0" Direction="330" Color="White" Opacity="2" BlurRadius="1"/> </Label.Effect></Label>
+        <Label Content="1&#xD;&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25"/>
+        <Label Content="2&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,322,0,0" VerticalAlignment="Top" Width="25"/>
+        <Button Command="{Binding OpslaanCommand}" Content="Terug" Margin="454,457,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667" HorizontalAlignment="Left" Width="107"/>
     </Grid>
 </UserControl>

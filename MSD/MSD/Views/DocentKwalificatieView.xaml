@@ -13,13 +13,12 @@
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,152" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
         <Label Content="Kwalificatie" HorizontalAlignment="Left" Margin="64,321,0,0" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"/>
         <Label Content="Docentgegevens" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" FontSize="18.667" Height="45" Margin="285,22.807,285,0"/>
-        <Button Command="{Binding OpslaanCommand}" Content="Opslaan" Margin="604,457,41,0" VerticalAlignment="Top" Background="#FFEA8104" BorderBrush="#FFA65A00" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667"/>
+        <Button Command="{Binding OpslaanCommand}" Content="Opslaan" Margin="604,457,41,0" VerticalAlignment="Top"  Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667"/>
         <Grid Height="383" Margin="122,87,110,0" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="185*"/>
                 <RowDefinition Height="138*"/>
             </Grid.RowDefinitions>
-            <Button Content="Meer kwalificaties" Margin="194,147,201,0" VerticalAlignment="Top" Background="#FFEA8104" BorderBrush="#FFA65A00" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667" Width="125"/>
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="124,17,14,0" BorderBrush="#FFAEAEAE"/>
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="124,57,14,0" BorderBrush="#FFAEAEAE"/>
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="124,96,14,0" BorderBrush="#FFAEAEAE"/>
@@ -27,5 +26,7 @@
         <Label Content="Kwalificatie 1" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,100,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Kwalificatie 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,140,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Kwalificatie 3" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,178,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="1&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25"/>
+        <Label Content="2&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,322,0,0" VerticalAlignment="Top" Width="25"/>
     </Grid>
 </UserControl>
