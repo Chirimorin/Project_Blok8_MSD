@@ -14,21 +14,23 @@
 		<Button Command="{Binding StudentAanpassenCommand}" Content="Aanpassen" Margin="621.169,0,0,34.04" VerticalAlignment="Bottom"  FontSize="14.667" HorizontalAlignment="Left" Width="94"/>
 		<Label Content="Details" Margin="272.397,83.87,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" HorizontalAlignment="Left" Width="63.519"/>
 		<Button Command="{Binding NieuweStudentCommand}"  Content="Nieuwe student" Margin="474.169,0,0,34.04" VerticalAlignment="Bottom" FontSize="14.667" HorizontalAlignment="Left" Width="116"/>
-		<ListBox HorizontalAlignment="Left" Height="278" Margin="33,120.15,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE"/>
+		<ListBox HorizontalAlignment="Left" Height="278" Margin="33,120.15,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE">
+			<ListBoxItem Content="Jeroen de Graaff"/>
+		</ListBox>
 		<Border BorderBrush="#FFAEAEAE" BorderThickness="1" HorizontalAlignment="Left" Height="278" Margin="272.397,115.15,0,0" VerticalAlignment="Top" Width="442.772"/>
-		<Label Content="Voornaam" HorizontalAlignment="Left" Margin="292.175,135,0,0" VerticalAlignment="Top" Width="65.568"/>
-		<Label Content="Achternaam" HorizontalAlignment="Left" Margin="368.58,135,0,0" VerticalAlignment="Top" Width="74.546"/>
-		<Label Content="Opleiding" HorizontalAlignment="Left" Margin="292.175,196.92,0,0" VerticalAlignment="Top" Width="62.537"/>
-		<Label Content="Begeleider" HorizontalAlignment="Left" Margin="494.852,227.88,0,0" VerticalAlignment="Top" Width="95.317"/>
+		<Label Content="Jeroen" HorizontalAlignment="Left" Margin="292.175,135,0,0" VerticalAlignment="Top" Width="65.568"/>
+		<Label Content="De Graaff" HorizontalAlignment="Left" Margin="368.58,135,0,0" VerticalAlignment="Top" Width="74.546"/>
+		<Label Content="jjgraaff@avans.nl" HorizontalAlignment="Left" Margin="292.175,165.96,0,0" VerticalAlignment="Top" Width="67.602"/>
+		<Label Content="informatica" HorizontalAlignment="Left" Margin="292.175,196.92,0,0" VerticalAlignment="Top" Width="62.537"/>
+		<Label Content="Bert Hoeks" HorizontalAlignment="Left" Margin="494.852,227.88,0,0" VerticalAlignment="Top" Width="95.317"/>
 		<Label Content="Soort" HorizontalAlignment="Left" Margin="608.175,135,0,0" VerticalAlignment="Top" Width="62.513"/>
-		<Label Content="Emailadres" HorizontalAlignment="Left" Margin="292.175,165.96,0,0" VerticalAlignment="Top" Width="67.602"/>
-		<Label Content="Jaar" HorizontalAlignment="Left" Margin="494.852,196.92,0,0" VerticalAlignment="Top"/>
-		<Label Content="Bedrijf" HorizontalAlignment="Left" Margin="292.175,227.88,0,0" VerticalAlignment="Top"/>
+		<Label Content="2013" HorizontalAlignment="Left" Margin="494.852,196.92,0,0" VerticalAlignment="Top"/>
+		<Label Content="Philips" HorizontalAlignment="Left" Margin="292.175,227.88,0,0" VerticalAlignment="Top"/>
 		<Label Content="Opdracht goedgekeurd" HorizontalAlignment="Left" Margin="292.175,258.84,0,0" VerticalAlignment="Top"/>
 		<Label Content="Voorlopige toestemming" HorizontalAlignment="Left" Margin="292.175,289.8,0,0" VerticalAlignment="Top"/>
 		<Label Content="Toestemming" HorizontalAlignment="Left" Margin="295.23,320.76,0,0" VerticalAlignment="Top"/>
+		<CheckBox Content="" HorizontalAlignment="Left" Margin="450.67,264.8,0,0" VerticalAlignment="Top" Width="20" Height="20" IsChecked="True"/>
 		<CheckBox Content="" HorizontalAlignment="Left" Margin="450.67,295.76,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
-		<CheckBox Content="" HorizontalAlignment="Left" Margin="450.67,326.72,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
-		<CheckBox Content="" HorizontalAlignment="Left" Margin="450.67,264.8,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+		<CheckBox Content="" HorizontalAlignment="Left" Margin="450.67,326.72,0,0" VerticalAlignment="Top" Width="20" Height="20" IsChecked="True"/>
 	</Grid>
 </UserControl>
