@@ -79,7 +79,6 @@ namespace MSD.ViewModels
         {
             get
             {
-                Debug.WriteLine("UserName get, returned " + _username);
                 return _username;
             }
             set

@@ -47,9 +47,6 @@
         <DataTemplate DataType="{x:Type m:StudentViewModel}">
             <v:StudentView DataContext="{Binding}" />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type m:WachtwoordViewModel}">
-            <v:WachtwoordView DataContext="{Binding}" />
-        </DataTemplate>
     </Window.Resources>
     <Grid Background="#FFFFFCEE" RenderTransformOrigin="0.50,0.5" ShowGridLines="True">
         <Grid.ColumnDefinitions>
