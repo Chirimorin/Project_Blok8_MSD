@@ -25,8 +25,8 @@
 			</DataGrid.Columns>
 		</DataGrid>
 		<Label Content="Stagebedrijven" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="297,32.807,0,0" HorizontalAlignment="Left" Width="153"/>
-		<Button Content="Exporteren" Margin="606,445,39,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="25" FontStyle="Italic"/>
-		<Button Content="Nieuw bedrijf" Margin="456,445,189,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="25" FontStyle="Italic"/>
-		<Button Content="Bedrijf aanpassen" Margin="306,445,339,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="25" FontStyle="Italic"/>
+		<Button Content="Exporteren" Margin="606,445,39,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic"/>
+		<Button Content="Nieuw bedrijf" Margin="456,445,189,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic"/>
+		<Button Content="Bedrijf aanpassen" Margin="306,445,339,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic"/>
 	</Grid>
 </UserControl>

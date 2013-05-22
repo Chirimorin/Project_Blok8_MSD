@@ -16,7 +16,7 @@
         <Label Content="Stageopdracht" HorizontalAlignment="Left" Margin="64,322,0,0"  VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic" Opacity="0.35"/>
 
         <Label Content="Studentgegevens" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold"  Foreground="Black" FontSize="18.667" Height="45" Margin="285,22.807,285,0"/>
-        <Button Command="{Binding VerderCommand}" Content="Verder" Margin="604,457,41,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="22" FontStyle="Italic" FontSize="14.667"/>
+        <Button Command="{Binding VerderCommand}" Content="Verder" Margin="604,457,41,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667"/>
         <Grid Height="383" Margin="122,87,110,0" VerticalAlignment="Top">
 
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,56,52,0" BorderBrush="#FFAEAEAE" Text="de Graaff"/>

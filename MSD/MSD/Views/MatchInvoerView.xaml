@@ -16,7 +16,7 @@
 
         <TextBox HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="26"/>
 
-        <Button Command="{Binding MatchenCommand}" Content="Matchen" Margin="0,0,47.324,37.04" VerticalAlignment="Bottom" FontSize="14.667"  HorizontalAlignment="Right" Width="75"/>
+        <Button Command="{Binding MatchenCommand}" Content="Matchen" Margin="0,0,47.324,37.04" VerticalAlignment="Bottom" FontSize="14.667"  HorizontalAlignment="Right" Width="75" Height="26"/>
 
         <DataGrid HorizontalAlignment="Left" Margin="42,196,0,0" VerticalAlignment="Top" Height="192" Width="662.676">
 

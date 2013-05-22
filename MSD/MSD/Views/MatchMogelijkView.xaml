@@ -25,9 +25,9 @@
 
         <Label Content="Jaar" HorizontalAlignment="Left" Margin="52,0,0,211.08" VerticalAlignment="Bottom"/>
 
-        <Button Command="{Binding MatchenCommand}" Content="Matchen" Margin="0,0,38,36.04" VerticalAlignment="Bottom" FontSize="14.667" HorizontalAlignment="Right" Width="75"/>
+        <Button Command="{Binding MatchenCommand}" Content="Matchen" Margin="0,0,38,36.04" VerticalAlignment="Bottom" FontSize="14.667" HorizontalAlignment="Right" Width="75" Height="26"/>
 
-        <Button Command="{Binding ShowDetailsCommand}" Content="Details" Margin="0,0,139.324,36.04" VerticalAlignment="Bottom" FontSize="14.667"  HorizontalAlignment="Right" Width="75"/>
+        <Button Command="{Binding ShowDetailsCommand}" Content="Details" Margin="0,0,139.324,36.04" VerticalAlignment="Bottom" FontSize="14.667"  HorizontalAlignment="Right" Width="75" Height="26"/>
 
         <Label Content="Soort" HorizontalAlignment="Left" Margin="52,303.92,0,0" VerticalAlignment="Top"/>
 

@@ -8,7 +8,7 @@
 
     <Grid x:Name="LayoutRoot" Margin="0,-10,0,10">
         <Label Content="Match details" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="281,22.807,0,0" HorizontalAlignment="Left" Width="153"/>
-        <Button Command="{Binding MatchMakenCommand}" Content="Match maken" HorizontalAlignment="Left" Margin="602,453,0,0" VerticalAlignment="Top"  Foreground="Black" RenderTransformOrigin="1.107,1.211" Width="108" Height="28" FontStyle="Italic" FontSize="14"/>
+        <Button Command="{Binding MatchMakenCommand}" Content="Match maken" HorizontalAlignment="Left" Margin="602,453,0,0" VerticalAlignment="Top"  Foreground="Black" RenderTransformOrigin="1.107,1.211" Width="108" Height="26" FontStyle="Italic"/>
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,350" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,278" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,133" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
@@ -37,7 +37,7 @@
                 <DataGridTextColumn Binding="{Binding woonplaats}" Header="woonplaats"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Command="{Binding TerugCommand}"  Content="Terug" HorizontalAlignment="Left" Margin="470,453,0,0" VerticalAlignment="Top"  Foreground="Black" RenderTransformOrigin="1.107,1.211" Width="100" Height="28" FontStyle="Italic" FontSize="14.667"/>
+        <Button Command="{Binding TerugCommand}"  Content="Terug" HorizontalAlignment="Left" Margin="470,453,0,0" VerticalAlignment="Top"  Foreground="Black" RenderTransformOrigin="1.107,1.211" Width="100" Height="26" FontStyle="Italic"/>
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,205" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4" Opacity="0.35"/>
         <DataGrid HorizontalAlignment="Left" Margin="164,258,0,0" VerticalAlignment="Top" Height="46" Width="547" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}" Opacity="0.35">
             <DataGrid.Columns>
