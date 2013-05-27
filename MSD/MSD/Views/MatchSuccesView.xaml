@@ -8,7 +8,7 @@
 
     <Grid x:Name="LayoutRoot">
         <Label Content="Match gemaakt" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold"  Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="281,22.807,0,0" HorizontalAlignment="Left" Width="153"/>
-        <Button Command="{Binding TerugCommand}" Content="Terug" Margin="604,457,41,0" VerticalAlignment="Top"  Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="25" FontStyle="Italic" FontSize="14.667"/>
+        <Button Command="{Binding TerugCommand}" Content="Terug" Margin="604,457,41,0" VerticalAlignment="Top"  Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
         <Label Content="    Succesvol" HorizontalAlignment="Left" Height="30" Margin="288,64,0,0" VerticalAlignment="Top" Width="144" FontSize="18.667" RenderTransformOrigin="0.673,0.433" Foreground="#FF00FA00" FontWeight="Bold"/>
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,350" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,278" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
@@ -22,25 +22,30 @@
         <DataGrid HorizontalAlignment="Left" Margin="164,113,0,0" VerticalAlignment="Top" Height="46" Width="547" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding naam}" Header="naam"/>
-                <DataGridTextColumn Binding="{Binding NAW_gegevens}" Header="NAW_gegevens"/>
-                <DataGridTextColumn Binding="{Binding Studie}" Header="Studie"/>
-                <DataGridTextColumn Binding="{Binding woonplaats}" Header="woonplaats"/>
+                <DataGridTextColumn Binding="{Binding Academie}" Header="Academie"/>
+                <DataGridTextColumn Binding="{Binding StudieJaar}" Header="Studiejaar"/>
+                <DataGridTextColumn Binding="{Binding woonplaats}" Header="Woonplaats"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres"/>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid HorizontalAlignment="Left" Margin="164,185,0,0" VerticalAlignment="Top" Height="46" Width="547" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding naam}" Header="naam"/>
-                <DataGridTextColumn Binding="{Binding NAW_gegevens}" Header="NAW_gegevens"/>
-                <DataGridTextColumn Binding="{Binding Studie}" Header="Studie"/>
-                <DataGridTextColumn Binding="{Binding woonplaats}" Header="woonplaats"/>
+                <DataGridTextColumn Binding="{Binding naam}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding Academie}" Header="Academie"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres"/>
+                <DataGridTextColumn Binding="{Binding Woonplaats}" Header="Woonplaats"/>
+                <DataGridTextColumn Binding="{Binding Kennisgebieden}" Header="Kennisgebieden"/>
+                <DataGridTextColumn Binding="{Binding Uren}" Header="Uren over"/>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid HorizontalAlignment="Left" Margin="164,330,0,0" VerticalAlignment="Top" Height="46" Width="547" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding naam}" Header="naam"/>
-                <DataGridTextColumn Binding="{Binding NAW_gegevens}" Header="NAW_gegevens"/>
-                <DataGridTextColumn Binding="{Binding Studie}" Header="Studie"/>
-                <DataGridTextColumn Binding="{Binding woonplaats}" Header="woonplaats"/>
+                <DataGridTextColumn Binding="{Binding naam}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding Academie}" Header="Website"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres"/>
+                <DataGridTextColumn Binding="{Binding Woonplaats}" Header="Contactpersoon"/>
+                <DataGridTextColumn Binding="{Binding Kennisgebieden}" Header="Plaats"/>
+                <DataGridTextColumn Binding="{Binding Uren}" Header="Telefoonnummer"/>
             </DataGrid.Columns>
         </DataGrid>
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,205" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4" Opacity="0.35"/>
@@ -48,10 +53,12 @@
 
         <DataGrid HorizontalAlignment="Left" Margin="164,258,0,0" VerticalAlignment="Top" Height="46" Width="547" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}" Opacity="0.35">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding naam}" Header="naam"/>
-                <DataGridTextColumn Binding="{Binding NAW_gegevens}" Header="NAW_gegevens"/>
-                <DataGridTextColumn Binding="{Binding Studie}" Header="Studie"/>
-                <DataGridTextColumn Binding="{Binding woonplaats}" Header="woonplaats"/>
+                <DataGridTextColumn Binding="{Binding naam}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding Academie}" Header="Academie"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres"/>
+                <DataGridTextColumn Binding="{Binding Woonplaats}" Header="Woonplaats"/>
+                <DataGridTextColumn Binding="{Binding Kennisgebieden}" Header="Kennisgebieden"/>
+                <DataGridTextColumn Binding="{Binding Uren}" Header="Uren over"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

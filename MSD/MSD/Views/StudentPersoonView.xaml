@@ -22,7 +22,7 @@
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,56,52,0" BorderBrush="#FFAEAEAE" Text="de Graaff"/>
             <TextBox Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="145,15,52,0" Text="Jeroen"/>
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,142,52,0" BorderBrush="#FFAEAEAE" Text="2058524"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,231,52,0" BorderBrush="#FFAEAEAE" Text="2013"/>
+            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,231,52,0" BorderBrush="#FFAEAEAE" Text="2"/>
             <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,100,52,0" BorderBrush="#FFAEAEAE" Text="jjgraaff@avans.nl"/>
             <ComboBox  HorizontalAlignment="Left" Margin="145,187,0,0" VerticalAlignment="Top" Width="120" IsEditable="True" IsReadOnly="True">
             	<ComboBoxItem Content="informatica" HorizontalAlignment="Left" Width="118"/>
@@ -34,12 +34,12 @@
             <Label Content="E-mail" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,97,0,0" VerticalAlignment="Top" Width="80"/>
             <Label Content="Studentnummer" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,140,0,0" VerticalAlignment="Top" Width="80"/>
             <Label Content="Opleiding" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,184,0,0" VerticalAlignment="Top" Width="80"/>
-            <Label Content="Jaar" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,228,0,0" VerticalAlignment="Top" Width="80"/>
+            <Label Content="Studiejaar" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,228,0,0" VerticalAlignment="Top" Width="80"/>
             
         </Grid>
-        <Label Content="1&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25"/>
-        <Label Content="2&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,322,0,0" VerticalAlignment="Top" Width="25"/>
-        <Button Command="{Binding VerderCommand}" Content="Verder" Margin="604,457,41,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667"/>
-        <Button Command="{Binding TerugCommand}" Content="Terug" Margin="454,457,189,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667"/>
+        <Label Content="1" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25"/>
+        <Label Content="2" HorizontalAlignment="Left" Height="23" Margin="28,322,0,0" VerticalAlignment="Top" Width="25"/>
+        <Button Command="{Binding VerderCommand}" Content="Verder" Margin="604,457,41,0" VerticalAlignment="Top" Foreground="Black"  Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
+        <Button Command="{Binding TerugCommand}" Content="Terug" Margin="454,457,189,0" VerticalAlignment="Top" Foreground="Black"  Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
     </Grid>
 </UserControl>

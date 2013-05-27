@@ -7,20 +7,31 @@
              d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="509">
 
     <Grid x:Name="LayoutRoot">
-        <DataGrid Margin="21,108,39,0" VerticalAlignment="Top" Height="300" AutoGenerateColumns="False" ItemsSource="{Binding Collection}">
+        <DataGrid Margin="21,83,39,0" VerticalAlignment="Top" Height="300" AutoGenerateColumns="False" ItemsSource="{Binding Collection}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Property1}" Header="ID"/>
                 <DataGridTextColumn Binding="{Binding Property2}" Header="Naam student"/>
                 <DataGridTextColumn Binding="{Binding Property3}" Header="Naam Docent"/>
+                <DataGridTextColumn Binding="{Binding Property7}" Header="Tweede lezer"/>
                 <DataGridTextColumn Binding="{Binding Property4}" Header="Naam stagebedrijf"/>
                 <DataGridTextColumn Binding="{Binding Property5}" Header="Academie"/>
                 <DataGridTextColumn Binding="{Binding Property6}" Header="Begin datum"/>
-				<DataGridTextColumn Binding="{Binding Property6}" Header="Eind datum"/>
-				<DataGridTextColumn Binding="{Binding Property6}" Header="Stagecoordinator"/>
+                <DataGridTextColumn Binding="{Binding Property6}" Header="Eind datum"/>
+                <DataGridTextColumn Binding="{Binding Property6}" Header="Stagecoordinator"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Stage" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="297,32.807,0,0" HorizontalAlignment="Left" Width="153"/>
-        <Button Content="Exporteren" Margin="606,445,39,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="23" FontStyle="Italic"/>
+        <Grid Margin="0,400,0,0">
+            <TextBox HorizontalAlignment="Left" Height="25" Margin="21,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+            <TextBox HorizontalAlignment="Left" Height="25" Margin="151,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+            <TextBox HorizontalAlignment="Left" Height="25" Margin="280,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <ComboBox HorizontalAlignment="Left" Margin="418,40,0,0" VerticalAlignment="Top" Width="120" Height="25"/>
+            <Button Content="Filteren" HorizontalAlignment="Left" Margin="611,40,0,0" VerticalAlignment="Top" Foreground="Black"  Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
+            <Label Content="Student" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top"/>
+            <Label Content="Docent" HorizontalAlignment="Left" Margin="151,10,0,0" VerticalAlignment="Top"/>
+            <Label Content="Stagebedrijf" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top"/>
+            <Label Content="Academie" HorizontalAlignment="Left" Margin="418,10,0,0" VerticalAlignment="Top"/>
+        </Grid>
     </Grid>
 </UserControl>
 

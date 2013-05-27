@@ -14,33 +14,22 @@
 
         <Label Content="Zoeken" HorizontalAlignment="Left" Margin="42,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
 
-        <TextBox HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="26"/>
+        <TextBox HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="25"/>
 
-        <Button Command="{Binding MatchenCommand}" Content="Matchen" Margin="0,0,47.324,37.04" VerticalAlignment="Bottom" FontSize="14.667"  HorizontalAlignment="Right" Width="75" Height="26"/>
+        <Button Command="{Binding MatchenCommand}" Content="Matchen" Margin="605,0,47,36" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
 
         <DataGrid HorizontalAlignment="Left" Margin="42,196,0,0" VerticalAlignment="Top" Height="192" Width="662.676">
-
             <DataGrid.Columns>
-
-                <DataGridTextColumn x:Name="Studentnummer"/>
-
-                <DataGridTextColumn x:Name="Naam_student"/>
-
-                <DataGridTextColumn x:Name="Soort"/>
-
-                <DataGridTextColumn x:Name="Bedrijf"/>
-
-                <DataGridCheckBoxColumn x:Name="Opdracht"/>
-
-                <DataGridCheckBoxColumn x:Name="Voorlopige_toestemming"/>
-
-                <DataGridCheckBoxColumn x:Name="Toestemming"/>
-
+                <DataGridTextColumn Header="Studentnummer"/>
+                <DataGridTextColumn Header="Naam student"/>
+                <DataGridTextColumn Header="Academie"/>
+                <DataGridTextColumn Header="Soort stage"/>
+                <DataGridTextColumn Header="Bedrijf"/>
+                <DataGridCheckBoxColumn Header="Opdracht"/>
+                <DataGridCheckBoxColumn Header="Voorlopige toestemming"/>
+                <DataGridCheckBoxColumn Header="Toestemming"/>
             </DataGrid.Columns>
-
         </DataGrid>
-        <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="0,0,476,365" VerticalAlignment="Bottom" FontSize="14.667"  HorizontalAlignment="Right" Width="75"/>
-
+        <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="188,0,464,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
     </Grid>
-
 </UserControl>

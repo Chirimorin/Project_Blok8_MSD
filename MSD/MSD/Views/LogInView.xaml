@@ -14,7 +14,7 @@
         <Label Content="{Binding Message}" HorizontalAlignment="Right" Margin="0,67,325,0" VerticalAlignment="Top" Foreground="#FFC20000"/>
 
         <Label Content="E-mail" HorizontalAlignment="Left" Margin="32,116,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.542,0.989"/>
-        <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="21.96" Margin="32,147,39,171" TextWrapping="Wrap">
+        <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="21.96" Margin="32,152,39,171" TextWrapping="Wrap">
             <TextBox.BorderBrush>
                 <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
                     <GradientStop Color="#FFABADB3" Offset="0.05"/>
@@ -35,8 +35,8 @@
             </PasswordBox.BorderBrush>
         </PasswordBox>
 
-        <Button Content="Log in" Command="{Binding ShowMainWindowCommand}" HorizontalAlignment="Right" Margin="0,0,39.324,34.04" VerticalAlignment="Bottom" Width="75" FontSize="14.667" />
-        <Button Command="{Binding ShowWachtwoordVergeten}" Content="Wachtwoord vergeten" HorizontalAlignment="Right" Margin="0,0,149,34" VerticalAlignment="Bottom" Width="161" FontSize="14.667" />
+        <Button Content="Log in" Command="{Binding ShowMainWindowCommand}" HorizontalAlignment="Right" Margin="0,0,39.324,34.04" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15" />
+        <Button Command="{Binding ShowWachtwoordVergeten}" Content="Wachtwoord vergeten" HorizontalAlignment="Right" Margin="0,0,180,34" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="155" FontStyle="Italic" FontSize="15" />
 
     </Grid>
 
