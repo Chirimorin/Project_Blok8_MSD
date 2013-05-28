@@ -79,7 +79,6 @@
     <Compile Include="ViewModels\DocentPersoonViewModel.cs" />
     <Compile Include="ViewModels\DocentViewModel.cs" />
     <Compile Include="ViewModels\GebruikerAccountViewModel.cs" />
-    <Compile Include="ViewModels\GebruikerContactViewModel.cs" />
     <Compile Include="ViewModels\GebruikerViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
@@ -105,9 +104,6 @@
     </Compile>
     <Compile Include="Views\GebruikerAccountView.xaml.cs">
       <DependentUpon>GebruikerAccountView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\GebruikerContactView.xaml.cs">
-      <DependentUpon>GebruikerContactView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GebruikerView.xaml.cs">
       <DependentUpon>GebruikerView.xaml</DependentUpon>
@@ -195,10 +191,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\GebruikerAccountView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\GebruikerContactView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -18,7 +18,6 @@ namespace MSD.Factories
         private static DocentPersoonViewModel _docentPersoonView;
         private static DocentViewModel _docentView;
         private static GebruikerAccountViewModel _gebruikerAccountView;
-        private static GebruikerContactViewModel _gebruikerContactView;
         private static GebruikerViewModel _gebruikerView;
         private static LogInViewModel _logInViewModel;
         private static MainWindowModel _mainWindowModel;
@@ -70,10 +69,6 @@ namespace MSD.Factories
                     if (_gebruikerAccountView == null)
                         _gebruikerAccountView = new GebruikerAccountViewModel(app);
                     return _gebruikerAccountView;
-                case ("gebruikerContactViewModel"):
-                    if (_gebruikerContactView == null)
-                        _gebruikerContactView = new GebruikerContactViewModel(app);
-                    return _gebruikerContactView;
                 case ("gebruikerViewModel"):
                     if (_gebruikerView == null)
                         _gebruikerView = new GebruikerViewModel(app);

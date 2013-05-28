@@ -17,9 +17,6 @@
         <DataTemplate DataType="{x:Type m:GebruikerAccountViewModel}">
             <v:GebruikerAccountView DataContext="{Binding}" />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type m:GebruikerContactViewModel}">
-            <v:GebruikerContactView DataContext="{Binding}" />
-        </DataTemplate>
         <DataTemplate DataType="{x:Type m:GebruikerViewModel}">
             <v:GebruikerView DataContext="{Binding}" />
         </DataTemplate>
