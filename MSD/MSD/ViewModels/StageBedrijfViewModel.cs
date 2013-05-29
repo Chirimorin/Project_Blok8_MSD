@@ -12,6 +12,7 @@ namespace MSD.ViewModels
     {
         private readonly IApplicationController _app;
         private readonly RelayCommand _saveCommand;
+        private readonly RelayCommand _backCommand;
 
 
 
@@ -19,12 +20,19 @@ namespace MSD.ViewModels
         {
             _app = app;
             _saveCommand = new RelayCommand(Save);
+            _backCommand = new RelayCommand(Back);
         }
 
         public RelayCommand SaveCommand { get { return _saveCommand; } }
         public void Save(object command)
         {
 
+        }
+
+        public RelayCommand BackCommand { get { return _backCommand; } }
+        public void Back(object command)
+        {
+            _app.ShowBedrijfOverzichtView();
         }
     }
 }
