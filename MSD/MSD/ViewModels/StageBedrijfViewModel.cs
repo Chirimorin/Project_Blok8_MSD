@@ -35,6 +35,17 @@ namespace MSD.ViewModels
             _app.ShowBedrijfOverzichtView();
         }
 
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                OnPropertyChanged(Title);
+            }
+        }
+
         private string _company;
         public string Company
         {

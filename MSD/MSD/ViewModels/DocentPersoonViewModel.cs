@@ -1,4 +1,5 @@
 ﻿using MSD.Controllers;
+using MSD.Factories;
 using MSD.Models;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,8 @@ namespace MSD.ViewModels
         public RelayCommand VerderCommand { get { return _verderCommand; } }
         public void Verder(object command)
         {
+            DocentKwalificatieViewModel vm = (DocentKwalificatieViewModel)ViewFactory.getViewModel(_app, "docentKwalificatieViewModel");
+            vm.Title = Title;
             _app.ShowDocentKwalificatieView();
         }
 

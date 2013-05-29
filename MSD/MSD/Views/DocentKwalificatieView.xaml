@@ -12,7 +12,7 @@
 
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,152" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
         <Label Content="Kwalificatie" HorizontalAlignment="Left" Margin="64,321,0,0" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"/>
-        <Label Content="Docentgegevens" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" FontSize="18.667" Height="45" Margin="285,22.807,285,0"/>
+        <Label Content="{Binding Title}" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" FontSize="18.667" Height="45" Margin="285,22.807,285,0"/>
         <Grid Height="349" Margin="189,100,85,0" VerticalAlignment="Top">
             <Grid.RowDefinitions>
             </Grid.RowDefinitions>

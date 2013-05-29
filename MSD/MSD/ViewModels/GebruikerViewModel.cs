@@ -43,12 +43,16 @@ namespace MSD.ViewModels
         public RelayCommand NieuweGebruikerCommand { get { return _nieuweGebruikerCommand; } }
         public void NieuweGebruiker(object command)
         {
+            GebruikerAccountViewModel vm = (GebruikerAccountViewModel)ViewFactory.getViewModel(_app, "gebruikerAccountViewModel");
+            vm.Title = "Nieuwe Gebruiker";
             _app.ShowGebruikerAccountView();
         }
 
         public RelayCommand GebruikerAanpassenCommand { get { return _gebruikerAanpassenCommand; } }
         public void GebruikerAanpassen(object command)
         {
+            GebruikerAccountViewModel vm = (GebruikerAccountViewModel)ViewFactory.getViewModel(_app, "gebruikerAccountViewModel");
+            vm.Title = "Gebruiker Aanpasen";
             _app.ShowGebruikerAccountView();
         }
 

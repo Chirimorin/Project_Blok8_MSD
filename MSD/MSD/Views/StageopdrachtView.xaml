@@ -9,7 +9,7 @@
 	d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="509">
 
     <Grid x:Name="LayoutRoot">
-        <Label Content="Stage opdracht" Margin="295.23,35,291.066,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+        <Label Content="{Binding Title}" Margin="272,35,273,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
         <Label Content="Opdracht goedgekeurd" HorizontalAlignment="Left" Margin="201,98,0,0" VerticalAlignment="Top"/>
         <Label Content="Voorlopige toestemming" HorizontalAlignment="Left" Margin="201,129,0,0" VerticalAlignment="Top"/>
         <Label Content="Toestemming" HorizontalAlignment="Left" Margin="204,160,0,0" VerticalAlignment="Top"/>

@@ -33,6 +33,17 @@ namespace MSD.ViewModels
             _app.ShowStudentView();
         }
 
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                OnPropertyChanged(Title);
+            }
+        }
+
         private string _assignment;
         public string Assignment
         {

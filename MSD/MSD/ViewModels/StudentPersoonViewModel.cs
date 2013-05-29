@@ -1,4 +1,5 @@
 ﻿using MSD.Controllers;
+using MSD.Factories;
 using MSD.Models;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,20 @@ namespace MSD.ViewModels
         public RelayCommand VerderCommand { get { return _verderCommand; } }
         public void Verder(object command)
         {
+            StageopdrachtViewModel vm = (StageopdrachtViewModel)ViewFactory.getViewModel(_app, "stageopdrachtViewModel");
+            vm.Title = Title;
             _app.ShowStageopdrachtView();
+        }
+
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                OnPropertyChanged(Title);
+            }
         }
 
         private string _firstName;
