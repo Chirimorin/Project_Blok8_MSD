@@ -14,18 +14,13 @@ namespace MSD.Models
         //Dit is een eerste opzet, SQL-Injection moet nog middels parameters of prepared-statements afgevangen worden.
         MySqlConnection myConnection = new MySqlConnection("Server=databases.aii.avans.nl;" + "Database=eavries_db2;" + "Uid=eavries;" + "Pwd=rd4qAS7j;");
 
-       
-
-        public void executeQuery(MySqlCommand cmd)
+        public MySqlDataReader executeQuery(MySqlCommand cmd)
         {
             myConnection.Open();
             cmd.Connection = myConnection;
             MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                MessageBox.Show(reader[0].ToString()+" "+ reader[1].ToString());
-            }
             myConnection.Close();
+            return reader;
         }
     }
 }

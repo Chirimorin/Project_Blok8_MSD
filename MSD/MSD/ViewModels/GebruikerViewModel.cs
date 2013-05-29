@@ -41,7 +41,10 @@ namespace MSD.ViewModels
         public void fillUserTable()
         {
             MySqlCommand cmd = new MySqlCommand("select * from gebruiker");
-            _database.executeQuery(cmd);
+            MySqlDataReader reader = _database.executeQuery(cmd);
+
+            
+            
         }
     }
 }
