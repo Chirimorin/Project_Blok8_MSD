@@ -59,20 +59,6 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _tussenvoegsel;
-        public string Tussenvoegsel
-        {
-            get
-            {
-                return _tussenvoegsel;
-            }
-            set
-            {
-                _tussenvoegsel = value;
-                OnPropertyChanged("Tussenvoegsel");
-            }
-        }
-
         private string _lastName;
         public string LastName
         {
@@ -127,20 +113,6 @@ namespace MSD.ViewModels
             {
                 _phone = value;
                 OnPropertyChanged("Phone");
-            }
-        }
-
-        private string _mobile;
-        public string Mobile
-        {
-            get
-            {
-                return _mobile;
-            }
-            set
-            {
-                _mobile = value;
-                OnPropertyChanged("Mobile");
             }
         }
 

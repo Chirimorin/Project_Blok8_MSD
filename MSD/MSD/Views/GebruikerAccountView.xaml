@@ -16,14 +16,14 @@
                 <RowDefinition Height="185*"/>
                 <RowDefinition Height="138*"/>
             </Grid.RowDefinitions>
-            <TextBox Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="168.36,58.333,28.64,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Height="25" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="168.36,17.333,28.64,0"/>
-            <TextBox Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="168.36,102.334,28.64,0" BorderBrush="#FFAEAEAE"/>
-            <Label Content="E-mailadres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="25,58,0,0" VerticalAlignment="Top" Width="141"/>
-            <Label Content="Wachtwoord" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="25,102,0,0" VerticalAlignment="Top" Width="141"/>
-            <Label Content="Wachtwoord herhalen" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="22,145,0,0" VerticalAlignment="Top" Width="141"/>
             <Label Content="Naam" HorizontalAlignment="Left" Margin="121,17,0,0" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="25" Margin="168,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="323" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="168.36,17.333,28.64,0"/>
+            <Label Content="E-mailadres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="25,58,0,0" VerticalAlignment="Top" Width="141"/>
+            <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="168.36,58.333,28.64,0" BorderBrush="#FFAEAEAE"/>
+            <Label Content="Wachtwoord" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="25,102,0,0" VerticalAlignment="Top" Width="141"/>
+            <TextBox Text="{Binding Path=Password, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="168.36,102.334,28.64,0" BorderBrush="#FFAEAEAE"/>
+            <Label Content="Wachtwoord herhalen" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="22,145,0,0" VerticalAlignment="Top" Width="141"/>
+            <TextBox Text="{Binding Path=RepeatPassword, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="25" Margin="168,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="323" BorderBrush="#FFAEAEAE"/>
         </Grid>
         <Button Command="{Binding TerugCommand}" Content="Terug" Margin="463,457,189,0" VerticalAlignment="Top" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
         <Label Content="1&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25"/>

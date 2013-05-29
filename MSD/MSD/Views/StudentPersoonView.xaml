@@ -19,16 +19,17 @@
         
         <Grid Height="383" Margin="122,87,110,0" VerticalAlignment="Top">
 
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,56,52,0" BorderBrush="#FFAEAEAE" Text="de Graaff"/>
-            <TextBox Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="145,15,52,0" Text="Jeroen"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,142,52,0" BorderBrush="#FFAEAEAE" Text="2058524"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,231,52,0" BorderBrush="#FFAEAEAE" Text="2"/>
-            <TextBox Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,100,52,0" BorderBrush="#FFAEAEAE" Text="jjgraaff@avans.nl"/>
-            <ComboBox  HorizontalAlignment="Left" Margin="145,187,0,0" VerticalAlignment="Top" Width="120" IsEditable="True" IsReadOnly="True">
-            	<ComboBoxItem Content="informatica" HorizontalAlignment="Left" Width="118"/>
-				<ComboBoxItem Content="CMD" HorizontalAlignment="Left" Width="118"/>
-				<ComboBoxItem Content="Wiskunde" HorizontalAlignment="Left" Width="118"/>
+            <TextBox Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="145,15,52,0" />
+            <TextBox Text="{Binding Path=LastName, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,56,52,0" BorderBrush="#FFAEAEAE" />
+            <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,100,52,0" BorderBrush="#FFAEAEAE" />
+            <TextBox Text="{Binding Path=StudentNo, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,142,52,0" BorderBrush="#FFAEAEAE" />
+            <ComboBox  HorizontalAlignment="Left" Margin="145,187,0,0" VerticalAlignment="Top" Width="323" IsEditable="True" IsReadOnly="True">
+            	<ComboBoxItem Content="informatica" HorizontalAlignment="Stretch"/>
+				<ComboBoxItem Content="CMD" HorizontalAlignment="Stretch"/>
+				<ComboBoxItem Content="Wiskunde" HorizontalAlignment="Stretch"/>
             </ComboBox>
+            <TextBox Text="{Binding Path=Year, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,231,52,0" BorderBrush="#FFAEAEAE" />
+            
             <Label Content="Voornaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,14,0,0" VerticalAlignment="Top" Width="80"/>
             <Label Content="Achternaam" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,54,0,0" VerticalAlignment="Top" Width="80"/>
             <Label Content="E-mail" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="57,97,0,0" VerticalAlignment="Top" Width="80"/>

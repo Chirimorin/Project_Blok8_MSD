@@ -18,16 +18,16 @@
             <ListBoxItem Content="Jos Verstappen" Selector.IsSelected="True" />
         </ListBox>
         <Border BorderBrush="#FFAEAEAE" BorderThickness="1" HorizontalAlignment="Left" Height="307" Margin="272,120,0,0" VerticalAlignment="Top" Width="437"/>
-        <Label Content="{Binding ForName}" HorizontalAlignment="Left" Margin="292.175,135,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-        <Label Content="{Binding LastName}" HorizontalAlignment="Left" Margin="368.58,135,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-        <Label Content="Informatica" HorizontalAlignment="Left" Margin="516.73,135,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-        <Label Content="Kalverstraat 16" HorizontalAlignment="Left" Margin="295.23,200.96,0,0" VerticalAlignment="Top" Height="25" Width="200"/>
-        <Label Content="Amsterdam" HorizontalAlignment="Left" Margin="500,201,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-        <Label Content="{Binding Emailadres}" HorizontalAlignment="Left" Margin="295.23,170,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-        <Label Content="{Binding Urenover}" HorizontalAlignment="Left" Margin="375,232,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Label Content="{Binding Name}" HorizontalAlignment="Left" Margin="292.175,135,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Label Content="{Binding Subject}" HorizontalAlignment="Left" Margin="516.73,135,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Label Content="{Binding Adress}" HorizontalAlignment="Left" Margin="295.23,200.96,0,0" VerticalAlignment="Top" Height="25" Width="200"/>
+        <Label Content="{Binding City}" HorizontalAlignment="Left" Margin="500,201,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Label Content="{Binding Email}" HorizontalAlignment="Left" Margin="295.23,170,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Label Content="{Binding Hours}" HorizontalAlignment="Left" Margin="375,232,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
 
         <Label Content="Kennisgebieden:" HorizontalAlignment="Left" Margin="292,263,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
         <Label Content="Uren over:" HorizontalAlignment="Left" Margin="295,232,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
         <ListBox HorizontalAlignment="Left" Height="108" Margin="295,298,0,0" VerticalAlignment="Top" Width="197"/>
+        
     </Grid>
 </UserControl>

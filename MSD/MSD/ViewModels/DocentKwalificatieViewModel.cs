@@ -32,5 +32,33 @@ namespace MSD.ViewModels
         {
             _app.ShowDocentPersoonView();
         }
+
+        private string _hours;
+        public string Hours
+        {
+            get
+            {
+                return _hours;
+            }
+            set
+            {
+                _hours = value;
+                OnPropertyChanged("Hours");
+            }
+        }
+
+        private string _preference;
+        public string Preference
+        {
+            get
+            {
+                return _preference;
+            }
+            set
+            {
+                _preference = value;
+                OnPropertyChanged("Preference");
+            }
+        }
     }
 }

@@ -10,7 +10,7 @@
 		<Label Content="E-mailadres" HorizontalAlignment="Left" Margin="39.616,76.72,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
         <Button Command="{Binding VerzendCommand}" Content="Verzend" Margin="223,158,44,10"  Foreground="Black"  Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
 		<Label Content="Wachtwoord vergeten" Margin="67.616,26,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold" HorizontalAlignment="Left" Width="214.553"/>
-		<TextBox Margin="39.616,112,0,0" TextWrapping="Wrap" Text="test@email.com" SelectionBrush="{x:Null}" HorizontalAlignment="Left" Width="283.553" Height="21.96" VerticalAlignment="Top">
+		<TextBox Margin="39.616,112,0,0" TextWrapping="Wrap" Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" SelectionBrush="{x:Null}" HorizontalAlignment="Left" Width="283.553" Height="21.96" VerticalAlignment="Top">
 			<TextBox.BorderBrush>
 				<LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
 					<GradientStop Color="#FFABADB3" Offset="0.05"/>

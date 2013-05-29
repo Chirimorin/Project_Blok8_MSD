@@ -13,9 +13,9 @@
         <Label Content="Opdracht goedgekeurd" HorizontalAlignment="Left" Margin="201,98,0,0" VerticalAlignment="Top"/>
         <Label Content="Voorlopige toestemming" HorizontalAlignment="Left" Margin="201,129,0,0" VerticalAlignment="Top"/>
         <Label Content="Toestemming" HorizontalAlignment="Left" Margin="204,160,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="" HorizontalAlignment="Left" Margin="359,135,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
-        <CheckBox Content="" HorizontalAlignment="Left" Margin="359,166,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
-        <CheckBox Content="" HorizontalAlignment="Left" Margin="359,104,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+        <CheckBox IsChecked="{Binding Path=Accepted,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="359,104,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+        <CheckBox IsChecked="{Binding Path=TempPermission,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="359,135,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+        <CheckBox IsChecked="{Binding Path=Permission,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="359,166,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,350" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4" Opacity="0.35"/>
         <Label Content="Gegevens" HorizontalAlignment="Left" Margin="64,121,0,0" VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic" Opacity="0.35"/>
         <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,152" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
@@ -25,12 +25,12 @@
         <Button Command="{Binding OpslaanCommand}" Content="Opslaan" Margin="604,457,41,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667"/>
         <Label Content="Opdracht omschrijving:" HorizontalAlignment="Left" Margin="204,200,0,0" VerticalAlignment="Top"/>
         <Button Command="{Binding TerugCommand}" Content="Terug" Margin="454,457,189,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667"/>
-        <TextBox HorizontalAlignment="Left" Height="174" Margin="204,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="507"/>
+        <TextBox Text="{Binding Path=Assignment, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="174" Margin="204,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="507"/>
         <Label Content="Kennisgebieden" HorizontalAlignment="Left" Margin="426,98,0,0" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="552,102,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox HorizontalAlignment="Left" Margin="552,133,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox HorizontalAlignment="Left" Margin="552,166,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Opmerkingen:" HorizontalAlignment="Left" Margin="204,419,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="298,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="413"/>
+        <TextBox Text="{Binding Path=Comments, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="25" Margin="298,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="413"/>
     </Grid>
 </UserControl>

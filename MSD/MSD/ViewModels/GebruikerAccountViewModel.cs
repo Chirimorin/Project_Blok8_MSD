@@ -25,6 +25,7 @@ namespace MSD.ViewModels
         public void Opslaan(object command)
         {
             //opslaan van gegevens
+            _app.ShowGebruikerView();
         }
 
         public RelayCommand TerugCommand { get { return _terugCommand; } }
@@ -32,5 +33,62 @@ namespace MSD.ViewModels
         {
             _app.ShowGebruikerView();
         }
+
+        private string _name;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        private string _email;
+        public string Email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                _email = value;
+                OnPropertyChanged("Email");
+            }
+        }
+
+        private string _password;
+        public string Password
+        {
+            get
+            {
+                return _password;
+            }
+            set
+            {
+                _password = value;
+                OnPropertyChanged("Password");
+            }
+        }
+
+        private string _repeatPassword;
+        public string RepeatPassword
+        {
+            get
+            {
+                return _repeatPassword;
+            }
+            set
+            {
+                _repeatPassword = value;
+                OnPropertyChanged("RepeatPassword");
+            }
+        }
+
     }
 }

@@ -32,5 +32,76 @@ namespace MSD.ViewModels
         {
             _app.ShowStudentView();
         }
+
+        private string _assignment;
+        public string Assignment
+        {
+            get
+            {
+                return _assignment;
+            }
+            set
+            {
+                _assignment = value;
+                OnPropertyChanged("Assignment");
+            }
+        }
+
+        private string _comments;
+        public string Comments
+        {
+            get
+            {
+                return _comments;
+            }
+            set
+            {
+                _comments = value;
+                OnPropertyChanged("Comments");
+            }
+        }
+
+        private bool _accepted;
+        public bool Accepted
+        {
+            get
+            {
+                return _accepted;
+            }
+            set
+            {
+                _accepted = value;
+                OnPropertyChanged("Accepted");
+            }
+        }
+
+        private bool _tempPermission;
+        public bool TempPermission
+        {
+            get
+            {
+                return _tempPermission;
+            }
+            set
+            {
+                _tempPermission = value;
+                OnPropertyChanged("TempPermission");
+            }
+        }
+
+        private bool _permission;
+        public bool Permission
+        {
+            get
+            {
+                return _permission;
+            }
+            set
+            {
+                _permission = value;
+                OnPropertyChanged("Permission");
+            }
+        }
+
     }
 }

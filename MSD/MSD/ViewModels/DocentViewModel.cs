@@ -37,5 +37,112 @@ namespace MSD.ViewModels
             vm.Title = "Docent Aanpassen";
             _app.ShowDocentPersoonView();
         }
+
+        public string Name
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
+
+        private string _firstName;
+        public string FirstName
+        {
+            get
+            {
+                return _firstName;
+            }
+            set
+            {
+                _firstName = value;
+                OnPropertyChanged("FirstName");
+            }
+        }
+
+        private string _lastName;
+        public string LastName
+        {
+            get
+            {
+                return _lastName;
+            }
+            set
+            {
+                _lastName = value;
+                OnPropertyChanged("LastName");
+            }
+        }
+
+        private string _subject;
+        public string Subject
+        {
+            get
+            {
+                return _subject;
+            }
+            set
+            {
+                _subject = value;
+                OnPropertyChanged("Subject");
+            }
+        }
+
+        private string _adress;
+        public string Adress
+        {
+            get
+            {
+                return _adress;
+            }
+            set
+            {
+                _adress = value;
+                OnPropertyChanged("Adress");
+            }
+        }
+
+        private string _city;
+        public string City
+        {
+            get
+            {
+                return _city;
+            }
+            set
+            {
+                _city = value;
+                OnPropertyChanged("City");
+            }
+        }
+
+        private string _email;
+        public string Email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                _email = value;
+                OnPropertyChanged("Email");
+            }
+        }
+
+        private string _hours;
+        public string Hours
+        {
+            get
+            {
+                return _hours;
+            }
+            set
+            {
+                _hours = value;
+                OnPropertyChanged("Hours");
+            }
+        }
+
     }
 }
