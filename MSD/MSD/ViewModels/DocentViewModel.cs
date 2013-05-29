@@ -26,7 +26,22 @@ namespace MSD.ViewModels
         public void NieuweDocent(object command)
         {
             DocentPersoonViewModel vm = (DocentPersoonViewModel)ViewFactory.getViewModel(_app, "docentPersoonViewModel");
+            DocentKwalificatieViewModel vm2 = (DocentKwalificatieViewModel)ViewFactory.getViewModel(_app, "docentKwalificatieViewModel");
+
             vm.Title = "Nieuwe Docent";
+            vm2.Title = "Nieuwe Docent";
+
+            vm.Adress = "";
+            vm.Birthday = new DateTime(1990, 1, 1);
+            vm.City = "";
+            vm.Email = "";
+            vm.FirstName = "";
+            vm.LastName = "";
+            vm.Phone = "";
+
+            vm2.Hours = "";
+            vm2.Preference = "";
+
             _app.ShowDocentPersoonView();
         }
 
@@ -34,7 +49,22 @@ namespace MSD.ViewModels
         public void DocentAanpassen(object command)
         {
             DocentPersoonViewModel vm = (DocentPersoonViewModel)ViewFactory.getViewModel(_app, "docentPersoonViewModel");
+            DocentKwalificatieViewModel vm2 = (DocentKwalificatieViewModel)ViewFactory.getViewModel(_app, "docentKwalificatieViewModel");
+
             vm.Title = "Docent Aanpassen";
+            vm2.Title = "Docent Aanpassen";
+
+            vm.Adress = "";
+            vm.Birthday = new DateTime(1990, 1, 1);
+            vm.City = "";
+            vm.Email = "";
+            vm.FirstName = "";
+            vm.LastName = "";
+            vm.Phone = "";
+
+            vm2.Hours = "";
+            vm2.Preference = "";
+
             _app.ShowDocentPersoonView();
         }
 

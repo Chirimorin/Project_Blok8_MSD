@@ -44,7 +44,14 @@ namespace MSD.ViewModels
         public void NieuweGebruiker(object command)
         {
             GebruikerAccountViewModel vm = (GebruikerAccountViewModel)ViewFactory.getViewModel(_app, "gebruikerAccountViewModel");
+
             vm.Title = "Nieuwe Gebruiker";
+
+            vm.Email = "";
+            vm.Name = "";
+            vm.Password = "";
+            vm.RepeatPassword = "";
+
             _app.ShowGebruikerAccountView();
         }
 
@@ -52,7 +59,14 @@ namespace MSD.ViewModels
         public void GebruikerAanpassen(object command)
         {
             GebruikerAccountViewModel vm = (GebruikerAccountViewModel)ViewFactory.getViewModel(_app, "gebruikerAccountViewModel");
+
             vm.Title = "Gebruiker Aanpasen";
+
+            vm.Email = "";
+            vm.Name = "";
+            vm.Password = "";
+            vm.RepeatPassword = "";
+
             _app.ShowGebruikerAccountView();
         }
 

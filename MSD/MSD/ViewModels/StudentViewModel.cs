@@ -26,7 +26,23 @@ namespace MSD.ViewModels
         public void NieuweStudent(object command)
         {
             StudentPersoonViewModel vm = (StudentPersoonViewModel)ViewFactory.getViewModel(_app, "studentPersoonViewModel");
+            StageopdrachtViewModel vm2 = (StageopdrachtViewModel)ViewFactory.getViewModel(_app, "stageopdrachtViewModel");
+
             vm.Title = "Nieuwe Student";
+            vm2.Title = "Nieuwe Student";
+
+            vm.Email = "";
+            vm.FirstName = "";
+            vm.LastName = "";
+            vm.StudentNo = "";
+            vm.Year = "";
+
+            vm2.Accepted = false;
+            vm2.Assignment = "";
+            vm2.Comments = "";
+            vm2.Permission = false;
+            vm2.TempPermission = false;
+
             _app.ShowStudentPersoonView();
         }
 
@@ -34,7 +50,23 @@ namespace MSD.ViewModels
         public void StudentAanpassen(object command)
         {
             StudentPersoonViewModel vm = (StudentPersoonViewModel)ViewFactory.getViewModel(_app, "studentPersoonViewModel");
+            StageopdrachtViewModel vm2 = (StageopdrachtViewModel)ViewFactory.getViewModel(_app, "stageopdrachtViewModel");
+
             vm.Title = "Student Aanpassen";
+
+            //TODO: Gegevens invullen zoals in de database!
+            vm.Email = "";
+            vm.FirstName = "";
+            vm.LastName = "";
+            vm.StudentNo = "";
+            vm.Year = "";
+
+            vm2.Accepted = false;
+            vm2.Assignment = "";
+            vm2.Comments = "";
+            vm2.Permission = false;
+            vm2.TempPermission = false;
+
             _app.ShowStudentPersoonView();
         }
 
