@@ -74,6 +74,7 @@
     <Compile Include="Factories\Database.cs" />
     <Compile Include="Models\PropertyChangedBase.cs" />
     <Compile Include="Models\RelayCommand.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Services\IMainWindowService.cs" />
     <Compile Include="Services\MainWindowService.cs" />
     <Compile Include="ViewModels\DocentKwalificatieViewModel.cs" />

@@ -21,6 +21,7 @@ namespace MSD
         {
             base.OnStartup(e);
             ApplicationController applicationController = new ApplicationController();
+
         }
         /*
         private LogInView _login;
