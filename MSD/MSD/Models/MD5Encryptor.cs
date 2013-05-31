@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace MSD.Models
 {
-    class MD5
+    public static class MD5Encryptor
     {
+        
+        static string GetMd5Hash()
+        {
+            return "";
+        }
     }
 }

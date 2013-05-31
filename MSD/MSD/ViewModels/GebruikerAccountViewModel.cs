@@ -38,10 +38,11 @@ namespace MSD.ViewModels
             //opslaan van gegevens
             if (_password == _repeatPassword)
             {
-                /* string query = "INSERT INTO (mailadres,naam,wachtwoord) VALUES()";
-                 MySqlCommand mycommand = new MySqlCommand(query);
-                 _database.executeQuery(mycommand);
-                 _app.ShowGebruikerView();*/
+                string password = "";
+                string query = "INSERT INTO (mailadres,naam,wachtwoord) VALUES(" + _email + "," + _name + "," + password + ");";
+                MySqlCommand mycommand = new MySqlCommand(query);
+                _database.executeQuery(mycommand);
+                _app.ShowGebruikerView();
 
             }
             else
