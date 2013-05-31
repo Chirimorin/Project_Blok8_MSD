@@ -1,10 +1,13 @@
 ﻿using MSD.Controllers;
+using MSD.Factories;
 using MSD.Models;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MSD.ViewModels
 {
@@ -13,19 +16,38 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _opslaanCommand;
         private readonly RelayCommand _terugCommand;
+        private Database _database;
+
+        private string _title;
+        private string _name;
+        private string _email;
+        private string _password;
+        private string _repeatPassword;
 
         public GebruikerAccountViewModel(IApplicationController app)
         {
             _app = app;
             _opslaanCommand = new RelayCommand(Opslaan);
             _terugCommand = new RelayCommand(Terug);
+            _database = ModelFactory.Database;
         }
 
-        public RelayCommand VerderCommand { get { return _opslaanCommand; } }
+        public RelayCommand OpslaanCommand { get { return _opslaanCommand; } }
         public void Opslaan(object command)
         {
             //opslaan van gegevens
-            _app.ShowGebruikerView();
+            if (_password == _repeatPassword)
+            {
+                /* string query = "INSERT INTO (mailadres,naam,wachtwoord) VALUES()";
+                 MySqlCommand mycommand = new MySqlCommand(query);
+                 _database.executeQuery(mycommand);
+                 _app.ShowGebruikerView();*/
+
+            }
+            else
+            {
+                MessageBox.Show("Wachtwoorden komen niet overeen");
+            }
         }
 
         public RelayCommand TerugCommand { get { return _terugCommand; } }
@@ -34,7 +56,7 @@ namespace MSD.ViewModels
             _app.ShowGebruikerView();
         }
 
-        private string _title;
+        
         public string Title
         {
             get { return _title; }
@@ -45,7 +67,7 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _name;
+        
         public string Name
         {
             get
@@ -59,7 +81,7 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _email;
+        
         public string Email
         {
             get
@@ -73,7 +95,7 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _password;
+        
         public string Password
         {
             get
@@ -87,7 +109,7 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _repeatPassword;
+        
         public string RepeatPassword
         {
             get
