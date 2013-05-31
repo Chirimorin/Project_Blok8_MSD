@@ -1,5 +1,7 @@
 ﻿using MSD.Controllers;
+using MSD.Factories;
 using MSD.Models;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,17 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _saveCommand;
         private readonly RelayCommand _backCommand;
+        private Database _database;
 
+        private string _company;
+        private string _website;
+        private string _adress;
+        private string _city;
+        private string _zip;
+        private string _contact;
+        private string _email;
+        private string _phone;
+        private string _branch;
 
 
         public StageBedrijfViewModel(IApplicationController app)
@@ -21,12 +33,15 @@ namespace MSD.ViewModels
             _app = app;
             _saveCommand = new RelayCommand(Save);
             _backCommand = new RelayCommand(Back);
+            _database = ModelFactory.Database;
         }
 
         public RelayCommand SaveCommand { get { return _saveCommand; } }
         public void Save(object command)
         {
-
+            string query = "INSERT INTO stagebedrijf(bedrijfnr,naam,plaats,straat,postcode,telefoonnr,website,contactpersoon,email,branch) VALUES(" + "," +_company + "," + _city + "," + _adress + "," + _zip + "," + _phone + "," + _website + "," + _contact + "," + _email + "," + _branch + ")";
+            MySqlCommand mycommand = new MySqlCommand(query);
+            _database.executeQuery(mycommand);
         }
 
         public RelayCommand BackCommand { get { return _backCommand; } }
@@ -46,7 +61,7 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _company;
+        
         public string Company
         {
             get
@@ -60,7 +75,7 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _website;
+        
         public string Website
         {
             get
@@ -74,7 +89,7 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _adress;
+        
         public string Adress
         {
             get
@@ -88,7 +103,7 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _city;
+        
         public string City
         {
             get
@@ -101,8 +116,20 @@ namespace MSD.ViewModels
                 OnPropertyChanged("City");
             }
         }
+        public string Zip
+        {
+            get
+            {
+                return _zip;
+            }
+            set
+            {
+                _zip = value;
+                OnPropertyChanged("Zip");
+            }
+        }
 
-        private string _contact;
+        
         public string Contact
         {
             get
@@ -116,7 +143,7 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _email;
+        
         public string Email
         {
             get
@@ -130,7 +157,7 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _phone;
+        
         public string Phone
         {
             get
@@ -144,7 +171,7 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _branch;
+        
         public string Branch
         {
             get

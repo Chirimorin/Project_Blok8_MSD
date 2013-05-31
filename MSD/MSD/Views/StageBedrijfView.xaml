@@ -14,25 +14,29 @@
 
         <Label Content="{Binding Title}" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" FontSize="18.667" Height="45" Margin="285,22.807,285,0"/>
         <Button Command="{Binding SaveCommand}" Content="Opslaan" Margin="604,457,41,0" VerticalAlignment="Top" Foreground="Black"  Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
-		<Grid Height="383" Margin="122,87,110,0" VerticalAlignment="Top">
-			<TextBox Text="{Binding Path=Company, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="129.5,15,30.5,0"/>
-            <TextBox Text="{Binding Path=Website, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,55,30.5,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Text="{Binding Path=Adress, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,93,30.5,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,136,30.5,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Text="{Binding Path=Contact, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,180,30.5,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,217,30.5,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Text="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,254,30.5,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Text="{Binding Path=Branch, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="129.5,291,30.5,0" BorderBrush="#FFAEAEAE"/>
-		</Grid>
-		<Label Content="Naam bedrijf" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,100,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Website" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,139,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Adres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,176,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Plaats" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,218,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Contactpersoon" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,263,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Email- adres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,299,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Telefoon" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,338,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="Branch" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="27" Margin="145,373,0,0" VerticalAlignment="Top" Width="100"/>
-		<Label Content="1" HorizontalAlignment="Left" Height="30" Margin="27,114,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="-0.3,-0.3"/>
+		<Grid Height="383" Margin="121,74,111,0" VerticalAlignment="Top">
+            <TextBox Text="{Binding Path=Company, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap"  VerticalAlignment="Top"  Margin="130,10,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Website, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,50,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Adress, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,90,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,130,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Contact, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,170,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,210,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,250,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Branch, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,290,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Branch, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,330,30,0" BorderBrush="#FFAEAEAE"/>
+        
+		<Label Content="Naam bedrijf" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="25" Margin="25,10,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Website" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="25" Margin="25,50,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Adres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="25" Margin="25,90,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Postcode" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="25" Margin="25,130,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Plaats" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="25" Margin="25,170,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Contactpersoon" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="25" Margin="25,210,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Email- adres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="25" Margin="25,250,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Telefoon" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="25" Margin="25,290,0,0" VerticalAlignment="Top" Width="100"/>
+		<Label Content="Branch" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="25" Margin="25,330,0,0" VerticalAlignment="Top" Width="100"/>
+        </Grid>
+        <Label Content="1" HorizontalAlignment="Left" Height="30" Margin="27,114,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="-0.3,-0.3"/>
 		<Button Command="{Binding BackCommand}" Content="Terug" Margin="468,457,184,0" VerticalAlignment="Top" Foreground="Black"  Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
-	</Grid>
+        
+    </Grid>
 </UserControl>
