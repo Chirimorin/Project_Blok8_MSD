@@ -9,21 +9,25 @@ namespace MSD.Factories
 {
     public abstract class ModelFactory
     {
-
-        private static Database database;
+        private static Database _database;
 
         public ModelFactory()
         {
-            database = new Database();
+            
         }
 
-        public static Database getInstance()
+        public static Database Database
         {
-            if (database == null)
+            get
             {
-                database = new Database();
+                if (_database == null)
+                {
+                    _database = new Database();
+                }
+                return _database;
             }
-            return database;
         }
+
+
     }
 }

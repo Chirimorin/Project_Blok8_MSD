@@ -36,7 +36,7 @@ namespace MSD.ViewModels
             _app = app;
             _nieuweGebruikerCommand = new RelayCommand(NieuweGebruiker);
             _gebruikerAanpassenCommand = new RelayCommand(GebruikerAanpassen);
-            _database = ModelFactory.getInstance();
+            _database = ModelFactory.Database;
             this.fillUserTable();
         }
 
