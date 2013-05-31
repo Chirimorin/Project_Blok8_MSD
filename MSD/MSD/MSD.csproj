@@ -68,6 +68,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Entity\Academy.cs" />
+    <Compile Include="Entity\Assignment.cs" />
+    <Compile Include="Entity\AttendanceManagement.cs" />
+    <Compile Include="Entity\Company.cs" />
+    <Compile Include="Entity\Education.cs" />
+    <Compile Include="Entity\KnowledgeArea.cs" />
+    <Compile Include="Entity\Student.cs" />
+    <Compile Include="Entity\Teacher.cs" />
+    <Compile Include="Entity\TimeFrame.cs" />
+    <Compile Include="Entity\User.cs" />
     <Compile Include="Factories\ModelFactory.cs" />
     <Compile Include="Factories\ViewFactory.cs" />
     <Compile Include="Models\Database.cs" />

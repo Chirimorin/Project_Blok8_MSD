@@ -77,10 +77,13 @@ namespace MSD.ViewModels
             MySqlDataAdapter adapter = _database.executeQuery(cmd);
             adapter.Fill(table);
 
-            for (int i = 0; i < table.Rows.Count; i++)
+            for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
             {
-                users.Add(new User{ Naam = table.Rows[i][0].ToString(),
-                                    Email = table.Rows[i][1].ToString()});
+                users.Add(new User
+                {
+                    Naam = table.Rows[RowNr][1].ToString(),
+                    Email = table.Rows[RowNr][0].ToString()
+                });
             }
         }
 
