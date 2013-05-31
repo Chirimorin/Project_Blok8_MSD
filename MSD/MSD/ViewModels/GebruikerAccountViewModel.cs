@@ -38,7 +38,9 @@ namespace MSD.ViewModels
             //opslaan van gegevens
             if (_password == _repeatPassword)
             {
-                string password = "";
+                //encrypt het wachtwoord
+                string password = MD5Encryptor.ConvertString(_password);
+
                 string query = "INSERT INTO (mailadres,naam,wachtwoord) VALUES(" + _email + "," + _name + "," + password + ");";
                 MySqlCommand mycommand = new MySqlCommand(query);
                 _database.executeQuery(mycommand);
