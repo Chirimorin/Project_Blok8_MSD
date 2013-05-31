@@ -10,6 +10,7 @@ using MSD.Factories;
 using System.Windows.Forms;
 using System.Collections.ObjectModel;
 using System.Data;
+using MSD.Entity;
 
 namespace MSD.ViewModels
 {
@@ -81,15 +82,10 @@ namespace MSD.ViewModels
             {
                 users.Add(new User
                 {
-                    Naam = table.Rows[RowNr][1].ToString(),
+                    Naam = table.Rows[RowNr][2].ToString(),
                     Email = table.Rows[RowNr][0].ToString()
                 });
             }
-        }
-
-        private void initLoad()
-        {
-
         }
     }
 }
