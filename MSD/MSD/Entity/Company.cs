@@ -20,17 +20,6 @@ namespace MSD.Entity
         private string _email;
         private string _phone;
         private string _branch;
-        private string _title;
-        public string Title
-        {
-            get { return _title; }
-            set
-            {
-                _title = value;
-                OnPropertyChanged(Title);
-            }
-        }
-
 
         public string Companyname
         {
@@ -41,7 +30,7 @@ namespace MSD.Entity
             set
             {
                 _company = value;
-                OnPropertyChanged("Company");
+                OnPropertyChanged("Companyname");
             }
         }
 

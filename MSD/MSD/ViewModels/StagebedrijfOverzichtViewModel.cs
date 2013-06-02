@@ -26,6 +26,7 @@ namespace MSD.ViewModels
             _app = app;
             _nieuwBedrijfCommand = new RelayCommand(NieuwBedrijf);
             _bedrijfAanpassenCommand = new RelayCommand(BedrijfAanpassen);
+            this.FillCompanyTable();
         }
 
         public ObservableCollection<Company> Companys
@@ -74,11 +75,11 @@ namespace MSD.ViewModels
             _app.ShowBedrijfView();
         }
 
-        private void fillUserTable()
+        private void FillCompanyTable()
         {
             MySqlCommand cmd = new MySqlCommand("select * from stagebedrijf");
             DataTable table = new DataTable();
-            MySqlDataAdapter adapter = _database.executeQuery(cmd);
+            MySqlDataAdapter adapter = ModelFactory.Database.executeQuery(cmd);
             adapter.Fill(table);
 
             for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
@@ -86,7 +87,14 @@ namespace MSD.ViewModels
                 Companys.Add(new Company
                 {
                     Companyname = table.Rows[RowNr][1].ToString(),
-                    //Email = table.Rows[RowNr][0].ToString()
+                    City = table.Rows[RowNr][2].ToString(),
+                    Adress = table.Rows[RowNr][3].ToString(),
+                    Zip = table.Rows[RowNr][4].ToString(),
+                    Phone = table.Rows[RowNr][5].ToString(),
+                    Website = table.Rows[RowNr][6].ToString(),
+                    Contact = table.Rows[RowNr][7].ToString(),
+                    Email = table.Rows[RowNr][8].ToString(),
+                    Branch = table.Rows[RowNr][9].ToString(),
                 });
             }
         }

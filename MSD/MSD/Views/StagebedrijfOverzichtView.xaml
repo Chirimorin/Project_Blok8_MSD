@@ -12,14 +12,14 @@
         <DataGrid  AutoGenerateColumns="False" ItemsSource="{Binding Path=Companys}" Margin="21,108,39,0" VerticalAlignment="Top" Height="300">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Companyname}" Header="Naam Bedrijf"/>
-                <DataGridTextColumn Binding="{Binding Property3}" Header="Website"/>
-                <DataGridTextColumn Binding="{Binding Property4}" Header="Adres"/>
-                <DataGridTextColumn Binding="{Binding Property5}" Header="Plaats"/>
-                <DataGridTextColumn Binding="{Binding Property6}" Header="Contactpersoon"/>
-                <DataGridTextColumn Binding="{Binding Property7}" Header="E-mailadres"/>
+                <DataGridTextColumn Binding="{Binding Website}" Header="Website"/>
+                <DataGridTextColumn Binding="{Binding Adress}" Header="Adres"/>
+                <DataGridTextColumn Binding="{Binding City}" Header="Plaats"/>
+                <DataGridTextColumn Binding="{Binding Contact}" Header="Contactpersoon"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres"/>
                 <DataGridTextColumn Binding="{Binding Property8}" Header="Stagecoordinator"/>
-                <DataGridTextColumn Binding="{Binding Property9}" Header="Telefoon"/>
-                <DataGridTextColumn Binding="{Binding Property10}" Header="Branch"/>
+                <DataGridTextColumn Binding="{Binding Phone}" Header="Telefoon"/>
+                <DataGridTextColumn Binding="{Binding Branch}" Header="Branch"/>
                 <DataGridTextColumn Binding="{Binding Property11}" Header="Aantal"/>
 
             </DataGrid.Columns>
