@@ -6,6 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using MSD.Entity;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace MSD.ViewModels
 {
@@ -14,6 +18,8 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _nieuwBedrijfCommand;
         private readonly RelayCommand _bedrijfAanpassenCommand;
+        private Database _database;
+        private ObservableCollection<Company> _companys = new ObservableCollection<Company>();
 
         public StagebedrijfOverzichtViewModel(IApplicationController app)
         {
@@ -22,19 +28,29 @@ namespace MSD.ViewModels
             _bedrijfAanpassenCommand = new RelayCommand(BedrijfAanpassen);
         }
 
+        public ObservableCollection<Company> Companys
+        {
+            get { return _companys; }
+            set
+            {
+                _companys = value;
+                this.OnPropertyChanged("Companys");
+            }
+        }
+
         public RelayCommand NieuwBedrijfCommand { get { return _nieuwBedrijfCommand;}}
         public void NieuwBedrijf(object command)
         {
             StageBedrijfViewModel vm = (StageBedrijfViewModel)ViewFactory.getViewModel(_app, "stageBedrijfViewModel");
-            vm.Title = "Nieuw Bedrijf";
-            vm.Adress = "";
-            vm.Branch = "";
-            vm.City = "";
-            vm.Company = "";
-            vm.Contact = "";
-            vm.Email = "";
-            vm.Phone = "";
-            vm.Website = "";
+            //vm.Title = "Nieuw Bedrijf";
+            //vm.Adress = "";
+            //vm.Branch = "";
+            //vm.City = "";
+            //vm.Company = "";
+            //vm.Contact = "";
+            //vm.Email = "";
+            //vm.Phone = "";
+            //vm.Website = "";
 
             _app.ShowBedrijfView();
         }
@@ -43,19 +59,36 @@ namespace MSD.ViewModels
         public void BedrijfAanpassen(object command)
         {
             StageBedrijfViewModel vm = (StageBedrijfViewModel)ViewFactory.getViewModel(_app, "stageBedrijfViewModel");
-            vm.Title = "Bedrijf Aanpassen";
+            //vm.Title = "Bedrijf Aanpassen";
             
             //TODO: Gegevens invullen zoals in de database!
-            vm.Adress = "";
-            vm.Branch = "";
-            vm.City = "";
-            vm.Company = "";
-            vm.Contact = "";
-            vm.Email = "";
-            vm.Phone = "";
-            vm.Website = "";
+            //vm.Adress = "";
+            //vm.Branch = "";
+            //vm.City = "";
+            //vm.Company = "";
+            //vm.Contact = "";
+            //vm.Email = "";
+            //vm.Phone = "";
+            //vm.Website = "";
 
             _app.ShowBedrijfView();
+        }
+
+        private void fillUserTable()
+        {
+            MySqlCommand cmd = new MySqlCommand("select * from stagebedrijf");
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = _database.executeQuery(cmd);
+            adapter.Fill(table);
+
+            for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
+            {
+                Companys.Add(new Company
+                {
+                    Companyname = table.Rows[RowNr][1].ToString(),
+                    //Email = table.Rows[RowNr][0].ToString()
+                });
+            }
         }
     }
 }
