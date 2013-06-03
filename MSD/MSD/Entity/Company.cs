@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using MSD.Models;
 
 namespace MSD.Entity
 {
+    //TODO alle entiteiten maken zoals deze..
     class Company : PropertyChangedBase, IDataErrorInfo
     {
         private string _company;
@@ -34,7 +36,6 @@ namespace MSD.Entity
             }
         }
 
-
         public string Website
         {
             get
@@ -47,7 +48,6 @@ namespace MSD.Entity
                 OnPropertyChanged("Website");
             }
         }
-
 
         public string Adress
         {
@@ -62,7 +62,6 @@ namespace MSD.Entity
             }
         }
 
-
         public string City
         {
             get
@@ -75,6 +74,7 @@ namespace MSD.Entity
                 OnPropertyChanged("City");
             }
         }
+
         public string Zip
         {
             get
@@ -87,7 +87,6 @@ namespace MSD.Entity
                 OnPropertyChanged("Zip");
             }
         }
-
 
         public string Contact
         {
@@ -102,7 +101,6 @@ namespace MSD.Entity
             }
         }
 
-
         public string Email
         {
             get
@@ -115,7 +113,6 @@ namespace MSD.Entity
                 OnPropertyChanged("Email");
             }
         }
-
 
         public string Phone
         {
@@ -130,7 +127,6 @@ namespace MSD.Entity
             }
         }
 
-
         public string Branch
         {
             get
@@ -144,30 +140,154 @@ namespace MSD.Entity
             }
         }
 
-        public string Error
+        static readonly string[] ValidatedProp =
         {
-            get { return "Er is een fout opgetreden"; }
-        }
-        public string this[string columnName]
+            "Companyname",
+            "Website",
+            "Adress",
+            "City",
+            "Zip",
+            "Contact",
+            "Email",
+            "Phone",
+            "Branch",
+        };
+
+        string IDataErrorInfo.Error { get { return null; } }
+
+        string IDataErrorInfo.this[string propertyName]
         {
             get
             {
-                return this.GetResult(columnName);
+                return this.GetValidationError(propertyName);
             }
         }
 
-        private string GetResult(string columnName)
+        //Geeft true als dit object geen errors heeft
+        public bool isValid
         {
-            PropertyInfo info = this.GetType().GetProperty(columnName);
-            if (info != null)
+            get
             {
-                string value= info.GetValue(this, null) as string;
-                if (string.IsNullOrEmpty(value))
-                    return string.Format("{0} moet worden ingevuld", info.Name);
-                else if(value.Length > 0 || value.Length < 45  )
-                    return string.Format("{0} moet tussen de 0 en 45 karakters bevatten", info.Name);
+                foreach (string prop in ValidatedProp)
+                {
+                    if (GetValidationError(prop) != null)
+                    {
+                        return false;
+                    }
+                }
+                return true;
             }
-            return null;
+        }
+
+        //kijkt naar de propertyName bijv Companyname, 
+        //valideerd deze met this.Validate{property} methode en geeft bijbehorende foutmelding
+        private string GetValidationError(string propertyName)
+        {
+            if (Array.IndexOf(ValidatedProp,propertyName)< 0)
+            {
+                return null;
+            }
+
+            string error = null;
+
+            switch (propertyName)
+            {
+                case "Companyname":
+                    error = this.ValidateName();
+                    break;
+                case "Website":
+                    error = this.ValidateWebsite();
+                    break;
+                case "Adress":
+                    error = this.ValidateAdress();
+                    break;
+                case "City":
+                    error = this.ValidateCity();
+                    break;
+                case "Zip":
+                    error = this.ValidateZip();
+                    break;
+                case "Contact": 
+                    error = this.ValidateContact();
+                    break;
+                case "Email":
+                    error = this.ValidateEmail();
+                    break;
+                case "Phone":
+                    error = this.ValidatePhone();
+                    break;
+                case "Branch":
+                    error = this.ValidateBranch();
+                    break;
+                default:
+                    break;
+            }
+            return error;
+        }
+        //TODO: controleren van alle properties
+        private string ValidateBranch()
+        {
+            throw new NotImplementedException();
+        }
+
+        private string ValidatePhone()
+        {
+            throw new NotImplementedException();
+        }
+
+        private string ValidateEmail()
+        {
+            throw new NotImplementedException();
+        }
+
+        private string ValidateContact()
+        {
+            throw new NotImplementedException();
+        }
+
+        private string ValidateZip()
+        {
+            throw new NotImplementedException();
+        }
+
+        private string ValidateCity()
+        {
+            throw new NotImplementedException();
+        }
+
+        private string ValidateAdress()
+        {
+            throw new NotImplementedException();
+        }
+
+        private string ValidateWebsite()
+        {
+            throw new NotImplementedException();
+        }
+
+        private string ValidateName()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Kijkt of er wel wat is ingevuld
+        static bool IsStringMissing(string value)
+        {
+            return
+                String.IsNullOrEmpty(value) ||
+                value.Trim() == String.Empty;
+        }
+
+        static bool isValidEmailAddress(string email)
+        {
+            if (IsStringMissing(email))
+            {
+                return false;
+            }
+
+            //kijken of er geen illegale karakters in de email string zitten
+            string legalpattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+            return Regex.IsMatch(email, legalpattern, RegexOptions.IgnoreCase);
         }
     }
 }
