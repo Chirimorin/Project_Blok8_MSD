@@ -2,12 +2,15 @@
 using MSD.Factories;
 using MSD.Models;
 using MSD.Views;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 
 namespace MSD.ViewModels
@@ -19,15 +22,18 @@ namespace MSD.ViewModels
         private string _errorMessage;
         private readonly RelayCommand _ShowMainWindow;
         private readonly RelayCommand _WachtwoordVergeten;
+        private Database _database;
 
         private string _email;
         private string _password;
+        private string _username;
 
         public LogInViewModel(IApplicationController app)
         {
             _app = app;
             this._ShowMainWindow = new RelayCommand(ShowMainWindow);
             this._WachtwoordVergeten = new RelayCommand(ShowWachtwoordView);
+            _database = ModelFactory.Database;
         }
         public string Message
         {
@@ -39,10 +45,6 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (_email == null)
-                {
-                    return "";
-                }
                 return _email;
             }
             set
@@ -56,7 +58,12 @@ namespace MSD.ViewModels
         {
             get
             {
-                return Email.Split(new String[] { "@" }, StringSplitOptions.None)[0];
+                return _username;
+            }
+            set
+            {
+                _username = value;
+                OnPropertyChanged("UserName");
             }
         }
 
@@ -77,9 +84,39 @@ namespace MSD.ViewModels
 
         public void ShowMainWindow(object command)
         {
+            
             MainWindowModel mainWindowModel = (MainWindowModel)ViewFactory.getViewModel(_app, "mainWindowModel");
-            mainWindowModel.UserName = UserName;
-            _app.ShowMainWindow();
+            string query = "SELECT mailadres,wachtwoord,voornaam FROM gebruiker WHERE '" + _email + "' = mailadres;";
+            DataTable data = new DataTable();
+            MySqlCommand mycommand = new MySqlCommand(query);
+            MySqlDataAdapter adapter = _database.executeQuery(mycommand);
+            adapter.Fill(data);
+            //als er waardes terug komen
+            if (data.Rows.Count != 0)
+            {
+                //kijkt of het ingevoerde wachtwoord juist is
+                string wachtwoord = data.Rows[0][1].ToString();
+                if (MD5Encryptor.CompareString(_password, wachtwoord))
+                {
+                    //set de username die bij het emailadres hoort
+                    _username = data.Rows[0][2].ToString();
+                    mainWindowModel.UserName = _username;
+                    _app.ShowMainWindow();
+                   
+                }
+                else
+                {
+                    
+                    MessageBox.Show("Het ingevoerde wachtwoord is niet juist");
+                    
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Het ingevoerde e-mailadres komt niet voor in ons bestand");
+            }
+
         }
 
         public RelayCommand ShowWachtwoordVergeten { get { return _WachtwoordVergeten; } }

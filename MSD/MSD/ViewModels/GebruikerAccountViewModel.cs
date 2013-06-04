@@ -40,11 +40,11 @@ namespace MSD.ViewModels
             {
                 //encrypt het wachtwoord
                 string password = MD5Encryptor.ConvertString(_password);
-
-                string query = "INSERT INTO (mailadres,naam,wachtwoord) VALUES(" + _email + "," + _name + "," + password + ");";
+                MessageBox.Show(password);
+                /*string query = "INSERT INTO (mailadres,naam,wachtwoord) VALUES(" + _email + "," + _name + "," + password + ");";
                 MySqlCommand mycommand = new MySqlCommand(query);
                 _database.executeQuery(mycommand);
-                _app.ShowGebruikerView();
+                _app.ShowGebruikerView();*/
 
             }
             else

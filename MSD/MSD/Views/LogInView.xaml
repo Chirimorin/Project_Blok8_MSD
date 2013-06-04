@@ -25,7 +25,8 @@
         </TextBox>
 
         <Label Content="Wachtwoord" HorizontalAlignment="Left" Margin="32,0,0,124" VerticalAlignment="Bottom" FontSize="16"/>
-        <PasswordBox Height="21.96" Margin="32.124,0,39.324,102" VerticalAlignment="Bottom">
+        <TextBox Text="{Binding Path=Password, UpdateSourceTrigger=PropertyChanged}" Height="21.96" Margin="32.124,0,39.324,102" VerticalAlignment="Bottom"/>
+        <!--<PasswordBox Height="21.96" Margin="32.124,0,39.324,102" VerticalAlignment="Bottom">
             <PasswordBox.BorderBrush>
                 <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
                     <GradientStop Color="#FFABADB3" Offset="0.05"/>
@@ -33,7 +34,7 @@
                     <GradientStop Color="#FFAEAEAE" Offset="1"/>
                 </LinearGradientBrush>
             </PasswordBox.BorderBrush>
-        </PasswordBox>
+        </PasswordBox>-->
 
         <Button Content="Log in" Command="{Binding ShowMainWindowCommand}" HorizontalAlignment="Right" Margin="0,0,39.324,34.04" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15" />
         <Button Command="{Binding ShowWachtwoordVergeten}" Content="Wachtwoord vergeten" HorizontalAlignment="Right" Margin="0,0,180,34" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="155" FontStyle="Italic" FontSize="15" />
