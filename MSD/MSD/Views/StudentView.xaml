@@ -14,8 +14,14 @@
         <Button Command="{Binding StudentAanpassenCommand}" Content="Aanpassen" Margin="615,0,37,34" VerticalAlignment="Bottom"  Foreground="Black"  Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
         <Label Content="Details" Margin="272.397,83.87,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" HorizontalAlignment="Left" Width="63.519"/>
         <Button Command="{Binding NieuweStudentCommand}"  Content="Nieuwe student" Margin="465,0,174,34" VerticalAlignment="Bottom" Foreground="Black"  Height="25" FontStyle="Italic" FontSize="15"/>
-        <ListBox HorizontalAlignment="Left" Height="278" Margin="33,120.15,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE">
-            <ListBoxItem Content="{Binding ListboxItem}" />
+        <ListBox ItemsSource="{Binding Students}" HorizontalAlignment="Left" Height="278" Margin="33,120.15,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>      
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
         <Border BorderBrush="#FFAEAEAE" BorderThickness="1" HorizontalAlignment="Left" Height="278" Margin="272.397,115.15,0,0" VerticalAlignment="Top" Width="442.772"/>
         <Grid>

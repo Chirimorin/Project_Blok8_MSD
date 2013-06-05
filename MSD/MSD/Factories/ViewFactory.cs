@@ -64,6 +64,7 @@ namespace MSD.Factories
                 case ("docentViewModel"):
                     if (_docentView == null)
                         _docentView = new DocentViewModel(app);
+                    _docentView.fillTeacherTable();
                     return _docentView;
                 case ("gebruikerAccountViewModel"):
                     if (_gebruikerAccountView == null)
@@ -106,6 +107,7 @@ namespace MSD.Factories
                 case ("studentViewModel"):
                     if (_studentView == null)
                         _studentView = new StudentViewModel(app);
+                    _studentView.fillStudentTable();
                     return _studentView;
                 case ("wachtwoordViewModel"):
                     _wachtwoordViewModel = new WachtwoordViewModel(app);

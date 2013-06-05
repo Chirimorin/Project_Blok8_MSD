@@ -4,16 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace MSD.Entity
 {
-    public class Teacher
+    public class Teacher : PropertyChangedBase, IDataErrorInfo
     {
         private string _name;
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set {
+                _name = value;
+                this.OnPropertyChanged("Name");
+            }
         }
 
         private DateTime _birthday;
@@ -63,6 +67,51 @@ namespace MSD.Entity
         {
             get { return _preference; }
             set { _preference = value; }
+        }
+
+        static readonly string[] ValidatedProp =
+        {
+            "Name",
+        };
+
+        string IDataErrorInfo.Error { get { return null; } }
+
+        string IDataErrorInfo.this[string propertyName]
+        {
+            get
+            {
+                return this.GetValidationError(propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Kijkt naar de property en validate deze vervolgens
+        /// </summary>
+        /// <param name="propertyName">property van User</param>
+        /// <returns>returned errors als die gevonden zijn</returns>
+        private string GetValidationError(string propertyName)
+        {
+            if (Array.IndexOf(ValidatedProp, propertyName) < 0)
+            {
+                return null;
+            }
+
+            string error = null;
+
+            switch (propertyName)
+            {
+                case "Name":
+                    error = this.ValidateName();
+                    break;
+                default:
+                    break;
+            }
+            return error;
+        }
+
+        private string ValidateName()
+        {
+            throw new NotImplementedException();
         }
     }
 }

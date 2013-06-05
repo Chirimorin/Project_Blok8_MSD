@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace MSD.ViewModels
 {
@@ -15,12 +18,39 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _NieuweDocentCommand;
         private readonly RelayCommand _DocentAanpassenCommand;
+        private ObservableCollection<Teacher> _teachers = new ObservableCollection<Teacher>();
+        private Teacher _selectedItem;
+
+        public ObservableCollection<Teacher> Teachers
+        {
+            get { return _teachers; }
+            set
+            {
+                _teachers = value;
+                this.OnPropertyChanged("Teachers");
+            }
+        }
+
+        public Teacher SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged("SelectedItem");
+            }
+        }
 
         public DocentViewModel(IApplicationController app)
         {
             _app = app;
             _NieuweDocentCommand = new RelayCommand(NieuweDocent);
             _DocentAanpassenCommand = new RelayCommand(DocentAanpassen);
+        }
+
+        private Database Database
+        {
+            get { return ModelFactory.Database; }
         }
 
         public RelayCommand NieuweDocentCommand { get { return _NieuweDocentCommand; } }
@@ -52,6 +82,26 @@ namespace MSD.ViewModels
             vm2.Teacher = vm.Teacher;
 
             _app.ShowDocentPersoonView();
+        }
+
+        /// <summary>
+        /// Vult de Docent tabel met Teachers uit de Database
+        /// </summary>
+        public void fillTeacherTable()
+        {
+            Teachers.Clear();
+            MySqlCommand cmd = new MySqlCommand("select * from gebruiker");
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = Database.getData(cmd);
+            adapter.Fill(table);
+
+            for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
+            {
+                Teachers.Add(new Teacher
+                {
+                    Name = table.Rows[RowNr][2].ToString(),
+                });
+            }
         }
 
         public string Name

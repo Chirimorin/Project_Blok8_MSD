@@ -81,7 +81,9 @@ namespace MSD.ViewModels
 
             _app.ShowGebruikerAccountView();
         }
-
+        /// <summary>
+        /// Vult de gebruiker tabel met Users uit de Database
+        /// </summary>
         public void fillUserTable()
         {
             Users.Clear();

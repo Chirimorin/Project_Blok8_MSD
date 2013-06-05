@@ -63,9 +63,13 @@ namespace MSD.Entity
                 return true;
             }
         }
+        
 
-        //kijkt naar de propertyName bijv Companyname, 
-        //valideerd deze met this.Validate{property} methode en geeft bijbehorende foutmelding
+        /// <summary>
+        /// Kijkt naar de property en validate deze vervolgens
+        /// </summary>
+        /// <param name="propertyName">property van User</param>
+        /// <returns>returned errors als die gevonden zijn</returns>
         private string GetValidationError(string propertyName)
         {
             if (Array.IndexOf(ValidatedProp, propertyName) < 0)
@@ -88,14 +92,14 @@ namespace MSD.Entity
             }
             return error;
         }
-        //TODO: controleren van alle properties
+
         private string ValidateName()
         {
             if (IsStringMissing(_naam))
             {
                 return "Naam moet worden ingevuld";
             }
-            return "";
+            return null;
         }
 
         private string ValidateEmail()
@@ -104,7 +108,7 @@ namespace MSD.Entity
             {
                 return "Email moet worden ingevuld";
             }
-            return "";
+            return null;
         }
 
 

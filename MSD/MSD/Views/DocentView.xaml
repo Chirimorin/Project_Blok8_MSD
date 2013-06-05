@@ -14,8 +14,14 @@
         <Button Command="{Binding DocentAanpassenCommand}" Content="Aanpassen" Margin="609,0,43,34" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
         <Label Content="Details" Margin="272.397,83.87,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" HorizontalAlignment="Left" Width="63.519"/>
         <Button Command ="{Binding NieuweDocentCommand}" Content="Nieuwe docent" Margin="476,0,166,34" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="110" FontStyle="Italic" FontSize="15"/>
-        <ListBox HorizontalAlignment="Left" Height="307" Margin="33,120,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE" >
-            <ListBoxItem Content="Jos Verstappen" Selector.IsSelected="True" />
+        <ListBox ItemsSource="{Binding Teachers}" HorizontalAlignment="Left" Height="307" Margin="33,120,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
         <Border BorderBrush="#FFAEAEAE" BorderThickness="1" HorizontalAlignment="Left" Height="307" Margin="272,120,0,0" VerticalAlignment="Top" Width="437"/>
         <Label Content="{Binding Name}" HorizontalAlignment="Left" Margin="292.175,135,0,0" VerticalAlignment="Top" Height="25" Width="100"/>

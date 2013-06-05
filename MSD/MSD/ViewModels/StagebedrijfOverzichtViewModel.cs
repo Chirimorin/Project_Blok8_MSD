@@ -75,7 +75,7 @@ namespace MSD.ViewModels
             _app.ShowBedrijfView();
         }
         /// <summary>
-        /// Vult de observable collection met Companys
+        /// Vult de bedrijven tabel met companys uit de Database
         /// </summary>
         private void FillCompanyTable()
         {
