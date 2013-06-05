@@ -28,7 +28,7 @@
         </TextBox>
 
         <Label Content="Wachtwoord" HorizontalAlignment="Left" Margin="32,0,0,124" VerticalAlignment="Bottom" FontSize="16"/>
-        <PasswordBox Name="PasswordBox" Height="22" Margin="32.124,0,39.324,102" VerticalAlignment="Bottom">
+        <PasswordBox Name="PasswordBox" Height="22" Margin="32,221,39,0" VerticalAlignment="Top">
             <PasswordBox.BorderBrush>
                 <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
                     <GradientStop Color="#FFABADB3" Offset="0.05"/>
