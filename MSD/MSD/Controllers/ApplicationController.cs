@@ -20,7 +20,7 @@ namespace MSD.Controllers
             Models.Database database = new Models.Database();
         }
 
-        public void OnMainWindowClose(object sender, EventArgs e)
+        public void OnWindowClose(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }

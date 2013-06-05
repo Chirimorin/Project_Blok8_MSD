@@ -117,7 +117,7 @@ namespace MSD.Factories
                         _mainWindowModel = new MainWindowModel(app);
                         _mainWindow = new MainWindow();
                         _mainWindow.DataContext = _mainWindowModel;
-                        _mainWindow.Closed += app.OnMainWindowClose;
+                        _mainWindow.Closed += app.OnWindowClose;
                     }
                     if (_loginView != null)
                     {
@@ -131,7 +131,8 @@ namespace MSD.Factories
                         _logInViewModel = new LogInViewModel(app);
                         _loginView = new LogInView();
                         _loginView.DataContext = _logInViewModel;
-                        _loginView.Closed += app.OnMainWindowClose;
+                        _loginView.Closed += app.OnWindowClose;
+                        _logInViewModel.PasswordBox = _loginView.PasswordBox;
                     }
                     if (_mainWindow != null)
                     {

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 
 namespace MSD.ViewModels
@@ -18,14 +19,15 @@ namespace MSD.ViewModels
     class LogInViewModel : PropertyChangedBase
     {
         private readonly IApplicationController _app;
-        //private MainWindow mainwindow = new MainWindow();
         private string _errorMessage;
         private readonly RelayCommand _ShowMainWindow;
         private readonly RelayCommand _WachtwoordVergeten;
         private Database _database;
 
         private string _email;
-        private string _password;
+        //private string _password;
+
+        private PasswordBox _passwordBox;
 
         public LogInViewModel(IApplicationController app)
         {
@@ -38,6 +40,12 @@ namespace MSD.ViewModels
         {
             get { return _errorMessage; }
             private set { _errorMessage = value; }
+        }
+
+        public PasswordBox PasswordBox
+        {
+            get { return _passwordBox; }
+            set { _passwordBox = value; }
         }
 
         public string Email
@@ -57,12 +65,7 @@ namespace MSD.ViewModels
         {
             get
             {
-                return _password;
-            }
-            set
-            {
-                _password = value;
-                OnPropertyChanged("Password");
+                return _passwordBox.Password;
             }
         }
 
@@ -70,9 +73,7 @@ namespace MSD.ViewModels
 
         public void ShowMainWindow(object command)
         {
-            
-            
-            string query = "SELECT mailadres,wachtwoord,voornaam FROM gebruiker WHERE '" + _email + "' = mailadres;";
+            string query = "SELECT mailadres,wachtwoord,naam FROM gebruiker WHERE '" + _email + "' = mailadres;";
             DataTable data = new DataTable();
             MySqlCommand mycommand = new MySqlCommand(query);
             MySqlDataAdapter adapter = _database.executeQuery(mycommand);
@@ -82,9 +83,9 @@ namespace MSD.ViewModels
             {
                 //kijkt of het ingevoerde wachtwoord juist is
                 string wachtwoord = data.Rows[0][1].ToString();
-                if (_password != null)
+                if (Password != null)
                 {
-                    if (MD5Encryptor.CompareString(_password, wachtwoord))
+                    if (MD5Encryptor.CompareString(Password, wachtwoord))
                     {
                         //set de username die bij het emailadres hoort
                         MainWindowModel mainWindowModel = (MainWindowModel)ViewFactory.getViewModel(_app, "mainWindowModel");
