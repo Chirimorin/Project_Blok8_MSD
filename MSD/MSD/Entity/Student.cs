@@ -90,7 +90,7 @@ namespace MSD.Entity
 
         static readonly string[] ValidatedProp =
         {
-            "Initials",
+            /*"Initials",
             "Name",
             "Dateofbirth",
             "Email",
@@ -99,7 +99,7 @@ namespace MSD.Entity
             "City",
             "Adres",
             "Postcode",
-            "Telefoonnr",
+            "Telefoonnr",*/
         };
 
         string IDataErrorInfo.Error { get { return null; } }

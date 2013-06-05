@@ -64,7 +64,7 @@ namespace MSD.ViewModels
         public RelayCommand ZoekenCommand { get { return _zoekenCommand; } }
         public void Zoeken(object command)
         {
-            string query = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting WHERE s.naam LIKE '%" + Zoektext + "%';";
+            string query = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting WHERE s.naam LIKE '%" + Zoektext + "%' OR o.omschrijving LIKE '%" + Zoektext + "%';";
             FillTable(query);
         }
         public void FillTable(string query)
