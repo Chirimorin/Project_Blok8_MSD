@@ -35,9 +35,9 @@
 
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="266.72" Margin="52,120.28,0,0" VerticalAlignment="Top" Width="133"/>
 
-        <DataGrid HorizontalAlignment="Left" Margin="210,120.28,0,0" VerticalAlignment="Top" Height="266.72" Width="238">
+        <DataGrid CanUserAddRows="False" ItemsSource="{Binding Path=Teachers}" HorizontalAlignment="Left" Margin="210,120.28,0,0" VerticalAlignment="Top" Height="266.72" Width="238">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Naam"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Naam}" Header="Naam"/>
                 <DataGridTextColumn Header="Academie"/>
                 <DataGridTextColumn Header="Kennisgebied"/>
                 <DataGridTextColumn Header="Uren"/>

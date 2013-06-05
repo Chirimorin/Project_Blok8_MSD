@@ -85,6 +85,7 @@ namespace MSD.Factories
                 case ("matchMogelijkViewModel"):
                     if (_matchMogelijkView == null)
                         _matchMogelijkView = new MatchMogelijkViewModel(app);
+                    _matchMogelijkView.MogelijkeMatch(1, "2013Najaar");
                     return _matchMogelijkView;
                 case ("matchSuccesViewModel"):
                     if (_matchSuccesView == null)
