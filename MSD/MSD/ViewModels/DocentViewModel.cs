@@ -1,4 +1,5 @@
 ﻿using MSD.Controllers;
+using MSD.Entity;
 using MSD.Factories;
 using MSD.Models;
 using System;
@@ -28,19 +29,12 @@ namespace MSD.ViewModels
             DocentPersoonViewModel vm = (DocentPersoonViewModel)ViewFactory.getViewModel(_app, "docentPersoonViewModel");
             DocentKwalificatieViewModel vm2 = (DocentKwalificatieViewModel)ViewFactory.getViewModel(_app, "docentKwalificatieViewModel");
 
-            vm.Title = "Nieuwe Docent";
-            vm2.Title = "Nieuwe Docent";
+            vm.Teacher = new Teacher();
+            vm.Teacher.Birthday = new DateTime(2000, 1, 1);
+            vm.Editing = false;
 
-            vm.Adress = "";
-            vm.Birthday = new DateTime(1990, 1, 1);
-            vm.City = "";
-            vm.Email = "";
-            vm.FirstName = "";
-            vm.LastName = "";
-            vm.Phone = "";
-
-            vm2.Hours = "";
-            vm2.Preference = "";
+            vm2.Teacher = vm.Teacher;
+            vm2.Editing = false;
 
             _app.ShowDocentPersoonView();
         }
@@ -51,19 +45,11 @@ namespace MSD.ViewModels
             DocentPersoonViewModel vm = (DocentPersoonViewModel)ViewFactory.getViewModel(_app, "docentPersoonViewModel");
             DocentKwalificatieViewModel vm2 = (DocentKwalificatieViewModel)ViewFactory.getViewModel(_app, "docentKwalificatieViewModel");
 
-            vm.Title = "Docent Aanpassen";
-            vm2.Title = "Docent Aanpassen";
-
-            vm.Adress = "";
-            vm.Birthday = new DateTime(1990, 1, 1);
-            vm.City = "";
-            vm.Email = "";
-            vm.FirstName = "";
-            vm.LastName = "";
-            vm.Phone = "";
-
-            vm2.Hours = "";
-            vm2.Preference = "";
+            vm.Editing = true;
+            vm.Teacher = new Teacher();
+            
+            vm2.Editing = true;
+            vm2.Teacher = vm.Teacher;
 
             _app.ShowDocentPersoonView();
         }

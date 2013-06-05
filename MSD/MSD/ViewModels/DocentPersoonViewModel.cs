@@ -1,4 +1,5 @@
 ﻿using MSD.Controllers;
+using MSD.Entity;
 using MSD.Factories;
 using MSD.Models;
 using System;
@@ -15,12 +16,15 @@ namespace MSD.ViewModels
         private readonly RelayCommand _verderCommand;
         private readonly RelayCommand _terugCommand;
 
+        private bool _editing;
+        private Teacher _teacher;
+
+
         public DocentPersoonViewModel(IApplicationController app)
         {
             _app = app;
             _verderCommand = new RelayCommand(Verder);
             _terugCommand = new RelayCommand(Terug);
-            _birthday = new DateTime(2013, 1, 1);
         }
 
         public RelayCommand VerderCommand { get { return _verderCommand; } }
@@ -35,117 +39,90 @@ namespace MSD.ViewModels
             _app.ShowDocentView();
         }
 
-        private string _title;
-        public string Title
+        public bool Editing
         {
-            get { return _title; }
+            get { return _editing; }
             set
             {
-                _title = value;
+                _editing = value;
                 OnPropertyChanged(Title);
             }
         }
 
-        private string _firstName;
-        public string FirstName
+        public string Title
         {
             get
             {
-                return _firstName;
+                if (Editing) return "Docent Aanpassen";
+                else return "Nieuwe Docent";
             }
+        }
+
+        public Teacher Teacher
+        {
+            get { return _teacher; }
+            set { _teacher = value; }
+        }
+
+        public string Name
+        {
+            get { return Teacher.Name; }
             set
             {
-                _firstName = value;
+                Teacher.Name = value;
                 OnPropertyChanged("FirstName");
             }
         }
 
-        private string _lastName;
-        public string LastName
-        {
-            get
-            {
-                return _lastName;
-            }
-            set
-            {
-                _lastName = value;
-                OnPropertyChanged("LastName");
-            }
-        }
-
-        private DateTime _birthday;
         public DateTime Birthday
         {
-            get
-            {
-                return _birthday;
-            }
+            get { return Teacher.Birthday; }
             set
             {
-                _birthday = value;
+                Teacher.Birthday = value;
                 OnPropertyChanged("Birthday");
             }
         }
 
-
-        private string _email;
         public string Email
         {
-            get
-            {
-                return _email;
-            }
+            get { return Teacher.Email; }
             set
             {
-                _email = value;
+                Teacher.Email = value;
                 OnPropertyChanged("Email");
             }
         }
 
-        private string _phone;
         public string Phone
         {
-            get
-            {
-                return _phone;
-            }
+            get { return Teacher.Phone; }
             set
             {
-                _phone = value;
+                Teacher.Phone = value;
                 OnPropertyChanged("Phone");
             }
         }
 
-        private string _adress;
         public string Adress
         {
-            get
-            {
-                return _adress;
-            }
+            get { return Teacher.Adress; }
             set
             {
-                _adress = value;
+                Teacher.Adress = value;
                 OnPropertyChanged("Adress");
             }
         }
 
-        private string _city;
         public string City
         {
-            get
-            {
-                return _city;
-            }
+            get { return Teacher.City; }
             set
             {
-                _city = value;
+                Teacher.City = value;
                 OnPropertyChanged("City");
             }
         }
-
-
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MSD.Controllers;
+using MSD.Entity;
 using MSD.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,9 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _opslaanCommand;
         private readonly RelayCommand _terugCommand;
+
+        private bool _editing;
+        private Teacher _teacher;
 
         public DocentKwalificatieViewModel(IApplicationController app)
         {
@@ -33,41 +37,47 @@ namespace MSD.ViewModels
             _app.ShowDocentPersoonView();
         }
 
-        private string _title;
-        public string Title
+        public bool Editing
         {
-            get { return _title; }
+            get { return _editing; }
             set
             {
-                _title = value;
+                _editing = value;
                 OnPropertyChanged(Title);
             }
         }
 
-        private string _hours;
-        public string Hours
+        public string Title
         {
             get
             {
-                return _hours;
+                if (Editing) return "Docent Aanpassen";
+                else return "Nieuwe Docent";
             }
+        }
+
+        public Teacher Teacher
+        {
+            get { return _teacher; }
+            set { _teacher = value; }
+        }
+
+        public string Hours
+        {
+            get { return Teacher.Hours; }
             set
             {
-                _hours = value;
+                Teacher.Hours = value;
                 OnPropertyChanged("Hours");
             }
         }
 
-        private string _preference;
         public string Preference
         {
-            get
-            {
-                return _preference;
-            }
+            get { return Teacher.Preference; }
             set
             {
-                _preference = value;
+                Teacher.Preference = value;
                 OnPropertyChanged("Preference");
             }
         }

@@ -65,7 +65,7 @@ namespace MSD.ViewModels
                 {
                     teachers.Add(new Teacher
                     {
-                        Naam = data.Rows[RowNr][0].ToString()
+                        Name = data.Rows[RowNr][0].ToString()
                         
                     });
                 }
