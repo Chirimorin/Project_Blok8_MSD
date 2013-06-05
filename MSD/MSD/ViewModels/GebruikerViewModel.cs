@@ -19,16 +19,15 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _nieuweGebruikerCommand;
         private readonly RelayCommand _gebruikerAanpassenCommand;
-        private Database _database;
-        private ObservableCollection<User> users = new ObservableCollection<User>();
+        private ObservableCollection<User> _users = new ObservableCollection<User>();
         private User _selectedItem;
 
         public ObservableCollection<User> Users
         {
-            get { return users; }
+            get { return _users; }
             set
             {
-                users = value;
+                _users = value;
                 this.OnPropertyChanged("Users");
             }
         }
@@ -48,7 +47,11 @@ namespace MSD.ViewModels
             _app = app;
             _nieuweGebruikerCommand = new RelayCommand(NieuweGebruiker);
             _gebruikerAanpassenCommand = new RelayCommand(GebruikerAanpassen);
-            _database = ModelFactory.Database;
+        }
+
+        private Database Database
+        {
+            get { return ModelFactory.Database; }
         }
 
         public RelayCommand NieuweGebruikerCommand { get { return _nieuweGebruikerCommand; } }
@@ -81,15 +84,15 @@ namespace MSD.ViewModels
 
         public void fillUserTable()
         {
-            users.Clear();
+            Users.Clear();
             MySqlCommand cmd = new MySqlCommand("select * from gebruiker");
             DataTable table = new DataTable();
-            MySqlDataAdapter adapter = _database.getData(cmd);
+            MySqlDataAdapter adapter = Database.getData(cmd);
             adapter.Fill(table);
 
             for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
             {
-                users.Add(new User
+                Users.Add(new User
                 {
                     Name = table.Rows[RowNr][2].ToString(),
                     Email = table.Rows[RowNr][0].ToString()
