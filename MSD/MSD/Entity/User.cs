@@ -91,7 +91,7 @@ namespace MSD.Entity
         //TODO: controleren van alle properties
         private string ValidateName()
         {
-            if (IsStringMissing(Naam))
+            if (IsStringMissing(_naam))
             {
                 return "Naam moet worden ingevuld";
             }
@@ -100,7 +100,7 @@ namespace MSD.Entity
 
         private string ValidateEmail()
         {
-            if (IsStringMissing(Email))
+            if (IsStringMissing(_email))
             {
                 return "Email moet worden ingevuld";
             }

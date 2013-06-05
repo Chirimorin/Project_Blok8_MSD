@@ -121,6 +121,11 @@ namespace MSD.Entity
             }
         }
 
+        private string GetValidationError(string propertyName)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// returned true als object geen errors heeft
         /// </summary>
@@ -139,55 +144,6 @@ namespace MSD.Entity
             }
         }
 
-
-        //kijkt naar de propertyName bijv Companyname, 
-        //valideerd deze met this.Validate{property} methode en geeft bijbehorende foutmelding
-        private string GetValidationError(string propertyName)
-        {
-            if (Array.IndexOf(ValidatedProp, propertyName) < 0)
-            {
-                return null;
-            }
-
-            string error = null;
-
-            switch (propertyName)
-            {
-                case "Initials":
-                    error = this.ValidateAbbreviation();
-                    break;
-                case "Firstname":
-                    error = this.ValidateDescription();
-                    break;
-                case "Tussenvoegsel":
-                    error = this.ValidateDescription();
-                    break;
-                case "Lastname":
-                    error = this.ValidateDescription();
-                    break;
-                default:
-                    break;
-            }
-            return error;
-        }
-        //TODO: controleren van alle properties
-        private string ValidateAbbreviation()
-        {
-            if (IsStringMissing(Abbreviation))
-            {
-                return "Afkorting moet worden ingevuld";
-            }
-            return "";
-        }
-
-        private string ValidateDescription()
-        {
-            if (IsStringMissing(Description))
-            {
-                return "Beschrijving moet worden ingevuld";
-            }
-            return "";
-        }
 
 
         /// <summary>
