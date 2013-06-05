@@ -43,15 +43,15 @@ namespace MSD.ViewModels
         public void NieuwBedrijf(object command)
         {
             StageBedrijfViewModel vm = (StageBedrijfViewModel)ViewFactory.getViewModel(_app, "stageBedrijfViewModel");
-            //vm.Title = "Nieuw Bedrijf";
-            //vm.Adress = "";
-            //vm.Branch = "";
-            //vm.City = "";
-            //vm.Company = "";
-            //vm.Contact = "";
-            //vm.Email = "";
-            //vm.Phone = "";
-            //vm.Website = "";
+            vm.Title = "Nieuw Bedrijf";
+            vm.Adress = "";
+            vm.Branch = "";
+            vm.City = "";
+            vm.Company = "";
+            vm.Contact = "";
+            vm.Email = "";
+            vm.Phone = "";
+            vm.Website = "";
 
             _app.ShowBedrijfView();
         }
@@ -60,17 +60,17 @@ namespace MSD.ViewModels
         public void BedrijfAanpassen(object command)
         {
             StageBedrijfViewModel vm = (StageBedrijfViewModel)ViewFactory.getViewModel(_app, "stageBedrijfViewModel");
-            //vm.Title = "Bedrijf Aanpassen";
+            vm.Title = "Bedrijf Aanpassen";
             
             //TODO: Gegevens invullen zoals in de database!
-            //vm.Adress = "";
-            //vm.Branch = "";
-            //vm.City = "";
-            //vm.Company = "";
-            //vm.Contact = "";
-            //vm.Email = "";
-            //vm.Phone = "";
-            //vm.Website = "";
+            vm.Adress = "";
+            vm.Branch = "";
+            vm.City = "";
+            vm.Company = "";
+            vm.Contact = "";
+            vm.Email = "";
+            vm.Phone = "";
+            vm.Website = "";
 
             _app.ShowBedrijfView();
         }

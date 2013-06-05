@@ -277,15 +277,17 @@ namespace MSD.Entity
                 String.IsNullOrEmpty(value) ||
                 value.Trim() == String.Empty;
         }
-
+        /// <summary>
+        /// Kijkt of het emailadres valid is door middel van Regex
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         static bool isValidEmailAddress(string email)
         {
             if (IsStringMissing(email))
             {
                 return false;
             }
-
-            //kijken of er geen illegale karakters in de email string zitten
             string legalpattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
             return Regex.IsMatch(email, legalpattern, RegexOptions.IgnoreCase);
         }

@@ -19,6 +19,14 @@ namespace MSD.ViewModels
         private readonly RelayCommand _backCommand;
         private Database _database;
 
+        private string _title;
+
+        public string Title
+        {
+            get { return _title; }
+            set { _title = value; this.OnPropertyChanged("Title"); }
+        }
+
         private string _company;
 
         public string Company
@@ -80,7 +88,7 @@ namespace MSD.ViewModels
         public string Branch
         {
             get { return _branch; }
-            set { _branch = value; this.OnPropertyChanged("Company"); }
+            set { _branch = value; this.OnPropertyChanged("Branch"); }
         }
         
 
@@ -98,7 +106,6 @@ namespace MSD.ViewModels
             string query = "INSERT INTO stagebedrijf(bedrijfnr,naam,plaats,straat,postcode,telefoonnr,website,contactpersoon,email,branch) VALUES(" + "," +_company + "," + _city + "," + _adress + "," + _zip + "," + _phone + "," + _website + "," + _contact + "," + _email + "," + _branch + ")";
             MySqlCommand mycommand = new MySqlCommand(query);
             _database.getData(mycommand);
-            
         }
 
         public RelayCommand BackCommand { get { return _backCommand; } }
