@@ -8,6 +8,10 @@
 	Title="Inloggen - Match Studenten aan Docenten"
 	Width="375" Height="375" Background="#FFFFFCEE">
 
+    <Window.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding ShowMainWindowCommand}" />
+    </Window.InputBindings>
+
     <Grid x:Name="LayoutRoot">
 
         <Label Content="Inloggen" HorizontalAlignment="Left" Margin="130.123,21,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
