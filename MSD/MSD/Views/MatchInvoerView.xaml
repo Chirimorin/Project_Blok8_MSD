@@ -14,16 +14,16 @@
 
         <Label Content="Zoeken" HorizontalAlignment="Left" Margin="42,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
 
-        <TextBox HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="25"/>
+        <TextBox Text="{Binding Path=Zoektext, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="25"/>
 
         <Button Command="{Binding MatchenCommand}" Content="Matchen" Margin="605,0,47,36" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
 
-        <DataGrid HorizontalAlignment="Left" Margin="42,196,0,0" VerticalAlignment="Top" Height="192" Width="662.676">
+        <DataGrid CanUserAddRows="False" ItemsSource="{Binding Path=Students}" HorizontalAlignment="Left" Margin="42,196,0,0" VerticalAlignment="Top" Height="192" Width="662.676">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Studentnummer"/>
-                <DataGridTextColumn Header="Naam student"/>
-                <DataGridTextColumn Header="Academie"/>
-                <DataGridTextColumn Header="Soort stage"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNumber}" Header="Studentnummer"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Academie"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="Email"/>
                 <DataGridTextColumn Header="Bedrijf"/>
                 <DataGridCheckBoxColumn Header="Opdracht"/>
                 <DataGridCheckBoxColumn Header="Voorlopige toestemming"/>

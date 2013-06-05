@@ -10,34 +10,21 @@ namespace MSD.Entity
 {
     public class Student : PropertyChangedBase, IDataErrorInfo
     {
-        private string _initials;
+        private string _studentNumber;
 
-        public string Initials
+        public string StudentNumber
         {
-            get { return _initials; }
-            set { _initials = value; }
+            get { return _studentNumber; }
+            set { _studentNumber = value; }
         }
-        private string _firstname;
+        private string _name;
 
-        public string Firstname
+        public string Name
         {
-            get { return _firstname; }
-            set { _firstname = value; }
+            get { return _name; }
+            set { _name = value; }
         }
-        private string _tussenvoegsel;
-
-        public string Tussenvoegsel
-        {
-            get { return _tussenvoegsel; }
-            set { _tussenvoegsel = value; }
-        }
-        private string _lastname;
-
-        public string Lastname
-        {
-            get { return _lastname; }
-            set { _lastname = value; }
-        }
+        
         private string _dateofbirth;
 
         public string Dateofbirth
@@ -94,13 +81,17 @@ namespace MSD.Entity
             get { return _phone; }
             set { _phone = value; }
         }
+        private string _education;
+        public string Education
+        {
+            get { return _education; }
+            set { _education = value; }
+        }
 
         static readonly string[] ValidatedProp =
         {
             "Initials",
-            "Firstname",
-            "Tussenvoegsel",
-            "Lastname",
+            "Name",
             "Dateofbirth",
             "Email",
             "Enrolyear",
