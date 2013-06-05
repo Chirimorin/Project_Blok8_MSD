@@ -19,7 +19,6 @@ namespace MSD.ViewModels
     class LogInViewModel : PropertyChangedBase
     {
         private readonly IApplicationController _app;
-        private string _errorMessage;
         private readonly RelayCommand _ShowMainWindow;
         private readonly RelayCommand _WachtwoordVergeten;
         private Database _database;
@@ -36,11 +35,7 @@ namespace MSD.ViewModels
             this._WachtwoordVergeten = new RelayCommand(ShowWachtwoordView);
             _database = ModelFactory.Database;
         }
-        public string Message
-        {
-            get { return _errorMessage; }
-            private set { _errorMessage = value; }
-        }
+
 
         public PasswordBox PasswordBox
         {
