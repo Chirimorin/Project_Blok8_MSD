@@ -71,7 +71,7 @@ namespace MSD.ViewModels
             string query = "SELECT mailadres,wachtwoord,naam FROM gebruiker WHERE '" + _email + "' = mailadres;";
             DataTable data = new DataTable();
             MySqlCommand mycommand = new MySqlCommand(query);
-            MySqlDataAdapter adapter = _database.executeQuery(mycommand);
+            MySqlDataAdapter adapter = _database.getData(mycommand);
             adapter.Fill(data);
             //als er waardes terug komen
             if (data.Rows.Count != 0)

@@ -79,7 +79,7 @@ namespace MSD.ViewModels
         {
             MySqlCommand cmd = new MySqlCommand("select * from stagebedrijf");
             DataTable table = new DataTable();
-            MySqlDataAdapter adapter = ModelFactory.Database.executeQuery(cmd);
+            MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
             adapter.Fill(table);
 
             for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)

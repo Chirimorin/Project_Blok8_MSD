@@ -75,7 +75,7 @@ namespace MSD.ViewModels
         {
             MySqlCommand cmd = new MySqlCommand("select * from gebruiker");
             DataTable table = new DataTable();
-            MySqlDataAdapter adapter = _database.executeQuery(cmd);
+            MySqlDataAdapter adapter = _database.getData(cmd);
             adapter.Fill(table);
 
             for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
