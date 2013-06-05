@@ -85,7 +85,7 @@ namespace MSD.ViewModels
         public void ShowMainWindow(object command)
         {
             
-            MainWindowModel mainWindowModel = (MainWindowModel)ViewFactory.getViewModel(_app, "mainWindowModel");
+            
             string query = "SELECT mailadres,wachtwoord,voornaam FROM gebruiker WHERE '" + _email + "' = mailadres;";
             DataTable data = new DataTable();
             MySqlCommand mycommand = new MySqlCommand(query);
@@ -99,9 +99,9 @@ namespace MSD.ViewModels
                 if (MD5Encryptor.CompareString(_password, wachtwoord))
                 {
                     //set de username die bij het emailadres hoort
+                    MainWindowModel mainWindowModel = (MainWindowModel)ViewFactory.getViewModel(_app, "mainWindowModel");
                     _username = data.Rows[0][2].ToString();
                     mainWindowModel.UserName = _username;
-                    _app.ShowMainWindow();
                    
                 }
                 else
