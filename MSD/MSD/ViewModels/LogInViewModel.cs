@@ -26,7 +26,6 @@ namespace MSD.ViewModels
 
         private string _email;
         private string _password;
-        private string _username;
 
         public LogInViewModel(IApplicationController app)
         {
@@ -51,19 +50,6 @@ namespace MSD.ViewModels
             {
                 _email = value;
                 OnPropertyChanged("Email");
-            }
-        }
-
-        public string UserName
-        {
-            get
-            {
-                return _username;
-            }
-            set
-            {
-                _username = value;
-                OnPropertyChanged("UserName");
             }
         }
 
@@ -96,19 +82,25 @@ namespace MSD.ViewModels
             {
                 //kijkt of het ingevoerde wachtwoord juist is
                 string wachtwoord = data.Rows[0][1].ToString();
-                if (MD5Encryptor.CompareString(_password, wachtwoord))
+                if (_password != null)
                 {
-                    //set de username die bij het emailadres hoort
-                    MainWindowModel mainWindowModel = (MainWindowModel)ViewFactory.getViewModel(_app, "mainWindowModel");
-                    _username = data.Rows[0][2].ToString();
-                    mainWindowModel.UserName = _username;
-                   
+                    if (MD5Encryptor.CompareString(_password, wachtwoord))
+                    {
+                        //set de username die bij het emailadres hoort
+                        MainWindowModel mainWindowModel = (MainWindowModel)ViewFactory.getViewModel(_app, "mainWindowModel");
+                        mainWindowModel.UserName = data.Rows[0][2].ToString();
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Het ingevoerde wachtwoord is niet juist");
+
+                    }
                 }
                 else
                 {
-                    
-                    MessageBox.Show("Het ingevoerde wachtwoord is niet juist");
-                    
+                    MessageBox.Show("U heeft geen wachtwoord ingevoerd");
                 }
 
             }
