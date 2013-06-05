@@ -163,7 +163,9 @@ namespace MSD.Entity
             }
         }
 
-        //Geeft true als dit object geen errors heeft
+        /// <summary>
+        /// returned true als object geen errors heeft
+        /// </summary>
         public bool isValid
         {
             get
@@ -227,50 +229,94 @@ namespace MSD.Entity
         //TODO: controleren van alle properties
         private string ValidateBranch()
         {
-            throw new NotImplementedException();
+            if (IsStringMissing(Branch))
+            {
+                return "Branch moet worden ingevuld";
+            }
+            return "";
         }
 
         private string ValidatePhone()
         {
-            throw new NotImplementedException();
+            if (IsStringMissing(Phone))
+            {
+                return "Telefoonnr moet worden ingevuld";
+            }
+            return "";
         }
 
         private string ValidateEmail()
         {
-            throw new NotImplementedException();
+            if (IsStringMissing(Email))
+            {
+                return "Website moet worden ingevuld";
+            }
+            else if (!isValidEmailAddress(Email))
+            {
+                return "Dit is geen geldig Email adres";
+            }
+            return "";
         }
 
         private string ValidateContact()
         {
-            throw new NotImplementedException();
+            if (IsStringMissing(Contact))
+            {
+                return "Contactpersoon moet worden ingevuld";
+            }
+            return "";
         }
 
         private string ValidateZip()
         {
-            throw new NotImplementedException();
+            if (IsStringMissing(Zip))
+            {
+                return "Postcode moet worden ingevuld";
+            }
+            return "";
         }
 
         private string ValidateCity()
         {
-            throw new NotImplementedException();
+            if (IsStringMissing(City))
+            {
+                return "Plaats moet worden ingevuld";
+            }
+            return "";
         }
 
         private string ValidateAdress()
         {
-            throw new NotImplementedException();
+            if (IsStringMissing(Adress))
+            {
+                return "Adres moet worden ingevuld";
+            }
+            return "";
         }
 
         private string ValidateWebsite()
         {
-            throw new NotImplementedException();
+            if (IsStringMissing(Website))
+            {
+                return "Website moet worden ingevuld";
+            }
+            return "";
         }
 
         private string ValidateName()
         {
-            throw new NotImplementedException();
+            if (IsStringMissing(Companyname))
+            {
+                return "Naam moet worden ingevuld";
+            }
+            return "";
         }
 
-        //Kijkt of er wel wat is ingevuld
+        /// <summary>
+        /// Kijk of de string leeg is
+        /// </summary>
+        /// <param name="value">Waarde die moet worden gecontroleerd</param>
+        /// <returns></returns>
         static bool IsStringMissing(string value)
         {
             return

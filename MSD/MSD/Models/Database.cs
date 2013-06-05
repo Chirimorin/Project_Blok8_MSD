@@ -13,7 +13,11 @@ namespace MSD.Models
     {
         //Dit is een eerste opzet, SQL-Injection moet nog middels parameters of prepared-statements afgevangen worden.
         MySqlConnection myConnection = new MySqlConnection("Server=databases.aii.avans.nl;" + "Database=eavries_db2;" + "Uid=eavries;" + "Pwd=rd4qAS7j;");
-
+        /// <summary>
+        /// Gebruik dit om data uit de database te halen
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <returns>returned een mysqlDataAdapter</returns>
         public MySqlDataAdapter getData(MySqlCommand cmd)
         {
             myConnection.Open();
@@ -24,7 +28,10 @@ namespace MSD.Models
             myConnection.Close();
             return adapter;
         }
-
+        /// <summary>
+        /// Gebruik dit om data in de database te zetten(update of insert)
+        /// </summary>
+        /// <param name="cmd"></param>
         public void setData(MySqlCommand cmd)
         {
             myConnection.Open();

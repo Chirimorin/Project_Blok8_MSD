@@ -74,7 +74,9 @@ namespace MSD.ViewModels
 
             _app.ShowBedrijfView();
         }
-
+        /// <summary>
+        /// Vult de observable collection met Companys
+        /// </summary>
         private void FillCompanyTable()
         {
             MySqlCommand cmd = new MySqlCommand("select * from stagebedrijf");
