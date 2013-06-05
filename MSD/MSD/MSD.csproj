@@ -84,8 +84,6 @@
     <Compile Include="Models\MD5Encryptor.cs" />
     <Compile Include="Models\PropertyChangedBase.cs" />
     <Compile Include="Models\RelayCommand.cs" />
-    <Compile Include="Services\IMainWindowService.cs" />
-    <Compile Include="Services\MainWindowService.cs" />
     <Compile Include="ViewModels\DocentKwalificatieViewModel.cs" />
     <Compile Include="ViewModels\DocentPersoonViewModel.cs" />
     <Compile Include="ViewModels\DocentViewModel.cs" />
