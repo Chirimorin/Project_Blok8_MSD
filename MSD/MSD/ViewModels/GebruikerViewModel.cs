@@ -38,7 +38,6 @@ namespace MSD.ViewModels
             _nieuweGebruikerCommand = new RelayCommand(NieuweGebruiker);
             _gebruikerAanpassenCommand = new RelayCommand(GebruikerAanpassen);
             _database = ModelFactory.Database;
-            this.fillUserTable();
         }
 
         public RelayCommand NieuweGebruikerCommand { get { return _nieuweGebruikerCommand; } }
@@ -71,8 +70,9 @@ namespace MSD.ViewModels
             _app.ShowGebruikerAccountView();
         }
 
-        private void fillUserTable()
+        public void fillUserTable()
         {
+            users.Clear();
             MySqlCommand cmd = new MySqlCommand("select * from gebruiker");
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = _database.getData(cmd);

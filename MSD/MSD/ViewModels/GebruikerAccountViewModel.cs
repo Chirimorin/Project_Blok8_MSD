@@ -36,15 +36,16 @@ namespace MSD.ViewModels
         public void Opslaan(object command)
         {
             //opslaan van gegevens
-            if (_password == _repeatPassword)
+            if (Password == RepeatPassword)
             {
                 //encrypt het wachtwoord
-                string password = MD5Encryptor.ConvertString(_password);
-                MessageBox.Show(password);
-                /*string query = "INSERT INTO (mailadres,naam,wachtwoord) VALUES(" + _email + "," + _name + "," + password + ");";
+                string password = MD5Encryptor.ConvertString(Password);
+                //MessageBox.Show(password);
+                string query = "INSERT INTO gebruiker (mailadres,wachtwoord,naam) VALUES('" + Email + "','" + password + "','" + Name + "');";
                 MySqlCommand mycommand = new MySqlCommand(query);
-                _database.executeQuery(mycommand);
-                _app.ShowGebruikerView();*/
+                _database.setData(mycommand);
+
+                _app.ShowGebruikerView();
 
             }
             else

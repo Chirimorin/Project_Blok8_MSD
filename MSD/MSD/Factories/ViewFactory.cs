@@ -72,6 +72,7 @@ namespace MSD.Factories
                 case ("gebruikerViewModel"):
                     if (_gebruikerView == null)
                         _gebruikerView = new GebruikerViewModel(app);
+                    _gebruikerView.fillUserTable();
                     return _gebruikerView;
                 case ("matchDetailsViewModel"):
                     if (_matchDetailsView == null)

@@ -14,10 +14,10 @@
         <Button Command="{Binding NieuweGebruikerCommand}" Content="Nieuwe gebruiker" Margin="457,0,0,36" VerticalAlignment="Bottom"  FontSize="15" HorizontalAlignment="Left" Width="130" Height="25" FontStyle="Italic"/>
         <!--<ListBox HorizontalAlignment="Left" Height="278" Margin="37,115.692,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE"/>-->
         <Label Content="Gebruikers" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="16" FontStyle="Italic" Margin="0,112,631,0"/>
-        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Path=Users}" HorizontalAlignment="Left" Margin="37,148,0,0" VerticalAlignment="Top" Height="244" Width="678">
+        <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Path=Users}" HorizontalAlignment="Left" Margin="37,148,0,0" VerticalAlignment="Top" Height="244" Width="678">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Naam}" Header="Naam"/>
-                <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Naam}" Header="Naam"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="E-mailadres"/>
             </DataGrid.Columns>
         </DataGrid>
         <!--<Border BorderBrush="#FFAEAEAE" BorderThickness="1" HorizontalAlignment="Left" Height="278" Margin="272.397,115.692,0,0" VerticalAlignment="Top" Width="442.772"/>-->
