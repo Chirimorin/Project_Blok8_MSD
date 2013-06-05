@@ -12,7 +12,7 @@ namespace MSD.Entity
     {
         private string _naam;
 
-        public string Naam
+        public string Name
         {
             get { return _naam; }
             set {   _naam = value;

@@ -21,6 +21,7 @@ namespace MSD.ViewModels
         private readonly RelayCommand _gebruikerAanpassenCommand;
         private Database _database;
         private ObservableCollection<User> users = new ObservableCollection<User>();
+        private User _selectedItem;
 
         public ObservableCollection<User> Users
         {
@@ -29,6 +30,16 @@ namespace MSD.ViewModels
             {
                 users = value;
                 this.OnPropertyChanged("Users");
+            }
+        }
+
+        public User SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged("SelectedItem");
             }
         }
 
@@ -45,10 +56,10 @@ namespace MSD.ViewModels
         {
             GebruikerAccountViewModel vm = (GebruikerAccountViewModel)ViewFactory.getViewModel(_app, "gebruikerAccountViewModel");
 
-            vm.Title = "Nieuwe Gebruiker";
+            //vm.Title = "Nieuwe Gebruiker";
+            vm.Editing = false;
+            vm.User = new User();
 
-            vm.Email = "";
-            vm.Name = "";
             vm.Password = "";
             vm.RepeatPassword = "";
 
@@ -60,10 +71,11 @@ namespace MSD.ViewModels
         {
             GebruikerAccountViewModel vm = (GebruikerAccountViewModel)ViewFactory.getViewModel(_app, "gebruikerAccountViewModel");
 
-            vm.Title = "Gebruiker Aanpasen";
+            //vm.Title = "Gebruiker Aanpasen";
+            vm.Editing = true;
+            vm.User = SelectedItem;
 
-            vm.Email = "";
-            vm.Name = "";
+            
             vm.Password = "";
             vm.RepeatPassword = "";
 
@@ -82,7 +94,7 @@ namespace MSD.ViewModels
             {
                 users.Add(new User
                 {
-                    Naam = table.Rows[RowNr][2].ToString(),
+                    Name = table.Rows[RowNr][2].ToString(),
                     Email = table.Rows[RowNr][0].ToString()
                 });
             }

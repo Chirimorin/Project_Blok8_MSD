@@ -1,9 +1,11 @@
 ﻿using MSD.Controllers;
+using MSD.Entity;
 using MSD.Factories;
 using MSD.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +20,12 @@ namespace MSD.ViewModels
         private readonly RelayCommand _terugCommand;
         private Database _database;
 
-        private string _title;
-        private string _name;
-        private string _email;
+        private bool _editing;
         private string _password;
         private string _repeatPassword;
+
+        private User _user;
+        private string _mailOld;
 
         public GebruikerAccountViewModel(IApplicationController app)
         {
@@ -33,24 +36,61 @@ namespace MSD.ViewModels
         }
 
         public RelayCommand OpslaanCommand { get { return _opslaanCommand; } }
+        /// <summary>
+        /// Opslaan van gegevens
+        /// </summary>
+        /// <param name="command"></param>
         public void Opslaan(object command)
         {
-            //opslaan van gegevens
-            if (Password == RepeatPassword)
+            if (Name != "" && Email != "" && (Password != "" || Editing))
             {
-                //encrypt het wachtwoord
-                string password = MD5Encryptor.ConvertString(Password);
-                //MessageBox.Show(password);
-                string query = "INSERT INTO gebruiker (mailadres,wachtwoord,naam) VALUES('" + Email + "','" + password + "','" + Name + "');";
-                MySqlCommand mycommand = new MySqlCommand(query);
-                _database.setData(mycommand);
-
-                _app.ShowGebruikerView();
-
+                if (Password == RepeatPassword)
+                {
+                    //encrypt het wachtwoord
+                    string passwordMD5 = MD5Encryptor.ConvertString(Password);
+                    string query;
+                    if (Editing)
+                    {
+                        if (Password == "")
+                        {
+                            query = "UPDATE gebruiker SET Naam = '" + Name + "', Mailadres = '" + Email + "' WHERE Mailadres = '" + _mailOld + "';";
+                        }
+                        else
+                        {
+                            query = "UPDATE gebruiker SET Naam = '" + Name + "', Wachtwoord = '" + passwordMD5 + "', Mailadres = '" + Email + "' WHERE Mailadres = '" + _mailOld + "';";
+                        }
+                        Debug.WriteLine(query);
+                    }
+                    else
+                    {
+                        query = "INSERT INTO gebruiker (mailadres,wachtwoord,naam) VALUES('" + Email + "','" + passwordMD5 + "','" + Name + "');";
+                    }
+                    MySqlCommand mycommand = new MySqlCommand(query);
+                    _database.setData(mycommand);
+                    _app.ShowGebruikerView();
+                }
+                else
+                {
+                    MessageBox.Show("Wachtwoorden komen niet overeen");
+                }
             }
             else
             {
-                MessageBox.Show("Wachtwoorden komen niet overeen");
+                string message = "De volgende gegevens zijn niet ingevuld: \n";
+                if (Name == "")
+                {
+                    message += " - Naam \n";
+                }
+                if (Email == "")
+                {
+                    message += " - Email \n";
+                }
+                if (Password == "")
+                {
+                    message += " - Wachtwoord \n";
+                }
+
+                MessageBox.Show(message);
             }
         }
 
@@ -60,14 +100,32 @@ namespace MSD.ViewModels
             _app.ShowGebruikerView();
         }
 
-        
+        public User User
+        {
+            get { return _user; }
+            set 
+            {
+                _user = value;
+                _mailOld = _user.Email;
+            }
+        }
+
+        public bool Editing
+        {
+            get { return _editing; }
+            set 
+            {
+                _editing = value;
+                OnPropertyChanged(Title);
+            }
+        }
+
         public string Title
         {
-            get { return _title; }
-            set
+            get
             {
-                _title = value;
-                OnPropertyChanged(Title);
+                if (Editing) return "Gebruiker Aanpassen";
+                else return "Nieuwe Gebruiker";
             }
         }
 
@@ -76,11 +134,12 @@ namespace MSD.ViewModels
         {
             get
             {
-                return _name;
+                if (User.Name == null) return "";
+                return User.Name;
             }
             set
             {
-                _name = value;
+                User.Name = value;
                 OnPropertyChanged("Name");
             }
         }
@@ -90,11 +149,12 @@ namespace MSD.ViewModels
         {
             get
             {
-                return _email;
+                if (User.Email == null) return "";
+                return User.Email;
             }
             set
             {
-                _email = value;
+                User.Email = value;
                 OnPropertyChanged("Email");
             }
         }
