@@ -56,7 +56,6 @@ namespace MSD.ViewModels
         {
             GebruikerAccountViewModel vm = (GebruikerAccountViewModel)ViewFactory.getViewModel(_app, "gebruikerAccountViewModel");
 
-            //vm.Title = "Nieuwe Gebruiker";
             vm.Editing = false;
             vm.User = new User();
 
@@ -71,11 +70,9 @@ namespace MSD.ViewModels
         {
             GebruikerAccountViewModel vm = (GebruikerAccountViewModel)ViewFactory.getViewModel(_app, "gebruikerAccountViewModel");
 
-            //vm.Title = "Gebruiker Aanpasen";
             vm.Editing = true;
             vm.User = SelectedItem;
 
-            
             vm.Password = "";
             vm.RepeatPassword = "";
 

@@ -24,7 +24,6 @@ namespace MSD.ViewModels
         private Database _database;
 
         private string _email;
-        //private string _password;
 
         private PasswordBox _passwordBox;
 
@@ -85,13 +84,10 @@ namespace MSD.ViewModels
                         //set de username die bij het emailadres hoort
                         MainWindowModel mainWindowModel = (MainWindowModel)ViewFactory.getViewModel(_app, "mainWindowModel");
                         mainWindowModel.UserName = data.Rows[0][2].ToString();
-
                     }
                     else
                     {
-
                         MessageBox.Show("Het ingevoerde wachtwoord is niet juist");
-
                     }
                 }
                 else
@@ -104,7 +100,6 @@ namespace MSD.ViewModels
             {
                 MessageBox.Show("Het ingevoerde e-mailadres komt niet voor in ons bestand");
             }
-
         }
 
         public RelayCommand ShowWachtwoordVergeten { get { return _WachtwoordVergeten; } }
