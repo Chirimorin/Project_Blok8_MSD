@@ -12,9 +12,18 @@ namespace MSD.ViewModels
     {
         private readonly IApplicationController _app;
 
+        private bool _afstuderen;
+
         public StageViewModel(IApplicationController app)
         {
             _app = app;
         }
+
+        public bool Afstuderen
+        {
+            get { return _afstuderen; }
+            set { _afstuderen = value; }
+        }
+
     }
 }

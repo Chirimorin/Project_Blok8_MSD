@@ -19,6 +19,7 @@ namespace MSD.ViewModels
         private readonly RelayCommand _ShowStudentCommand;
         private readonly RelayCommand _ShowMatchCommand;
         private readonly RelayCommand _ShowStageCommand;
+        private readonly RelayCommand _ShowAfstuderenCommand;
         private readonly RelayCommand _ShowGebruikerCommand;
         private readonly RelayCommand _LogoutCommand;
 
@@ -29,13 +30,14 @@ namespace MSD.ViewModels
         public MainWindowModel(IApplicationController app)
         {
             _app = app;
-            this._ShowBedrijfCommand = new RelayCommand(ShowBedrijf);
-            this._ShowDocentCommand = new RelayCommand(ShowDocent);
-            this._ShowStudentCommand = new RelayCommand(ShowStudent);
-            this._ShowGebruikerCommand = new RelayCommand(ShowGebruiker);
-            this._ShowMatchCommand = new RelayCommand(ShowMatchInvoer);
-            this._ShowStageCommand = new RelayCommand(ShowStage);
-            this._LogoutCommand = new RelayCommand(Logout);
+            _ShowBedrijfCommand = new RelayCommand(ShowBedrijf);
+            _ShowDocentCommand = new RelayCommand(ShowDocent);
+            _ShowStudentCommand = new RelayCommand(ShowStudent);
+            _ShowGebruikerCommand = new RelayCommand(ShowGebruiker);
+            _ShowMatchCommand = new RelayCommand(ShowMatchInvoer);
+            _ShowStageCommand = new RelayCommand(ShowStage);
+            _ShowAfstuderenCommand = new RelayCommand(ShowAfstuderen);
+            _LogoutCommand = new RelayCommand(Logout);
         }
 
         public RelayCommand ShowBedrijfCommand { get { return _ShowBedrijfCommand; } }
@@ -62,6 +64,12 @@ namespace MSD.ViewModels
             _app.ShowStageView();
         }
 
+        public RelayCommand ShowAfstuderenCommand { get { return _ShowAfstuderenCommand; } }
+        public void ShowAfstuderen(object command)
+        {
+            _app.ShowAfstuderenView();
+        }
+
         public RelayCommand ShowMatchCommand { get { return _ShowMatchCommand; } }
         public void ShowMatchInvoer(object command)
         {
@@ -85,10 +93,7 @@ namespace MSD.ViewModels
         //username komt uit de database
         public string UserName
         {
-            get
-            {
-                return _username;
-            }
+            get { return _username; }            
             set
             {
                 _username = value;

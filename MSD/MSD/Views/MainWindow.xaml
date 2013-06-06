@@ -68,15 +68,17 @@
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Label Content="{Binding UserName}" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14.667" Grid.Row="0"/>
                 <Button Command="{Binding ShowMatchCommand}" Grid.Row="1" Content="Matchen" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
                 <Button Command="{Binding ShowStageCommand}" Grid.Row="2" Content="Stage" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-                <Button Command="{Binding ShowDocentCommand}" Grid.Row="3" Content="Docenten" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-                <Button Command="{Binding ShowStudentCommand}" Grid.Row="4" Content="Studenten" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-                <Button Command="{Binding ShowBedrijfCommand}" Grid.Row="5" Content="Bedrijven" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-                <Button Command="{Binding ShowGebruikerCommand}" Grid.Row="6" Content="Gebruikers" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-                <Button Command="{Binding LogoutCommand}" Grid.Row="7" Content="Uitloggen" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+                <Button Command="{Binding ShowAfstuderenCommand}" Grid.Row="3" Content="Afstuderen" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+                <Button Command="{Binding ShowDocentCommand}" Grid.Row="4" Content="Docenten" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+                <Button Command="{Binding ShowStudentCommand}" Grid.Row="5" Content="Studenten" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+                <Button Command="{Binding ShowBedrijfCommand}" Grid.Row="6" Content="Bedrijven" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+                <Button Command="{Binding ShowGebruikerCommand}" Grid.Row="7" Content="Gebruikers" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+                <Button Command="{Binding LogoutCommand}" Grid.Row="8" Content="Uitloggen" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
             </Grid>
         </Grid>
         <ContentControl Grid.Column="1"

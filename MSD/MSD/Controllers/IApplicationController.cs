@@ -29,5 +29,7 @@ namespace MSD.Controllers
 
         void ShowMainWindow();
         void ShowLoginView();
+
+        void ShowAfstuderenView();
     }
 }

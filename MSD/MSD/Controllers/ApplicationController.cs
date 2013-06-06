@@ -88,6 +88,15 @@ namespace MSD.Controllers
         public void ShowStageView()
         {
             ShowView("stageViewModel");
+            StageViewModel stageViewModel = (StageViewModel)ViewFactory.getViewModel(this, "stageViewModel");
+            stageViewModel.Afstuderen = false;
+        }
+
+        public void ShowAfstuderenView()
+        {
+            ShowView("stageViewModel");
+            StageViewModel stageViewModel = (StageViewModel)ViewFactory.getViewModel(this, "stageViewModel");
+            stageViewModel.Afstuderen = true;
         }
 
         public void ShowStageopdrachtView()
