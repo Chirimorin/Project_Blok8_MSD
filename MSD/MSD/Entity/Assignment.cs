@@ -74,5 +74,29 @@ namespace MSD.Entity
                 _permission = value;
             }
         }
+        private List<string> _knowledge;
+        public List<string> Knowledge
+        {
+            get
+            {
+                return _knowledge;
+            }
+            
+        }
+        private string _knowledgeItem;
+        public string KnowLedgeItem
+        {
+            get
+            {
+                return _knowledgeItem;
+            }
+            set
+            {
+                _knowledgeItem = value;
+                Knowledge.Add(_knowledgeItem);
+            }
+        }
+    
+
     }
 }

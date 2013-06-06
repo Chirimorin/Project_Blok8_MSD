@@ -58,32 +58,58 @@ namespace MSD.ViewModels
 
         public string StudentNo
         {
-            get { return Student.StudentNo; }
-            set { Student.StudentNo = value; }
+            get { 
+                if (Student.StudentNo == null) return "";
+                return Student.StudentNo;
+            }
+            set { Student.StudentNo = value;
+            OnPropertyChanged("StudentNo");
+            }
+
         }
 
         public string Name
         {
-            get { return Student.Name; }
-            set { Student.Name = value; }
+            get
+            {
+                if (Student.Name == null) return "";
+                return Student.Name; }
+            set { Student.Name = value;
+            OnPropertyChanged("Name");
+            }
         }
 
         public string Email
         {
-            get { return Student.Email; }
-            set { Student.Email = value; }
+            get
+            {
+                if (Student.Email == null) return "";
+                return Student.Email; }
+            set { Student.Email = value;
+            OnPropertyChanged("Email");
+            }
         }
 
         public string Phone
         {
-            get { return Student.Phone; }
-            set { Student.Phone = value; }
+            get
+            {
+                if (Student.Phone == null) return "";
+                return Student.Phone; }
+            set { Student.Phone = value;
+            OnPropertyChanged("Phone");
+            }
         }
 
         public string Education
         {
-            get { return Student.Education; }
-            set { Student.Education = value; }
+            get
+            {
+                if (Student.Education == null) return "";
+                return Student.Education; }
+            set { Student.Education = value;
+            OnPropertyChanged("Education");
+            }
         }
 
     }

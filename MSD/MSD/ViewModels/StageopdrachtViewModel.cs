@@ -114,6 +114,18 @@ namespace MSD.ViewModels
                 Assignment.Permission = value;
             }
         }
+        public string KnowLedgeItem
+        {
+            get
+            {
+                return Assignment.KnowLedgeItem;
+            }
+            set
+            {
+                Assignment.KnowLedgeItem = value;
+                Assignment.Knowledge.Add(Assignment.KnowLedgeItem);
+            }
+        }
 
     }
 }

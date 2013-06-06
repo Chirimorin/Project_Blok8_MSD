@@ -73,11 +73,40 @@ namespace MSD.ViewModels
             StageopdrachtViewModel vm2 = (StageopdrachtViewModel)ViewFactory.getViewModel(_app, "stageopdrachtViewModel");
 
             vm.Title = "Student Aanpassen";
+            vm2.Title = "Student Aanpassen";
             vm.Student = SelectedItem;
+            makeAssignment(vm2);
+
+            
+
+
             //vm2.Assignment = get assignment from selected item
             //TODO: Gegevens invullen zoals in de database!
 
             _app.ShowStudentPersoonView();
+        }
+        /// <summary>
+        /// maakt het assignment object dat bij de student hoort
+        /// </summary>
+        public void makeAssignment(StageopdrachtViewModel vm2)
+        {
+            string query = "";
+            MySqlCommand mycommand = new MySqlCommand(query);
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable data = new DataTable();
+            adapter = Database.getData(mycommand);
+            adapter.Fill(data);
+                if (data.Rows.Count != 0)
+                {
+                        vm2.Assignment = new Assignment{
+                        Comments = data.Rows[0][0].ToString(),
+                        Description = data.Rows[0][1].ToString(),
+                        Accepted = (bool)data.Rows[0][2],
+                        Permission = (bool)data.Rows[0][3],
+                        TempPermission = (bool)data.Rows[0][4],
+                        KnowLedgeItem = data.Rows[0][5].ToString(),
+                }; 
+            }
         }
 
         /// <summary>
@@ -102,6 +131,18 @@ namespace MSD.ViewModels
                     Education = table.Rows[RowNr][4].ToString(),
                     
                 });
+            }
+        }
+        private Assignment _assignment;
+        public Assignment Assignment
+        {
+            get
+            {
+                return _assignment;
+            }
+            set
+            {
+                _assignment = value;
             }
         }
 
