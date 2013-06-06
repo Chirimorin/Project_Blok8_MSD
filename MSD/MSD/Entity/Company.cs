@@ -11,7 +11,7 @@ using MSD.Models;
 namespace MSD.Entity
 {
     //TODO alle entiteiten maken zoals deze..
-    class Company : PropertyChangedBase, IDataErrorInfo
+    public class Company : PropertyChangedBase, IDataErrorInfo
     {
         private string _company;
         private string _website;

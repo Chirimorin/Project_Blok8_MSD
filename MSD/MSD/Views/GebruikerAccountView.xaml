@@ -17,7 +17,7 @@
                 <RowDefinition Height="138*"/>
             </Grid.RowDefinitions>
             <Label Content="Naam" HorizontalAlignment="Left" Margin="121,17,0,0" VerticalAlignment="Top"/>
-            <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="168.36,17.333,28.64,0"/>
+            <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="168.36,17.333,28.64,0" />
             <Label Content="E-mailadres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="25,58,0,0" VerticalAlignment="Top" Width="141"/>
             <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="168.36,58.333,28.64,0" BorderBrush="#FFAEAEAE"/>
             <Label Content="Wachtwoord" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="25,102,0,0" VerticalAlignment="Top" Width="141"/>

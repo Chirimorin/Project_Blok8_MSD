@@ -27,19 +27,18 @@ namespace MSD.ViewModels
             set { _title = value; this.OnPropertyChanged("Title"); }
         }
 
-        private string _company;
+        private Company _company;
 
-        public string Company
+        public Company Company
         {
             get { return _company; }
-            set { _company = value; this.OnPropertyChanged("Company"); }
+            set { _company = value;}
         }
-        private string _website;
 
         public string Website
         {
-            get { return _website; }
-            set { _website = value; this.OnPropertyChanged("Website"); }
+            get { return Company.Website; }
+            set { Company.Website = value; this.OnPropertyChanged("Website"); }
         }
         private string _adress;
 
@@ -103,9 +102,9 @@ namespace MSD.ViewModels
         public RelayCommand SaveCommand { get { return _saveCommand; } }
         public void Save(object command)
         {
-            string query = "INSERT INTO stagebedrijf(bedrijfnr,naam,plaats,straat,postcode,telefoonnr,website,contactpersoon,email,branch) VALUES(" + "," +_company + "," + _city + "," + _adress + "," + _zip + "," + _phone + "," + _website + "," + _contact + "," + _email + "," + _branch + ")";
-            MySqlCommand mycommand = new MySqlCommand(query);
-            _database.getData(mycommand);
+            //string query = "INSERT INTO stagebedrijf(bedrijfnr,naam,plaats,straat,postcode,telefoonnr,website,contactpersoon,email,branch) VALUES(" + "," +_company + "," + _city + "," + _adress + "," + _zip + "," + _phone + "," + _website + "," + _contact + "," + _email + "," + _branch + ")";
+            //MySqlCommand mycommand = new MySqlCommand(query);
+            //_database.getData(mycommand);
         }
 
         public RelayCommand BackCommand { get { return _backCommand; } }

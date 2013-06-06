@@ -20,6 +20,7 @@ namespace MSD.ViewModels
         private readonly RelayCommand _bedrijfAanpassenCommand;
         private Database _database;
         private ObservableCollection<Company> _companys = new ObservableCollection<Company>();
+        private Company _selectedCompany;
 
         public StagebedrijfOverzichtViewModel(IApplicationController app)
         {
@@ -39,19 +40,23 @@ namespace MSD.ViewModels
             }
         }
 
+        public Company SelectedCompany
+        {
+            get { return _selectedCompany; }
+            set
+            {
+                _selectedCompany = value;
+                this.OnPropertyChanged("SelectedCompany");
+
+            }
+        }
+
         public RelayCommand NieuwBedrijfCommand { get { return _nieuwBedrijfCommand;}}
         public void NieuwBedrijf(object command)
         {
             StageBedrijfViewModel vm = (StageBedrijfViewModel)ViewFactory.getViewModel(_app, "stageBedrijfViewModel");
             vm.Title = "Nieuw Bedrijf";
-            vm.Adress = "";
-            vm.Branch = "";
-            vm.City = "";
-            vm.Company = "";
-            vm.Contact = "";
-            vm.Email = "";
-            vm.Phone = "";
-            vm.Website = "";
+            vm.Company = new Company();
 
             _app.ShowBedrijfView();
         }
@@ -61,16 +66,7 @@ namespace MSD.ViewModels
         {
             StageBedrijfViewModel vm = (StageBedrijfViewModel)ViewFactory.getViewModel(_app, "stageBedrijfViewModel");
             vm.Title = "Bedrijf Aanpassen";
-            
-            //TODO: Gegevens invullen zoals in de database!
-            vm.Adress = "";
-            vm.Branch = "";
-            vm.City = "";
-            vm.Company = "";
-            vm.Contact = "";
-            vm.Email = "";
-            vm.Phone = "";
-            vm.Website = "";
+            vm.Company = SelectedCompany;
 
             _app.ShowBedrijfView();
         }
