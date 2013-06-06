@@ -22,7 +22,20 @@ namespace MSD.ViewModels
         public bool Afstuderen
         {
             get { return _afstuderen; }
-            set { _afstuderen = value; }
+            set 
+            {
+                _afstuderen = value;
+                OnPropertyChanged("Title");
+            }
+        }
+
+        public string Title
+        {
+            get
+            {
+                if (Afstuderen) return "Afstuderen";
+                else return "Stages";
+            }
         }
 
     }
