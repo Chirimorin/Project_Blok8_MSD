@@ -45,7 +45,7 @@ namespace MSD.ViewModels
             set
             {
                 _editing = value;
-                OnPropertyChanged(Title);
+                OnPropertyChanged("Title");
             }
         }
 
