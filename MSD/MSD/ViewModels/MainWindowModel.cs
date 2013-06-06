@@ -24,6 +24,10 @@ namespace MSD.ViewModels
         private readonly RelayCommand _LogoutCommand;
 
         private string _username;
+        private string _display;
+
+        
+
 
         private PropertyChangedBase _contents;
 
@@ -108,6 +112,15 @@ namespace MSD.ViewModels
             {
                 _contents = value;
                 OnPropertyChanged("Contents");
+            }
+        }
+
+        public string Display
+        {
+            get { return _display; }
+            set { 
+                _display = value;
+                OnPropertyChanged("Display");
             }
         }
 

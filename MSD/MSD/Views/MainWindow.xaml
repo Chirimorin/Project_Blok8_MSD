@@ -3,6 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:v="clr-namespace:MSD.Views"
         xmlns:m="clr-namespace:MSD.ViewModels"
+        FontSize="13"
+        MinWidth="960"
+        MinHeight="540"
+        WindowStartupLocation="CenterScreen"
         Title="Match Studenten aan Docenten" Height="540" Width="960">
     <Window.Resources>
         <DataTemplate DataType="{x:Type m:DocentKwalificatieViewModel}">
@@ -50,40 +54,75 @@
         <DataTemplate DataType="{x:Type m:StudentViewModel}">
             <v:StudentView DataContext="{Binding}" />
         </DataTemplate>
-    </Window.Resources>
-    <Grid Background="#FFFFFCEE" RenderTransformOrigin="0.50,0.5" ShowGridLines="True">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0"
-              Grid.Row="0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Label Content="{Binding UserName}" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14.667" Grid.Row="0"/>
-                <Button Command="{Binding ShowMatchCommand}" Grid.Row="1" Content="Matchen" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-                <Button Command="{Binding ShowStageCommand}" Grid.Row="2" Content="Stage" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-                <Button Command="{Binding ShowAfstuderenCommand}" Grid.Row="3" Content="Afstuderen" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-                <Button Command="{Binding ShowDocentCommand}" Grid.Row="4" Content="Docenten" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-                <Button Command="{Binding ShowStudentCommand}" Grid.Row="5" Content="Studenten" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-                <Button Command="{Binding ShowBedrijfCommand}" Grid.Row="6" Content="Bedrijven" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-                <Button Command="{Binding ShowGebruikerCommand}" Grid.Row="7" Content="Gebruikers" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-                <Button Command="{Binding LogoutCommand}" Grid.Row="8" Content="Uitloggen" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
-            </Grid>
-        </Grid>
-        <ContentControl Grid.Column="1"
-                        Name="Contents"
-                        Content="{Binding Contents}" />
 
+        <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Border 
+                        Background="{StaticResource Brush_HeaderBackground}" 
+                        BorderBrush="LightGray" 
+                        BorderThickness="1" 
+                        CornerRadius="5" 
+                        Margin="4" 
+                        Padding="4" 
+                        SnapsToDevicePixels="True" 
+                        >
+                        <TextBlock 
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Foreground="White" 
+                        HorizontalAlignment="Center"  
+                        Text="{TemplateBinding Content}" 
+                        />
+                        </Border>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="MainBorderStyle" TargetType="{x:Type Border}">
+            <Setter Property="Background" Value="WhiteSmoke" />
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+        </Style>
+    </Window.Resources>
+    <Grid RenderTransformOrigin="0.50,0.5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="4"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Width="170" Style="{StaticResource MainBorderStyle}">
+            <HeaderedContentControl Header="Menu" Style="{StaticResource MainHCCStyle}"/>
+        </Border>
+        <Border Grid.Column="2" Style="{StaticResource MainBorderStyle}">
+            <HeaderedContentControl Header="{Binding Path=Display, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MainHCCStyle}"/>
+        </Border>
+        <Grid Grid.Column="0" Grid.Row="0" Margin="0,80,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label Content="{Binding UserName}" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14.667" Height="30" Margin="22,-36,22,54" Width="126"/>
+            <Button Command="{Binding ShowMatchCommand}" Grid.Row="0" Content="Matchen" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+            <Button Command="{Binding ShowStageCommand}" Grid.Row="1" Content="Stage" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+            <Button Command="{Binding ShowAfstuderenCommand}" Grid.Row="2" Content="Afstuderen" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+            <Button Command="{Binding ShowDocentCommand}" Grid.Row="3" Content="Docenten" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+            <Button Command="{Binding ShowStudentCommand}" Grid.Row="4" Content="Studenten" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+            <Button Command="{Binding ShowBedrijfCommand}" Grid.Row="5" Content="Bedrijven" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+            <Button Command="{Binding ShowGebruikerCommand}" Grid.Row="6" Content="Gebruikers" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+            <Button Command="{Binding LogoutCommand}" Grid.Row="7" Content="Uitloggen" VerticalAlignment="Center" Foreground="Black" Height="25" Width="125" FontStyle="Italic" FontSize="15"/>
+        </Grid>
+        <HeaderedContentControl Name="Contents" Content="{Binding Contents}" Grid.Column="2" />
     </Grid>
 </Window>

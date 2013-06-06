@@ -6,41 +6,66 @@
     xmlns:v="clr-namespace:MSD.Views"
     xmlns:m="clr-namespace:MSD.ViewModels"
 	Title="Inloggen - Match Studenten aan Docenten"
-	Width="375" Height="375" Background="#FFFFFCEE">
+    WindowStartupLocation="CenterScreen"
+    MinWidth="375" MinHeight="375"
+	Width="375" Height="375" Background="White">
+    
+    <Window.Resources>
+        <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Border 
+                        Background="{StaticResource Brush_HeaderBackground}" 
+                        BorderBrush="LightGray" 
+                        BorderThickness="1" 
+                        CornerRadius="5" 
+                        Margin="4" 
+                        Padding="4" 
+                        SnapsToDevicePixels="True" 
+                        >
+                        <TextBlock 
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Foreground="White" 
+                        HorizontalAlignment="Center"  
+                        Text="{TemplateBinding Content}" 
+                        />
+                        </Border>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
+        <Style x:Key="MainBorderStyle" TargetType="{x:Type Border}">
+            <Setter Property="Background" Value="WhiteSmoke" />
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+        </Style>
+    </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Key="Enter" Command="{Binding ShowMainWindowCommand}" />
     </Window.InputBindings>
-
+    
     <Grid x:Name="LayoutRoot">
-
-        <Label Content="Inloggen" HorizontalAlignment="Left" Margin="130.123,21,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
-
-        <Label Content="E-mail" HorizontalAlignment="Left" Margin="32,110,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.542,0.989"/>
-        <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Margin="32,146,39,0" TextWrapping="Wrap" Height="22" VerticalAlignment="Top">
-            <TextBox.BorderBrush>
-                <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
-                    <GradientStop Color="#FFABADB3" Offset="0.05"/>
-                    <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
-                    <GradientStop Color="#FFAEAEAE" Offset="1"/>
-                </LinearGradientBrush>
-            </TextBox.BorderBrush>
-        </TextBox>
-
-        <Label Content="Wachtwoord" HorizontalAlignment="Left" Margin="32,0,0,124" VerticalAlignment="Bottom" FontSize="16"/>
-        <PasswordBox Name="PasswordBox" Height="22" Margin="32,221,39,0" VerticalAlignment="Top">
-            <PasswordBox.BorderBrush>
-                <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
-                    <GradientStop Color="#FFABADB3" Offset="0.05"/>
-                    <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
-                    <GradientStop Color="#FFAEAEAE" Offset="1"/>
-                </LinearGradientBrush>
-            </PasswordBox.BorderBrush>
-        </PasswordBox>
-
-        <Button Content="Log in" Command="{Binding ShowMainWindowCommand}" HorizontalAlignment="Right" Margin="0,0,39.324,34.04" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15" />
-        <Button Command="{Binding ShowWachtwoordVergeten}" Content="Wachtwoord vergeten" HorizontalAlignment="Right" Margin="0,0,180,34" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="155" FontStyle="Italic" FontSize="15" />
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource MainBorderStyle}">
+            <HeaderedContentControl Header="Inloggen" Style="{StaticResource MainHCCStyle}"/>
+        </Border>
+        <Label Grid.Row="1" Content="E-mail" HorizontalAlignment="Left"  FontSize="16"/>
+        <TextBox Grid.Row="2" Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Height="22"></TextBox>
+        <Label Grid.Row="3" Content="Wachtwoord" HorizontalAlignment="Left"  FontSize="16"/>
+        <PasswordBox Grid.Row="4" Name="PasswordBox" Height="22"></PasswordBox>
+        <Button Grid.Row="5" Content="Log in" Command="{Binding ShowMainWindowCommand}" HorizontalAlignment="Right"    Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15" />
+        <Button Grid.Row="5"  Command="{Binding ShowWachtwoordVergeten}" Content="Wachtwoord vergeten" HorizontalAlignment="Left"  Foreground="Black" Height="25" Width="155" FontStyle="Italic" FontSize="15" />
     </Grid>
-
 </Window>

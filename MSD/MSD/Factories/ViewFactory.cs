@@ -48,40 +48,49 @@ namespace MSD.Factories
                 case ("stageBedrijfViewModel"):
                     if (_stageBedrijfView == null)
                         _stageBedrijfView = new StageBedrijfViewModel(app);
+                    _mainWindowModel.Display = "Stage";
                     return _stageBedrijfView;
                 case ("stageBedrijfOverzichtViewModel"):
                     if (_stageBedrijfOverzichtView == null)
                         _stageBedrijfOverzichtView = new StagebedrijfOverzichtViewModel(app);
+                    _mainWindowModel.Display = "Bedrijven";
                     return _stageBedrijfOverzichtView;
                 case ("docentKwalificatieViewModel"):
                     if (_docentKwalificatieView == null)
                         _docentKwalificatieView = new DocentKwalificatieViewModel(app);
+                    _mainWindowModel.Display = "Docenten";
                     return _docentKwalificatieView;
                 case ("docentPersoonViewModel"):
                     if (_docentPersoonView == null)
                         _docentPersoonView = new DocentPersoonViewModel(app);
+                    _mainWindowModel.Display = "Docenten";
                     return _docentPersoonView;
                 case ("docentViewModel"):
                     if (_docentView == null)
                         _docentView = new DocentViewModel(app);
                     _docentView.fillTeacherTable();
+                    _mainWindowModel.Display = "Docenten";
                     return _docentView;
                 case ("gebruikerAccountViewModel"):
                     if (_gebruikerAccountView == null)
                         _gebruikerAccountView = new GebruikerAccountViewModel(app);
+                    _mainWindowModel.Display = "Gebruikers";
                     return _gebruikerAccountView;
                 case ("gebruikerViewModel"):
                     if (_gebruikerView == null)
                         _gebruikerView = new GebruikerViewModel(app);
                     _gebruikerView.fillUserTable();
+                    _mainWindowModel.Display = "Gebruikers";
                     return _gebruikerView;
                 case ("matchDetailsViewModel"):
                     if (_matchDetailsView == null)
                         _matchDetailsView = new MatchDetailsViewModel(app);
+                    _mainWindowModel.Display = "Matchen";
                     return _matchDetailsView;
                 case ("matchInvoerViewModel"):
                     if (_matchInvoerView == null)
                         _matchInvoerView = new MatchInvoerViewModel(app);
+                    _mainWindowModel.Display = "Matchen";
                     return _matchInvoerView;
                 case ("matchMogelijkViewModel"):
                     if (_matchMogelijkView == null)
@@ -91,23 +100,28 @@ namespace MSD.Factories
                 case ("matchSuccesViewModel"):
                     if (_matchSuccesView == null)
                         _matchSuccesView = new MatchSuccesViewModel(app);
+                    _mainWindowModel.Display = "Matchen";
                     return _matchSuccesView;
                 case ("stageViewModel"):
                     if (_stageView == null)
                         _stageView = new StageViewModel(app);
+                    _mainWindowModel.Display = "Stage";
                     return _stageView;
                 case ("stageopdrachtViewModel"):
                     if (_stageopdrachtView == null)
                         _stageopdrachtView = new StageopdrachtViewModel(app);
+                    _mainWindowModel.Display = "Stage";
                     return _stageopdrachtView;
                 case ("studentPersoonViewModel"):
                     if (_studentPersoonView == null)
                         _studentPersoonView = new StudentPersoonViewModel(app);
+                    _mainWindowModel.Display = "Studenten";
                     return _studentPersoonView;
                 case ("studentViewModel"):
                     if (_studentView == null)
                         _studentView = new StudentViewModel(app);
                     _studentView.fillStudentTable();
+                    _mainWindowModel.Display = "Studenten";
                     return _studentView;
                 case ("wachtwoordViewModel"):
                     _wachtwoordViewModel = new WachtwoordViewModel(app);
