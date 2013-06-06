@@ -60,17 +60,8 @@ namespace MSD.ViewModels
             vm.Title = "Nieuwe Student";
             vm2.Title = "Nieuwe Student";
 
-            vm.Email = "";
-            vm.FirstName = "";
-            vm.LastName = "";
-            vm.StudentNo = "";
-            vm.Year = "";
-
-            vm2.Accepted = false;
-            vm2.Assignment = "";
-            vm2.Comments = "";
-            vm2.Permission = false;
-            vm2.TempPermission = false;
+            vm.Student = new Student();
+            vm2.Assignment = new Assignment();
 
             _app.ShowStudentPersoonView();
         }
@@ -82,19 +73,9 @@ namespace MSD.ViewModels
             StageopdrachtViewModel vm2 = (StageopdrachtViewModel)ViewFactory.getViewModel(_app, "stageopdrachtViewModel");
 
             vm.Title = "Student Aanpassen";
-
+            vm.Student = SelectedItem;
+            //vm2.Assignment = get assignment from selected item
             //TODO: Gegevens invullen zoals in de database!
-            vm.Email = "";
-            vm.FirstName = "";
-            vm.LastName = "";
-            vm.StudentNo = "";
-            vm.Year = "";
-
-            vm2.Accepted = false;
-            vm2.Assignment = "";
-            vm2.Comments = "";
-            vm2.Permission = false;
-            vm2.TempPermission = false;
 
             _app.ShowStudentPersoonView();
         }
@@ -105,7 +86,7 @@ namespace MSD.ViewModels
         public void fillStudentTable()
         {
             Students.Clear();
-            MySqlCommand cmd = new MySqlCommand("select * from Student");
+            MySqlCommand cmd = new MySqlCommand("select s.studentnr, s.naam, s.mailadres, s.telefoonnr, o.omschrijving from student s JOIN opleiding o ON s.opleiding_afkorting = o.afkorting");
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = Database.getData(cmd);
             adapter.Fill(table);
@@ -114,40 +95,30 @@ namespace MSD.ViewModels
             {
                 Students.Add(new Student
                 {
-                    Name = table.Rows[RowNr][2].ToString(),
+                    StudentNo = table.Rows[RowNr][0].ToString(),
+                    Name = table.Rows[RowNr][1].ToString(),
+                    Email = table.Rows[RowNr][2].ToString(),
+                    Phone = table.Rows[RowNr][3].ToString(),
+                    Education = table.Rows[RowNr][4].ToString(),
+                    
                 });
             }
         }
 
-        public string Name { get { return FirstName + " " + LastName; } }
-
-        private string _firstName;
-        public string FirstName
+        private string _name;
+        public string Name
         {
             get
             {
-                return _firstName;
+                return _name;
             }
             set
             {
-                _firstName = value;
-                OnPropertyChanged("FirstName");
+                _name = value;
+                OnPropertyChanged("Name");
             }
         }
 
-        private string _lastName;
-        public string LastName
-        {
-            get
-            {
-                return _lastName;
-            }
-            set
-            {
-                _lastName = value;
-                OnPropertyChanged("LastName");
-            }
-        }
 
         private string _email;
         public string Email

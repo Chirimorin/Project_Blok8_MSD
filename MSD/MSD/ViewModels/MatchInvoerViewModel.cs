@@ -80,7 +80,7 @@ namespace MSD.ViewModels
                 {
                     students.Add(new Student
                     {
-                        StudentNumber = data.Rows[RowNr][0].ToString(),
+                        StudentNo = data.Rows[RowNr][0].ToString(),
                         Name = data.Rows[RowNr][1].ToString(),
                         Email = data.Rows[RowNr][2].ToString(),
                         Education = data.Rows[RowNr][3].ToString(),

@@ -1,8 +1,10 @@
 ﻿using MSD.Controllers;
+using MSD.Entity;
 using MSD.Factories;
 using MSD.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _verderCommand;
         private readonly RelayCommand _terugCommand;
+        private Student _student;
 
         public StudentPersoonViewModel(IApplicationController app)
         {
@@ -44,75 +47,43 @@ namespace MSD.ViewModels
                 OnPropertyChanged(Title);
             }
         }
-
-        private string _firstName;
-        public string FirstName
+        public Student Student
         {
-            get
-            {
-                return _firstName;
-            }
+            get { return _student; }
             set
             {
-                _firstName = value;
-                OnPropertyChanged("FirstName");
+                _student = value;
             }
         }
 
-        private string _lastName;
-        public string LastName
-        {
-            get
-            {
-                return _lastName;
-            }
-            set
-            {
-                _lastName = value;
-                OnPropertyChanged("LastName");
-            }
-        }
-
-        private string _email;
-        public string Email
-        {
-            get
-            {
-                return _email;
-            }
-            set
-            {
-                _email = value;
-                OnPropertyChanged("Email");
-            }
-        }
-
-        private string _studentNo;
         public string StudentNo
         {
-            get
-            {
-                return _studentNo;
-            }
-            set
-            {
-                _studentNo = value;
-                OnPropertyChanged("StudentNo");
-            }
+            get { return Student.StudentNo; }
+            set { Student.StudentNo = value; }
         }
 
-        private string _year;
-        public string Year
+        public string Name
         {
-            get
-            {
-                return _year;
-            }
-            set
-            {
-                _year = value;
-                OnPropertyChanged("Year");
-            }
+            get { return Student.Name; }
+            set { Student.Name = value; }
+        }
+
+        public string Email
+        {
+            get { return Student.Email; }
+            set { Student.Email = value; }
+        }
+
+        public string Phone
+        {
+            get { return Student.Phone; }
+            set { Student.Phone = value; }
+        }
+
+        public string Education
+        {
+            get { return Student.Education; }
+            set { Student.Education = value; }
         }
 
     }

@@ -12,7 +12,7 @@ namespace MSD.Entity
     {
         private string _studentNumber;
 
-        public string StudentNumber
+        public string StudentNo
         {
             get { return _studentNumber; }
             set { _studentNumber = value; }
@@ -23,56 +23,13 @@ namespace MSD.Entity
         {
             get { return _name; }
             set { _name = value; }
-        }
-        
-        private string _dateofbirth;
-
-        public string Dateofbirth
-        {
-            get { return _dateofbirth; }
-            set { _dateofbirth = value; }
-        }
+        }        
         private string _email;
 
         public string Email
         {
             get { return _email; }
             set { _email = value; }
-        }
-        private string _enrolYear;
-
-        public string EnrolYear
-        {
-            get { return _enrolYear; }
-            set { _enrolYear = value; }
-        }
-        private string _graduationYear;
-
-        public string GraduationYear
-        {
-            get { return _graduationYear; }
-            set { _graduationYear = value; }
-        }
-        private string _city;
-
-        public string City
-        {
-            get { return _city; }
-            set { _city = value; }
-        }
-        private string _adres;
-
-        public string Adres
-        {
-            get { return _adres; }
-            set { _adres = value; }
-        }
-        private string _zip;
-
-        public string Zip
-        {
-            get { return _zip; }
-            set { _zip = value; }
         }
         private string _phone;
 

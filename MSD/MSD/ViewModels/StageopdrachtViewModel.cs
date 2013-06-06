@@ -1,4 +1,5 @@
 ﻿using MSD.Controllers;
+using MSD.Entity;
 using MSD.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _opslaanCommand;
         private readonly RelayCommand _terugCommand;
+        private Assignment _assignment;
 
         public StageopdrachtViewModel(IApplicationController app)
         {
@@ -33,6 +35,15 @@ namespace MSD.ViewModels
             _app.ShowStudentView();
         }
 
+        public Assignment Assignment
+        {
+            get { return _assignment; }
+            set
+            {
+                _assignment = value;
+            }
+        }
+
         private string _title;
         public string Title
         {
@@ -44,73 +55,63 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _assignment;
-        public string Assignment
+        public string Description
         {
             get
             {
-                return _assignment;
+                return Assignment.Description;
             }
             set
             {
-                _assignment = value;
-                OnPropertyChanged("Assignment");
+                Assignment.Description = value;
             }
         }
 
-        private string _comments;
         public string Comments
         {
             get
             {
-                return _comments;
+                return Assignment.Comments;
             }
             set
             {
-                _comments = value;
-                OnPropertyChanged("Comments");
+                Assignment.Comments = value;
             }
         }
 
-        private bool _accepted;
         public bool Accepted
         {
             get
             {
-                return _accepted;
+                return Assignment.Accepted;
             }
             set
             {
-                _accepted = value;
-                OnPropertyChanged("Accepted");
+                Assignment.Accepted = value;
             }
         }
 
-        private bool _tempPermission;
         public bool TempPermission
         {
             get
             {
-                return _tempPermission;
+                return Assignment.TempPermission;
             }
             set
             {
-                _tempPermission = value;
-                OnPropertyChanged("TempPermission");
+                Assignment.TempPermission = value;
             }
         }
 
-        private bool _permission;
         public bool Permission
         {
             get
             {
-                return _permission;
+                return Assignment.Permission;
             }
             set
             {
-                _permission = value;
-                OnPropertyChanged("Permission");
+                Assignment.Permission = value;
             }
         }
 

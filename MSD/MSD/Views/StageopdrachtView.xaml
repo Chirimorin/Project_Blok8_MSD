@@ -25,7 +25,7 @@
         <Button Command="{Binding OpslaanCommand}" Content="Opslaan" Margin="604,457,41,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667"/>
         <Label Content="Opdracht omschrijving:" HorizontalAlignment="Left" Margin="204,200,0,0" VerticalAlignment="Top"/>
         <Button Command="{Binding TerugCommand}" Content="Terug" Margin="454,457,189,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667"/>
-        <TextBox Text="{Binding Path=Assignment, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="174" Margin="204,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="507"/>
+        <TextBox Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="174" Margin="204,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="507"/>
         <Label Content="Kennisgebieden" HorizontalAlignment="Left" Margin="426,98,0,0" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="552,102,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox HorizontalAlignment="Left" Margin="552,133,0,0" VerticalAlignment="Top" Width="120"/>
