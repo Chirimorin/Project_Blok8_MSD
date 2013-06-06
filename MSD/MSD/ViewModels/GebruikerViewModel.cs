@@ -39,7 +39,13 @@ namespace MSD.ViewModels
             {
                 _selectedItem = value;
                 OnPropertyChanged("SelectedItem");
+                OnPropertyChanged("AanpassenEnabled");
             }
+        }
+
+        public bool AanpassenEnabled
+        {
+            get { return (SelectedItem != null); }
         }
 
         public GebruikerViewModel(IApplicationController app)
