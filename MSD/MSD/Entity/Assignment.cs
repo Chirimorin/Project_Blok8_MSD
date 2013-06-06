@@ -74,6 +74,42 @@ namespace MSD.Entity
                 _permission = value;
             }
         }
+        private string _name;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+        private Company _company;
+        public Company Company
+        {
+            get
+            {
+                return _company;
+            }
+            set
+            {
+                _company = value;
+            }
+        }
+        private string _period;
+        public string Period
+        {
+            get
+            {
+                return _period;
+            }
+            set
+            {
+                _period = value;
+            }
+        }
         private List<string> _knowledge;
         public List<string> Knowledge
         {

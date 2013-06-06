@@ -36,6 +36,13 @@ namespace MSD.ViewModels
             set {
                 _selectedItem = value;
                 this.OnPropertyChanged("SelectedItem");
+                StudentName = SelectedItem.Name;
+                StudentNo = SelectedItem.StudentNo;
+                Email = SelectedItem.Email;
+               /* Teacher;
+                Company;
+                SecondReader;
+                StageType;*/
             }
         }
 
@@ -158,6 +165,34 @@ namespace MSD.ViewModels
                 _name = value;
                 OnPropertyChanged("Name");
             }
+        }
+        private string _studentname;
+        public string StudentName
+        {
+            get
+            {
+                return _studentname;
+            }
+            set
+            {
+                _studentname = value;
+                OnPropertyChanged("StudentName");
+            }
+            
+        }
+        private string _studentno;
+        public string StudentNo
+        {
+            get
+            {
+                return _studentno;
+            }
+            set
+            {
+                _studentno = value;
+                OnPropertyChanged("StudentNo");
+            }
+
         }
 
 

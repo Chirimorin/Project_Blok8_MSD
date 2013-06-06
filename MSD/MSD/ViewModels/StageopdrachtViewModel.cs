@@ -32,6 +32,8 @@ namespace MSD.ViewModels
         public RelayCommand OpslaanCommand { get { return _opslaanCommand; } }
         public void Save(object command)
         {
+
+
             _app.ShowStudentView();
         }
 
@@ -66,6 +68,17 @@ namespace MSD.ViewModels
                 Assignment.Description = value;
             }
         }
+        public string Name
+        {
+            get
+            {
+                return Assignment.Name;
+            }
+            set
+            {
+                Assignment.Name = value;
+            }
+        }
 
         public string Comments
         {
@@ -76,6 +89,28 @@ namespace MSD.ViewModels
             set
             {
                 Assignment.Comments = value;
+            }
+        }
+        public Company Company
+        {
+            get
+            {
+                return Assignment.Company;
+            }
+            set
+            {
+                Assignment.Company = value;
+            }
+        }
+        public string Period
+        {
+            get
+            {
+                return Assignment.Period;
+            }
+            set
+            {
+                Assignment.Period = value;
             }
         }
 
