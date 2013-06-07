@@ -5,6 +5,8 @@ using MSD.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +19,7 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _opslaanCommand;
         private readonly RelayCommand _terugCommand;
+        private string[] _knowledgeAreas;
 
         private bool _editing;
         private Teacher _teacher;
@@ -26,6 +29,16 @@ namespace MSD.ViewModels
             _app = app;
             _opslaanCommand = new RelayCommand(Opslaan);
             _terugCommand = new RelayCommand(Terug);
+        }
+
+        public string[] KnowledgeAreas
+        {
+            get { return _knowledgeAreas; }
+            set
+            {
+                _knowledgeAreas = value;
+                OnPropertyChanged("KnowledgeAreas");
+            }
         }
 
         public RelayCommand OpslaanCommand { get { return _opslaanCommand; } }
@@ -44,7 +57,7 @@ namespace MSD.ViewModels
                 }
                 else
                 {
-                    query = "";
+                    query = "INSERT INTO docent (Naam, Mailadres, Plaats, Adres, Telefoonnr, Voorkeur, Uren) VALUES('" + Teacher.Name + "','" + Teacher.Email + "','" + Teacher.City + "','" + Teacher.Adress + "','" + Teacher.Phone + "','" + Teacher.Preference + "','" + Teacher.Hours + "');";
                 }
                 MySqlCommand mycommand = new MySqlCommand(query);
                 ModelFactory.Database.setData(mycommand);
@@ -78,6 +91,52 @@ namespace MSD.ViewModels
             }
         }
 
+        public void FillKnowledgeAreas()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM kennisgebieden");
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
+            adapter.Fill(table);
+
+            KnowledgeAreas = new string[table.Rows.Count];
+
+            for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
+            {
+                KnowledgeAreas[RowNr] = table.Rows[RowNr][1].ToString();
+            }
+        }
+
+        private void UpdateTeacherKnowledgeAreas()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM kennisgebieden WHERE KennisNr IN (SELECT Kennisgebieden_KennisNr FROM docent_has_kennisgebieden WHERE Docent_Docentnr = " + Teacher.TeacherNo + ")");
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
+            adapter.Fill(table);
+
+            int NumRows = table.Rows.Count;
+
+            if (NumRows >= 1)
+                KnowledgeArea1 = table.Rows[0][1].ToString();
+            else
+                KnowledgeArea1 = "";
+            if (NumRows >= 2)
+                KnowledgeArea2 = table.Rows[1][1].ToString();
+            else
+                KnowledgeArea2 = "";
+            if (NumRows >= 3)
+                KnowledgeArea3 = table.Rows[2][1].ToString();
+            else
+                KnowledgeArea3 = "";
+            if (NumRows >= 4)
+                KnowledgeArea4 = table.Rows[3][1].ToString();
+            else
+                KnowledgeArea4 = "";
+            if (NumRows >= 5)
+                KnowledgeArea5 = table.Rows[4][1].ToString();
+            else
+                KnowledgeArea5 = "";
+        }
+
         public RelayCommand TerugCommand { get { return _terugCommand; } }
         public void Terug(object command)
         {
@@ -91,9 +150,10 @@ namespace MSD.ViewModels
             {
                 _editing = value;
                 OnPropertyChanged("Title");
+                FillKnowledgeAreas(); //Update knowledge dropdowns on pressing new or edit
             }
         }
-
+        
         public string Title
         {
             get
@@ -106,7 +166,11 @@ namespace MSD.ViewModels
         public Teacher Teacher
         {
             get { return _teacher; }
-            set { _teacher = value; }
+            set 
+            {
+                _teacher = value;
+                UpdateTeacherKnowledgeAreas();
+            }
         }
 
         public int Hours
@@ -128,5 +192,56 @@ namespace MSD.ViewModels
                 OnPropertyChanged("Preference");
             }
         }
+
+        public string KnowledgeArea1
+        {
+            get { return Teacher.KnowledgeAreas[0]; }
+            set
+            {
+                Teacher.KnowledgeAreas[0] = value;
+                OnPropertyChanged("KnowledgeArea1");
+            }
+        }
+
+        public string KnowledgeArea2
+        {
+            get { return Teacher.KnowledgeAreas[1]; }
+            set
+            {
+                Teacher.KnowledgeAreas[1] = value;
+                OnPropertyChanged("KnowledgeArea2");
+            }
+        }
+
+        public string KnowledgeArea3
+        {
+            get { return Teacher.KnowledgeAreas[2]; }
+            set
+            {
+                Teacher.KnowledgeAreas[2] = value;
+                OnPropertyChanged("KnowledgeArea3");
+            }
+        }
+
+        public string KnowledgeArea4
+        {
+            get { return Teacher.KnowledgeAreas[3]; }
+            set
+            {
+                Teacher.KnowledgeAreas[3] = value;
+                OnPropertyChanged("KnowledgeArea4");
+            }
+        }
+
+        public string KnowledgeArea5
+        {
+            get { return Teacher.KnowledgeAreas[4]; }
+            set
+            {
+                Teacher.KnowledgeAreas[4] = value;
+                OnPropertyChanged("KnowledgeArea5");
+            }
+        }
+
     }
 }

@@ -10,6 +10,11 @@ namespace MSD.Entity
 {
     public class Teacher : IDataErrorInfo
     {
+        public Teacher()
+        {
+            KnowledgeAreas = new string[5];
+        }
+
         private int _teacherNo;
         public int TeacherNo
         {
@@ -62,8 +67,20 @@ namespace MSD.Entity
         private string _preference;
         public string Preference
         {
-            get { return _preference; }
+            get 
+            {
+                if (_preference == null)
+                    return "";
+                return _preference; 
+            }
             set { _preference = value; }
+        }
+
+        private string[] _knowledgeAreas;
+        public string[] KnowledgeAreas
+        {
+            get { return _knowledgeAreas; }
+            set { _knowledgeAreas = value; }
         }
 
         static readonly string[] ValidatedProp =
