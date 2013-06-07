@@ -56,8 +56,14 @@ namespace MSD.ViewModels
                 OnPropertyChanged("Phone");
                 OnPropertyChanged("Preference");
                 OnPropertyChanged("Hours");
+                OnPropertyChanged("AanpassenEnabled");
                 FillKnowledgeAreas();
             }
+        }
+
+        public bool AanpassenEnabled
+        {
+            get { return (SelectedItem != null); }
         }
 
         public DocentViewModel(IApplicationController app)
