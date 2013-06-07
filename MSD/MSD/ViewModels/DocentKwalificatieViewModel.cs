@@ -50,6 +50,8 @@ namespace MSD.ViewModels
                 !String.IsNullOrEmpty(Teacher.Adress) &&
                 !String.IsNullOrEmpty(Teacher.City))
             {
+                ModelFactory.Database.setData(new MySqlCommand("DELETE FROM docent_has_kennisgebieden WHERE Docent_Docentnr = " + Teacher.TeacherNo));
+
                 string query;
                 if (Editing)
                 {
@@ -57,10 +59,25 @@ namespace MSD.ViewModels
                 }
                 else
                 {
-                    query = "INSERT INTO docent (Naam, Mailadres, Plaats, Adres, Telefoonnr, Voorkeur, Uren) VALUES('" + Teacher.Name + "','" + Teacher.Email + "','" + Teacher.City + "','" + Teacher.Adress + "','" + Teacher.Phone + "','" + Teacher.Preference + "','" + Teacher.Hours + "');";
+                    MySqlCommand cmd = new MySqlCommand("select max(Docentnr) from docent");
+                    DataTable table = new DataTable();
+                    MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
+                    adapter.Fill(table);
+
+                    Teacher.TeacherNo = Convert.ToInt32(table.Rows[0][0].ToString()) + 1;
+
+                    query = "INSERT INTO docent (Docentnr, Naam, Mailadres, Plaats, Adres, Telefoonnr, Voorkeur, Uren) VALUES('" + Teacher.TeacherNo + "','" + Teacher.Name + "','" + Teacher.Email + "','" + Teacher.City + "','" + Teacher.Adress + "','" + Teacher.Phone + "','" + Teacher.Preference + "','" + Teacher.Hours + "');";
                 }
-                MySqlCommand mycommand = new MySqlCommand(query);
-                ModelFactory.Database.setData(mycommand);
+                ModelFactory.Database.setData(new MySqlCommand(query));
+
+
+
+                foreach (string knowledgeArea in Teacher.KnowledgeAreas)
+                {
+                    if (knowledgeArea != "" && knowledgeArea != null)
+                        ModelFactory.Database.setData(new MySqlCommand("INSERT INTO docent_has_kennisgebieden (Docent_Docentnr, Kennisgebieden_KennisNr) SELECT " + Teacher.TeacherNo + ", (SELECT KennisNr FROM kennisgebieden WHERE KennisNaam = '" + knowledgeArea +"')"));
+                }
+
                 _app.ShowDocentView();
             }
             else
