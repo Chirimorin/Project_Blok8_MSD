@@ -36,13 +36,14 @@ namespace MSD.ViewModels
             set {
                 _selectedItem = value;
                 this.OnPropertyChanged("SelectedItem");
-                StudentName = SelectedItem.Name;
-                StudentNo = SelectedItem.StudentNo;
-                Email = SelectedItem.Email;
+                OnPropertyChanged("StudentName");
+                OnPropertyChanged("StudentNo");
+                OnPropertyChanged("Email");
                /* Teacher;
                 Company;
                 SecondReader;
-                StageType;*/
+                StageType;
+                Period*/
             }
         }
 
@@ -52,7 +53,6 @@ namespace MSD.ViewModels
             _nieuweStudentCommand = new RelayCommand(NieuweStudent);
             _studentAanpassenCommand = new RelayCommand(StudentAanpassen);
         }
-
         private Database Database
         {
             get { return ModelFactory.Database; }
@@ -97,22 +97,29 @@ namespace MSD.ViewModels
         /// </summary>
         public void makeAssignment(StageopdrachtViewModel vm2)
         {
-            string query = "";
+            string query = "SELECT o.opdrachtnaam, o.omschrijving, o.opmerking, o.opdrachtgoed, o.toestemmingvoorlopig, o.toestemmingdefinitief, o.periode_periodenaam FROM stageopdracht o JOIN stageopdracht_has_student s ON o.stagenr = s.stageopdracht_stagenr WHERE s.student_studentnr = " + SelectedItem.StudentNo  + ";";
             MySqlCommand mycommand = new MySqlCommand(query);
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable data = new DataTable();
             adapter = Database.getData(mycommand);
             adapter.Fill(data);
-                if (data.Rows.Count != 0)
+            if (data.Rows.Count != 0)
+            {
+                vm2.Assignment = new Assignment
                 {
-                        vm2.Assignment = new Assignment{
-                        Comments = data.Rows[0][0].ToString(),
-                        Description = data.Rows[0][1].ToString(),
-                        Accepted = (bool)data.Rows[0][2],
-                        Permission = (bool)data.Rows[0][3],
-                        TempPermission = (bool)data.Rows[0][4],
-                        KnowLedgeItem = data.Rows[0][5].ToString(),
-                }; 
+                    Name = data.Rows[0][0].ToString(),
+                    Description = data.Rows[0][1].ToString(),
+                    Comments = data.Rows[0][2].ToString(),
+                    Accepted = (bool)data.Rows[0][3],
+                    Permission = (bool)data.Rows[0][5],
+                    TempPermission = (bool)data.Rows[0][4],
+                    //KnowLedgeItem = data.Rows[0][5].ToString(),
+                    Period = data.Rows[0][6].ToString(),
+                };
+            }
+            else
+            {
+                vm2.Assignment = null;
             }
         }
 
@@ -166,47 +173,35 @@ namespace MSD.ViewModels
                 OnPropertyChanged("Name");
             }
         }
-        private string _studentname;
         public string StudentName
         {
             get
             {
-                return _studentname;
+                if(SelectedItem != null) 
+                    return SelectedItem.Name;
+                return "";
             }
-            set
-            {
-                _studentname = value;
-                OnPropertyChanged("StudentName");
-            }
+           
             
         }
-        private string _studentno;
         public string StudentNo
         {
             get
             {
-                return _studentno;
-            }
-            set
-            {
-                _studentno = value;
-                OnPropertyChanged("StudentNo");
+                if (SelectedItem != null) 
+                    return SelectedItem.StudentNo;
+                return "";
             }
 
         }
 
-
-        private string _email;
         public string Email
         {
             get
             {
-                return _email;
-            }
-            set
-            {
-                _email = value;
-                OnPropertyChanged("Email");
+                if (SelectedItem != null) 
+                    return SelectedItem.Email;
+                return "";
             }
         }
 

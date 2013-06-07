@@ -35,9 +35,10 @@
         <Label Content="Opdracht goedgekeurd" HorizontalAlignment="Left" Margin="292.175,258.84,0,0" VerticalAlignment="Top"/>
         <Label Content="Voorlopige toestemming" HorizontalAlignment="Left" Margin="292.175,289.8,0,0" VerticalAlignment="Top"/>
         <Label Content="Toestemming" HorizontalAlignment="Left" Margin="295.23,320.76,0,0" VerticalAlignment="Top"/>
-        <CheckBox IsChecked="{Binding Accepted}"  HorizontalAlignment="Left" Margin="450.67,264.8,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
-        <CheckBox IsChecked="{Binding TempPermission}" HorizontalAlignment="Left" Margin="450.67,295.76,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
-        <CheckBox IsChecked="{Binding Permission}" HorizontalAlignment="Left" Margin="450.67,326.72,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
-            </Grid>
+        <CheckBox IsEnabled="False" IsChecked="{Binding Accepted}"  HorizontalAlignment="Left" Margin="450.67,264.8,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+            <CheckBox IsEnabled="False" IsChecked="{Binding TempPermission}" HorizontalAlignment="Left" Margin="450.67,295.76,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+            <CheckBox IsEnabled="False" IsChecked="{Binding Permission}" HorizontalAlignment="Left" Margin="450.67,326.72,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+            <Label Content="{Binding Period}" HorizontalAlignment="Left" Margin="290,192,0,0" VerticalAlignment="Top" Height="25" Width="200"/>
+        </Grid>
     </Grid>
 </UserControl>

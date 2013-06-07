@@ -42,6 +42,7 @@ namespace MSD.ViewModels
             get { return _assignment; }
             set
             {
+                
                 _assignment = value;
             }
         }
@@ -61,7 +62,9 @@ namespace MSD.ViewModels
         {
             get
             {
-                return Assignment.Description;
+                if(Assignment != null) 
+                    return Assignment.Description;
+                return "";
             }
             set
             {
@@ -72,7 +75,9 @@ namespace MSD.ViewModels
         {
             get
             {
-                return Assignment.Name;
+                if (Assignment != null)
+                    return Assignment.Name;
+                return "";
             }
             set
             {
@@ -84,7 +89,9 @@ namespace MSD.ViewModels
         {
             get
             {
-                return Assignment.Comments;
+                if (Assignment != null)
+                    return Assignment.Comments;
+                return "";
             }
             set
             {
@@ -106,7 +113,9 @@ namespace MSD.ViewModels
         {
             get
             {
-                return Assignment.Period;
+                if (Assignment != null)
+                    return Assignment.Period;
+                return "";
             }
             set
             {
@@ -118,7 +127,9 @@ namespace MSD.ViewModels
         {
             get
             {
-                return Assignment.Accepted;
+                if (Assignment != null)
+                    return Assignment.Accepted;
+                return false;
             }
             set
             {
@@ -130,7 +141,9 @@ namespace MSD.ViewModels
         {
             get
             {
-                return Assignment.TempPermission;
+                if (Assignment != null)
+                    return Assignment.TempPermission;
+                return false;
             }
             set
             {
@@ -142,7 +155,9 @@ namespace MSD.ViewModels
         {
             get
             {
-                return Assignment.Permission;
+                if (Assignment != null)
+                    return Assignment.Permission;
+                return false;
             }
             set
             {

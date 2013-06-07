@@ -21,7 +21,7 @@
 
             <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Background="White" Margin="145,15,52,0" />
             <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,100,52,0" BorderBrush="#FFAEAEAE" />
-            <TextBox Text="{Binding Path=StudentNr, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,142,52,0" BorderBrush="#FFAEAEAE" />
+            <TextBox Text="{Binding Path=StudentNo, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Margin="145,142,52,0" BorderBrush="#FFAEAEAE" />
             <ComboBox  HorizontalAlignment="Left" Margin="145,187,0,0" VerticalAlignment="Top" Width="323" IsEditable="True" IsReadOnly="True">
                 <ComboBoxItem Content="informatica" HorizontalAlignment="Stretch"/>
                 <ComboBoxItem Content="CMD" HorizontalAlignment="Stretch"/>
