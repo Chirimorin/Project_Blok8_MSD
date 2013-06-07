@@ -86,8 +86,8 @@ namespace MSD.Entity
                 _name = value;
             }
         }
-        private Company _company;
-        public Company Company
+        private string _company;
+        public string Company
         {
             get
             {

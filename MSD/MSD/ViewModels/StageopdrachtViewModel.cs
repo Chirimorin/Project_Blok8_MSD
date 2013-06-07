@@ -21,7 +21,6 @@ namespace MSD.ViewModels
         private Assignment _assignment;
         private Student _student;
         private Database _database;
-        private int _stagenr;
 
         public StageopdrachtViewModel(IApplicationController app)
         {
@@ -29,6 +28,7 @@ namespace MSD.ViewModels
             _opslaanCommand = new RelayCommand(Save);
             _terugCommand = new RelayCommand(Back);
             _database = ModelFactory.Database;
+            fillBox();
         }
 
         public RelayCommand TerugCommand { get { return _terugCommand; } }
@@ -40,28 +40,60 @@ namespace MSD.ViewModels
         public RelayCommand OpslaanCommand { get { return _opslaanCommand; } }
         public void Save(object command)
         {
-            string studentquery = "INSERT INTO student (studentnr, naam, mailadres, telefoonnr) VALUES ("+ Student.StudentNo +",'"+ Student.Name+"','"+ Student.Email + "','"+ Student.Phone + "');";
+            int stagenr = getexecuteQuery("SELECT MAX(stagenr) FROM stageopdracht;");
+            int afkorting = getexecuteQuery("SELECT afkorting FROM opleiding WHERE omschrijving = '" + Student.Education + "';");
+            int bedrijf = getexecuteQuery("SELECT bedrijfnr FROM stagebedrijf WHERE naam = '" + Assignment.Company + "';");
+            string studentquery = "INSERT INTO student VALUES (" + Student.StudentNo + ",'" + Student.Name + "','" + Student.Email + "','" + Student.Phone + "'," + afkorting + ",'" + Student.Academie + "');";
             executeQuery(studentquery);
-            //string opdrachtquery = "INSERT INTO stageopdracht () VALUES ()";
-            //executeQuery(opdrachtquery);
-            //string studentopdrachtquery = "INSERT INTO stageopdracht_has_student VALUES (" + _stagenr + "," + Student.StudentNo + ")";
-            //executeQuery(studentopdrachtquery);
+            string opdrachtquery = "INSERT INTO stageopdracht () VALUES (" + stagenr + ",'" + Assignment.Name + "','" + Assignment.Description + "','" + Assignment.Comments + "'," + Assignment.Accepted + "," + Assignment.TempPermission + "," + Assignment.Permission + ","+ bedrijf +",'"+Assignment.Period+"')";
+            executeQuery(opdrachtquery);
+            string studentopdrachtquery = "INSERT INTO stageopdracht_has_student VALUES (" + stagenr + "," + Student.StudentNo + ")";
+            executeQuery(studentopdrachtquery);
             _app.ShowStudentView();
+
+        }
+        public int getexecuteQuery(string query)
+        {
+            MySqlCommand mycommand = new MySqlCommand(query);
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable data = new DataTable();
+            adapter = _database.getData(mycommand);
+            adapter.Fill(data);
+            return (int)data.Rows[0][0];
         }
         public void executeQuery(string query)
         {
-            MySqlCommand mycommand;
-            /*if (_stagenr == null)
-            {
-                mycommand = new MySqlCommand("SELECT MAX(stagenr) FROM stageopdracht;");
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-                DataTable data = new DataTable();
-                adapter = _database.getData(mycommand);
-                adapter.Fill(data);
-                _stagenr = (int)data.Rows[0][0];
-            }*/
+            MySqlCommand mycommand = new MySqlCommand(query);
             mycommand = new MySqlCommand(query);
             _database.setData(mycommand);
+        }
+        public void fillBox()
+        {
+            MySqlCommand cmd;
+            DataTable table;
+            MySqlDataAdapter adapter;
+            cmd = new MySqlCommand("SELECT naam FROM stagebedrijf");
+            table = new DataTable();
+            adapter = ModelFactory.Database.getData(cmd);
+            adapter.Fill(table);
+
+            _company = new string[table.Rows.Count];
+
+            for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
+            {
+                Company[RowNr] = table.Rows[RowNr][0].ToString();
+            }
+            cmd = new MySqlCommand("SELECT periodenaam FROM periode");
+            table = new DataTable();
+            adapter = ModelFactory.Database.getData(cmd);
+            adapter.Fill(table);
+
+            _period = new string[table.Rows.Count];
+
+            for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
+            {
+                Period[RowNr] = table.Rows[RowNr][0].ToString();
+            }
         }
 
         public Assignment Assignment
@@ -91,6 +123,57 @@ namespace MSD.ViewModels
             {
                 _title = value;
                 OnPropertyChanged(Title);
+            }
+        }
+        public string SelectedCompany
+        {
+            get
+            {
+                if (Assignment.Company == null) return "";
+                return Assignment.Company;
+            }
+            set
+            {
+                Assignment.Company = value;
+                OnPropertyChanged("Company");
+            }
+
+        }
+        public string[] _company;
+        public string[] Company
+        {
+            get { return _company; }
+            set
+            {
+                _company = value;
+                OnPropertyChanged("Company");
+            }
+        }
+        public string SelectedPeriod
+        {
+            get
+            {
+                if (Assignment.Period == null) return "";
+                return Assignment.Period;
+            }
+            set
+            {
+                Assignment.Period = value;
+                OnPropertyChanged("Period");
+            }
+
+        }
+        private string[] _period;
+        public string[] Period
+        {
+            get
+            {
+                return _period;
+            }
+            set
+            {
+                _period = value;
+                OnPropertyChanged("Period");
             }
         }
 
@@ -134,30 +217,7 @@ namespace MSD.ViewModels
                 Assignment.Comments = value;
             }
         }
-        public Company Company
-        {
-            get
-            {
-                return Assignment.Company;
-            }
-            set
-            {
-                Assignment.Company = value;
-            }
-        }
-        public string Period
-        {
-            get
-            {
-                if (Assignment != null)
-                    return Assignment.Period;
-                return "";
-            }
-            set
-            {
-                Assignment.Period = value;
-            }
-        }
+       
 
         public bool Accepted
         {

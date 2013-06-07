@@ -35,8 +35,8 @@
         <Label Content="Opdracht naam:" HorizontalAlignment="Left" Margin="204,249,0,0" VerticalAlignment="Top"/>
         <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="25" Margin="304,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="407"/>
         <Label Content="Periode:" HorizontalAlignment="Left" Margin="204,206,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="304,210,0,0" VerticalAlignment="Top" Width="150"/>
+        <ComboBox SelectedValue="{Binding Path=SelectedPeriod, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Period, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="304,210,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Bedrijf:" HorizontalAlignment="Left" Margin="483,206,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="561,210,0,0" VerticalAlignment="Top" Width="150"/>
+        <ComboBox SelectedValue="{Binding Path=SelectedCompany, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Company, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="561,210,0,0" VerticalAlignment="Top" Width="150"/>
     </Grid>
 </UserControl>
