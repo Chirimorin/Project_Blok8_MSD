@@ -62,7 +62,7 @@ namespace MSD.ViewModels
             set { _teacher = value; }
         }
 
-        public string Hours
+        public int Hours
         {
             get { return Teacher.Hours; }
             set

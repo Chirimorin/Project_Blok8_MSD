@@ -18,17 +18,15 @@
         <Grid  Height="350" Margin="132,87,88,0" VerticalAlignment="Top">
 
             <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" BorderBrush="#FFAEAEAE" VerticalAlignment="Top" Margin="156,15,56,0" Width="320"/>
-            <DatePicker DisplayDate="{Binding Path=Birthday, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="33" Margin="156,60,0,0" VerticalAlignment="Top" Width="320"/>
-            <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="156,115,56,0" BorderBrush="#FFAEAEAE" Width="320"/>
-            <TextBox  Text="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="156,170,56,0" BorderBrush="#FFAEAEAE" Width="320"/>
-            <TextBox Text="{Binding Path=Adress, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="156,225,56,0" BorderBrush="#FFAEAEAE" Width="320"/>
-            <TextBox Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="156,280,56,0" BorderBrush="#FFAEAEAE" Width="320"/>
+            <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="156,63,56,0" BorderBrush="#FFAEAEAE" Width="320"/>
+            <TextBox Text="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="156,115,56,0" BorderBrush="#FFAEAEAE" Width="320"/>
+            <TextBox  Text="{Binding Path=Adress, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="156,170,56,0" BorderBrush="#FFAEAEAE" Width="320"/>
+            <TextBox Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="156,225,56,0" BorderBrush="#FFAEAEAE" Width="320"/>
             <Label Content="Naam"           HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="0,15,0,0" VerticalAlignment="Top" Width="140" Height="25"/>
-            <Label Content="Geboortedatum"  HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="0,60,0,0" VerticalAlignment="Top" Width="140" Height="25"/>
-            <Label Content="Email"          HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="0,115,0,0" VerticalAlignment="Top" Width="140" Height="25"/>
-            <Label Content="Telefoonnummer" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="0,170,0,0" VerticalAlignment="Top" Width="140" Height="25"/>
-            <Label Content="Adres"          HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="0,225,0,0" VerticalAlignment="Top" Width="140" Height="25"/>
-            <Label Content="Woonplaats"     HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="0,280,0,0" VerticalAlignment="Top" Width="140" Height="25"/>
+            <Label Content="Email"  HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="0,60,0,0" VerticalAlignment="Top" Width="140" Height="25"/>
+            <Label Content="Telefoonnummer"          HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="0,115,0,0" VerticalAlignment="Top" Width="140" Height="25"/>
+            <Label Content="Adres" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="0,170,0,0" VerticalAlignment="Top" Width="140" Height="25"/>
+            <Label Content="Woonplaats"          HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="0,225,0,0" VerticalAlignment="Top" Width="140" Height="25"/>
         </Grid>
         <Label Content="1&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25"/>
         <Label Content="2&#xA;" HorizontalAlignment="Left" Height="23" Margin="28,322,0,0" VerticalAlignment="Top" Width="25"/>

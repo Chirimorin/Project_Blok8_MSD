@@ -38,6 +38,13 @@ namespace MSD.ViewModels
             {
                 _selectedItem = value;
                 OnPropertyChanged("SelectedItem");
+                OnPropertyChanged("Name");
+                OnPropertyChanged("Adress");
+                OnPropertyChanged("Email");
+                OnPropertyChanged("City");
+                OnPropertyChanged("Phone");
+                OnPropertyChanged("Preference");
+                OnPropertyChanged("Hours");
             }
         }
 
@@ -60,7 +67,6 @@ namespace MSD.ViewModels
             DocentKwalificatieViewModel vm2 = (DocentKwalificatieViewModel)ViewFactory.getViewModel(_app, "docentKwalificatieViewModel");
 
             vm.Teacher = new Teacher();
-            vm.Teacher.Birthday = new DateTime(2000, 1, 1);
             vm.Editing = false;
 
             vm2.Teacher = vm.Teacher;
@@ -76,7 +82,7 @@ namespace MSD.ViewModels
             DocentKwalificatieViewModel vm2 = (DocentKwalificatieViewModel)ViewFactory.getViewModel(_app, "docentKwalificatieViewModel");
 
             vm.Editing = true;
-            vm.Teacher = new Teacher();
+            vm.Teacher = SelectedItem;
             
             vm2.Editing = true;
             vm2.Teacher = vm.Teacher;
@@ -90,7 +96,7 @@ namespace MSD.ViewModels
         public void fillTeacherTable()
         {
             Teachers.Clear();
-            MySqlCommand cmd = new MySqlCommand("select * from gebruiker");
+            MySqlCommand cmd = new MySqlCommand("select * from docent");
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = Database.getData(cmd);
             adapter.Fill(table);
@@ -99,116 +105,86 @@ namespace MSD.ViewModels
             {
                 Teachers.Add(new Teacher
                 {
-                    Name = table.Rows[RowNr][2].ToString(),
+                    TeacherNo = Convert.ToInt32(table.Rows[RowNr][0].ToString()),
+                    Name = table.Rows[RowNr][1].ToString(),
+                    Email = table.Rows[RowNr][2].ToString(),
+                    City = table.Rows[RowNr][3].ToString(),
+                    Adress = table.Rows[RowNr][4].ToString(),
+                    Phone = table.Rows[RowNr][5].ToString(),
+                    Preference = table.Rows[RowNr][6].ToString(),
+                    Hours = Convert.ToInt32(table.Rows[RowNr][7].ToString()),
                 });
             }
         }
 
         public string Name
         {
-            get
+            get 
             {
-                return FirstName + " " + LastName;
+                if (SelectedItem != null)
+                    return SelectedItem.Name;
+                return "";
             }
         }
 
-        private string _firstName;
-        public string FirstName
-        {
-            get
-            {
-                return _firstName;
-            }
-            set
-            {
-                _firstName = value;
-                OnPropertyChanged("FirstName");
-            }
-        }
-
-        private string _lastName;
-        public string LastName
-        {
-            get
-            {
-                return _lastName;
-            }
-            set
-            {
-                _lastName = value;
-                OnPropertyChanged("LastName");
-            }
-        }
-
-        private string _subject;
-        public string Subject
-        {
-            get
-            {
-                return _subject;
-            }
-            set
-            {
-                _subject = value;
-                OnPropertyChanged("Subject");
-            }
-        }
-
-        private string _adress;
         public string Adress
         {
             get
             {
-                return _adress;
-            }
-            set
-            {
-                _adress = value;
-                OnPropertyChanged("Adress");
+                if (SelectedItem != null)
+                    return SelectedItem.Adress;
+                return "";
             }
         }
 
-        private string _city;
         public string City
         {
             get
             {
-                return _city;
-            }
-            set
-            {
-                _city = value;
-                OnPropertyChanged("City");
+                if (SelectedItem != null)
+                    return SelectedItem.City;
+                return "";
             }
         }
 
-        private string _email;
         public string Email
         {
             get
             {
-                return _email;
-            }
-            set
-            {
-                _email = value;
-                OnPropertyChanged("Email");
+                if (SelectedItem != null)
+                    return SelectedItem.Email;
+                return "";
             }
         }
 
-        private string _hours;
-        public string Hours
+        public int Hours
         {
             get
             {
-                return _hours;
-            }
-            set
-            {
-                _hours = value;
-                OnPropertyChanged("Hours");
+                if (SelectedItem != null)
+                    return SelectedItem.Hours;
+                return 0;
             }
         }
 
+        public string Phone
+        {
+            get
+            {
+                if (SelectedItem != null)
+                    return SelectedItem.Phone;
+                return "";
+            }
+        }
+
+        public string Preference
+        {
+            get
+            {
+                if (SelectedItem != null)
+                    return SelectedItem.Preference;
+                return "";
+            }
+        }
     }
 }

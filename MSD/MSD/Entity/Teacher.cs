@@ -8,23 +8,20 @@ using System.ComponentModel;
 
 namespace MSD.Entity
 {
-    public class Teacher : PropertyChangedBase, IDataErrorInfo
+    public class Teacher : IDataErrorInfo
     {
+        private int _teacherNo;
+        public int TeacherNo
+        {
+            get { return _teacherNo; }
+            set { _teacherNo = value; }
+        }
+
         private string _name;
         public string Name
         {
             get { return _name; }
-            set {
-                _name = value;
-                this.OnPropertyChanged("Name");
-            }
-        }
-
-        private DateTime _birthday;
-        public DateTime Birthday
-        {
-            get { return _birthday; }
-            set { _birthday = value; }
+            set { _name = value; }
         }
 
         private string _email;
@@ -55,8 +52,8 @@ namespace MSD.Entity
             set { _city = value; }
         }
 
-        private string _hours;
-        public string Hours
+        private int _hours;
+        public int Hours
         {
             get { return _hours; }
             set { _hours = value; }

@@ -14,7 +14,7 @@
         <Button Command="{Binding DocentAanpassenCommand}" Content="Aanpassen" Margin="609,0,43,34" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
         <Label Content="Details" Margin="272.397,83.87,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" HorizontalAlignment="Left" Width="63.519"/>
         <Button Command ="{Binding NieuweDocentCommand}" Content="Nieuwe docent" Margin="476,0,166,34" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="110" FontStyle="Italic" FontSize="15"/>
-        <ListBox ItemsSource="{Binding Teachers}" HorizontalAlignment="Left" Height="307" Margin="33,120,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE" >
+        <ListBox SelectedItem="{Binding Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Teachers}" HorizontalAlignment="Left" Height="307" Margin="33,120,0,0" VerticalAlignment="Top" Width="199" BorderBrush="#FFAEAEAE" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -24,14 +24,13 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Border BorderBrush="#FFAEAEAE" BorderThickness="1" HorizontalAlignment="Left" Height="307" Margin="272,120,0,0" VerticalAlignment="Top" Width="437"/>
-        <Label Content="{Binding Name}" HorizontalAlignment="Left" Margin="292.175,135,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-        <Label Content="{Binding Subject}" HorizontalAlignment="Left" Margin="516.73,135,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-        <Label Content="{Binding Adress}" HorizontalAlignment="Left" Margin="295.23,200.96,0,0" VerticalAlignment="Top" Height="25" Width="200"/>
-        <Label Content="{Binding City}" HorizontalAlignment="Left" Margin="500,201,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-        <Label Content="{Binding Email}" HorizontalAlignment="Left" Margin="295.23,170,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-        <Label Content="{Binding Hours}" HorizontalAlignment="Left" Margin="375,232,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Label Content="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="292,135,0,0" VerticalAlignment="Top" Height="25" Width="392"/>
+        <Label Content="{Binding Path=Adress, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="295,201,0,0" VerticalAlignment="Top" Height="25" Width="211"/>
+        <Label Content="{Binding Path=City, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="539,201,0,0" VerticalAlignment="Top" Height="25" Width="145"/>
+        <Label Content="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="295,170,0,0" VerticalAlignment="Top" Height="25" Width="389"/>
+        <Label Content="{Binding Path=Hours, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="375,232,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
 
-        <Label Content="Kennisgebieden:" HorizontalAlignment="Left" Margin="292,263,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Label Content="Kennisgebieden:" HorizontalAlignment="Left" Margin="292,263,0,0" VerticalAlignment="Top" Height="25" Width="120"/>
         <Label Content="Uren over:" HorizontalAlignment="Left" Margin="295,232,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
         <ListBox HorizontalAlignment="Left" Height="108" Margin="295,298,0,0" VerticalAlignment="Top" Width="197"/>
         

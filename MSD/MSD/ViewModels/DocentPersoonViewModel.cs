@@ -74,16 +74,6 @@ namespace MSD.ViewModels
             }
         }
 
-        public DateTime Birthday
-        {
-            get { return Teacher.Birthday; }
-            set
-            {
-                Teacher.Birthday = value;
-                OnPropertyChanged("Birthday");
-            }
-        }
-
         public string Email
         {
             get { return Teacher.Email; }
@@ -123,6 +113,5 @@ namespace MSD.ViewModels
                 OnPropertyChanged("City");
             }
         }
-
     }
 }
