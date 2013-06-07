@@ -129,20 +129,26 @@ namespace MSD.ViewModels
             }
         }
 
+        /// <summary>
+        /// Vult de kennisgebieden lijst met kenniesgebieden van de geselecteerde docent.
+        /// </summary>
         public void FillKnowledgeAreas()
         {
             KnowledgeAreas.Clear();
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM kennisgebieden WHERE KennisNr IN (SELECT Kennisgebieden_KennisNr FROM docent_has_kennisgebieden WHERE Docent_Docentnr = " + SelectedItem.TeacherNo + ")");
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = Database.getData(cmd);
-            adapter.Fill(table);
-
-            for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
+            if (SelectedItem != null)
             {
-                KnowledgeAreas.Add(new KnowledgeArea
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM kennisgebieden WHERE KennisNr IN (SELECT Kennisgebieden_KennisNr FROM docent_has_kennisgebieden WHERE Docent_Docentnr = " + SelectedItem.TeacherNo + ")");
+                DataTable table = new DataTable();
+                MySqlDataAdapter adapter = Database.getData(cmd);
+                adapter.Fill(table);
+
+                for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
                 {
-                    Name = table.Rows[RowNr][1].ToString(),
-                });
+                    KnowledgeAreas.Add(new KnowledgeArea
+                    {
+                        Name = table.Rows[RowNr][1].ToString(),
+                    });
+                }
             }
         }
 

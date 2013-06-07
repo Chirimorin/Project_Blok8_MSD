@@ -1,11 +1,14 @@
 ﻿using MSD.Controllers;
 using MSD.Entity;
+using MSD.Factories;
 using MSD.Models;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MSD.ViewModels
 {
@@ -28,7 +31,51 @@ namespace MSD.ViewModels
         public RelayCommand OpslaanCommand { get { return _opslaanCommand; } }
         public void Opslaan(object command)
         {
-            _app.ShowDocentView();
+            if (!String.IsNullOrEmpty(Teacher.Name) &&
+                !String.IsNullOrEmpty(Teacher.Email) &&
+                !String.IsNullOrEmpty(Teacher.Phone) &&
+                !String.IsNullOrEmpty(Teacher.Adress) &&
+                !String.IsNullOrEmpty(Teacher.City))
+            {
+                string query;
+                if (Editing)
+                {
+                    query = "UPDATE docent SET Naam = '" + Teacher.Name + "', Mailadres = '" + Teacher.Email + "', Plaats = '" + Teacher.City + "', Adres = '" + Teacher.Adress + "', Telefoonnr = '" + Teacher.Phone + "', Voorkeur = '" + Teacher.Preference + "', Uren = '" + Teacher.Hours + "' WHERE Docentnr = '" + Teacher.TeacherNo + "';";
+                }
+                else
+                {
+                    query = "";
+                }
+                MySqlCommand mycommand = new MySqlCommand(query);
+                ModelFactory.Database.setData(mycommand);
+                _app.ShowDocentView();
+            }
+            else
+            {
+                string message = "De volgende gegevens zijn niet ingevuld: \n";
+                if (String.IsNullOrEmpty(Teacher.Name))
+                {
+                    message += " - Naam \n";
+                }
+                if (String.IsNullOrEmpty(Teacher.Email))
+                {
+                    message += " - Email \n";
+                }
+                if (String.IsNullOrEmpty(Teacher.Phone))
+                {
+                    message += " - Telefoonnummer \n";
+                }
+                if (String.IsNullOrEmpty(Teacher.Adress))
+                {
+                    message += " - Adres \n";
+                }
+                if (String.IsNullOrEmpty(Teacher.Phone))
+                {
+                    message += " - Woonplaats \n";
+                }
+
+                MessageBox.Show(message);
+            }
         }
 
         public RelayCommand TerugCommand { get { return _terugCommand; } }
