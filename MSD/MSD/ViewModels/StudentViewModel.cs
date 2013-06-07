@@ -69,6 +69,7 @@ namespace MSD.ViewModels
 
             vm.Student = new Student();
             vm2.Assignment = new Assignment();
+            vm2.Student = vm.Student;
 
             _app.ShowStudentPersoonView();
         }
@@ -129,7 +130,7 @@ namespace MSD.ViewModels
         public void fillStudentTable()
         {
             Students.Clear();
-            MySqlCommand cmd = new MySqlCommand("select s.studentnr, s.naam, s.mailadres, s.telefoonnr, o.omschrijving from student s JOIN opleiding o ON s.opleiding_afkorting = o.afkorting");
+            MySqlCommand cmd = new MySqlCommand("select s.studentnr, s.naam, s.mailadres, s.telefoonnr, o.omschrijving, s.opleiding_academie_afkorting from student s JOIN opleiding o ON s.opleiding_afkorting = o.afkorting");
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = Database.getData(cmd);
             adapter.Fill(table);
@@ -143,6 +144,7 @@ namespace MSD.ViewModels
                     Email = table.Rows[RowNr][2].ToString(),
                     Phone = table.Rows[RowNr][3].ToString(),
                     Education = table.Rows[RowNr][4].ToString(),
+                    Academie = table.Rows[RowNr][5].ToString()
                     
                 });
             }

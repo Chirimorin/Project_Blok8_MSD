@@ -44,6 +44,12 @@ namespace MSD.Entity
             get { return _education; }
             set { _education = value; }
         }
+        private string _academie;
+        public string Academie
+        {
+            get { return _academie; }
+            set { _academie = value; }
+        }
 
         static readonly string[] ValidatedProp =
         {
