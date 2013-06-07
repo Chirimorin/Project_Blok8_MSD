@@ -19,6 +19,7 @@ namespace MSD.ViewModels
         private readonly RelayCommand _NieuweDocentCommand;
         private readonly RelayCommand _DocentAanpassenCommand;
         private ObservableCollection<Teacher> _teachers = new ObservableCollection<Teacher>();
+        private ObservableCollection<KnowledgeArea> _knowledgeAreas = new ObservableCollection<KnowledgeArea>();
         private Teacher _selectedItem;
 
         public ObservableCollection<Teacher> Teachers
@@ -28,6 +29,16 @@ namespace MSD.ViewModels
             {
                 _teachers = value;
                 this.OnPropertyChanged("Teachers");
+            }
+        }
+
+        public ObservableCollection<KnowledgeArea> KnowledgeAreas
+        {
+            get { return _knowledgeAreas; }
+            set
+            {
+                _knowledgeAreas = value;
+                OnPropertyChanged("KnowledgeAreas");
             }
         }
 
@@ -45,6 +56,7 @@ namespace MSD.ViewModels
                 OnPropertyChanged("Phone");
                 OnPropertyChanged("Preference");
                 OnPropertyChanged("Hours");
+                FillKnowledgeAreas();
             }
         }
 
@@ -113,6 +125,23 @@ namespace MSD.ViewModels
                     Phone = table.Rows[RowNr][5].ToString(),
                     Preference = table.Rows[RowNr][6].ToString(),
                     Hours = Convert.ToInt32(table.Rows[RowNr][7].ToString()),
+                });
+            }
+        }
+
+        public void FillKnowledgeAreas()
+        {
+            KnowledgeAreas.Clear();
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM kennisgebieden WHERE KennisNr IN (SELECT Kennisgebieden_KennisNr FROM docent_has_kennisgebieden WHERE Docent_Docentnr = " + SelectedItem.TeacherNo + ")");
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = Database.getData(cmd);
+            adapter.Fill(table);
+
+            for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
+            {
+                KnowledgeAreas.Add(new KnowledgeArea
+                {
+                    Name = table.Rows[RowNr][1].ToString(),
                 });
             }
         }

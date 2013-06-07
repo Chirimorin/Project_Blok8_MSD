@@ -32,7 +32,15 @@
 
         <Label Content="Kennisgebieden:" HorizontalAlignment="Left" Margin="292,263,0,0" VerticalAlignment="Top" Height="25" Width="120"/>
         <Label Content="Uren over:" HorizontalAlignment="Left" Margin="295,232,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-        <ListBox HorizontalAlignment="Left" Height="108" Margin="295,298,0,0" VerticalAlignment="Top" Width="197"/>
+        <ListBox IsEnabled="False" ItemsSource="{Binding Path=KnowledgeAreas, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="108" Margin="295,298,0,0" VerticalAlignment="Top" Width="197">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         
     </Grid>
 </UserControl>

@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace MSD.Entity
 {
-    class KnowledgeArea
+    public class KnowledgeArea
     {
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
     }
 }
