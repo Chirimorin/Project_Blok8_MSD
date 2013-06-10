@@ -21,6 +21,13 @@ namespace MSD.ViewModels
         private Assignment _assignment;
         private Student _student;
         private Database _database;
+        private bool _status;
+
+        public bool Status
+        {
+            get { return _status; }
+            set { _status = value; }
+        }
 
         public StageopdrachtViewModel(IApplicationController app)
         {
