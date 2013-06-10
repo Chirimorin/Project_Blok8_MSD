@@ -70,6 +70,7 @@ namespace MSD.ViewModels
             vm.Student = new Student();
             vm2.Assignment = new Assignment();
             vm2.Student = vm.Student;
+            vm2.Wijzig = false;
 
             _app.ShowStudentPersoonView();
         }
@@ -84,6 +85,7 @@ namespace MSD.ViewModels
             vm2.Title = "Student Aanpassen";
             vm.Student = SelectedItem;
             makeAssignment(vm2);
+            vm2.Wijzig = true;
 
             
 

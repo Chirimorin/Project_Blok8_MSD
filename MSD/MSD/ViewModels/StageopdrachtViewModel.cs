@@ -21,12 +21,11 @@ namespace MSD.ViewModels
         private Assignment _assignment;
         private Student _student;
         private Database _database;
-        private bool _status;
+        private bool _wijzig;
 
-        public bool Status
+        public bool Wijzig
         {
-            get { return _status; }
-            set { _status = value; }
+            set { _wijzig = value; }
         }
 
         public StageopdrachtViewModel(IApplicationController app)
@@ -47,15 +46,28 @@ namespace MSD.ViewModels
         public RelayCommand OpslaanCommand { get { return _opslaanCommand; } }
         public void Save(object command)
         {
-            int stagenr = getexecuteQuery("SELECT MAX(stagenr) FROM stageopdracht;");
+            
             int afkorting = getexecuteQuery("SELECT afkorting FROM opleiding WHERE omschrijving = '" + Student.Education + "';");
             int bedrijf = getexecuteQuery("SELECT bedrijfnr FROM stagebedrijf WHERE naam = '" + Assignment.Company + "';");
-            string studentquery = "INSERT INTO student VALUES (" + Student.StudentNo + ",'" + Student.Name + "','" + Student.Email + "','" + Student.Phone + "'," + afkorting + ",'" + Student.Academie + "');";
-            executeQuery(studentquery);
-            string opdrachtquery = "INSERT INTO stageopdracht () VALUES (" + stagenr + ",'" + Assignment.Name + "','" + Assignment.Description + "','" + Assignment.Comments + "'," + Assignment.Accepted + "," + Assignment.TempPermission + "," + Assignment.Permission + ","+ bedrijf +",'"+Assignment.Period+"')";
-            executeQuery(opdrachtquery);
-            string studentopdrachtquery = "INSERT INTO stageopdracht_has_student VALUES (" + stagenr + "," + Student.StudentNo + ")";
-            executeQuery(studentopdrachtquery);
+
+            if (_wijzig == false)
+            {
+                int stagenr = getexecuteQuery("SELECT MAX(stagenr) FROM stageopdracht;");
+                string studentquery = "INSERT INTO student VALUES (" + Student.StudentNo + ",'" + Student.Name + "','" + Student.Email + "','" + Student.Phone + "'," + afkorting + ",'" + Student.Academie + "');";
+                executeQuery(studentquery);
+                string opdrachtquery = "INSERT INTO stageopdracht () VALUES (" + stagenr + ",'" + Assignment.Name + "','" + Assignment.Description + "','" + Assignment.Comments + "'," + Assignment.Accepted + "," + Assignment.TempPermission + "," + Assignment.Permission + "," + bedrijf + ",'" + Assignment.Period + "')";
+                executeQuery(opdrachtquery);
+                string studentopdrachtquery = "INSERT INTO stageopdracht_has_student VALUES (" + stagenr + "," + Student.StudentNo + ")";
+                executeQuery(studentopdrachtquery);
+            }
+            if (_wijzig == true)
+            {
+                int stagenr = getexecuteQuery("SELECT stageopdracht_stagenr FROM stageopdracht_has_student WHERE student_studentnr = " + Student.StudentNo);
+                string studentquery = "UPDATE student SET " + Student.StudentNo + ",'" + Student.Name + "','" + Student.Email + "','" + Student.Phone + "'," + afkorting + ",'" + Student.Academie + "');";
+                executeQuery(studentquery);
+                string opdrachtquery = "UPDATE stageopdracht SET stagenr=" + stagenr + ", opdrachtnaam ='" + Assignment.Name + "', omschrijving ='" + Assignment.Description + "', opmerking ='" + Assignment.Comments + "', opdrachtgoed = " + Assignment.Accepted + ", toestemmingvoorlopig =" + Assignment.TempPermission + ", toestemmingdefinitief =" + Assignment.Permission + ", stagebedrijf_bedrijfnr = " + bedrijf + ", periode_periodenaam = '" + Assignment.Period + "' WHERE stagenr = " + stagenr;
+                executeQuery(opdrachtquery);
+            }
             _app.ShowStudentView();
 
         }
