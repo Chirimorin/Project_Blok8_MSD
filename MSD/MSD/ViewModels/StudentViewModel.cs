@@ -39,11 +39,11 @@ namespace MSD.ViewModels
                 OnPropertyChanged("StudentName");
                 OnPropertyChanged("StudentNo");
                 OnPropertyChanged("Email");
+                OnPropertyChanged("Company");
+                OnPropertyChanged("Period");
                /* Teacher;
-                Company;
                 SecondReader;
-                StageType;
-                Period*/
+                StageType;*/
             }
         }
 
@@ -84,6 +84,7 @@ namespace MSD.ViewModels
             vm.Title = "Student Aanpassen";
             vm2.Title = "Student Aanpassen";
             vm.Student = SelectedItem;
+            vm2.Student = vm.Student;
             makeAssignment(vm2);
             vm2.Wijzig = true;
 
@@ -100,7 +101,7 @@ namespace MSD.ViewModels
         /// </summary>
         public void makeAssignment(StageopdrachtViewModel vm2)
         {
-            string query = "SELECT o.opdrachtnaam, o.omschrijving, o.opmerking, o.opdrachtgoed, o.toestemmingvoorlopig, o.toestemmingdefinitief, o.periode_periodenaam FROM stageopdracht o JOIN stageopdracht_has_student s ON o.stagenr = s.stageopdracht_stagenr WHERE s.student_studentnr = " + SelectedItem.StudentNo  + ";";
+            string query = "SELECT o.opdrachtnaam, o.omschrijving, o.opmerking, o.opdrachtgoed, o.toestemmingvoorlopig, o.toestemmingdefinitief, o.periode_periodenaam, b.naam FROM stageopdracht o JOIN stageopdracht_has_student s ON o.stagenr = s.stageopdracht_stagenr JOIN stagebedrijf b ON o.stagebedrijf_bedrijfnr = b.bedrijfnr WHERE s.student_studentnr = " + SelectedItem.StudentNo  + ";";
             MySqlCommand mycommand = new MySqlCommand(query);
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable data = new DataTable();
@@ -118,6 +119,7 @@ namespace MSD.ViewModels
                     TempPermission = (bool)data.Rows[0][4],
                     //KnowLedgeItem = data.Rows[0][5].ToString(),
                     Period = data.Rows[0][6].ToString(),
+                    Company = data.Rows[0][7].ToString(),
                 };
             }
             else
@@ -132,7 +134,7 @@ namespace MSD.ViewModels
         public void fillStudentTable()
         {
             Students.Clear();
-            MySqlCommand cmd = new MySqlCommand("select s.studentnr, s.naam, s.mailadres, s.telefoonnr, o.omschrijving, s.opleiding_academie_afkorting from student s JOIN opleiding o ON s.opleiding_afkorting = o.afkorting");
+            MySqlCommand cmd = new MySqlCommand("select s.studentnr, s.naam, s.mailadres, s.telefoonnr, o.omschrijving, s.opleiding_academie_afkorting FROM student s JOIN opleiding o ON s.opleiding_afkorting = o.afkorting");
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = Database.getData(cmd);
             adapter.Fill(table);
