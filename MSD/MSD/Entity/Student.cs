@@ -15,14 +15,17 @@ namespace MSD.Entity
         public string StudentNo
         {
             get { return _studentNumber; }
-            set { _studentNumber = value; }
+            set { _studentNumber = value;
+            }
         }
         private string _name;
 
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set { _name = value;
+            }
+            
         }        
         private string _email;
 
@@ -49,6 +52,12 @@ namespace MSD.Entity
         {
             get { return _academie; }
             set { _academie = value; }
+        }
+        private Assignment _assignment;
+        public Assignment Assignment
+        {
+            get { return _assignment; }
+            set { _assignment = value; }
         }
 
         static readonly string[] ValidatedProp =

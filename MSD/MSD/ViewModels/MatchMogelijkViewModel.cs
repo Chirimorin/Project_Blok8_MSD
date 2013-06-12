@@ -30,6 +30,16 @@ namespace MSD.ViewModels
                 this.OnPropertyChanged("Teachers");
             }
         }
+        private Student _student;
+        public Student Student
+        {
+            get { return _student; }
+            set
+            {
+
+                _student = value;
+            }
+        }
 
         public MatchMogelijkViewModel(IApplicationController app)
         {
@@ -71,6 +81,42 @@ namespace MSD.ViewModels
                 }
             }
 
+        }
+
+        public string StudentNumber
+        {
+            get { return Student.StudentNo; }
+            set { Student.StudentNo = value; }
+        }
+
+        public string Name
+        {
+            get { return Student.Name; }
+            set { Student.Name= value; }
+        }
+
+        public string Education
+        {
+            get { return Student.Education; }
+            set { Student.Education = value; }
+        }
+
+        public string Academie
+        {
+            get { return Student.Academie; }
+            set { Student.Academie = value; }
+        }
+
+        public string Company
+        {
+            get { return Student.Assignment.Company; }
+            set { Student.Assignment.Company = value; }
+        }
+
+        public string AssignmentName
+        {
+            get { return Student.Assignment.Name; }
+            set { Student.Assignment.Name = value; }
         }
     }
 }

@@ -87,6 +87,7 @@ namespace MSD.ViewModels
             vm2.Student = vm.Student;
             makeAssignment(vm2);
             vm2.Wijzig = true;
+            vm2.UpdateKnowledgeAreas();
 
             
 

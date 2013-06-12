@@ -50,7 +50,6 @@ namespace MSD.ViewModels
                 _stagenr = getexecuteQuery("SELECT stageopdracht_stagenr FROM stageopdracht_has_student WHERE student_studentnr = " + Student.StudentNo);
                
             }
-            UpdateKnowledgeAreas();
         }
 
         public RelayCommand TerugCommand { get { return _terugCommand; } }
@@ -150,7 +149,7 @@ namespace MSD.ViewModels
                 KnowledgeAreas[RowNr] = table.Rows[RowNr][1].ToString();
             }
         }
-        private void UpdateKnowledgeAreas()
+        public void UpdateKnowledgeAreas()
         {
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM kennisgebieden k JOIN kennisgebieden_has_stageopdracht ks ON ks.kennisgebieden_kennisnr = k.kennisnr WHERE stageopdracht_stagenr = " + _stagenr);
             DataTable table = new DataTable();

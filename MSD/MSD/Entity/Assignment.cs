@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MSD.Entity
 {
-    class Assignment : PropertyChangedBase
+    public class Assignment : PropertyChangedBase
     {
 
         private string _description;
