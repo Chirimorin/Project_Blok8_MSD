@@ -11,16 +11,15 @@
     <Grid x:Name="LayoutRoot">
         <DataGrid CanUserAddRows="False" SelectedItem="{Binding Path=SelectedCompany, UpdateSourceTrigger=PropertyChanged}"  AutoGenerateColumns="False" ItemsSource="{Binding Path=Companys}" Margin="21,108,39,0" VerticalAlignment="Top" Height="300">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Companyname}" Header="Naam Bedrijf"/>
-                <DataGridTextColumn Binding="{Binding Website}" Header="Website"/>
-                <DataGridTextColumn Binding="{Binding Adress}" Header="Adres"/>
-                <DataGridTextColumn Binding="{Binding City}" Header="Plaats"/>
-                <DataGridTextColumn Binding="{Binding Contact}" Header="Contactpersoon"/>
-                <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres"/>
-                <DataGridTextColumn Binding="{Binding Property8}" Header="Stagecoordinator"/>
-                <DataGridTextColumn Binding="{Binding Phone}" Header="Telefoon"/>
-                <DataGridTextColumn Binding="{Binding Branch}" Header="Branch"/>
-                <DataGridTextColumn Binding="{Binding Property11}" Header="Aantal"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Companyname}" Header="Naam Bedrijf"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Website}" Header="Website"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Adress}" Header="Adres"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding City}" Header="Plaats"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Contact}" Header="Contactpersoon"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="E-mailadres"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Phone}" Header="Telefoon"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Branch}" Header="Branch"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding NumberStudents}" Header="Aantal"/>
 
             </DataGrid.Columns>
         </DataGrid>
