@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MSD.Entity;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Data;
 
 namespace MSD.ViewModels
 {
@@ -18,6 +20,66 @@ namespace MSD.ViewModels
         private readonly RelayCommand _saveCommand;
         private readonly RelayCommand _backCommand;
         private Database _database;
+
+        public StageBedrijfViewModel(IApplicationController app)
+        {
+            _app = app;
+            _saveCommand = new RelayCommand(Save);
+            _backCommand = new RelayCommand(Back);
+            _database = ModelFactory.Database;
+        }
+
+        public RelayCommand SaveCommand { get { return _saveCommand; } }
+        public void Save(object command)
+        {
+            string query = null;
+            if (Wijzig == true)
+            {
+                query = "UPDATE stagebedrijf SET naam = '" + CompanyName + "', plaats = '" + City + "', straat = '" + Adress + "', postcode = '" + Zip + "', telefoonnr = " + Phone + ", website = '" + Website + "', contactpersoon = '" + Contact + "', email = '" + Email + "', branch = '" + Branch + "' WHERE bedrijfnr = " + Company.ID;
+
+            }
+            if (Wijzig == false)
+            {
+                int bedrijfnr = getexecuteQuery("SELECT MAX(bedrijfnr) FROM stagebedrijf") + 1;
+                query = "INSERT INTO stagebedrijf(bedrijfnr,naam,plaats,straat,postcode,telefoonnr,website,contactpersoon,email,branch) VALUES(" + bedrijfnr + ",'" + CompanyName + "','" + City + "','" + Adress + "','" + Zip + "'," + Phone + ",'" + Website + "','" + Contact + "','" + Email + "','" + Branch + "')";
+            }
+            if (query != null)
+            {
+                executeQuery(query);
+            }
+            _app.ShowBedrijfOverzichtView();
+        }
+        public void executeQuery(string query)
+        {
+            Debug.WriteLine(query);
+            MySqlCommand mycommand = new MySqlCommand(query);
+            mycommand = new MySqlCommand(query);
+            _database.setData(mycommand);
+        }
+        public int getexecuteQuery(string query)
+        {
+            Debug.WriteLine(query);
+            MySqlCommand mycommand = new MySqlCommand(query);
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable data = new DataTable();
+            adapter = _database.getData(mycommand);
+            adapter.Fill(data);
+            return (int)data.Rows[0][0];
+        }
+
+        public RelayCommand BackCommand { get { return _backCommand; } }
+        public void Back(object command)
+        {
+            _app.ShowBedrijfOverzichtView();
+        }
+
+        private bool _wijzig;
+
+        public bool Wijzig
+        {
+            get { return _wijzig; }
+            set { _wijzig = value; }
+        }
 
         private string _title;
 
@@ -34,83 +96,98 @@ namespace MSD.ViewModels
             get { return _company; }
             set { _company = value;}
         }
+        public string CompanyName
+        {
+            get
+            {
+                if (Company != null) return Company.Companyname;
+                else return "";
+            }
+            set { Company.Companyname = value; this.OnPropertyChanged("CompanyName"); }
+        }
 
         public string Website
         {
-            get { return Company.Website; }
+            get
+            {
+                if (Company != null) return Company.Website;
+                else return "";
+            }
             set { Company.Website = value; this.OnPropertyChanged("Website"); }
         }
-        private string _adress;
 
         public string Adress
         {
-            get { return _adress; }
-            set { _adress = value; this.OnPropertyChanged("Adress"); }
+            get
+            {
+                if (Company != null) return Company.Adress;
+                else return "";
+            }
+            set { Company.Adress = value; this.OnPropertyChanged("Adress"); }
         }
         private string _city;
 
         public string City
         {
-            get { return _city; }
-            set { _city = value; this.OnPropertyChanged("City"); }
+            get
+            {
+                if (Company != null) return Company.City;
+                else return "";
+            }
+            set { Company.City = value; this.OnPropertyChanged("City"); }
         }
-        private string _zip;
 
         public string Zip
         {
-            get { return _zip; }
-            set { _zip = value; this.OnPropertyChanged("Zip"); }
+            get
+            {
+                if (Company != null) return Company.Zip;
+                else return "";
+            }
+            set { Company.Zip = value; this.OnPropertyChanged("Zip"); }
         }
-        private string _contact;
 
         public string Contact
         {
-            get { return _contact; }
-            set { _contact = value; this.OnPropertyChanged("Contact"); }
+            get
+            {
+                if (Company != null) return Company.Contact;
+                else return "";
+            }
+            set { Company.Contact = value; this.OnPropertyChanged("Contact"); }
         }
-        private string _email;
 
         public string Email
         {
-            get { return _email; }
-            set { _email = value; this.OnPropertyChanged("Email"); }
+            get
+            {
+                if (Company != null) return Company.Email;
+                else return "";
+            }
+            set { Company.Email = value; this.OnPropertyChanged("Email"); }
         }
-        private string _phone;
 
         public string Phone
         {
-            get { return _phone; }
-            set { _phone = value; this.OnPropertyChanged("Phone"); }
+            get
+            {
+                if (Company != null) return Company.Phone;
+                else return "";
+            }
+            set { Company.Phone = value; this.OnPropertyChanged("Phone"); }
         }
-        private string _branch;
 
         public string Branch
         {
-            get { return _branch; }
-            set { _branch = value; this.OnPropertyChanged("Branch"); }
+            get
+            {
+                if (Company != null) return Company.Branch;
+                else return "";
+            }
+            set { Company.Branch = value; this.OnPropertyChanged("Branch"); }
         }
         
 
-        public StageBedrijfViewModel(IApplicationController app)
-        {
-            _app = app;
-            _saveCommand = new RelayCommand(Save);
-            _backCommand = new RelayCommand(Back);
-            _database = ModelFactory.Database;
-        }
-
-        public RelayCommand SaveCommand { get { return _saveCommand; } }
-        public void Save(object command)
-        {
-            //string query = "INSERT INTO stagebedrijf(bedrijfnr,naam,plaats,straat,postcode,telefoonnr,website,contactpersoon,email,branch) VALUES(" + "," +_company + "," + _city + "," + _adress + "," + _zip + "," + _phone + "," + _website + "," + _contact + "," + _email + "," + _branch + ")";
-            //MySqlCommand mycommand = new MySqlCommand(query);
-            //_database.getData(mycommand);
-        }
-
-        public RelayCommand BackCommand { get { return _backCommand; } }
-        public void Back(object command)
-        {
-            _app.ShowBedrijfOverzichtView();
-        }
+        
     }
 }

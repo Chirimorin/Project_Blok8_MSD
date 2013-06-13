@@ -15,15 +15,15 @@
         <Label Content="{Binding Title}" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" FontSize="18.667" Height="45" Margin="285,22.807,285,0"/>
         <Button Command="{Binding SaveCommand}" Content="Opslaan" Margin="604,457,41,0" VerticalAlignment="Top" Foreground="Black"  Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
 		<Grid Height="383" Margin="121,74,111,0" VerticalAlignment="Top">
-            <TextBox Text="{Binding Path=Company, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap"  VerticalAlignment="Top"  Margin="130,10,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=CompanyName, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap"  VerticalAlignment="Top"  Margin="130,10,30,0" BorderBrush="#FFAEAEAE"/>
             <TextBox Text="{Binding Path=Website, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,50,30,0" BorderBrush="#FFAEAEAE"/>
             <TextBox Text="{Binding Path=Adress, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,90,30,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,130,30,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Text="{Binding Path=Contact, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,170,30,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,210,30,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Text="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,250,30,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Text="{Binding Path=Branch, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,290,30,0" BorderBrush="#FFAEAEAE"/>
-            <TextBox Text="{Binding Branch, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,330,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Zip, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,130,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,170,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Contact, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,210,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,250,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,290,30,0" BorderBrush="#FFAEAEAE"/>
+            <TextBox Text="{Binding Path=Branch, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="130,330,30,0" BorderBrush="#FFAEAEAE"/>
         
 		<Label Content="Naam bedrijf" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="25" Margin="25,10,0,0" VerticalAlignment="Top" Width="100"/>
 		<Label Content="Website" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="25" Margin="25,50,0,0" VerticalAlignment="Top" Width="100"/>

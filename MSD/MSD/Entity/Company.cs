@@ -13,6 +13,7 @@ namespace MSD.Entity
     //TODO alle entiteiten maken zoals deze..
     public class Company : PropertyChangedBase, IDataErrorInfo
     {
+        private int _id;
         private string _company;
         private string _website;
         private string _adress;
@@ -22,6 +23,12 @@ namespace MSD.Entity
         private string _email;
         private string _phone;
         private string _branch;
+
+        public int ID
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
         public string Companyname
         {

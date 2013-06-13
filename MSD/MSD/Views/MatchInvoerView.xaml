@@ -9,6 +9,7 @@
 	d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="510">
 
     <Grid x:Name="LayoutRoot">
+        <Grid>
 
         <Label Content="Match maken" Margin="310,36,312.506,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
 
@@ -18,7 +19,7 @@
 
         <Button Command="{Binding MatchenCommand}" Content="Matchen" Margin="605,0,47,36" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
 
-        <DataGrid CanUserAddRows="False" SelectedItem="{Binding Path=SelectedItem}" ItemsSource="{Binding Path=Students}" HorizontalAlignment="Left" Margin="42,196,0,0" VerticalAlignment="Top" Height="192" Width="662.676">
+        <DataGrid CanUserAddRows="False" SelectedItem="{Binding Path=SelectedItem}" ItemsSource="{Binding Path=Students}" Margin="42,196,47,122">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnummer"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
@@ -31,5 +32,6 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="188,0,464,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
-    </Grid>
+        </Grid>
+        </Grid>
 </UserControl>

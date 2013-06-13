@@ -27,7 +27,7 @@ namespace MSD.ViewModels
             _app = app;
             _nieuwBedrijfCommand = new RelayCommand(NieuwBedrijf);
             _bedrijfAanpassenCommand = new RelayCommand(BedrijfAanpassen);
-            this.FillCompanyTable();
+            
         }
 
         public ObservableCollection<Company> Companys
@@ -57,6 +57,7 @@ namespace MSD.ViewModels
             StageBedrijfViewModel vm = (StageBedrijfViewModel)ViewFactory.getViewModel(_app, "stageBedrijfViewModel");
             vm.Title = "Nieuw Bedrijf";
             vm.Company = new Company();
+            vm.Wijzig = false;
 
             _app.ShowBedrijfView();
         }
@@ -67,14 +68,16 @@ namespace MSD.ViewModels
             StageBedrijfViewModel vm = (StageBedrijfViewModel)ViewFactory.getViewModel(_app, "stageBedrijfViewModel");
             vm.Title = "Bedrijf Aanpassen";
             vm.Company = SelectedCompany;
+            vm.Wijzig = true;
 
             _app.ShowBedrijfView();
         }
         /// <summary>
         /// Vult de bedrijven tabel met companys uit de Database
         /// </summary>
-        private void FillCompanyTable()
+        public void FillCompanyTable()
         {
+            Companys.Clear();
             MySqlCommand cmd = new MySqlCommand("select * from stagebedrijf");
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
@@ -84,6 +87,7 @@ namespace MSD.ViewModels
             {
                 Companys.Add(new Company
                 {
+                    ID = (int)table.Rows[RowNr][0],
                     Companyname = table.Rows[RowNr][1].ToString(),
                     City = table.Rows[RowNr][2].ToString(),
                     Adress = table.Rows[RowNr][3].ToString(),
@@ -95,6 +99,13 @@ namespace MSD.ViewModels
                     Branch = table.Rows[RowNr][9].ToString(),
                 });
             }
+        }
+        private int _numberStudents;
+
+        public int NumberStudents
+        {
+            get { return _numberStudents; }
+            set { _numberStudents = value; }
         }
     }
 }

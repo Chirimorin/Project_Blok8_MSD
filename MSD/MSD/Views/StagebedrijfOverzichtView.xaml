@@ -9,7 +9,7 @@
 	d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="509">
 
     <Grid x:Name="LayoutRoot">
-        <DataGrid SelectedItem="{Binding Path=SelectedCompany, UpdateSourceTrigger=PropertyChanged}"  AutoGenerateColumns="False" ItemsSource="{Binding Path=Companys}" Margin="21,108,39,0" VerticalAlignment="Top" Height="300">
+        <DataGrid CanUserAddRows="False" SelectedItem="{Binding Path=SelectedCompany, UpdateSourceTrigger=PropertyChanged}"  AutoGenerateColumns="False" ItemsSource="{Binding Path=Companys}" Margin="21,108,39,0" VerticalAlignment="Top" Height="300">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Companyname}" Header="Naam Bedrijf"/>
                 <DataGridTextColumn Binding="{Binding Website}" Header="Website"/>

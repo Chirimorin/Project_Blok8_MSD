@@ -53,6 +53,7 @@ namespace MSD.Factories
                 case ("stageBedrijfOverzichtViewModel"):
                     if (_stageBedrijfOverzichtView == null)
                         _stageBedrijfOverzichtView = new StagebedrijfOverzichtViewModel(app);
+                    _stageBedrijfOverzichtView.FillCompanyTable();
                     _mainWindowModel.Display = "Bedrijven";
                     return _stageBedrijfOverzichtView;
                 case ("docentKwalificatieViewModel"):
