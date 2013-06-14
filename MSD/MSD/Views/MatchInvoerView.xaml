@@ -31,6 +31,7 @@
                 <DataGridCheckBoxColumn Header="Toestemming"/>
             </DataGrid.Columns>
         </DataGrid>
+
         <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="188,0,464,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
         </Grid>
         </Grid>

@@ -102,12 +102,24 @@ namespace MSD.ViewModels
             adapter.Fill(data);
             return (int)data.Rows[0][0];
         }
+
         public RelayCommand ZoekenCommand { get { return _zoekenCommand; } }
         public void Zoeken(object command)
         {
-            this.StudentCollection.Filter = w => ((Student)w).Name.Contains(Zoektext);
-            this.StudentCollection.Refresh();
+            if (!string.IsNullOrEmpty(Zoektext))
+            {
+                this.StudentCollection.Filter = new Predicate<object>(Contains);
+                this.StudentCollection.Refresh();
+            }
         }
+
+        private bool Contains(object obj)
+        {
+            
+            Student student = obj as Student;
+            return (student.Name.Contains(Zoektext)) || (student.Email.Contains(Zoektext)) || (student.Education.Contains(Zoektext));
+        }
+
         public void FillTable(string query)
         {
             students.Clear();
