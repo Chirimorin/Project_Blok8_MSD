@@ -61,13 +61,13 @@ namespace MSD.ViewModels
         public RelayCommand OpslaanCommand { get { return _opslaanCommand; } }
         public void Save(object command)
         {
-            if (Assignment.Company == null)
+            if (Student.Assignment.Company == null)
             {
                 MessageBox.Show("u heeft het bedrijf niet ingevult");
             }
 
             int afkorting = getexecuteQuery("SELECT afkorting FROM opleiding WHERE omschrijving = '" + Student.Education + "';");
-            int bedrijf = getexecuteQuery("SELECT bedrijfnr FROM stagebedrijf WHERE naam = '" + Assignment.Company + "';");
+            int bedrijf = getexecuteQuery("SELECT bedrijfnr FROM stagebedrijf WHERE naam = '" + Student.Assignment.Company + "';");
 
             if (_wijzig == false)
             {
@@ -75,7 +75,7 @@ namespace MSD.ViewModels
                 string studentquery = "INSERT INTO student VALUES(" + Student.StudentNo + ",'" + Student.Name + "','" + Student.Email + "','" + Student.Phone + "'," + afkorting + ",'" + Student.Academie + "');";
 
                 executeQuery(studentquery);
-                string opdrachtquery = "INSERT INTO stageopdracht () VALUES (" + _stagenr + ",'" + Assignment.Name + "','" + Assignment.Description + "','" + Assignment.Comments + "'," + Assignment.Accepted + "," + Assignment.TempPermission + "," + Assignment.Permission + "," + bedrijf + ",'" + Assignment.Period + "')";
+                string opdrachtquery = "INSERT INTO stageopdracht () VALUES (" + _stagenr + ",'" + Student.Assignment.Name + "','" + Student.Assignment.Description + "','" + Student.Assignment.Comments + "'," + Student.Assignment.Accepted + "," + Student.Assignment.TempPermission + "," + Student.Assignment.Permission + "," + bedrijf + ",'" + Student.Assignment.Period + "')";
                 executeQuery(opdrachtquery);
                 string studentopdrachtquery = "INSERT INTO stageopdracht_has_student VALUES (" + _stagenr + "," + Student.StudentNo + ")";
                 executeQuery(studentopdrachtquery);
@@ -84,7 +84,7 @@ namespace MSD.ViewModels
             {
                 string studentquery = "UPDATE student SET naam = '" + Student.Name + "', mailadres = '" + Student.Email + "', telefoonnr = " + Student.Phone + ", opleiding_afkorting = " + afkorting + ", opleiding_academie_afkorting = '" + Student.Academie + "' WHERE studentnr = " + Student.StudentNo;
                 executeQuery(studentquery);
-                string opdrachtquery = "UPDATE stageopdracht SET stagenr=" + _stagenr + ", opdrachtnaam ='" + Assignment.Name + "', omschrijving ='" + Assignment.Description + "', opmerking ='" + Assignment.Comments + "', opdrachtgoed = " + Assignment.Accepted + ", toestemmingvoorlopig =" + Assignment.TempPermission + ", toestemmingdefinitief =" + Assignment.Permission + ", stagebedrijf_bedrijfnr = " + bedrijf + ", periode_periodenaam = '" + Assignment.Period + "' WHERE stagenr = " + _stagenr;
+                string opdrachtquery = "UPDATE stageopdracht SET stagenr=" + _stagenr + ", opdrachtnaam ='" + Student.Assignment.Name + "', omschrijving ='" + Student.Assignment.Description + "', opmerking ='" + Student.Assignment.Comments + "', opdrachtgoed = " + Student.Assignment.Accepted + ", toestemmingvoorlopig =" + Student.Assignment.TempPermission + ", toestemmingdefinitief =" + Student.Assignment.Permission + ", stagebedrijf_bedrijfnr = " + bedrijf + ", periode_periodenaam = '" + Student.Assignment.Period + "' WHERE stagenr = " + _stagenr;
                 executeQuery(opdrachtquery);
             }
             _app.ShowStudentView();
@@ -166,15 +166,7 @@ namespace MSD.ViewModels
                 SelectedArea3 = table.Rows[2][1].ToString();
         }
 
-        public Assignment Assignment
-        {
-            get { return _assignment; }
-            set
-            {
-                
-                _assignment = value;
-            }
-        }
+        
         public Student Student
         {
             get { return _student; }
@@ -199,12 +191,12 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (Assignment.Knowledge == null) return "";
-                return Assignment.Knowledge[0];
+                if (Student.Assignment.Knowledge == null) return "";
+                return Student.Assignment.Knowledge[0];
             }
             set
             {
-                Assignment.Knowledge[0] = value;
+                Student.Assignment.Knowledge[0] = value;
                 OnPropertyChanged("SelectedArea1");
             }
 
@@ -213,12 +205,12 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (Assignment.Knowledge == null) return "";
-                return Assignment.Knowledge[1];
+                if (Student.Assignment.Knowledge == null) return "";
+                return Student.Assignment.Knowledge[1];
             }
             set
             {
-                Assignment.Knowledge[1] = value;
+                Student.Assignment.Knowledge[1] = value;
                 OnPropertyChanged("SelectedArea2");
             }
 
@@ -227,12 +219,12 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (Assignment.Knowledge == null) return "";
-                return Assignment.Knowledge[2];
+                if (Student.Assignment.Knowledge == null) return "";
+                return Student.Assignment.Knowledge[2];
             }
             set
             {
-                Assignment.Knowledge[2] = value;
+                Student.Assignment.Knowledge[2] = value;
                 OnPropertyChanged("SelectedArea3");
             }
 
@@ -251,12 +243,12 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (Assignment.Company == null) return "";
-                return Assignment.Company;
+                if (Student.Assignment.Company == null) return "";
+                return Student.Assignment.Company;
             }
             set
             {
-                Assignment.Company = value;
+                Student.Assignment.Company = value;
                 OnPropertyChanged("Company");
             }
 
@@ -275,12 +267,12 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (Assignment.Period == null) return "";
-                return Assignment.Period;
+                if (Student.Assignment.Period == null) return "";
+                return Student.Assignment.Period;
             }
             set
             {
-                Assignment.Period = value;
+                Student.Assignment.Period = value;
                 OnPropertyChanged("Period");
             }
 
@@ -303,26 +295,26 @@ namespace MSD.ViewModels
         {
             get
             {
-                if(Assignment != null) 
-                    return Assignment.Description;
+                if(Student.Assignment != null) 
+                    return Student.Assignment.Description;
                 return "";
             }
             set
             {
-                Assignment.Description = value;
+                Student.Assignment.Description = value;
             }
         }
         public string Name
         {
             get
             {
-                if (Assignment != null)
-                    return Assignment.Name;
+                if (Student.Assignment != null)
+                    return Student.Assignment.Name;
                 return "";
             }
             set
             {
-                Assignment.Name = value;
+                Student.Assignment.Name = value;
             }
         }
 
@@ -330,13 +322,13 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (Assignment != null)
-                    return Assignment.Comments;
+                if (Student.Assignment != null)
+                    return Student.Assignment.Comments;
                 return "";
             }
             set
             {
-                Assignment.Comments = value;
+                Student.Assignment.Comments = value;
             }
         }
        
@@ -345,13 +337,13 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (Assignment != null)
-                    return Assignment.Accepted;
+                if (Student.Assignment != null)
+                    return Student.Assignment.Accepted;
                 return false;
             }
             set
             {
-                Assignment.Accepted = value;
+                Student.Assignment.Accepted = value;
             }
         }
 
@@ -359,13 +351,13 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (Assignment != null)
-                    return Assignment.TempPermission;
+                if (Student.Assignment != null)
+                    return Student.Assignment.TempPermission;
                 return false;
             }
             set
             {
-                Assignment.TempPermission = value;
+                Student.Assignment.TempPermission = value;
             }
         }
 
@@ -373,13 +365,13 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (Assignment != null)
-                    return Assignment.Permission;
+                if (Student.Assignment != null)
+                    return Student.Assignment.Permission;
                 return false;
             }
             set
             {
-                Assignment.Permission = value;
+                Student.Assignment.Permission = value;
             }
         }
 

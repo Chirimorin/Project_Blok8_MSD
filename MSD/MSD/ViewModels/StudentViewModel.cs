@@ -41,6 +41,9 @@ namespace MSD.ViewModels
                 OnPropertyChanged("Email");
                 OnPropertyChanged("Company");
                 OnPropertyChanged("Period");
+                OnPropertyChanged("Accepted");
+                OnPropertyChanged("TempPermission");
+                OnPropertyChanged("Permission");
                /* Teacher;
                 SecondReader;
                 StageType;*/
@@ -68,8 +71,8 @@ namespace MSD.ViewModels
             vm2.Title = "Nieuwe Student";
 
             vm.Student = new Student();
-            vm2.Assignment = new Assignment();
             vm2.Student = vm.Student;
+            vm2.Student.Assignment = new Assignment();
             vm2.Wijzig = false;
 
             _app.ShowStudentPersoonView();
@@ -110,7 +113,7 @@ namespace MSD.ViewModels
             adapter.Fill(data);
             if (data.Rows.Count != 0)
             {
-                vm2.Assignment = new Assignment
+                vm2.Student.Assignment = new Assignment
                 {
                     Name = data.Rows[0][0].ToString(),
                     Description = data.Rows[0][1].ToString(),
@@ -118,14 +121,14 @@ namespace MSD.ViewModels
                     Accepted = (bool)data.Rows[0][3],
                     Permission = (bool)data.Rows[0][5],
                     TempPermission = (bool)data.Rows[0][4],
-                    //KnowLedgeItem = data.Rows[0][5].ToString(),
+                    //Knowledge = data.Rows[0][5].ToString(),
                     Period = data.Rows[0][6].ToString(),
                     Company = data.Rows[0][7].ToString(),
                 };
             }
             else
             {
-                vm2.Assignment = null;
+                vm2.Student.Assignment = null;
             }
         }
 
@@ -135,7 +138,7 @@ namespace MSD.ViewModels
         public void fillStudentTable()
         {
             Students.Clear();
-            MySqlCommand cmd = new MySqlCommand("select s.studentnr, s.naam, s.mailadres, s.telefoonnr, o.omschrijving, s.opleiding_academie_afkorting FROM student s JOIN opleiding o ON s.opleiding_afkorting = o.afkorting");
+            MySqlCommand cmd = new MySqlCommand("select s.studentnr, s.naam, s.mailadres, s.telefoonnr, o.omschrijving, s.opleiding_academie_afkorting, so.periode_periodenaam, b.naam, so.opdrachtgoed, so.toestemmingvoorlopig, so.toestemmingdefinitief FROM student s JOIN opleiding o ON s.opleiding_afkorting = o.afkorting JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr");
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = Database.getData(cmd);
             adapter.Fill(table);
@@ -149,9 +152,19 @@ namespace MSD.ViewModels
                     Email = table.Rows[RowNr][2].ToString(),
                     Phone = table.Rows[RowNr][3].ToString(),
                     Education = table.Rows[RowNr][4].ToString(),
-                    Academie = table.Rows[RowNr][5].ToString()
+                    Academie = table.Rows[RowNr][5].ToString(),
                     
+                    Assignment = new Assignment
+                    {
+                        Period = table.Rows[RowNr][6].ToString(),
+                        Company = table.Rows[RowNr][7].ToString(),
+                        Accepted = (bool)table.Rows[RowNr][8],
+                        TempPermission = (bool)table.Rows[RowNr][9],
+                        Permission = (bool)table.Rows[RowNr][10],
+                    }
+
                 });
+                
             }
         }
         private Assignment _assignment;
@@ -240,74 +253,71 @@ namespace MSD.ViewModels
             }
         }
 
-        private string _educationYear;
-        public string EducationYear
-        {
-            get
-            {
-                return _educationYear;
-            }
-            set
-            {
-                _educationYear = value;
-                OnPropertyChanged("EducationYear");
-            }
-        }
-
-        private string _company;
         public string Company
         {
             get
             {
-                return _company;
+                if(SelectedItem != null)
+                    return SelectedItem.Assignment.Company;
+                else return "";
             }
             set
             {
-                _company = value;
-                OnPropertyChanged("Company");
+                SelectedItem.Assignment.Company = value;
             }
         }
-
-        private bool _accepted;
+        public string Period
+        {
+            get
+            {
+                if (SelectedItem != null)
+                    return SelectedItem.Assignment.Period;
+                else return "";
+            }
+            set
+            {
+                SelectedItem.Assignment.Period = value;
+            }
+        }
         public bool Accepted
         {
             get
             {
-                return _accepted;
+                if (SelectedItem != null)
+                    return SelectedItem.Assignment.Accepted;
+                else return false;
             }
             set
             {
-                _accepted = value;
-                OnPropertyChanged("Accepted");
+                SelectedItem.Assignment.Accepted = value;
             }
         }
-
-        private bool _tempPermission;
         public bool TempPermission
         {
             get
             {
-                return _tempPermission;
+                if (SelectedItem != null)
+                    return SelectedItem.Assignment.TempPermission;
+                else return false;
             }
             set
             {
-                _tempPermission = value;
-                OnPropertyChanged("TempPermission");
+                SelectedItem.Assignment.TempPermission = value;
             }
         }
-
-        private bool _permission;
         public bool Permission
         {
             get
             {
-                return _permission;
+                if (SelectedItem != null)
+                    return SelectedItem.Assignment.Permission;
+                else return false;
             }
             set
             {
-                _permission = value;
-                OnPropertyChanged("Permission");
+                SelectedItem.Assignment.Permission = value;
             }
         }
+
     }
 }
