@@ -12,6 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace MSD.ViewModels
 {
@@ -22,6 +24,14 @@ namespace MSD.ViewModels
         private readonly RelayCommand _zoekenCommand;
         private string _zoektext;
         private int _stagenr;
+
+        private ICollectionView _studentCollection;
+
+        public ICollectionView StudentCollection
+        {
+            get { return _studentCollection; }
+            set { _studentCollection = value; }
+        }
 
         private Database _database;
         private ObservableCollection<Student> students = new ObservableCollection<Student>();
@@ -34,7 +44,7 @@ namespace MSD.ViewModels
             _database = ModelFactory.Database;
             string query = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, so.opdrachtgoed, so.toestemmingvoorlopig, so.toestemmingdefinitief, b.naam, so.periode_periodenaam FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting";
             FillTable(query);
-           
+            this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
         }
         public ObservableCollection<Student> Students
         {
@@ -67,7 +77,7 @@ namespace MSD.ViewModels
             set
             {
                 _zoektext = value;
-                OnPropertyChanged("Email");
+                OnPropertyChanged("Zoektext");
             }
         }
 
@@ -95,8 +105,8 @@ namespace MSD.ViewModels
         public RelayCommand ZoekenCommand { get { return _zoekenCommand; } }
         public void Zoeken(object command)
         {
-            string query = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting WHERE s.naam LIKE '%" + Zoektext + "%' OR o.omschrijving LIKE '%" + Zoektext + "%' OR s.studentnr LIKE '%" + Zoektext + "%' OR s.mailadres LIKE '%" + Zoektext + "%';";
-            FillTable(query);
+            this.StudentCollection.Filter = w => ((Student)w).Name.Contains(Zoektext);
+            this.StudentCollection.Refresh();
         }
         public void FillTable(string query)
         {
