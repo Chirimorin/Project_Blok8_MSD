@@ -17,7 +17,7 @@
 
         <TextBox Text="{Binding Path=Zoektext, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="25"/>
 
-        <Button Command="{Binding MatchenCommand}" Content="Matchen" Margin="605,0,47,36" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
+            <Button IsEnabled="{Binding Path=AanpassenEnabled, UpdateSourceTrigger=PropertyChanged}" Command="{Binding MatchenCommand}" Content="Matchen" Margin="605,0,47,36" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
 
         <DataGrid CanUserAddRows="False" SelectedItem="{Binding Path=SelectedItem}" ItemsSource="{Binding Path=Students}" Margin="42,196,47,122">
             <DataGrid.Columns>

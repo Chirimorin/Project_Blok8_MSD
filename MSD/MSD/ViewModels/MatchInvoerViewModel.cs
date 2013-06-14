@@ -34,6 +34,7 @@ namespace MSD.ViewModels
             _database = ModelFactory.Database;
             string query = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, so.opdrachtgoed, so.toestemmingvoorlopig, so.toestemmingdefinitief, b.naam, so.periode_periodenaam FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting";
             FillTable(query);
+           
         }
         public ObservableCollection<Student> Students
         {
@@ -50,7 +51,12 @@ namespace MSD.ViewModels
             get { return _selectedItem; }
             set { _selectedItem = value;
             this.OnPropertyChanged("SelectedItem");
+            OnPropertyChanged("AanpassenEnabled");
             }
+        }
+        public bool AanpassenEnabled
+        {
+            get { return (SelectedItem != null); }
         }
         public string Zoektext
         {

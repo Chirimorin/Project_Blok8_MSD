@@ -114,7 +114,7 @@ namespace MSD.ViewModels
         public void fillTeacherTable()
         {
             Teachers.Clear();
-            MySqlCommand cmd = new MySqlCommand("select * from docent");
+            MySqlCommand cmd = new MySqlCommand("select d.*, o.omschrijving, o.academie_afkorting from docent d JOIN docent_has_opleiding dho ON dho.docent_docentnr = d.docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting");
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = Database.getData(cmd);
             adapter.Fill(table);
@@ -131,6 +131,9 @@ namespace MSD.ViewModels
                     Phone = table.Rows[RowNr][5].ToString(),
                     Preference = table.Rows[RowNr][6].ToString(),
                     Hours = Convert.ToInt32(table.Rows[RowNr][7].ToString()),
+                    Academie = table.Rows[RowNr][8].ToString(),
+                    Education = table.Rows[RowNr][9].ToString(),
+                    
                 });
             }
         }
