@@ -53,22 +53,26 @@ namespace MSD.ViewModels
                 ModelFactory.Database.setData(new MySqlCommand("DELETE FROM docent_has_kennisgebieden WHERE Docent_Docentnr = " + Teacher.TeacherNo));
 
                 string query;
+                 int afkorting = getexecuteQuery("SELECT afkorting FROM opleiding WHERE omschrijving = '" + Teacher.Education + "';");
+           
                 if (Editing)
                 {
+                    
                     query = "UPDATE docent SET Naam = '" + Teacher.Name + "', Mailadres = '" + Teacher.Email + "', Plaats = '" + Teacher.City + "', Adres = '" + Teacher.Adress + "', Telefoonnr = '" + Teacher.Phone + "', Voorkeur = '" + Teacher.Preference + "', Uren = '" + Teacher.Hours + "' WHERE Docentnr = '" + Teacher.TeacherNo + "';";
+                    ModelFactory.Database.setData(new MySqlCommand(query));
+                    query = "UPDATE docent_has_opleiding SET docent_docentnr = " + Teacher.TeacherNo + ", opleiding_afkorting = " + afkorting + ", opleiding_academie_afkorting =" + Teacher.Academie + " WHERE docent_docentnr = " + Teacher.TeacherNo + ";";
                 }
                 else
                 {
-                    MySqlCommand cmd = new MySqlCommand("select max(Docentnr) from docent");
-                    DataTable table = new DataTable();
-                    MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
-                    adapter.Fill(table);
-
-                    Teacher.TeacherNo = Convert.ToInt32(table.Rows[0][0].ToString()) + 1;
+                   
+                    Teacher.TeacherNo = getexecuteQuery("select max(Docentnr) from docent")+1;
 
                     query = "INSERT INTO docent (Docentnr, Naam, Mailadres, Plaats, Adres, Telefoonnr, Voorkeur, Uren) VALUES('" + Teacher.TeacherNo + "','" + Teacher.Name + "','" + Teacher.Email + "','" + Teacher.City + "','" + Teacher.Adress + "','" + Teacher.Phone + "','" + Teacher.Preference + "','" + Teacher.Hours + "');";
+                    ModelFactory.Database.setData(new MySqlCommand(query));
+                    query = "INSERT INTO docent_has_opleiding (docent_docentnr, opleiding_afkorting, opleiding_academie_afkorting VALUES("+ Teacher.TeacherNo +"," + afkorting +",'" + Teacher.Academie + "');";
+                    ModelFactory.Database.setData(new MySqlCommand(query));
                 }
-                ModelFactory.Database.setData(new MySqlCommand(query));
+               
 
 
 
@@ -106,6 +110,15 @@ namespace MSD.ViewModels
 
                 MessageBox.Show(message);
             }
+        }
+        public int getexecuteQuery(string query)
+        {
+            MySqlCommand mycommand = new MySqlCommand(query);
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable data = new DataTable();
+            adapter = ModelFactory.Database.getData(mycommand);
+            adapter.Fill(data);
+            return (int)data.Rows[0][0];
         }
 
         public void FillKnowledgeAreas()
