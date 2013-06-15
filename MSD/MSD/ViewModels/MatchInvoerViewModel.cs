@@ -24,6 +24,7 @@ namespace MSD.ViewModels
         private readonly RelayCommand _zoekenCommand;
         private string _zoektext;
         private int _stagenr;
+        private string _fillquery;
 
         private ICollectionView _studentCollection;
 
@@ -42,8 +43,8 @@ namespace MSD.ViewModels
             _matchenCommand = new RelayCommand(Matchen);
             _zoekenCommand = new RelayCommand(Zoeken);
             _database = ModelFactory.Database;
-            string query = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, so.opdrachtgoed, so.toestemmingvoorlopig, so.toestemmingdefinitief, b.naam, so.periode_periodenaam FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting";
-            FillTable(query);
+            _fillquery = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, so.opdrachtgoed, so.toestemmingvoorlopig, so.toestemmingdefinitief, b.naam, so.periode_periodenaam, so.type FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting";
+            FillTable(_fillquery);
             this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
         }
         public ObservableCollection<Student> Students
@@ -111,6 +112,10 @@ namespace MSD.ViewModels
                 this.StudentCollection.Filter = new Predicate<object>(Contains);
                 this.StudentCollection.Refresh();
             }
+            else
+            {
+                FillTable(_fillquery);
+            }
         }
 
         private bool Contains(object obj)
@@ -146,6 +151,7 @@ namespace MSD.ViewModels
                             Accepted = (bool)data.Rows[RowNr][5],
                             Permission = (bool)data.Rows[RowNr][6],
                             TempPermission = (bool)data.Rows[RowNr][7],
+                            Type = data.Rows[RowNr][10].ToString(),
                         }
 
 

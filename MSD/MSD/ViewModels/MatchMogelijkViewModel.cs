@@ -113,10 +113,10 @@ namespace MSD.ViewModels
             set { Student.Education = value; }
         }
 
-        public string Academie
+        public string Type
         {
-            get { return Student.Academie; }
-            set { Student.Academie = value; }
+            get { return Student.Assignment.Type; }
+            set { Student.Assignment.Type = value; }
         }
 
         public string Company

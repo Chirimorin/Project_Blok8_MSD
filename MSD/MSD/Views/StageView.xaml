@@ -7,17 +7,17 @@
              d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="509">
 
     <Grid x:Name="LayoutRoot">
-        <DataGrid Margin="21,83,39,0" VerticalAlignment="Top" Height="300" AutoGenerateColumns="False" ItemsSource="{Binding Collection}">
+        <DataGrid CanUserAddRows="False" Margin="21,83,39,0" VerticalAlignment="Top" Height="300" AutoGenerateColumns="False" ItemsSource="{Binding Collection}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Property1}" Header="ID"/>
-                <DataGridTextColumn Binding="{Binding Property2}" Header="Naam student"/>
-                <DataGridTextColumn Binding="{Binding Property3}" Header="Naam Docent"/>
-                <DataGridTextColumn Binding="{Binding Property7}" Header="Tweede lezer"/>
-                <DataGridTextColumn Binding="{Binding Property4}" Header="Naam stagebedrijf"/>
-                <DataGridTextColumn Binding="{Binding Property5}" Header="Academie"/>
-                <DataGridTextColumn Binding="{Binding Property6}" Header="Begin datum"/>
-                <DataGridTextColumn Binding="{Binding Property6}" Header="Eind datum"/>
-                <DataGridTextColumn Binding="{Binding Property6}" Header="Stagecoordinator"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnr"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="Email"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Property3}" Header="Naam Docent"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Property7}" Header="Tweede lezer"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Company}" Header="Stagebedrijf"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Period}" Header="Periode"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Assignment.Name}" Header="Opdracht naam"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="297,32.807,0,0" HorizontalAlignment="Left" Width="153"/>
