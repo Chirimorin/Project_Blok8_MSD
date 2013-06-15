@@ -44,6 +44,7 @@ namespace MSD.ViewModels
                 OnPropertyChanged("Accepted");
                 OnPropertyChanged("TempPermission");
                 OnPropertyChanged("Permission");
+                OnPropertyChanged("StageType");
                /* Teacher;
                 SecondReader;
                 StageType;*/
@@ -138,7 +139,7 @@ namespace MSD.ViewModels
         public void fillStudentTable()
         {
             Students.Clear();
-            MySqlCommand cmd = new MySqlCommand("select s.studentnr, s.naam, s.mailadres, s.telefoonnr, o.omschrijving, s.opleiding_academie_afkorting, so.periode_periodenaam, b.naam, so.opdrachtgoed, so.toestemmingvoorlopig, so.toestemmingdefinitief FROM student s JOIN opleiding o ON s.opleiding_afkorting = o.afkorting JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr");
+            MySqlCommand cmd = new MySqlCommand("select s.studentnr, s.naam, s.mailadres, s.telefoonnr, o.omschrijving, s.opleiding_academie_afkorting, so.periode_periodenaam, b.naam, so.opdrachtgoed, so.toestemmingvoorlopig, so.toestemmingdefinitief, so.type FROM student s JOIN opleiding o ON s.opleiding_afkorting = o.afkorting JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr");
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = Database.getData(cmd);
             adapter.Fill(table);
@@ -161,6 +162,7 @@ namespace MSD.ViewModels
                         Accepted = (bool)table.Rows[RowNr][8],
                         TempPermission = (bool)table.Rows[RowNr][9],
                         Permission = (bool)table.Rows[RowNr][10],
+                        Type = table.Rows[RowNr][11].ToString(),
                     }
 
                 });
@@ -203,6 +205,17 @@ namespace MSD.ViewModels
             }
            
             
+        }
+        public string StageType
+        {
+            get
+            {
+                if (SelectedItem != null)
+                    return SelectedItem.Assignment.Type;
+                return "";
+            }
+
+
         }
         public string StudentNo
         {

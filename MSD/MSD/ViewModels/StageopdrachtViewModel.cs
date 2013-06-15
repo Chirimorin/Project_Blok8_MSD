@@ -50,6 +50,9 @@ namespace MSD.ViewModels
                 _stagenr = getexecuteQuery("SELECT stageopdracht_stagenr FROM stageopdracht_has_student WHERE student_studentnr = " + Student.StudentNo);
                
             }
+            _type = new string[2];
+            _type[0] = "Stage";
+            _type[1] = "Afstuderen";
         }
 
         public RelayCommand TerugCommand { get { return _terugCommand; } }
@@ -75,7 +78,7 @@ namespace MSD.ViewModels
                 string studentquery = "INSERT INTO student VALUES(" + Student.StudentNo + ",'" + Student.Name + "','" + Student.Email + "','" + Student.Phone + "'," + afkorting + ",'" + Student.Academie + "');";
 
                 executeQuery(studentquery);
-                string opdrachtquery = "INSERT INTO stageopdracht () VALUES (" + _stagenr + ",'" + Student.Assignment.Name + "','" + Student.Assignment.Description + "','" + Student.Assignment.Comments + "'," + Student.Assignment.Accepted + "," + Student.Assignment.TempPermission + "," + Student.Assignment.Permission + "," + bedrijf + ",'" + Student.Assignment.Period + "')";
+                string opdrachtquery = "INSERT INTO stageopdracht () VALUES (" + _stagenr + ",'" + Student.Assignment.Name + "','" + Student.Assignment.Description + "','" + Student.Assignment.Comments + "'," + Student.Assignment.Accepted + "," + Student.Assignment.TempPermission + "," + Student.Assignment.Permission + "," + bedrijf + ",'" + Student.Assignment.Period + "','"+ Student.Assignment.Type +"')";
                 executeQuery(opdrachtquery);
                 string studentopdrachtquery = "INSERT INTO stageopdracht_has_student VALUES (" + _stagenr + "," + Student.StudentNo + ")";
                 executeQuery(studentopdrachtquery);
@@ -84,7 +87,7 @@ namespace MSD.ViewModels
             {
                 string studentquery = "UPDATE student SET naam = '" + Student.Name + "', mailadres = '" + Student.Email + "', telefoonnr = " + Student.Phone + ", opleiding_afkorting = " + afkorting + ", opleiding_academie_afkorting = '" + Student.Academie + "' WHERE studentnr = " + Student.StudentNo;
                 executeQuery(studentquery);
-                string opdrachtquery = "UPDATE stageopdracht SET stagenr=" + _stagenr + ", opdrachtnaam ='" + Student.Assignment.Name + "', omschrijving ='" + Student.Assignment.Description + "', opmerking ='" + Student.Assignment.Comments + "', opdrachtgoed = " + Student.Assignment.Accepted + ", toestemmingvoorlopig =" + Student.Assignment.TempPermission + ", toestemmingdefinitief =" + Student.Assignment.Permission + ", stagebedrijf_bedrijfnr = " + bedrijf + ", periode_periodenaam = '" + Student.Assignment.Period + "' WHERE stagenr = " + _stagenr;
+                string opdrachtquery = "UPDATE stageopdracht SET stagenr=" + _stagenr + ", opdrachtnaam ='" + Student.Assignment.Name + "', omschrijving ='" + Student.Assignment.Description + "', opmerking ='" + Student.Assignment.Comments + "', opdrachtgoed = " + Student.Assignment.Accepted + ", toestemmingvoorlopig =" + Student.Assignment.TempPermission + ", toestemmingdefinitief =" + Student.Assignment.Permission + ", stagebedrijf_bedrijfnr = " + bedrijf + ", periode_periodenaam = '" + Student.Assignment.Period + "', type = '" + Student.Assignment.Type + "' WHERE stagenr = " + _stagenr;
                 executeQuery(opdrachtquery);
             }
             _app.ShowStudentView();
@@ -261,6 +264,30 @@ namespace MSD.ViewModels
             {
                 _company = value;
                 OnPropertyChanged("Company");
+            }
+        }
+        public string SelectedType
+        {
+            get
+            {
+                if (Student.Assignment.Type == null) return "";
+                return Student.Assignment.Type;
+            }
+            set
+            {
+                Student.Assignment.Type = value;
+                OnPropertyChanged("Type");
+            }
+
+        }
+        public string[] _type;
+        public string[] Type
+        {
+            get { return _type; }
+            set
+            {
+                _type = value;
+                OnPropertyChanged("Type");
             }
         }
         public string SelectedPeriod
