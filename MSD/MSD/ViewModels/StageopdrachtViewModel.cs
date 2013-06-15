@@ -72,6 +72,9 @@ namespace MSD.ViewModels
             int afkorting = getexecuteQuery("SELECT afkorting FROM opleiding WHERE omschrijving = '" + Student.Education + "';");
             int bedrijf = getexecuteQuery("SELECT bedrijfnr FROM stagebedrijf WHERE naam = '" + Student.Assignment.Company + "';");
 
+            ModelFactory.Database.setData(new MySqlCommand("DELETE FROM kennisgebieden_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr));
+
+
             if (_wijzig == false)
             {
                 
@@ -89,6 +92,11 @@ namespace MSD.ViewModels
                 executeQuery(studentquery);
                 string opdrachtquery = "UPDATE stageopdracht SET stagenr=" + _stagenr + ", opdrachtnaam ='" + Student.Assignment.Name + "', omschrijving ='" + Student.Assignment.Description + "', opmerking ='" + Student.Assignment.Comments + "', opdrachtgoed = " + Student.Assignment.Accepted + ", toestemmingvoorlopig =" + Student.Assignment.TempPermission + ", toestemmingdefinitief =" + Student.Assignment.Permission + ", stagebedrijf_bedrijfnr = " + bedrijf + ", periode_periodenaam = '" + Student.Assignment.Period + "', type = '" + Student.Assignment.Type + "' WHERE stagenr = " + _stagenr;
                 executeQuery(opdrachtquery);
+            }
+            foreach (string knowledgeArea in Student.Assignment.Knowledge)
+            {
+                if (knowledgeArea != "" && knowledgeArea != null)
+                    ModelFactory.Database.setData(new MySqlCommand("INSERT INTO kennisgebieden_has_stageopdracht (kennisgebieden_kennisnr, stageopdracht_stagenr) VALUES((SELECT KennisNr FROM kennisgebieden WHERE KennisNaam = '" + knowledgeArea + "')," + _stagenr + ")"));
             }
             _app.ShowStudentView();
 
