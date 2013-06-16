@@ -140,7 +140,7 @@ namespace MSD.ViewModels
         {
             
             Student student = obj as Student;
-            return (student.Name.Contains(Zoektext.)) || (student.Email.Contains(Zoektext)) || (student.Education.Contains(Zoektext));
+            return (student.Name.Contains(Zoektext)) || (student.Email.Contains(Zoektext)) || (student.Education.Contains(Zoektext));
         }
 
         /// <summary>
