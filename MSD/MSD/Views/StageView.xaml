@@ -7,7 +7,7 @@
              d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="509">
 
     <Grid x:Name="LayoutRoot">
-        <DataGrid CanUserAddRows="False" Margin="21,83,39,0" VerticalAlignment="Top" Height="300" AutoGenerateColumns="False" ItemsSource="{Binding Collection}">
+        <DataGrid CanUserAddRows="False" Margin="42,196,47,122" VerticalAlignment="Top" Height="303" AutoGenerateColumns="False" ItemsSource="{Binding Path=StudentCollection}">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnr"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
@@ -23,16 +23,13 @@
         <Label Content="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="297,32.807,0,0" HorizontalAlignment="Left" Width="153"/>
         
         <Grid Margin="0,400,0,0">
-            <TextBox HorizontalAlignment="Left" Height="25" Margin="21,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-            <TextBox HorizontalAlignment="Left" Height="25" Margin="151,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-            <TextBox HorizontalAlignment="Left" Height="25" Margin="280,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <ComboBox HorizontalAlignment="Left" Margin="418,40,0,0" VerticalAlignment="Top" Width="120" Height="25"/>
-            <Button Content="Filteren" HorizontalAlignment="Left" Margin="611,40,0,0" VerticalAlignment="Top" Foreground="Black"  Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
-            <Label Content="Student" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top"/>
-            <Label Content="Docent" HorizontalAlignment="Left" Margin="151,10,0,0" VerticalAlignment="Top"/>
-            <Label Content="Stagebedrijf" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top"/>
-            <Label Content="Academie" HorizontalAlignment="Left" Margin="418,10,0,0" VerticalAlignment="Top"/>
+            <!--<Button Content="Filteren" HorizontalAlignment="Left" Margin="611,40,0,0" VerticalAlignment="Top" Foreground="Black"  Height="25" Width="100" FontStyle="Italic" FontSize="15"/>-->
         </Grid>
+        <Label Content="Zoeken" HorizontalAlignment="Left" Margin="42,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
+        <TextBox Text="{Binding Zoektext, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="25"/>
+        <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="350,0,302,365" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
+        <ComboBox SelectedValue="{Binding Path=SelectedPeriod, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Period, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="183,119,0,0" VerticalAlignment="Top" Width="150" Height="25"/>
+        <Label Content="Periode" HorizontalAlignment="Left" Margin="183,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
     </Grid>
 </UserControl>
 

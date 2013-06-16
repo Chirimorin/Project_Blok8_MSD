@@ -47,6 +47,7 @@ namespace MSD.ViewModels
             FillTable(_fillquery);
             this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
         }
+
         public ObservableCollection<Student> Students
         {
             get { return students; }
@@ -56,6 +57,7 @@ namespace MSD.ViewModels
                 this.OnPropertyChanged("Students");
             }
         }
+
         private Student _selectedItem;
         public Student SelectedItem
         {
@@ -65,10 +67,12 @@ namespace MSD.ViewModels
             OnPropertyChanged("AanpassenEnabled");
             }
         }
+
         public bool AanpassenEnabled
         {
             get { return (SelectedItem != null); }
         }
+
         public string Zoektext
         {
             get
@@ -93,6 +97,7 @@ namespace MSD.ViewModels
             mm.MogelijkeMatch(_stagenr, SelectedItem.Assignment.Period);
             _app.ShowMatchMogelijkView();
         }
+
         public int getexecuteQuery(string query)
         {
             Debug.WriteLine(query);
@@ -138,7 +143,6 @@ namespace MSD.ViewModels
         /// <returns>De student rows die overeenkomen met het filter</returns>
         private bool Contains(object obj)
         {
-            
             Student student = obj as Student;
             return (student.Name.Contains(Zoektext)) || (student.Email.Contains(Zoektext)) || (student.Education.Contains(Zoektext));
         }

@@ -10,31 +10,96 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace MSD.ViewModels
 {
     class StageViewModel : PropertyChangedBase
     {
         private readonly IApplicationController _app;
-
+        private ObservableCollection<Student> students = new ObservableCollection<Student>();
         private bool _afstuderen;
+        private string _selectedPeriod;
+        private string _zoektext;
+        private RelayCommand _filterCommand;
+
+        private ICollectionView _studentCollection;
+        public ICollectionView StudentCollection
+        {
+            get { return _studentCollection; }
+            set { _studentCollection = value; }
+        }
 
         public StageViewModel(IApplicationController app)
         {
+            _filterCommand = new RelayCommand(Filter);
             _app = app;
             string query;
             if (Afstuderen)
             {
-                query = "SELECT s.* FROM student s WHERE type = 'Afstuderen'";
+                query = "SELECT s.* FROM student s WHERE 'type' = 'Afstuderen'";
             }
             else
             {
-                query = "SELECT s.* FROM student s WHERE type = 'Stage'";
+                query = "SELECT s.* FROM student s WHERE 'type' = 'Stage'";
             }
-            
+
+            FillPeriode();
             FillTable(query);
+            this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
         }
-        private ObservableCollection<Student> students = new ObservableCollection<Student>();
+
+        public RelayCommand FilterCommand { get { return _filterCommand; } }
+        
+        /// <summary>
+        /// Filtert de StudentCollection
+        /// </summary>
+        /// <param name="command"></param>
+        public void Filter(object command)
+        {
+            if (!string.IsNullOrEmpty(Zoektext))
+            {
+                if (!StudentCollection.IsEmpty)
+                {
+                    this.StudentCollection.Filter = new Predicate<object>(Contains);
+                    this.StudentCollection.Refresh();
+                }
+                else
+                {
+                    this.StudentCollection.Filter = null;
+                }
+            }
+            else
+            {
+                this.StudentCollection.Filter = null;
+            }
+        }
+
+        /// <summary>
+        /// Maakt een student van het object en kijkt of de waardes overeenkomen met de zoektext
+        /// </summary>
+        /// <param name="obj">Het student object</param>
+        /// <returns>De student rows die overeenkomen met het filter</returns>
+        private bool Contains(object obj)
+        {
+            Student student = obj as Student;
+            return (student.Name.Contains(Zoektext)) || (student.Email.Contains(Zoektext)) || (student.Education.Contains(Zoektext));
+        }
+
+        public string Zoektext
+        {
+            get
+            {
+                return _zoektext;
+            }
+            set
+            {
+                _zoektext = value;
+                OnPropertyChanged("Zoektext");
+            }
+        }
+
         public ObservableCollection<Student> Students
         {
             get { return students; }
@@ -61,6 +126,48 @@ namespace MSD.ViewModels
             {
                 if (Afstuderen) return "Afstuderen";
                 else return "Stages";
+            }
+        }
+
+        public string SelectedPeriod
+        {
+            get { return _selectedPeriod; }
+            set
+            {
+                _selectedPeriod = value;
+                this.OnPropertyChanged("Period");
+            }
+        }
+
+        private string[] _period;
+        public string[] Period
+        {
+            get
+            {
+                return _period;
+            }
+            set
+            {
+                _period = value;
+                OnPropertyChanged("Period");
+            }
+        }
+
+        /// <summary>
+        /// Vult periode combobox
+        /// </summary>
+        public void FillPeriode()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT periodenaam FROM periode");
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
+            adapter.Fill(table);
+
+            _period = new string[table.Rows.Count];
+
+            for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
+            {
+                Period[RowNr] = table.Rows[RowNr][0].ToString();
             }
         }
 

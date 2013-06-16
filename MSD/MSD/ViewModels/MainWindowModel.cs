@@ -22,13 +22,8 @@ namespace MSD.ViewModels
         private readonly RelayCommand _ShowAfstuderenCommand;
         private readonly RelayCommand _ShowGebruikerCommand;
         private readonly RelayCommand _LogoutCommand;
-
         private string _username;
         private string _display;
-
-        
-
-
         private PropertyChangedBase _contents;
 
         public MainWindowModel(IApplicationController app)
