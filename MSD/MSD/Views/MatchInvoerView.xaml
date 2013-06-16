@@ -24,15 +24,15 @@
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnummer"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Academie"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="Email"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="Email" />
                 <DataGridTextColumn Header="Bedrijf"/>
                 <DataGridCheckBoxColumn Header="Opdracht"/>
                 <DataGridCheckBoxColumn Header="Voorlopige toestemming"/>
                 <DataGridCheckBoxColumn Header="Toestemming"/>
             </DataGrid.Columns>
         </DataGrid>
-
-        <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="188,0,464,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
+            <Button Command="{Binding ExportCommand}" Content="Exporteren" Margin="500,0,152,36" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
+            <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="188,0,464,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
         </Grid>
         </Grid>
 </UserControl>

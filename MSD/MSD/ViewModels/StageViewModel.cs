@@ -63,6 +63,11 @@ namespace MSD.ViewModels
                 else return "Stages";
             }
         }
+
+        /// <summary>
+        /// Vult de ObservableCollection met Student objecten
+        /// </summary>
+        /// <param name="query">De uit te voeren query</param>
         public void FillTable(string query)
         {
             students.Clear();
@@ -90,8 +95,6 @@ namespace MSD.ViewModels
 
 
                     });
-
-
                 }
             }
         }

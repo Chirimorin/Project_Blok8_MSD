@@ -21,6 +21,7 @@ namespace MSD.Views
 		public MatchInvoerView()
 		{
 			this.InitializeComponent();
+
 		}
 	}
 }

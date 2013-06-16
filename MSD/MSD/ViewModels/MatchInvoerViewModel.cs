@@ -105,26 +105,48 @@ namespace MSD.ViewModels
         }
 
         public RelayCommand ZoekenCommand { get { return _zoekenCommand; } }
+
+        /// <summary>
+        /// Filtert de StudentCollection
+        /// </summary>
+        /// <param name="command"></param>
         public void Zoeken(object command)
         {
             if (!string.IsNullOrEmpty(Zoektext))
             {
-                this.StudentCollection.Filter = new Predicate<object>(Contains);
-                this.StudentCollection.Refresh();
+                if (!StudentCollection.IsEmpty)
+                {
+                    this.StudentCollection.Filter = new Predicate<object>(Contains);
+                    this.StudentCollection.Refresh();
+                }
+                else
+                {
+                    this.StudentCollection.Filter = null;
+                }
+
             }
             else
             {
-                FillTable(_fillquery);
+                this.StudentCollection.Filter = null;
             }
         }
 
+        /// <summary>
+        /// Maakt een student van het object en kijkt of de waardes overeenkomen met de zoektext
+        /// </summary>
+        /// <param name="obj">Het student object</param>
+        /// <returns>De student rows die overeenkomen met het filter</returns>
         private bool Contains(object obj)
         {
             
             Student student = obj as Student;
-            return (student.Name.Contains(Zoektext)) || (student.Email.Contains(Zoektext)) || (student.Education.Contains(Zoektext));
+            return (student.Name.Contains(Zoektext.)) || (student.Email.Contains(Zoektext)) || (student.Education.Contains(Zoektext));
         }
 
+        /// <summary>
+        /// Vult de ObservableCollection met Student objecten
+        /// </summary>
+        /// <param name="query">De uit te voeren query</param>
         public void FillTable(string query)
         {
             students.Clear();
