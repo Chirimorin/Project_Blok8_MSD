@@ -50,7 +50,7 @@ namespace MSD.ViewModels
             _zoekenCommand = new RelayCommand(Zoeken);
             _database = ModelFactory.Database;
             _fillquery = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, so.opdrachtgoed, so.toestemmingvoorlopig, so.toestemmingdefinitief, b.naam, so.periode_periodenaam, so.type FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting";
-            FillTable(_fillquery);
+            FillTable();
             FillPeriode();
             this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
         }
@@ -111,9 +111,11 @@ namespace MSD.ViewModels
 
             mm.Student = SelectedItem;
             _stagenr = getexecuteQuery("SELECT stageopdracht_stagenr FROM stageopdracht_has_student WHERE student_studentnr = " + SelectedItem.StudentNo);
+            mm.Stagenr = _stagenr;
             if (SelectedItem.Assignment.Type == "Afstuderen")
             {
-                mm.MogelijkeMatchReader(_stagenr);
+                mm.MogelijkeMatchReader();
+                mm.Afstuderen = true;
             }
             mm.MogelijkeMatchTeacher(_stagenr);
             _app.ShowMatchMogelijkView();
@@ -191,10 +193,10 @@ namespace MSD.ViewModels
         /// Vult de ObservableCollection met Student objecten
         /// </summary>
         /// <param name="query">De uit te voeren query</param>
-        public void FillTable(string query)
+        public void FillTable()
         {
             students.Clear();
-            MySqlCommand mycommand = new MySqlCommand(query);
+            MySqlCommand mycommand = new MySqlCommand(_fillquery);
             DataTable data = new DataTable();
             MySqlDataAdapter adapter = _database.getData(mycommand);
             adapter.Fill(data);
