@@ -12,12 +12,12 @@
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnr"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="Email"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Property3}" Header="Naam Docent"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Property7}" Header="Tweede lezer"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Company}" Header="Stagebedrijf"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Supervisor}" Header="Naam Docent"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Secondreader}" Header="Tweede lezer"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Company}" Header="Stagebedrijf"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Period}" Header="Periode"/>
-                <DataGridTextColumn IsReadOnly="True"  Header="Opdracht naam"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Period}" Header="Periode"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Name}" Header="Opdracht naam"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="297,32.807,0,0" HorizontalAlignment="Left" Width="153"/>

@@ -123,6 +123,30 @@ namespace MSD.Entity
             get { return _type; }
             set { _type = value; }
         }
+        private string _supervisor;
+        public string Supervisor
+        {
+            get
+            {
+                return _supervisor;
+            }
+            set
+            {
+                _supervisor = value;
+            }
+        }
+        private string _secondreader;
+        public string Secondreader
+        {
+            get
+            {
+                return _secondreader;
+            }
+            set
+            {
+                _secondreader = value;
+            }
+        }
        
     
 

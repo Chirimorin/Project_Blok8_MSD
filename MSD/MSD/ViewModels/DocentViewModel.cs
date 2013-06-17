@@ -56,7 +56,7 @@ namespace MSD.ViewModels
                 OnPropertyChanged("Phone");
                 OnPropertyChanged("Preference");
                 OnPropertyChanged("Hours");
-                OnPropertyChanged("AanpassenEnabled");
+                OnPropertyChanged("AanpassenEnabled");                
                 FillKnowledgeAreas();
             }
         }
@@ -131,8 +131,8 @@ namespace MSD.ViewModels
                     Phone = table.Rows[RowNr][5].ToString(),
                     Preference = table.Rows[RowNr][6].ToString(),
                     Hours = Convert.ToInt32(table.Rows[RowNr][7].ToString()),
-                    Academie = table.Rows[RowNr][8].ToString(),
-                    Education = table.Rows[RowNr][9].ToString(),
+                    Education = table.Rows[RowNr][8].ToString(),
+                    Academie = table.Rows[RowNr][9].ToString(),
                     
                 });
             }

@@ -60,7 +60,8 @@ namespace MSD.ViewModels
                     
                     query = "UPDATE docent SET Naam = '" + Teacher.Name + "', Mailadres = '" + Teacher.Email + "', Plaats = '" + Teacher.City + "', Adres = '" + Teacher.Adress + "', Telefoonnr = '" + Teacher.Phone + "', Voorkeur = '" + Teacher.Preference + "', Uren = '" + Teacher.Hours + "' WHERE Docentnr = '" + Teacher.TeacherNo + "';";
                     ModelFactory.Database.setData(new MySqlCommand(query));
-                    query = "UPDATE docent_has_opleiding SET docent_docentnr = " + Teacher.TeacherNo + ", opleiding_afkorting = " + afkorting + ", opleiding_academie_afkorting =" + Teacher.Academie + " WHERE docent_docentnr = " + Teacher.TeacherNo + ";";
+                    query = "UPDATE docent_has_opleiding SET docent_docentnr = " + Teacher.TeacherNo + ", opleiding_afkorting = " + afkorting + ", opleiding_academie_afkorting = '" + Teacher.Academie + "' WHERE docent_docentnr = " + Teacher.TeacherNo + ";";
+                    ModelFactory.Database.setData(new MySqlCommand(query));
                 }
                 else
                 {

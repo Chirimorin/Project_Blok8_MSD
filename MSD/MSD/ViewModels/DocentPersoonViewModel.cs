@@ -89,7 +89,6 @@ namespace MSD.ViewModels
                 Academie[RowNr] = table.Rows[RowNr][0].ToString();
             }
         }
-        private string _selectedAcademie;
         public string SelectedAcademie
         {
             get
@@ -114,7 +113,6 @@ namespace MSD.ViewModels
                 OnPropertyChanged("Academie");
             }
         }
-        private string _selectedEducation;
         public string SelectedEducation
         {
             get
@@ -143,7 +141,7 @@ namespace MSD.ViewModels
         public Teacher Teacher
         {
             get { return _teacher; }
-            set { _teacher = value; }
+            set { _teacher = value;}
         }
 
         public string Name

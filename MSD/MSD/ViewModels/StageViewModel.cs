@@ -23,6 +23,7 @@ namespace MSD.ViewModels
         private string _selectedPeriod;
         private string _zoektext;
         private RelayCommand _filterCommand;
+        private bool _reader = false;
 
         private ICollectionView _studentCollection;
         public ICollectionView StudentCollection
@@ -40,15 +41,18 @@ namespace MSD.ViewModels
         public void setData()
         {
             string type;
+
             if (Afstuderen)
             {
                 type = "Afstuderen";
+                _reader = true;
             }
             else
             {
                 type = "Stage";
             }
-            string query = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, b.naam, so.periode_periodenaam FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON ss.stageopdracht_stagenr =  so.stagenr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr WHERE so.type = '" + type + "'";
+            string query = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, b.naam, so.periode_periodenaam, so.stagenr FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON ss.stageopdracht_stagenr =  so.stagenr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr WHERE so.type = '" + type + "'";
+            
             FillPeriode();
             FillTable(query);
             this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
@@ -60,6 +64,7 @@ namespace MSD.ViewModels
         /// <param name="query">De uit te voeren query</param>
         public void FillTable(string query)
         {
+            
             students.Clear();
             MySqlCommand mycommand = new MySqlCommand(query);
             DataTable data = new DataTable();
@@ -79,14 +84,43 @@ namespace MSD.ViewModels
                         Assignment = new Assignment
                         {
                             Name = data.Rows[RowNr][4].ToString(),
-                            Period = data.Rows[RowNr][6].ToString(),
                             Company = data.Rows[RowNr][5].ToString(),
+                            Period = data.Rows[RowNr][6].ToString(),
+                            Supervisor = getSupervisor(Convert.ToInt32(data.Rows[RowNr][7])),
+                            Secondreader = getSecondreader(Convert.ToInt32(data.Rows[RowNr][7]))
+                            
                         }
 
 
                     });
                 }
             }
+        }
+        public string getSupervisor(int stagenr)
+        {
+            string supervisorquery = "SELECT d.naam FROM docent d JOIN docent_has_stageopdracht ds ON ds.docent_docentnr = d.docentnr WHERE ds.stageopdracht_stagenr = "+ stagenr + " AND soort = 'Begeleider'";
+            return getexecuteQuery(supervisorquery);
+        }
+        public string getSecondreader(int stagenr)
+        {
+            if (_reader == true)
+            {
+                string secondreaderquery = "SELECT d.naam FROM docent d JOIN docent_has_stageopdracht ds ON ds.docent_docentnr = d.docentnr WHERE ds.stageopdracht_stagenr = " + stagenr + " AND soort = 'Tweede lezer'";
+                return getexecuteQuery(secondreaderquery);
+            }
+            return "-";
+        }
+        public string getexecuteQuery(string query)
+        {
+            MySqlCommand mycommand = new MySqlCommand(query);
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable data = new DataTable();
+            adapter = ModelFactory.Database.getData(mycommand);
+            adapter.Fill(data);
+            if(data.Rows.Count != 0)
+                return data.Rows[0][0].ToString();
+            else
+                return "-";
         }
         public RelayCommand FilterCommand { get { return _filterCommand; } }
         
@@ -208,7 +242,7 @@ namespace MSD.ViewModels
                 Period[RowNr] = table.Rows[RowNr][0].ToString();
             }
         }
-
+      
 
     }
 }

@@ -29,8 +29,8 @@
             <Label Content="Woonplaats"          HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="0,225,0,0" VerticalAlignment="Top" Width="140" Height="25"/>
             <Label Content="Opleiding"          HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="277,276,0,0" VerticalAlignment="Top" Width="70" Height="25"/>
             <Label Content="Academie" HorizontalContentAlignment="Right" Margin="0,276,392,0" VerticalAlignment="Top" Width="140"/>
-            <ComboBox SelectedValue="{Binding Path=SelectedAcademie, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Academie, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="157,276,0,0" VerticalAlignment="Top" Width="120"/>
-            <ComboBox SelectedValue="{Binding Path=SelectedEducation, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Education, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="356,276,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox SelectedValue="{Binding SelectedAcademie, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Academie, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="157,276,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox SelectedValue="{Binding SelectedEducation, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Education, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="356,276,0,0" VerticalAlignment="Top" Width="120"/>
 
         </Grid>
         <Label Content="1" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25"/>
