@@ -15,7 +15,7 @@ using System.Windows.Data;
 
 namespace MSD.ViewModels
 {
-    class StageViewModel : PropertyChangedBase
+    public class StageViewModel : PropertyChangedBase
     {
         private readonly IApplicationController _app;
         private ObservableCollection<Student> students = new ObservableCollection<Student>();
@@ -35,21 +35,59 @@ namespace MSD.ViewModels
         {
             _filterCommand = new RelayCommand(Filter);
             _app = app;
-            string query;
+            
+        }
+        public void setData()
+        {
+            string type;
             if (Afstuderen)
             {
-                query = "SELECT s.* FROM student s WHERE 'type' = 'Afstuderen'";
+                type = "Afstuderen";
             }
             else
             {
-                query = "SELECT s.* FROM student s WHERE 'type' = 'Stage'";
+                type = "Stage";
             }
-
+            string query = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, b.naam, so.periode_periodenaam FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON ss.stageopdracht_stagenr =  so.stagenr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr WHERE so.type = '" + type + "'";
             FillPeriode();
             FillTable(query);
             this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
         }
 
+        /// <summary>
+        /// Vult de ObservableCollection met Student objecten
+        /// </summary>
+        /// <param name="query">De uit te voeren query</param>
+        public void FillTable(string query)
+        {
+            students.Clear();
+            MySqlCommand mycommand = new MySqlCommand(query);
+            DataTable data = new DataTable();
+            MySqlDataAdapter adapter = ModelFactory.Database.getData(mycommand);
+            adapter.Fill(data);
+            if (data.Rows.Count != 0)
+            {
+                for (int RowNr = 0; RowNr < data.Rows.Count; RowNr++)
+                {
+                    students.Add(new Student
+                    {
+                        StudentNo = data.Rows[RowNr][0].ToString(),
+                        Name = data.Rows[RowNr][1].ToString(),
+                        Email = data.Rows[RowNr][2].ToString(),
+                        Education = data.Rows[RowNr][3].ToString(),
+
+                        Assignment = new Assignment
+                        {
+                            Name = data.Rows[RowNr][4].ToString(),
+                            Period = data.Rows[RowNr][6].ToString(),
+                            Company = data.Rows[RowNr][5].ToString(),
+                        }
+
+
+                    });
+                }
+            }
+        }
         public RelayCommand FilterCommand { get { return _filterCommand; } }
         
         /// <summary>
@@ -171,40 +209,6 @@ namespace MSD.ViewModels
             }
         }
 
-        /// <summary>
-        /// Vult de ObservableCollection met Student objecten
-        /// </summary>
-        /// <param name="query">De uit te voeren query</param>
-        public void FillTable(string query)
-        {
-            students.Clear();
-            MySqlCommand mycommand = new MySqlCommand(query);
-            DataTable data = new DataTable();
-            MySqlDataAdapter adapter = ModelFactory.Database.getData(mycommand);
-            adapter.Fill(data);
-            if (data.Rows.Count != 0)
-            {
-                for (int RowNr = 0; RowNr < data.Rows.Count; RowNr++)
-                {
-                    students.Add(new Student
-                    {
-                        StudentNo = data.Rows[RowNr][0].ToString(),
-                        Name = data.Rows[RowNr][1].ToString(),
-                        Email = data.Rows[RowNr][2].ToString(),
-                        Education = data.Rows[RowNr][3].ToString(),
-
-                        Assignment = new Assignment
-                        {
-                            Name = data.Rows[RowNr][4].ToString(),
-                            Period = data.Rows[RowNr][9].ToString(),
-                            Company = data.Rows[RowNr][8].ToString(),
-                        }
-
-
-                    });
-                }
-            }
-        }
 
     }
 }

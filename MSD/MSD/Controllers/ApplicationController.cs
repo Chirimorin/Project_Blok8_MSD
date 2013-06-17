@@ -90,6 +90,7 @@ namespace MSD.Controllers
             ShowView("stageViewModel");
             StageViewModel stageViewModel = (StageViewModel)ViewFactory.getViewModel(this, "stageViewModel");
             stageViewModel.Afstuderen = false;
+            stageViewModel.setData();
         }
 
         public void ShowAfstuderenView()
@@ -97,6 +98,7 @@ namespace MSD.Controllers
             ShowView("stageViewModel");
             StageViewModel stageViewModel = (StageViewModel)ViewFactory.getViewModel(this, "stageViewModel");
             stageViewModel.Afstuderen = true;
+            stageViewModel.setData();
         }
 
         public void ShowStageopdrachtView()

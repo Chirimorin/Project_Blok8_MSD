@@ -7,7 +7,7 @@
              d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="509">
 
     <Grid x:Name="LayoutRoot">
-        <DataGrid CanUserAddRows="False" Margin="42,196,47,122" VerticalAlignment="Top" Height="303" AutoGenerateColumns="False" ItemsSource="{Binding Path=StudentCollection}">
+        <DataGrid CanUserAddRows="False" Margin="42,196,47,0" VerticalAlignment="Top" Height="251" AutoGenerateColumns="False" ItemsSource="{Binding Path=StudentCollection}">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnr"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
@@ -17,11 +17,11 @@
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Company}" Header="Stagebedrijf"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Period}" Header="Periode"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Assignment.Name}" Header="Opdracht naam"/>
+                <DataGridTextColumn IsReadOnly="True"  Header="Opdracht naam"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="297,32.807,0,0" HorizontalAlignment="Left" Width="153"/>
-        
+
         <Grid Margin="0,400,0,0">
             <!--<Button Content="Filteren" HorizontalAlignment="Left" Margin="611,40,0,0" VerticalAlignment="Top" Foreground="Black"  Height="25" Width="100" FontStyle="Italic" FontSize="15"/>-->
         </Grid>

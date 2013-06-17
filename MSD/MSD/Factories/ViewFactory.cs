@@ -110,7 +110,7 @@ namespace MSD.Factories
                 case ("stageopdrachtViewModel"):
                     if (_stageopdrachtView == null)
                         _stageopdrachtView = new StageopdrachtViewModel(app);
-                    _mainWindowModel.Display = "Stage";
+                    _mainWindowModel.Display = "Studenten";
                     return _stageopdrachtView;
                 case ("studentPersoonViewModel"):
                     if (_studentPersoonView == null)
