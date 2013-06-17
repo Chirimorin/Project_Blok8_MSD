@@ -12,7 +12,7 @@ namespace MSD.Models
     public class Database
     {
         //Dit is een eerste opzet, SQL-Injection moet nog middels parameters of prepared-statements afgevangen worden.
-        MySqlConnection myConnection = new MySqlConnection("Server=databases.aii.avans.nl;" + "Database=eavries_db2;" + "Uid=eavries;" + "Pwd=rd4qAS7j;");
+        MySqlConnection myConnection = new MySqlConnection("Server=databases.aii.avans.nl;" + "Database=eavries_db;" + "Uid=eavries;" + "Pwd=rd4qAS7j;");
         /// <summary>
         /// Gebruik dit om data uit de database te halen
         /// </summary>

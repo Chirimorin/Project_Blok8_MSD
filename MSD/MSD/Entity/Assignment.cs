@@ -110,7 +110,7 @@ namespace MSD.Entity
                 _period = value;
             }
         }
-        private string[] _knowledge;
+        private string[] _knowledge = new string[3];
         public string[] Knowledge
         {
             get { return _knowledge; }

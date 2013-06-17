@@ -75,6 +75,7 @@ namespace MSD.ViewModels
             vm2.Student = vm.Student;
             vm2.Student.Assignment = new Assignment();
             vm2.Wijzig = false;
+            vm2.setStagenr();
 
             _app.ShowStudentPersoonView();
         }
@@ -91,6 +92,7 @@ namespace MSD.ViewModels
             vm2.Student = vm.Student;
             makeAssignment(vm2);
             vm2.Wijzig = true;
+            vm2.setStagenr();
             vm2.UpdateKnowledgeAreas();
 
             
@@ -106,7 +108,7 @@ namespace MSD.ViewModels
         /// </summary>
         public void makeAssignment(StageopdrachtViewModel vm2)
         {
-            string query = "SELECT o.opdrachtnaam, o.omschrijving, o.opmerking, o.opdrachtgoed, o.toestemmingvoorlopig, o.toestemmingdefinitief, o.periode_periodenaam, b.naam FROM stageopdracht o JOIN stageopdracht_has_student s ON o.stagenr = s.stageopdracht_stagenr JOIN stagebedrijf b ON o.stagebedrijf_bedrijfnr = b.bedrijfnr WHERE s.student_studentnr = " + SelectedItem.StudentNo  + ";";
+            string query = "SELECT o.opdrachtnaam, o.omschrijving, o.opmerking, o.opdrachtgoed, o.toestemmingvoorlopig, o.toestemmingdefinitief, o.periode_periodenaam, b.naam, o.type FROM stageopdracht o JOIN stageopdracht_has_student s ON o.stagenr = s.stageopdracht_stagenr JOIN stagebedrijf b ON o.stagebedrijf_bedrijfnr = b.bedrijfnr WHERE s.student_studentnr = " + SelectedItem.StudentNo  + ";";
             MySqlCommand mycommand = new MySqlCommand(query);
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable data = new DataTable();
@@ -125,6 +127,7 @@ namespace MSD.ViewModels
                     //Knowledge = data.Rows[0][5].ToString(),
                     Period = data.Rows[0][6].ToString(),
                     Company = data.Rows[0][7].ToString(),
+                    Type = data.Rows[0][8].ToString(),
                 };
             }
             else

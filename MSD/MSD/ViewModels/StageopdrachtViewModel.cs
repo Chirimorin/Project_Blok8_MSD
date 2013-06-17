@@ -41,6 +41,14 @@ namespace MSD.ViewModels
             fillBox();
             FillKnowledgeAreas();
             
+            
+            _type = new string[2];
+            _type[0] = "Stage";
+            _type[1] = "Afstuderen";
+            
+        }
+        public void setStagenr()
+        {
             if (_wijzig == false)
             {
                 _stagenr = getexecuteQuery("SELECT MAX(stagenr) FROM stageopdracht;") + 1;
@@ -48,11 +56,8 @@ namespace MSD.ViewModels
             if (_wijzig == true)
             {
                 _stagenr = getexecuteQuery("SELECT stageopdracht_stagenr FROM stageopdracht_has_student WHERE student_studentnr = " + Student.StudentNo);
-               
+
             }
-            _type = new string[2];
-            _type[0] = "Stage";
-            _type[1] = "Afstuderen";
         }
 
         public RelayCommand TerugCommand { get { return _terugCommand; } }
@@ -170,11 +175,11 @@ namespace MSD.ViewModels
             int NumRows = table.Rows.Count;
 
             if (NumRows >= 1)
-                SelectedArea1 = table.Rows[0][1].ToString();
+                Student.Assignment.Knowledge[0] = table.Rows[0][1].ToString();
             if (NumRows >= 2)
-                SelectedArea2 = table.Rows[1][1].ToString();
+                Student.Assignment.Knowledge[1] = table.Rows[1][1].ToString();
             if (NumRows >= 3)
-                SelectedArea3 = table.Rows[2][1].ToString();
+                Student.Assignment.Knowledge[2] = table.Rows[2][1].ToString();
         }
 
         
