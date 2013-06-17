@@ -117,7 +117,7 @@ namespace MSD.ViewModels
                 mm.MogelijkeMatchReader();
                 mm.Afstuderen = true;
             }
-            mm.MogelijkeMatchTeacher(_stagenr);
+            mm.MogelijkeMatchTeacher();
             _app.ShowMatchMogelijkView();
         }
 

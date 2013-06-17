@@ -17,7 +17,8 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnummer"/>
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Academie"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Type}" Header="Soort"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="Email" />
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Company}" Header="Bedrijf"/>
                 <DataGridCheckBoxColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Accepted}" Header="Opdracht"/>
