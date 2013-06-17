@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.ComponentModel;
 using System.Windows.Data;
+using System.Text.RegularExpressions;
 
 namespace MSD.ViewModels
 {
@@ -25,6 +26,7 @@ namespace MSD.ViewModels
         private string _zoektext;
         private int _stagenr;
         private string _fillquery;
+        private string _lastsearch;
 
         private ICollectionView _studentCollection;
 
@@ -120,6 +122,7 @@ namespace MSD.ViewModels
         /// <param name="command"></param>
         public void Zoeken(object command)
         {
+           
             if (!string.IsNullOrEmpty(Zoektext))
             {
                 if (!StudentCollection.IsEmpty)
@@ -131,12 +134,12 @@ namespace MSD.ViewModels
                 {
                     this.StudentCollection.Filter = null;
                 }
-
             }
             else
             {
                 this.StudentCollection.Filter = null;
             }
+            
         }
 
         /// <summary>
@@ -147,7 +150,10 @@ namespace MSD.ViewModels
         private bool Contains(object obj)
         {
             Student student = obj as Student;
-            return (student.Name.Contains(Zoektext)) || (student.Email.Contains(Zoektext)) || (student.Education.Contains(Zoektext));
+            return Regex.Match(student.StudentNo, Zoektext, RegexOptions.IgnoreCase).Success ||
+                    Regex.Match(student.Name, Zoektext, RegexOptions.IgnoreCase).Success ||
+                    Regex.Match(student.Email, Zoektext, RegexOptions.IgnoreCase).Success ||
+                    Regex.Match(student.Education, Zoektext, RegexOptions.IgnoreCase).Success;
         }
 
         /// <summary>
