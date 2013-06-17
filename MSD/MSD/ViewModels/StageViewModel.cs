@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Data;
+using System.Text.RegularExpressions;
 
 namespace MSD.ViewModels
 {
@@ -22,7 +23,8 @@ namespace MSD.ViewModels
         private bool _afstuderen;
         private string _selectedPeriod;
         private string _zoektext;
-        private RelayCommand _filterCommand;
+        private readonly RelayCommand _filterCommand;
+        private readonly RelayCommand _resetCommand;
         private bool _reader = false;
 
         private ICollectionView _studentCollection;
@@ -35,6 +37,7 @@ namespace MSD.ViewModels
         public StageViewModel(IApplicationController app)
         {
             _filterCommand = new RelayCommand(Filter);
+            _resetCommand = new RelayCommand(Reset);
             _app = app;
             
         }
@@ -96,11 +99,22 @@ namespace MSD.ViewModels
                 }
             }
         }
+        /// <summary>
+        /// Pakt de bijbehorende begeleider van de stage als die er is
+        /// </summary>
+        /// <param name="stagenr"></param>
+        /// <returns>Docent naam</returns>
         public string getSupervisor(int stagenr)
         {
             string supervisorquery = "SELECT d.naam FROM docent d JOIN docent_has_stageopdracht ds ON ds.docent_docentnr = d.docentnr WHERE ds.stageopdracht_stagenr = "+ stagenr + " AND soort = 'Begeleider'";
             return getexecuteQuery(supervisorquery);
         }
+
+        /// <summary>
+        /// Pakt de bijbehorende tweede lezer van de stage als die er is
+        /// </summary>
+        /// <param name="stagenr"></param>
+        /// <returns>Docent naam</returns>
         public string getSecondreader(int stagenr)
         {
             if (_reader == true)
@@ -122,6 +136,15 @@ namespace MSD.ViewModels
             else
                 return "-";
         }
+
+        public RelayCommand ResetCommand { get { return _resetCommand; } }
+
+        public void Reset(object command)
+        {
+            this.StudentCollection.Filter = null;
+            this.StudentCollection.Refresh();
+        }
+
         public RelayCommand FilterCommand { get { return _filterCommand; } }
         
         /// <summary>
@@ -154,9 +177,11 @@ namespace MSD.ViewModels
         /// <param name="obj">Het student object</param>
         /// <returns>De student rows die overeenkomen met het filter</returns>
         private bool Contains(object obj)
-        {
+        { 
             Student student = obj as Student;
-            return (student.Name.Contains(Zoektext)) || (student.Email.Contains(Zoektext)) || (student.Education.Contains(Zoektext));
+            return Regex.Match(student.Name, Zoektext, RegexOptions.IgnoreCase).Success ||
+                    Regex.Match(student.Email, Zoektext, RegexOptions.IgnoreCase).Success ||
+                    Regex.Match(student.Education, Zoektext, RegexOptions.IgnoreCase).Success;
         }
 
         public string Zoektext
@@ -208,7 +233,14 @@ namespace MSD.ViewModels
             {
                 _selectedPeriod = value;
                 this.OnPropertyChanged("Period");
+                this.StudentCollection.Filter = new Predicate<object>(ContainsPeriod);
             }
+        }
+
+        private bool ContainsPeriod(object obj)
+        {
+            Student student = obj as Student;
+            return Regex.Match(student.Assignment.Period, _selectedPeriod, RegexOptions.IgnoreCase).Success;
         }
 
         private string[] _period;

@@ -47,6 +47,7 @@ namespace MSD.ViewModels
             _type[1] = "Afstuderen";
             
         }
+
         public void setStagenr()
         {
             if (_wijzig == false)
@@ -56,7 +57,6 @@ namespace MSD.ViewModels
             if (_wijzig == true)
             {
                 _stagenr = getexecuteQuery("SELECT stageopdracht_stagenr FROM stageopdracht_has_student WHERE student_studentnr = " + Student.StudentNo);
-
             }
         }
 
@@ -82,9 +82,7 @@ namespace MSD.ViewModels
 
             if (_wijzig == false)
             {
-                
                 string studentquery = "INSERT INTO student VALUES(" + Student.StudentNo + ",'" + Student.Name + "','" + Student.Email + "','" + Student.Phone + "'," + afkorting + ",'" + Student.Academie + "');";
-
                 executeQuery(studentquery);
                 string opdrachtquery = "INSERT INTO stageopdracht () VALUES (" + _stagenr + ",'" + Student.Assignment.Name + "','" + Student.Assignment.Description + "','" + Student.Assignment.Comments + "'," + Student.Assignment.Accepted + "," + Student.Assignment.TempPermission + "," + Student.Assignment.Permission + "," + bedrijf + ",'" + Student.Assignment.Period + "','"+ Student.Assignment.Type +"')";
                 executeQuery(opdrachtquery);
@@ -106,6 +104,7 @@ namespace MSD.ViewModels
             _app.ShowStudentView();
 
         }
+
         public int getexecuteQuery(string query)
         {
             Debug.WriteLine(query);

@@ -25,6 +25,9 @@
                 <DataGridCheckBoxColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Permission}" Header="Toestemming"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="188,0,464,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
-        </Grid>
+        <Button Command="{Binding ResetCommand}" Content="Reset" Margin="465,0,187,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
+        <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="350,0,302,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
+        <ComboBox SelectedValue="{Binding SelectedPeriod, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Period, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="183,119,0,0" VerticalAlignment="Top" Width="150" Height="25"/>
+        <Label Content="Periode" HorizontalAlignment="Left" Margin="183,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
+    </Grid>
 </UserControl>

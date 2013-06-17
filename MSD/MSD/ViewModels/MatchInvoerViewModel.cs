@@ -24,9 +24,12 @@ namespace MSD.ViewModels
         private readonly RelayCommand _matchenCommand;
         private readonly RelayCommand _zoekenCommand;
         private string _zoektext;
+        private readonly RelayCommand _resetCommand;
+        private string _selectedPeriod;
         private int _stagenr;
         private string _fillquery;
-        private string _lastsearch;
+
+
 
         private ICollectionView _studentCollection;
 
@@ -42,11 +45,13 @@ namespace MSD.ViewModels
         public MatchInvoerViewModel(IApplicationController app)
         {
             _app = app;
+            _resetCommand = new RelayCommand(Reset);
             _matchenCommand = new RelayCommand(Matchen);
             _zoekenCommand = new RelayCommand(Zoeken);
             _database = ModelFactory.Database;
             _fillquery = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, so.opdrachtgoed, so.toestemmingvoorlopig, so.toestemmingdefinitief, b.naam, so.periode_periodenaam, so.type FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting";
             FillTable(_fillquery);
+            FillPeriode();
             this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
         }
 
@@ -88,6 +93,17 @@ namespace MSD.ViewModels
             }
         }
 
+        public string SelectedPeriod
+        {
+            get { return _selectedPeriod; }
+            set
+            {
+                _selectedPeriod = value;
+                this.OnPropertyChanged("Period");
+                this.StudentCollection.Filter = new Predicate<object>(ContainsPeriod);
+            }
+        }
+
         public RelayCommand MatchenCommand { get { return _matchenCommand; } }
         public void Matchen(object command)
         {
@@ -114,6 +130,14 @@ namespace MSD.ViewModels
             return (int)data.Rows[0][0];
         }
 
+        public RelayCommand ResetCommand { get { return _resetCommand; } }
+
+        public void Reset(object command)
+        {
+            this.StudentCollection.Filter = null;
+            this.StudentCollection.Refresh();
+        }
+
         public RelayCommand ZoekenCommand { get { return _zoekenCommand; } }
 
         /// <summary>
@@ -129,6 +153,7 @@ namespace MSD.ViewModels
                 {
                     this.StudentCollection.Filter = new Predicate<object>(Contains);
                     this.StudentCollection.Refresh();
+                    this.Zoektext = null;
                 }
                 else
                 {
@@ -139,7 +164,7 @@ namespace MSD.ViewModels
             {
                 this.StudentCollection.Filter = null;
             }
-            
+
         }
 
         /// <summary>
@@ -150,10 +175,16 @@ namespace MSD.ViewModels
         private bool Contains(object obj)
         {
             Student student = obj as Student;
-            return Regex.Match(student.StudentNo, Zoektext, RegexOptions.IgnoreCase).Success ||
+            return (Regex.Match(student.StudentNo, Zoektext, RegexOptions.IgnoreCase).Success ||
                     Regex.Match(student.Name, Zoektext, RegexOptions.IgnoreCase).Success ||
                     Regex.Match(student.Email, Zoektext, RegexOptions.IgnoreCase).Success ||
-                    Regex.Match(student.Education, Zoektext, RegexOptions.IgnoreCase).Success;
+                    Regex.Match(student.Education, Zoektext, RegexOptions.IgnoreCase).Success);
+        }
+
+        private bool ContainsPeriod(object obj)
+        {
+            Student student = obj as Student;
+            return Regex.Match(student.Assignment.Period, _selectedPeriod, RegexOptions.IgnoreCase).Success;
         }
 
         /// <summary>
@@ -194,6 +225,37 @@ namespace MSD.ViewModels
 
 
                 }
+            }
+        }
+        private string[] _period;
+        public string[] Period
+        {
+            get
+            {
+                return _period;
+            }
+            set
+            {
+                _period = value;
+                OnPropertyChanged("Period");
+            }
+        }
+
+        /// <summary>
+        /// Vult periode combobox
+        /// </summary>
+        public void FillPeriode()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT periodenaam FROM periode");
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
+            adapter.Fill(table);
+
+            _period = new string[table.Rows.Count];
+
+            for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
+            {
+                Period[RowNr] = table.Rows[RowNr][0].ToString();
             }
         }
     }

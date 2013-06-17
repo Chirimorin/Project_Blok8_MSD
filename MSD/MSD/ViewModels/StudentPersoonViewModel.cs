@@ -178,7 +178,5 @@ namespace MSD.ViewModels
             OnPropertyChanged("Phone");
             }
         }
-
-
     }
 }
