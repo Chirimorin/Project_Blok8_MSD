@@ -25,11 +25,11 @@
             </Grid>
         </Border>
 
-        <Button Command="{Binding MatchenCommand}" Content="Matchen" Margin="0,0,38,36.04" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
+        <Button IsEnabled="{Binding Path=AanpassenEnabled, UpdateSourceTrigger=PropertyChanged}" Command="{Binding MatchenCommand}" Content="Matchen" Margin="0,0,38,36.04" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
         <Button Command="{Binding ShowDetailsCommand}" Content="Details" Margin="0,0,162,36" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
 
 
-        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Path=Teachers}" HorizontalAlignment="Left" Margin="210,120.28,0,0" VerticalAlignment="Top" Height="266.72" Width="238">
+        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" SelectedItem="{Binding SelectedTeacher}" ItemsSource="{Binding Path=Teachers}" HorizontalAlignment="Left" Margin="210,120.28,0,0" VerticalAlignment="Top" Height="266.72" Width="238">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>
@@ -39,7 +39,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Tweede lezer" HorizontalAlignment="Left" Margin="476,89,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
-        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Path=SecondReader}" HorizontalAlignment="Left" Margin="476,120.28,0,0" VerticalAlignment="Top" Height="266.72" Width="238">
+        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" SelectedItem="{Binding SelectedReader}" ItemsSource="{Binding Path=SecondReader}" HorizontalAlignment="Left" Margin="476,120.28,0,0" VerticalAlignment="Top" Height="266.72" Width="238">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>

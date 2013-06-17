@@ -21,6 +21,7 @@ namespace MSD.ViewModels
         private readonly RelayCommand _matchenCommand;
         private readonly RelayCommand _terugCommand;
         private Database _database;
+        private int _stagenr;
         private ObservableCollection<Teacher> teachers = new ObservableCollection<Teacher>();
         private ObservableCollection<Teacher> readers = new ObservableCollection<Teacher>();
 
@@ -42,6 +43,39 @@ namespace MSD.ViewModels
                 this.OnPropertyChanged("SecondReader");
             }
         }
+        public int Stagenr
+        {
+            get { return _stagenr; }
+            set { _stagenr = value; }
+        }
+        
+        public bool _afstuderen;
+        public bool Afstuderen
+        {
+            get { return _afstuderen; }
+            set { _afstuderen = value; }
+        }
+        private Teacher _selectedteacher;
+        public Teacher SelectedTeacher
+        {
+            get { return _selectedteacher; }
+            set
+            {
+                _selectedteacher = value;
+                OnPropertyChanged("SelectedTeacher");
+            }
+        }
+        private Teacher _selectedreader;
+        public Teacher SelectedReader
+        {
+            get { return _selectedreader; }
+            set
+            {
+                _selectedreader = value;
+                OnPropertyChanged("SelectedReader");
+            }
+        }
+
         private Student _student;
         public Student Student
         {
@@ -65,13 +99,37 @@ namespace MSD.ViewModels
         public RelayCommand ShowDetailsCommand { get { return _showDetailsCommand; } }
         public void ShowDetails(object command)
         {
+            MatchDetailsViewModel vm = (MatchDetailsViewModel)ViewFactory.getViewModel(_app, "matchDetailsViewModel");
+            vm.Student.Add(Student);
+            vm.Supervisor.Add(SelectedTeacher);
+            if (SelectedReader != null)
+            {
+                vm.Secondreader.Add(SelectedReader);
+            }
+            vm.Stagenr = _stagenr;
             _app.ShowMatchDetailsView();
         }
 
         public RelayCommand MatchenCommand { get { return _matchenCommand; } }
         public void Matchen(object command)
         {
+            MatchSuccesViewModel vm = (MatchSuccesViewModel)ViewFactory.getViewModel(_app, "matchSuccesViewModel");
+            vm.Student.Add(Student);
+            vm.Supervisor.Add(SelectedTeacher);
+            Match(SelectedTeacher);
+            if (SelectedReader != null)
+            {
+                vm.Secondreader.Add(SelectedReader);
+                Match(SelectedReader);
+            }
+           
             _app.ShowMatchSuccesView();
+        }
+        public void Match(Teacher teacher)
+        {
+            string query = "INSERT INTO docent_has_stageopdracht VALUES(" + teacher.TeacherNo + "," + _stagenr + ", 'Begeleider');";
+            MySqlCommand mycommand = new MySqlCommand(query);
+            _database.setData(mycommand);
         }
         public RelayCommand TerugCommand { get { return _terugCommand; } }
         public void Terug(object command)
@@ -79,10 +137,10 @@ namespace MSD.ViewModels
             _app.ShowMatchInvoerView();
         }
 
-        public void MogelijkeMatchTeacher(int stagenr)
+        public void MogelijkeMatchTeacher()
         {
             teachers.Clear();
-            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '"+ stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
+            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '"+ _stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
             Debug.WriteLine(query);
             MySqlCommand mycommand = new MySqlCommand(query);
             DataTable data = new DataTable();
@@ -98,16 +156,17 @@ namespace MSD.ViewModels
                         Hours = (int)data.Rows[RowNr][1],
                         Education = data.Rows[RowNr][2].ToString(),
                         City = data.Rows[RowNr][3].ToString(),
+                        TeacherNo = (int)data.Rows[RowNr][4],
                         
                     });
                 }
             }
 
         }
-        public void MogelijkeMatchReader(int stagenr)
+        public void MogelijkeMatchReader()
         {
             readers.Clear();
-            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
+            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + _stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
             Debug.WriteLine(query);
             MySqlCommand mycommand = new MySqlCommand(query);
             DataTable data = new DataTable();
@@ -123,6 +182,7 @@ namespace MSD.ViewModels
                         Hours = (int)data.Rows[RowNr][1],
                         Education = data.Rows[RowNr][2].ToString(),
                         City = data.Rows[RowNr][3].ToString(),
+                        TeacherNo = (int)data.Rows[RowNr][4],
 
                     });
                 }

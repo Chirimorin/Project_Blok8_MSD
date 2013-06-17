@@ -17,48 +17,45 @@
 
         <Label Content="Docent" HorizontalAlignment="Left" Margin="64,194,0,0"  VerticalAlignment="Top" Height="34" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"/>
 
-        <Label Content="Bedrijf" HorizontalAlignment="Left" Margin="64,340,0,0"  VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"/>
+        <Label Content="Opdracht" HorizontalAlignment="Left" Margin="64,340,0,0"  VerticalAlignment="Top" Height="46" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"/>
 
-        <DataGrid HorizontalAlignment="Left" Margin="164,113,0,0" VerticalAlignment="Top" Height="46" Width="547" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}">
+        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Path=Student}" HorizontalAlignment="Left" Margin="164,113,0,0" VerticalAlignment="Top" Height="46" Width="547" >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding naam}" Header="naam"/>
-                <DataGridTextColumn Binding="{Binding Academie}" Header="Academie"/>
-                <DataGridTextColumn Binding="{Binding StudieJaar}" Header="Studiejaar"/>
-                <DataGridTextColumn Binding="{Binding woonplaats}" Header="Woonplaats"/>
-                <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres"/>
+                <DataGridTextColumn Binding="{Binding Path=StudentNo}" Header="Studentnummer"/>
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding Path=Education}" Header="Opleiding"/>
+                <DataGridTextColumn Binding="{Binding Path=Email}" Header="E-mailadres"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid HorizontalAlignment="Left" Margin="164,185,0,0" VerticalAlignment="Top" Height="46" Width="547" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}">
+        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Path=Supervisor}" HorizontalAlignment="Left" Margin="164,185,0,0" VerticalAlignment="Top" Height="46" Width="547" >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding naam}" Header="Naam"/>
-                <DataGridTextColumn Binding="{Binding Academie}" Header="Academie"/>
-                <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres"/>
-                <DataGridTextColumn Binding="{Binding Woonplaats}" Header="Woonplaats"/>
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding Path=Education}" Header="Opleiding"/>
+                <DataGridTextColumn Binding="{Binding Path=Email}" Header="E-mailadres"/>
+                <DataGridTextColumn Binding="{Binding Path=City}" Header="Woonplaats"/>
                 <DataGridTextColumn Binding="{Binding Kennisgebieden}" Header="Kennisgebieden"/>
-                <DataGridTextColumn Binding="{Binding Uren}" Header="Uren over"/>
+                <DataGridTextColumn Binding="{Binding Path=Hours}" Header="Uren over"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid HorizontalAlignment="Left" Margin="164,330,0,0" VerticalAlignment="Top" Height="46" Width="547" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}">
+        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Path=Student}" HorizontalAlignment="Left" Margin="164,330,0,0" VerticalAlignment="Top" Height="46" Width="547" >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding naam}" Header="Naam"/>
-                <DataGridTextColumn Binding="{Binding Academie}" Header="Website"/>
-                <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres"/>
-                <DataGridTextColumn Binding="{Binding Woonplaats}" Header="Contactpersoon"/>
-                <DataGridTextColumn Binding="{Binding Kennisgebieden}" Header="Plaats"/>
-                <DataGridTextColumn Binding="{Binding Uren}" Header="Telefoonnummer"/>
+                <DataGridTextColumn Binding="{Binding Path=Assigment.Name}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding Path=Assigment.Company}" Header="Bedrijf"/>
+                <DataGridTextColumn Binding="{Binding Path=Assignment.Period}" Header="Periode"/>
+                <DataGridTextColumn Binding="{Binding Path=Assignment.Type}" Header="Soort"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,205" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4" Opacity="0.35"/>
-        <Label Content="Tweede lezer" HorizontalAlignment="Left" Margin="64,265,0,0"  VerticalAlignment="Top" Height="33" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic" Opacity="0.35"/>
+        <Ellipse Fill="#FFEA8104" HorizontalAlignment="Left" Height="46" Margin="13,0,0,205" Stroke="#FFA65A00" VerticalAlignment="Bottom" Width="46" StrokeThickness="4"/>
+        <Label Content="Tweede lezer" HorizontalAlignment="Left" Margin="64,265,0,0"  VerticalAlignment="Top" Height="33" Width="100" Foreground="Black" FontSize="12" FontStyle="Italic"/>
 
-        <DataGrid HorizontalAlignment="Left" Margin="164,258,0,0" VerticalAlignment="Top" Height="46" Width="547" AutoGenerateColumns="False" ItemsSource="{Binding datastudent}" Opacity="0.35">
+        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Path=Secondreader}" HorizontalAlignment="Left" Margin="164,258,0,0" VerticalAlignment="Top" Height="46" Width="547">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding naam}" Header="Naam"/>
-                <DataGridTextColumn Binding="{Binding Academie}" Header="Academie"/>
-                <DataGridTextColumn Binding="{Binding Email}" Header="E-mailadres"/>
-                <DataGridTextColumn Binding="{Binding Woonplaats}" Header="Woonplaats"/>
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding Path=Education}" Header="Opleiding"/>
+                <DataGridTextColumn Binding="{Binding Path=Email}" Header="E-mailadres"/>
+                <DataGridTextColumn Binding="{Binding Path=City}" Header="Woonplaats"/>
                 <DataGridTextColumn Binding="{Binding Kennisgebieden}" Header="Kennisgebieden"/>
-                <DataGridTextColumn Binding="{Binding Uren}" Header="Uren over"/>
+                <DataGridTextColumn Binding="{Binding Path=Hours}" Header="Uren over"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
