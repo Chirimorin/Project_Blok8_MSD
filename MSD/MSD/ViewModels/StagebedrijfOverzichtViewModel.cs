@@ -72,6 +72,22 @@ namespace MSD.ViewModels
 
             _app.ShowBedrijfView();
         }
+        public int getNumberStudents(int id)
+        {
+            string query = "SELECT COUNT(s.stagebedrijf_bedrijfnr) AS aantal FROM stageopdracht s WHERE s.stagebedrijf_bedrijfnr = " + id;
+            MySqlCommand cmd = new MySqlCommand(query);
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
+            adapter.Fill(table);
+            if (table.Rows.Count != 0)
+            {
+                return Convert.ToInt32(table.Rows[0][0]);
+            }
+            else
+            {
+                return 0;
+            }
+        }
         /// <summary>
         /// Vult de bedrijven tabel met companys uit de Database
         /// </summary>
@@ -97,15 +113,9 @@ namespace MSD.ViewModels
                     Contact = table.Rows[RowNr][7].ToString(),
                     Email = table.Rows[RowNr][8].ToString(),
                     Branch = table.Rows[RowNr][9].ToString(),
+                    Amount = getNumberStudents((int)table.Rows[RowNr][0])
                 });
             }
-        }
-        private int _numberStudents;
-
-        public int NumberStudents
-        {
-            get { return _numberStudents; }
-            set { _numberStudents = value; }
         }
     }
 }

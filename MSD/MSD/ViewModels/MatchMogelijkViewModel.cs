@@ -22,6 +22,7 @@ namespace MSD.ViewModels
         private readonly RelayCommand _terugCommand;
         private Database _database;
         private ObservableCollection<Teacher> teachers = new ObservableCollection<Teacher>();
+        private ObservableCollection<Teacher> readers = new ObservableCollection<Teacher>();
 
         public ObservableCollection<Teacher> Teachers
         {
@@ -30,6 +31,15 @@ namespace MSD.ViewModels
             {
                 teachers = value;
                 this.OnPropertyChanged("Teachers");
+            }
+        }
+        public ObservableCollection<Teacher> SecondReader
+        {
+            get { return readers; }
+            set
+            {
+                readers = value;
+                this.OnPropertyChanged("SecondReader");
             }
         }
         private Student _student;
@@ -69,10 +79,10 @@ namespace MSD.ViewModels
             _app.ShowMatchInvoerView();
         }
 
-        public void MogelijkeMatch(int stagenr, string periodenaam)
+        public void MogelijkeMatchTeacher(int stagenr)
         {
             teachers.Clear();
-            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting WHERE ks.stageopdracht_stagenr = '"+ stagenr + "' AND ks.stageopdracht_periode_periodenaam = '" + periodenaam + "' AND d.uren > 7";
+            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '"+ stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
             Debug.WriteLine(query);
             MySqlCommand mycommand = new MySqlCommand(query);
             DataTable data = new DataTable();
@@ -89,6 +99,31 @@ namespace MSD.ViewModels
                         Education = data.Rows[RowNr][2].ToString(),
                         City = data.Rows[RowNr][3].ToString(),
                         
+                    });
+                }
+            }
+
+        }
+        public void MogelijkeMatchReader(int stagenr)
+        {
+            readers.Clear();
+            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
+            Debug.WriteLine(query);
+            MySqlCommand mycommand = new MySqlCommand(query);
+            DataTable data = new DataTable();
+            MySqlDataAdapter adapter = _database.getData(mycommand);
+            adapter.Fill(data);
+            if (data.Rows.Count != 0)
+            {
+                for (int RowNr = 0; RowNr < data.Rows.Count; RowNr++)
+                {
+                    readers.Add(new Teacher
+                    {
+                        Name = data.Rows[RowNr][0].ToString(),
+                        Hours = (int)data.Rows[RowNr][1],
+                        Education = data.Rows[RowNr][2].ToString(),
+                        City = data.Rows[RowNr][3].ToString(),
+
                     });
                 }
             }

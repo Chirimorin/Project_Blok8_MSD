@@ -19,7 +19,7 @@
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="E-mailadres"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Phone}" Header="Telefoon"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Branch}" Header="Branch"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding NumberStudents}" Header="Aantal"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Amount}" Header="Aantal"/>
 
             </DataGrid.Columns>
         </DataGrid>

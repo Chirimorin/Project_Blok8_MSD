@@ -39,13 +39,13 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Tweede lezer" HorizontalAlignment="Left" Margin="476,89,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
-        <DataGrid HorizontalAlignment="Left" Margin="476,120.28,0,0" VerticalAlignment="Top" Height="266.72" Width="238">
+        <DataGrid CanUserAddRows="False" ItemsSource="{Binding Path=SecondReader}" HorizontalAlignment="Left" Margin="476,120.28,0,0" VerticalAlignment="Top" Height="266.72" Width="238">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Naam"/>
-                <DataGridTextColumn Header="Academie"/>
-                <DataGridTextColumn Header="Kennisgebied"/>
-                <DataGridTextColumn Header="Uren"/>
-                <DataGridTextColumn Header="Woonplaats"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Naam}" Header="Kennisgebied"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Hours}" Header="Uren"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding City}" Header="Woonplaats"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Command="{Binding TerugCommand}" Content="Terug" Margin="0,0,290,36" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>

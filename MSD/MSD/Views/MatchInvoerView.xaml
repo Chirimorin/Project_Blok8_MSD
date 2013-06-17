@@ -15,14 +15,14 @@
         <Button IsEnabled="{Binding Path=AanpassenEnabled, UpdateSourceTrigger=PropertyChanged}" Command="{Binding MatchenCommand}" Content="Matchen" Margin="605,0,47,36" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
             <DataGrid CanUserAddRows="False" SelectedItem="{Binding Path=SelectedItem}" ItemsSource="{Binding Path=Students}" Margin="42,196,47,122">
                 <DataGrid.Columns>
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnummer"/>
+                   <!-- <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnummer"/>
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Academie"/>
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="Email" />
                     <DataGridTextColumn Header="Bedrijf"/>
                     <DataGridCheckBoxColumn Header="Opdracht"/>
                     <DataGridCheckBoxColumn Header="Voorlopige toestemming"/>
-                    <DataGridCheckBoxColumn Header="Toestemming"/>
+                    <DataGridCheckBoxColumn Header="Toestemming"/>-->
                 </DataGrid.Columns>
             </DataGrid>
             <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="188,0,464,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>

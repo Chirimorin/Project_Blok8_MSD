@@ -23,6 +23,7 @@ namespace MSD.Entity
         private string _email;
         private string _phone;
         private string _branch;
+        private int _amount;
 
         public int ID
         {
@@ -144,6 +145,18 @@ namespace MSD.Entity
             {
                 _branch = value;
                 OnPropertyChanged("Branch");
+            }
+        }
+        public int Amount
+        {
+            get
+            {
+                return _amount;
+            }
+            set
+            {
+                _amount = value;
+                OnPropertyChanged("Amount");
             }
         }
 
