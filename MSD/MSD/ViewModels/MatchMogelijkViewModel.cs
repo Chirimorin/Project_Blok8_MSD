@@ -140,7 +140,7 @@ namespace MSD.ViewModels
         public void MogelijkeMatchTeacher()
         {
             teachers.Clear();
-            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '"+ _stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
+            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr, d.mailadres FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '"+ _stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
             Debug.WriteLine(query);
             MySqlCommand mycommand = new MySqlCommand(query);
             DataTable data = new DataTable();
@@ -157,8 +157,10 @@ namespace MSD.ViewModels
                         Education = data.Rows[RowNr][2].ToString(),
                         City = data.Rows[RowNr][3].ToString(),
                         TeacherNo = (int)data.Rows[RowNr][4],
+                        Email = data.Rows[RowNr][5].ToString(),
                         
                     });
+                    UpdateTeacherKnowledgeAreas(teachers[RowNr]);
                 }
             }
 
@@ -166,7 +168,7 @@ namespace MSD.ViewModels
         public void MogelijkeMatchReader()
         {
             readers.Clear();
-            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + _stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
+            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr, d.mailadres FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + _stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
             Debug.WriteLine(query);
             MySqlCommand mycommand = new MySqlCommand(query);
             DataTable data = new DataTable();
@@ -183,11 +185,58 @@ namespace MSD.ViewModels
                         Education = data.Rows[RowNr][2].ToString(),
                         City = data.Rows[RowNr][3].ToString(),
                         TeacherNo = (int)data.Rows[RowNr][4],
-
+                        Email = data.Rows[RowNr][5].ToString(),
+                        
                     });
+                    UpdateTeacherKnowledgeAreas(readers[RowNr]);
                 }
             }
 
+        }
+        private void UpdateTeacherKnowledgeAreas(Teacher teacher)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM kennisgebieden WHERE KennisNr IN (SELECT Kennisgebieden_KennisNr FROM docent_has_kennisgebieden WHERE Docent_Docentnr = " + teacher.TeacherNo + ")");
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
+            adapter.Fill(table);
+
+            int NumRows = table.Rows.Count;
+
+            if (NumRows >= 1)
+            {
+                teacher.KnowledgeAreas[0] = table.Rows[0][1].ToString();
+                teacher.Knowledge += table.Rows[0][1].ToString() + ", ";
+            }
+            else
+                teacher.KnowledgeAreas[0] = "";
+            if (NumRows >= 2)
+            {
+                teacher.KnowledgeAreas[1] = table.Rows[1][1].ToString();
+                teacher.Knowledge += table.Rows[1][1].ToString();
+            }
+            else
+                teacher.KnowledgeAreas[1] = "";
+            if (NumRows >= 3)
+            {
+                teacher.KnowledgeAreas[2] = table.Rows[2][1].ToString();
+                teacher.Knowledge += ", " + table.Rows[2][1].ToString();
+            }
+            else
+                teacher.KnowledgeAreas[2] = "";
+            if (NumRows >= 4)
+            {
+                teacher.KnowledgeAreas[3] = table.Rows[3][1].ToString();
+                teacher.Knowledge += ", " + table.Rows[0][1].ToString();
+            }
+            else
+                teacher.KnowledgeAreas[3] = "";
+            if (NumRows >= 5)
+            {
+                teacher.KnowledgeAreas[4] = table.Rows[4][1].ToString();
+                teacher.Knowledge += ", " + table.Rows[0][1].ToString();
+            }
+            else
+                teacher.KnowledgeAreas[4] = "";
         }
 
         public string StudentNumber
@@ -225,5 +274,6 @@ namespace MSD.ViewModels
             get { return Student.Assignment.Name; }
             set { Student.Assignment.Name = value; }
         }
+        
     }
 }

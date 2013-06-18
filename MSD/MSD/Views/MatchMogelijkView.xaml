@@ -33,7 +33,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Naam}" Header="Kennisgebied"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Knowledge}" Header="Kennisgebied"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Hours}" Header="Uren"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding City}" Header="Woonplaats"/>
             </DataGrid.Columns>

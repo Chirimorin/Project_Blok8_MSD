@@ -121,6 +121,7 @@ namespace MSD.ViewModels
             _app.ShowMatchMogelijkView();
         }
 
+
         public int getexecuteQuery(string query)
         {
             Debug.WriteLine(query);

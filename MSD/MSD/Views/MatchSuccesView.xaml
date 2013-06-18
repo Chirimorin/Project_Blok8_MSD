@@ -33,7 +33,7 @@
                 <DataGridTextColumn Binding="{Binding Path=Education}" Header="Opleiding"/>
                 <DataGridTextColumn Binding="{Binding Path=Email}" Header="E-mailadres"/>
                 <DataGridTextColumn Binding="{Binding Path=City}" Header="Woonplaats"/>
-                <DataGridTextColumn Binding="{Binding Kennisgebieden}" Header="Kennisgebieden"/>
+                <DataGridTextColumn Binding="{Binding Path=Knowledge}" Header="Kennisgebieden"/>
                 <DataGridTextColumn Binding="{Binding Path=Hours}" Header="Uren over"/>
             </DataGrid.Columns>
         </DataGrid>
@@ -54,7 +54,7 @@
                 <DataGridTextColumn Binding="{Binding Path=Education}" Header="Opleiding"/>
                 <DataGridTextColumn Binding="{Binding Path=Email}" Header="E-mailadres"/>
                 <DataGridTextColumn Binding="{Binding Path=City}" Header="Woonplaats"/>
-                <DataGridTextColumn Binding="{Binding Kennisgebieden}" Header="Kennisgebieden"/>
+                <DataGridTextColumn Binding="{Binding Path=Knowledge}" Header="Kennisgebieden"/>
                 <DataGridTextColumn Binding="{Binding Path=Hours}" Header="Uren over"/>
             </DataGrid.Columns>
         </DataGrid>

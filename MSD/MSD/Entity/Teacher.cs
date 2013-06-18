@@ -94,6 +94,17 @@ namespace MSD.Entity
             get { return _knowledgeAreas; }
             set { _knowledgeAreas = value; }
         }
+        private string _knowledge;
+        public string Knowledge
+        {
+            get
+            {
+                if (_knowledge == null)
+                    return "";
+                return _knowledge;
+            }
+            set { _knowledge = value; }
+        }
 
         static readonly string[] ValidatedProp =
         {
