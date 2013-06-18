@@ -70,7 +70,7 @@ namespace MSD.ViewModels
 
                     query = "INSERT INTO docent (Docentnr, Naam, Mailadres, Plaats, Adres, Telefoonnr, Voorkeur, Uren) VALUES('" + Teacher.TeacherNo + "','" + Teacher.Name + "','" + Teacher.Email + "','" + Teacher.City + "','" + Teacher.Adress + "','" + Teacher.Phone + "','" + Teacher.Preference + "','" + Teacher.Hours + "');";
                     ModelFactory.Database.setData(new MySqlCommand(query));
-                    query = "INSERT INTO docent_has_opleiding (docent_docentnr, opleiding_afkorting, opleiding_academie_afkorting VALUES("+ Teacher.TeacherNo +"," + afkorting +",'" + Teacher.Academie + "');";
+                    query = "INSERT INTO docent_has_opleiding (docent_docentnr, opleiding_afkorting, opleiding_academie_afkorting) VALUES("+ Teacher.TeacherNo +"," + afkorting +",'" + Teacher.Academie + "');";
                     ModelFactory.Database.setData(new MySqlCommand(query));
                 }
                
