@@ -143,6 +143,7 @@ namespace MSD.ViewModels
         {
             this.StudentCollection.Filter = null;
             this.StudentCollection.Refresh();
+            this.Zoektext = null;
         }
 
         public RelayCommand FilterCommand { get { return _filterCommand; } }
@@ -159,6 +160,7 @@ namespace MSD.ViewModels
                 {
                     this.StudentCollection.Filter = new Predicate<object>(Contains);
                     this.StudentCollection.Refresh();
+                    this.Zoektext = null;
                 }
                 else
                 {

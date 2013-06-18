@@ -139,6 +139,7 @@ namespace MSD.ViewModels
         {
             this.StudentCollection.Filter = null;
             this.StudentCollection.Refresh();
+            this.Zoektext = null;
         }
 
         public RelayCommand ZoekenCommand { get { return _zoekenCommand; } }
