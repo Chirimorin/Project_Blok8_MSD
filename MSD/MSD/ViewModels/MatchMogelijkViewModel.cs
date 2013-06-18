@@ -165,6 +165,7 @@ namespace MSD.ViewModels
             }
 
         }
+        
         public void MogelijkeMatchReader()
         {
             readers.Clear();
