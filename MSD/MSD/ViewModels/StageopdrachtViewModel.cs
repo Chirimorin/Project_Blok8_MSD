@@ -41,7 +41,6 @@ namespace MSD.ViewModels
             fillBox();
             FillKnowledgeAreas();
             
-            
             _type = new string[2];
             _type[0] = "Stage";
             _type[1] = "Afstuderen";
@@ -69,40 +68,72 @@ namespace MSD.ViewModels
         public RelayCommand OpslaanCommand { get { return _opslaanCommand; } }
         public void Save(object command)
         {
-            if (Student.Assignment.Company == null)
+            if (!HasEmptyProperties())
             {
-                MessageBox.Show("u heeft het bedrijf niet ingevult");
+                int afkorting = getexecuteQuery("SELECT afkorting FROM opleiding WHERE omschrijving = '" + Student.Education + "';");
+                int bedrijf = getexecuteQuery("SELECT bedrijfnr FROM stagebedrijf WHERE naam = '" + Student.Assignment.Company + "';");
+
+                ModelFactory.Database.setData(new MySqlCommand("DELETE FROM kennisgebieden_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr));
+
+                if (_wijzig == false)
+                {
+                    string studentquery = "INSERT INTO student VALUES(" + Student.StudentNo + ",'" + Student.Name + "','" + Student.Email + "','" + Student.Phone + "'," + afkorting + ",'" + Student.Academie + "');";
+                    executeQuery(studentquery);
+                    string opdrachtquery = "INSERT INTO stageopdracht () VALUES (" + _stagenr + ",'" + Student.Assignment.Name + "','" + Student.Assignment.Description + "','" + Student.Assignment.Comments + "'," + Student.Assignment.Accepted + "," + Student.Assignment.TempPermission + "," + Student.Assignment.Permission + "," + bedrijf + ",'" + Student.Assignment.Period + "','"+ Student.Assignment.Type +"')";
+                    executeQuery(opdrachtquery);
+                    string studentopdrachtquery = "INSERT INTO stageopdracht_has_student VALUES (" + _stagenr + "," + Student.StudentNo + ")";
+                    executeQuery(studentopdrachtquery);
+                }
+                if (_wijzig == true)
+                {
+                    string studentquery = "UPDATE student SET naam = '" + Student.Name + "', mailadres = '" + Student.Email + "', telefoonnr = " + Student.Phone + ", opleiding_afkorting = " + afkorting + ", opleiding_academie_afkorting = '" + Student.Academie + "' WHERE studentnr = " + Student.StudentNo;
+                    executeQuery(studentquery);
+                    string opdrachtquery = "UPDATE stageopdracht SET stagenr=" + _stagenr + ", opdrachtnaam ='" + Student.Assignment.Name + "', omschrijving ='" + Student.Assignment.Description + "', opmerking ='" + Student.Assignment.Comments + "', opdrachtgoed = " + Student.Assignment.Accepted + ", toestemmingvoorlopig =" + Student.Assignment.TempPermission + ", toestemmingdefinitief =" + Student.Assignment.Permission + ", stagebedrijf_bedrijfnr = " + bedrijf + ", periode_periodenaam = '" + Student.Assignment.Period + "', type = '" + Student.Assignment.Type + "' WHERE stagenr = " + _stagenr;
+                    executeQuery(opdrachtquery);
+                }
+                foreach (string knowledgeArea in Student.Assignment.Knowledge)
+                {
+                    if (knowledgeArea != "" && knowledgeArea != null)
+                        ModelFactory.Database.setData(new MySqlCommand("INSERT INTO kennisgebieden_has_stageopdracht (kennisgebieden_kennisnr, stageopdracht_stagenr) VALUES((SELECT KennisNr FROM kennisgebieden WHERE KennisNaam = '" + knowledgeArea + "')," + _stagenr + ")"));
+                }
+                _app.ShowStudentView();
             }
+        }
 
-            int afkorting = getexecuteQuery("SELECT afkorting FROM opleiding WHERE omschrijving = '" + Student.Education + "';");
-            int bedrijf = getexecuteQuery("SELECT bedrijfnr FROM stagebedrijf WHERE naam = '" + Student.Assignment.Company + "';");
-
-            ModelFactory.Database.setData(new MySqlCommand("DELETE FROM kennisgebieden_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr));
-
-
-            if (_wijzig == false)
+        public bool HasEmptyProperties()
+        {
+            bool HasEmptyProperty = false;
+            string message = "De volgende gegevens zijn niet ingevuld: \n";
+            if (String.IsNullOrEmpty(Student.StudentNo))
             {
-                string studentquery = "INSERT INTO student VALUES(" + Student.StudentNo + ",'" + Student.Name + "','" + Student.Email + "','" + Student.Phone + "'," + afkorting + ",'" + Student.Academie + "');";
-                executeQuery(studentquery);
-                string opdrachtquery = "INSERT INTO stageopdracht () VALUES (" + _stagenr + ",'" + Student.Assignment.Name + "','" + Student.Assignment.Description + "','" + Student.Assignment.Comments + "'," + Student.Assignment.Accepted + "," + Student.Assignment.TempPermission + "," + Student.Assignment.Permission + "," + bedrijf + ",'" + Student.Assignment.Period + "','"+ Student.Assignment.Type +"')";
-                executeQuery(opdrachtquery);
-                string studentopdrachtquery = "INSERT INTO stageopdracht_has_student VALUES (" + _stagenr + "," + Student.StudentNo + ")";
-                executeQuery(studentopdrachtquery);
+                message += " - nummer \n";
+                HasEmptyProperty = true;
             }
-            if (_wijzig == true)
+            if (String.IsNullOrEmpty(Student.Name))
             {
-                string studentquery = "UPDATE student SET naam = '" + Student.Name + "', mailadres = '" + Student.Email + "', telefoonnr = " + Student.Phone + ", opleiding_afkorting = " + afkorting + ", opleiding_academie_afkorting = '" + Student.Academie + "' WHERE studentnr = " + Student.StudentNo;
-                executeQuery(studentquery);
-                string opdrachtquery = "UPDATE stageopdracht SET stagenr=" + _stagenr + ", opdrachtnaam ='" + Student.Assignment.Name + "', omschrijving ='" + Student.Assignment.Description + "', opmerking ='" + Student.Assignment.Comments + "', opdrachtgoed = " + Student.Assignment.Accepted + ", toestemmingvoorlopig =" + Student.Assignment.TempPermission + ", toestemmingdefinitief =" + Student.Assignment.Permission + ", stagebedrijf_bedrijfnr = " + bedrijf + ", periode_periodenaam = '" + Student.Assignment.Period + "', type = '" + Student.Assignment.Type + "' WHERE stagenr = " + _stagenr;
-                executeQuery(opdrachtquery);
+                message += " - Naam \n";
+                HasEmptyProperty = true;
             }
-            foreach (string knowledgeArea in Student.Assignment.Knowledge)
+            if (String.IsNullOrEmpty(Student.Email))
             {
-                if (knowledgeArea != "" && knowledgeArea != null)
-                    ModelFactory.Database.setData(new MySqlCommand("INSERT INTO kennisgebieden_has_stageopdracht (kennisgebieden_kennisnr, stageopdracht_stagenr) VALUES((SELECT KennisNr FROM kennisgebieden WHERE KennisNaam = '" + knowledgeArea + "')," + _stagenr + ")"));
+                message += " - Email \n";
+                HasEmptyProperty = true;
             }
-            _app.ShowStudentView();
-
+            if (String.IsNullOrEmpty(Student.Academie))
+            {
+                message += " - Academie \n";
+                HasEmptyProperty = true;
+            }
+            if (String.IsNullOrEmpty(Student.Phone))
+            {
+                message += " - Telefoonnr \n";
+                HasEmptyProperty = true;
+            }
+            if (HasEmptyProperty)
+            {
+                MessageBox.Show(message);
+            }
+            return HasEmptyProperty;
         }
 
         public int getexecuteQuery(string query)
