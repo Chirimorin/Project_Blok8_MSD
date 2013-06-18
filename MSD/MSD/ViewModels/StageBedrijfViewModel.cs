@@ -33,23 +33,82 @@ namespace MSD.ViewModels
         public RelayCommand SaveCommand { get { return _saveCommand; } }
         public void Save(object command)
         {
-            
-            string query = null;
-            if (Wijzig == true)
+            if (!HasEmptyProperties())
             {
-                query = "UPDATE stagebedrijf SET naam = '" + CompanyName + "', plaats = '" + City + "', straat = '" + Adress + "', postcode = '" + Zip + "', telefoonnr = " + Phone + ", website = '" + Website + "', contactpersoon = '" + Contact + "', email = '" + Email + "', branch = '" + Branch + "' WHERE bedrijfnr = " + Company.ID;
+                string query = null;
+                if (Wijzig == true)
+                {
+                    query = "UPDATE stagebedrijf SET naam = '" + CompanyName + "', plaats = '" + City + "', straat = '" + Adress + "', postcode = '" + Zip + "', telefoonnr = " + Phone + ", website = '" + Website + "', contactpersoon = '" + Contact + "', email = '" + Email + "', branch = '" + Branch + "' WHERE bedrijfnr = " + Company.ID;
 
+                }
+                if (Wijzig == false)
+                {
+                    int bedrijfnr = getexecuteQuery("SELECT MAX(bedrijfnr) FROM stagebedrijf") + 1;
+                    query = "INSERT INTO stagebedrijf(bedrijfnr,naam,plaats,straat,postcode,telefoonnr,website,contactpersoon,email,branch) VALUES(" + bedrijfnr + ",'" + CompanyName + "','" + City + "','" + Adress + "','" + Zip + "'," + Phone + ",'" + Website + "','" + Contact + "','" + Email + "','" + Branch + "')";
+                }
+                if (query != null)
+                {
+                    executeQuery(query);
+                }
+                _app.ShowBedrijfOverzichtView();
             }
-            if (Wijzig == false)
+            
+        }
+
+        public bool HasEmptyProperties()
+        {
+            bool HasEmptyProperty = false;
+            string message = "De volgende gegevens zijn niet ingevuld: \n";
+            if (String.IsNullOrEmpty(CompanyName))
             {
-                int bedrijfnr = getexecuteQuery("SELECT MAX(bedrijfnr) FROM stagebedrijf") + 1;
-                query = "INSERT INTO stagebedrijf(bedrijfnr,naam,plaats,straat,postcode,telefoonnr,website,contactpersoon,email,branch) VALUES(" + bedrijfnr + ",'" + CompanyName + "','" + City + "','" + Adress + "','" + Zip + "'," + Phone + ",'" + Website + "','" + Contact + "','" + Email + "','" + Branch + "')";
+                message += " - Naam \n";
+                HasEmptyProperty = true;
             }
-            if (query != null)
+            if (String.IsNullOrEmpty(City))
             {
-                executeQuery(query);
+                message += " - Plaats \n";
+                HasEmptyProperty = true;
             }
-            _app.ShowBedrijfOverzichtView();
+            if (String.IsNullOrEmpty(Adress))
+            {
+                message += " - Adres \n";
+                HasEmptyProperty = true;
+            }
+            if (String.IsNullOrEmpty(Zip))
+            {
+                message += " - Postcode \n";
+                HasEmptyProperty = true;
+            }
+            if (String.IsNullOrEmpty(Phone))
+            {
+                message += " - Telefoonnr \n";
+                HasEmptyProperty = true;
+            }
+            if (String.IsNullOrEmpty(Website))
+            {
+                message += " - Website \n";
+                HasEmptyProperty = true;
+            }
+            if (String.IsNullOrEmpty(Contact))
+            {
+                message += " - Contactpersoon \n";
+                HasEmptyProperty = true;
+            }
+            if (String.IsNullOrEmpty(Email))
+            {
+                message += " - Emailadres \n";
+                HasEmptyProperty = true;
+            }
+            if (String.IsNullOrEmpty(Branch))
+            {
+                message += " - Branch \n";
+                HasEmptyProperty = true;
+            }
+            if (HasEmptyProperty)
+            {
+                MessageBox.Show(message);
+            }
+            return HasEmptyProperty;
         }
 
         public void executeQuery(string query)
