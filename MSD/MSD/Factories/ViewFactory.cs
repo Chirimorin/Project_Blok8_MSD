@@ -92,6 +92,7 @@ namespace MSD.Factories
                     if (_matchInvoerView == null)
                         _matchInvoerView = new MatchInvoerViewModel(app);
                     _mainWindowModel.Display = "Matchen";
+                    _matchInvoerView.FillTable();
                     return _matchInvoerView;
                 case ("matchMogelijkViewModel"):
                     if (_matchMogelijkView == null)
