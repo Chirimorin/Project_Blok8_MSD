@@ -34,13 +34,13 @@
                 <DataGridTextColumn Binding="{Binding Path=Email}" Header="E-mailadres"/>
                 <DataGridTextColumn Binding="{Binding Path=City}" Header="Woonplaats"/>
                 <DataGridTextColumn Binding="{Binding Path=Knowledge}" Header="Kennisgebieden"/>
-                <DataGridTextColumn Binding="{Binding Path=Hours}" Header="Uren over"/>
+                <DataGridTextColumn Binding="{Binding Path=Hours}" Header="Uren"/>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Path=Student}" HorizontalAlignment="Left" Margin="164,330,0,0" VerticalAlignment="Top" Height="46" Width="547" >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=Assigment.Name}" Header="Naam"/>
-                <DataGridTextColumn Binding="{Binding Path=Assigment.Company}" Header="Bedrijf"/>
+                <DataGridTextColumn Binding="{Binding Path=Assignment.Name}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding Path=Assignment.Company}" Header="Bedrijf"/>
                 <DataGridTextColumn Binding="{Binding Path=Assignment.Period}" Header="Periode"/>
                 <DataGridTextColumn Binding="{Binding Path=Assignment.Type}" Header="Soort"/>
             </DataGrid.Columns>
@@ -55,7 +55,7 @@
                 <DataGridTextColumn Binding="{Binding Path=Email}" Header="E-mailadres"/>
                 <DataGridTextColumn Binding="{Binding Path=City}" Header="Woonplaats"/>
                 <DataGridTextColumn Binding="{Binding Path=Knowledge}" Header="Kennisgebieden"/>
-                <DataGridTextColumn Binding="{Binding Path=Hours}" Header="Uren over"/>
+                <DataGridTextColumn Binding="{Binding Path=Hours}" Header="Uren"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
