@@ -33,80 +33,23 @@ namespace MSD.ViewModels
         public RelayCommand SaveCommand { get { return _saveCommand; } }
         public void Save(object command)
         {
-            if (!HasEmptyProperties())
+            
+            string query = null;
+            if (Wijzig == true)
             {
-                string query = null;
-                if (Wijzig == true)
-                {
-                    query = "UPDATE stagebedrijf SET naam = '" + CompanyName + "', plaats = '" + City + "', straat = '" + Adress + "', postcode = '" + Zip + "', telefoonnr = " + Phone + ", website = '" + Website + "', contactpersoon = '" + Contact + "', email = '" + Email + "', branch = '" + Branch + "' WHERE bedrijfnr = " + Company.ID;
-                }
-                if (Wijzig == false)
-                {
-                    int bedrijfnr = getexecuteQuery("SELECT MAX(bedrijfnr) FROM stagebedrijf") + 1;
-                    query = "INSERT INTO stagebedrijf(bedrijfnr,naam,plaats,straat,postcode,telefoonnr,website,contactpersoon,email,branch) VALUES(" + bedrijfnr + ",'" + CompanyName + "','" + City + "','" + Adress + "','" + Zip + "'," + Phone + ",'" + Website + "','" + Contact + "','" + Email + "','" + Branch + "')";
-                }
-                if (query != null)
-                {
-                    executeQuery(query);
-                }
-                _app.ShowBedrijfOverzichtView();
-            }
-        }
+                query = "UPDATE stagebedrijf SET naam = '" + CompanyName + "', plaats = '" + City + "', straat = '" + Adress + "', postcode = '" + Zip + "', telefoonnr = " + Phone + ", website = '" + Website + "', contactpersoon = '" + Contact + "', email = '" + Email + "', branch = '" + Branch + "' WHERE bedrijfnr = " + Company.ID;
 
-        public bool HasEmptyProperties()
-        {
-            bool HasEmptyProperty = false;
-            string message = "De volgende gegevens zijn niet ingevuld: \n";
-            if (String.IsNullOrEmpty(CompanyName))
-            {
-                message += " - Naam \n";
-                HasEmptyProperty = true;
             }
-            if (String.IsNullOrEmpty(City))
+            if (Wijzig == false)
             {
-                message += " - Plaats \n";
-                HasEmptyProperty = true;
+                int bedrijfnr = getexecuteQuery("SELECT MAX(bedrijfnr) FROM stagebedrijf") + 1;
+                query = "INSERT INTO stagebedrijf(bedrijfnr,naam,plaats,straat,postcode,telefoonnr,website,contactpersoon,email,branch) VALUES(" + bedrijfnr + ",'" + CompanyName + "','" + City + "','" + Adress + "','" + Zip + "'," + Phone + ",'" + Website + "','" + Contact + "','" + Email + "','" + Branch + "')";
             }
-            if (String.IsNullOrEmpty(Adress))
+            if (query != null)
             {
-                message += " - Adres \n";
-                HasEmptyProperty = true;
+                executeQuery(query);
             }
-            if (String.IsNullOrEmpty(Zip))
-            {
-                message += " - Postcode \n";
-                HasEmptyProperty = true;
-            }
-            if (String.IsNullOrEmpty(Phone))
-            {
-                message += " - Telefoonnr \n";
-                HasEmptyProperty = true;
-            }
-            if (String.IsNullOrEmpty(Website))
-            {
-                message += " - Website \n";
-                HasEmptyProperty = true;
-            }
-            if (String.IsNullOrEmpty(Contact))
-            {
-                message += " - Contactpersoon \n";
-                HasEmptyProperty = true;
-            }
-            if (String.IsNullOrEmpty(Email))
-            {
-                message += " - Emailadres \n";
-                HasEmptyProperty = true;
-            }
-            if (String.IsNullOrEmpty(Branch))
-            {
-                message += " - Branch \n";
-                HasEmptyProperty = true;
-            }
-            if (HasEmptyProperty)
-            {
-                MessageBox.Show(message);
-            }
-            return HasEmptyProperty;
+            _app.ShowBedrijfOverzichtView();
         }
 
         public void executeQuery(string query)
