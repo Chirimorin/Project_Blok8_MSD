@@ -53,56 +53,10 @@ namespace MSD.ViewModels
             FillTable();
             FillPeriode();
             this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
+            SelectedPeriod = "Alle";
         }
 
-        public ObservableCollection<Student> Students
-        {
-            get { return students; }
-            set
-            {
-                students = value;
-                this.OnPropertyChanged("Students");
-            }
-        }
-
-        private Student _selectedItem;
-        public Student SelectedItem
-        {
-            get { return _selectedItem; }
-            set { _selectedItem = value;
-            this.OnPropertyChanged("SelectedItem");
-            OnPropertyChanged("AanpassenEnabled");
-            }
-        }
-
-        public bool AanpassenEnabled
-        {
-            get { return (SelectedItem != null); }
-        }
-
-        public string Zoektext
-        {
-            get
-            {
-                return _zoektext;
-            }
-            set
-            {
-                _zoektext = value;
-                OnPropertyChanged("Zoektext");
-            }
-        }
-
-        public string SelectedPeriod
-        {
-            get { return _selectedPeriod; }
-            set
-            {
-                _selectedPeriod = value;
-                this.OnPropertyChanged("Period");
-                this.StudentCollection.Filter = new Predicate<object>(ContainsPeriod);
-            }
-        }
+        
 
         public RelayCommand MatchenCommand { get { return _matchenCommand; } }
         public void Matchen(object command)
@@ -137,9 +91,10 @@ namespace MSD.ViewModels
 
         public void Reset(object command)
         {
+            this.Zoektext = null;
+            SelectedPeriod = "Alle";
             this.StudentCollection.Filter = null;
             this.StudentCollection.Refresh();
-            this.Zoektext = null;
         }
 
         public RelayCommand ZoekenCommand { get { return _zoekenCommand; } }
@@ -150,25 +105,25 @@ namespace MSD.ViewModels
         /// <param name="command"></param>
         public void Zoeken(object command)
         {
-           
-            if (!string.IsNullOrEmpty(Zoektext))
+
+            if (students.Count != 0)
             {
-                if (!StudentCollection.IsEmpty)
-                {
-                    this.StudentCollection.Filter = new Predicate<object>(Contains);
-                    this.StudentCollection.Refresh();
-                    this.Zoektext = null;
-                }
-                else
-                {
-                    this.StudentCollection.Filter = null;
-                }
+                this.StudentCollection.Filter = new Predicate<object>(ContainsBoth);
+                this.StudentCollection.Refresh();
+            }
+
+        }
+
+        private bool ContainsBoth(object student)
+        {
+            if (_selectedPeriod.Equals("Alle"))
+            {
+                return ContainsSearch(student);
             }
             else
             {
-                this.StudentCollection.Filter = null;
+                return ContainsSearch(student) && ContainsPeriod(student);
             }
-
         }
 
         /// <summary>
@@ -176,13 +131,24 @@ namespace MSD.ViewModels
         /// </summary>
         /// <param name="obj">Het student object</param>
         /// <returns>De student rows die overeenkomen met het filter</returns>
-        private bool Contains(object obj)
+        private bool ContainsSearch(object obj)
         {
-            Student student = obj as Student;
-            return (Regex.Match(student.StudentNo, Zoektext, RegexOptions.IgnoreCase).Success ||
-                    Regex.Match(student.Name, Zoektext, RegexOptions.IgnoreCase).Success ||
-                    Regex.Match(student.Email, Zoektext, RegexOptions.IgnoreCase).Success ||
-                    Regex.Match(student.Education, Zoektext, RegexOptions.IgnoreCase).Success);
+            if (String.IsNullOrEmpty(Zoektext))
+            {
+                return true;
+            }
+            else
+            {
+                Student student = obj as Student;
+                return Regex.Match(student.Name, Zoektext, RegexOptions.IgnoreCase).Success ||
+                        Regex.Match(student.Email, Zoektext, RegexOptions.IgnoreCase).Success ||
+                        Regex.Match(student.StudentNo, Zoektext, RegexOptions.IgnoreCase).Success ||
+                        Regex.Match(student.Education, Zoektext, RegexOptions.IgnoreCase).Success ||
+                        Regex.Match(student.Assignment.Name, Zoektext, RegexOptions.IgnoreCase).Success ||
+                        Regex.Match(student.Assignment.Company, Zoektext, RegexOptions.IgnoreCase).Success ||
+                        Regex.Match(student.Assignment.Type, Zoektext, RegexOptions.IgnoreCase).Success;
+            }
+
         }
 
         private bool ContainsPeriod(object obj)
@@ -223,25 +189,8 @@ namespace MSD.ViewModels
                             TempPermission = (bool)data.Rows[RowNr][7],
                             Type = data.Rows[RowNr][10].ToString(),
                         }
-
-
                     });
-
-
                 }
-            }
-        }
-        private string[] _period;
-        public string[] Period
-        {
-            get
-            {
-                return _period;
-            }
-            set
-            {
-                _period = value;
-                OnPropertyChanged("Period");
             }
         }
 
@@ -256,11 +205,76 @@ namespace MSD.ViewModels
             adapter.Fill(table);
 
             _period = new string[table.Rows.Count];
-
             for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
             {
                 Period[RowNr] = table.Rows[RowNr][0].ToString();
             }
         }
+
+        private string[] _period;
+        public string[] Period
+        {
+            get
+            {
+                return _period;
+            }
+            set
+            {
+                _period = value;
+                OnPropertyChanged("Period");
+            }
+        }
+
+        public ObservableCollection<Student> Students
+        {
+            get { return students; }
+            set
+            {
+                students = value;
+                this.OnPropertyChanged("Students");
+            }
+        }
+
+        private Student _selectedItem;
+        public Student SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                this.OnPropertyChanged("SelectedItem");
+                OnPropertyChanged("AanpassenEnabled");
+            }
+        }
+
+        public bool AanpassenEnabled
+        {
+            get { return (SelectedItem != null); }
+        }
+
+        public string Zoektext
+        {
+            get
+            {
+                return _zoektext;
+            }
+            set
+            {
+                _zoektext = value;
+                OnPropertyChanged("Zoektext");
+            }
+        }
+
+        public string SelectedPeriod
+        {
+            get { return _selectedPeriod; }
+            set
+            {
+                _selectedPeriod = value;
+                this.OnPropertyChanged("SelectedPeriod");
+            }
+        }
+
+        
     }
 }

@@ -22,7 +22,6 @@ namespace MSD.ViewModels
         private readonly RelayCommand _ShowMainWindow;
         private readonly RelayCommand _WachtwoordVergeten;
         private Database _database;
-
         private string _email;
 
         private PasswordBox _passwordBox;

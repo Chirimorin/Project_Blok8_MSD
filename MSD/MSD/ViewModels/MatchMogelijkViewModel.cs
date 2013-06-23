@@ -163,7 +163,7 @@ namespace MSD.ViewModels
                     UpdateTeacherKnowledgeAreas(teachers[RowNr]);
                 }
             }
-
+            Teachers.OrderBy(t => t.Hours);
         }
         
         public void MogelijkeMatchReader()

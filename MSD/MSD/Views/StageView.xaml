@@ -9,15 +9,15 @@
     <Grid x:Name="LayoutRoot">
         <DataGrid CanUserAddRows="False" Margin="42,196,47,0" VerticalAlignment="Top" Height="251" AutoGenerateColumns="False" ItemsSource="{Binding Path=StudentCollection}">
             <DataGrid.Columns>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnr"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Student nummer"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Student naam "/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="Email"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Supervisor}" Header="Naam Docent"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Secondreader}" Header="Tweede lezer"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Company}" Header="Stagebedrijf"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Period}" Header="Periode"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Name}" Header="Opdracht naam"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Company}" Header="Stagebedrijf"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Supervisor}" Header="Begeleider"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Secondreader}" Header="Tweede lezer"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Period}" Header="Periode"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18.667" Height="45" Margin="297,32.807,0,0" HorizontalAlignment="Left" Width="153"/>
@@ -29,7 +29,7 @@
         <TextBox Text="{Binding Zoektext, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="25"/>
         <Button Command="{Binding ResetCommand}" Content="Reset" Margin="465,0,187,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
         <Button Command="{Binding FilterCommand}" Content="Zoeken" Margin="350,0,302,365" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
-        <ComboBox SelectedValue="{Binding Path=SelectedPeriod, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Period, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="183,119,0,0" VerticalAlignment="Top" Width="150" Height="25"/>
+        <ComboBox ItemsSource="{Binding Path=Period, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" SelectedItem="{Binding Path=SelectedPeriod, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" HorizontalAlignment="Left" Margin="183,119,0,0" VerticalAlignment="Top" Width="150" Height="25"/>
         <Label Content="Periode" HorizontalAlignment="Left" Margin="183,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
     </Grid>
 </UserControl>
