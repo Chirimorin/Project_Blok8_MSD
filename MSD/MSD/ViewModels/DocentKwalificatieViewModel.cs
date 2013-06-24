@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,7 +81,19 @@ namespace MSD.ViewModels
                 foreach (string knowledgeArea in Teacher.KnowledgeAreas)
                 {
                     if (knowledgeArea != "" && knowledgeArea != null)
-                        ModelFactory.Database.setData(new MySqlCommand("INSERT INTO docent_has_kennisgebieden (Docent_Docentnr, Kennisgebieden_KennisNr) SELECT " + Teacher.TeacherNo + ", (SELECT KennisNr FROM kennisgebieden WHERE KennisNaam = '" + knowledgeArea +"')"));
+                    {
+                        MySqlCommand cmd = new MySqlCommand("SELECT KennisNr FROM kennisgebieden WHERE KennisNaam = '" + knowledgeArea + "'");
+                        DataTable table = new DataTable();
+                        MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
+                        adapter.Fill(table);
+
+                        if (table.Rows.Count == 0)
+                        {
+                            ModelFactory.Database.setData(new MySqlCommand("INSERT INTO kennisgebieden (KennisNaam) VALUES('" + knowledgeArea + "')"));
+                        }
+
+                        ModelFactory.Database.setData(new MySqlCommand("INSERT INTO docent_has_kennisgebieden (Docent_Docentnr, Kennisgebieden_KennisNr) SELECT " + Teacher.TeacherNo + ", (SELECT KennisNr FROM kennisgebieden WHERE KennisNaam = '" + knowledgeArea + "')"));
+                    }
                 }
 
                 _app.ShowDocentView();
@@ -224,6 +237,17 @@ namespace MSD.ViewModels
             }
         }
 
+        public string NewKnowledge1
+        {
+            set
+            {
+                if (KnowledgeArea1 != null)
+                    return;
+                if (!string.IsNullOrEmpty(value))
+                    KnowledgeArea1 = value;
+            }
+        }
+
         public string KnowledgeArea1
         {
             get { return Teacher.KnowledgeAreas[0]; }
@@ -231,6 +255,17 @@ namespace MSD.ViewModels
             {
                 Teacher.KnowledgeAreas[0] = value;
                 OnPropertyChanged("KnowledgeArea1");
+            }
+        }
+
+        public string NewKnowledge2
+        {
+            set
+            {
+                if (KnowledgeArea2 != null)
+                    return;
+                if (!string.IsNullOrEmpty(value))
+                    KnowledgeArea2 = value;
             }
         }
 
@@ -244,6 +279,17 @@ namespace MSD.ViewModels
             }
         }
 
+        public string NewKnowledge3
+        {
+            set
+            {
+                if (KnowledgeArea3 != null)
+                    return;
+                if (!string.IsNullOrEmpty(value))
+                    KnowledgeArea3 = value;
+            }
+        }
+
         public string KnowledgeArea3
         {
             get { return Teacher.KnowledgeAreas[2]; }
@@ -251,6 +297,17 @@ namespace MSD.ViewModels
             {
                 Teacher.KnowledgeAreas[2] = value;
                 OnPropertyChanged("KnowledgeArea3");
+            }
+        }
+
+        public string NewKnowledge4
+        {
+            set
+            {
+                if (KnowledgeArea4 != null)
+                    return;
+                if (!string.IsNullOrEmpty(value))
+                    KnowledgeArea4 = value;
             }
         }
 
@@ -264,6 +321,17 @@ namespace MSD.ViewModels
             }
         }
 
+        public string NewKnowledge5
+        {
+            set
+            {
+                if (KnowledgeArea5 != null)
+                    return;
+                if (!string.IsNullOrEmpty(value))
+                    KnowledgeArea5 = value;
+            }
+
+        }
         public string KnowledgeArea5
         {
             get { return Teacher.KnowledgeAreas[4]; }
