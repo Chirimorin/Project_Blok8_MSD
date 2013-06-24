@@ -11,6 +11,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace MSD.ViewModels
 {
@@ -24,6 +26,14 @@ namespace MSD.ViewModels
         private int _stagenr;
         private ObservableCollection<Teacher> teachers = new ObservableCollection<Teacher>();
         private ObservableCollection<Teacher> readers = new ObservableCollection<Teacher>();
+
+        private ICollectionView _teacherCollection;
+        public ICollectionView TeacherCollection
+        {
+            get { return _teacherCollection; }
+            set { _teacherCollection = value; }
+        }
+
 
         public ObservableCollection<Teacher> Teachers
         {
@@ -94,6 +104,8 @@ namespace MSD.ViewModels
             _matchenCommand = new RelayCommand(Matchen);
             _terugCommand = new RelayCommand(Terug);
             _database = ModelFactory.Database;
+            this.TeacherCollection = CollectionViewSource.GetDefaultView(Teachers);
+            this.TeacherCollection.SortDescriptions.Add(new SortDescription("Hours", ListSortDirection.Descending));
         }
 
         public RelayCommand ShowDetailsCommand { get { return _showDetailsCommand; } }
@@ -163,7 +175,6 @@ namespace MSD.ViewModels
                     UpdateTeacherKnowledgeAreas(teachers[RowNr]);
                 }
             }
-            Teachers.OrderBy(t => t.Hours);
         }
         
         public void MogelijkeMatchReader()
