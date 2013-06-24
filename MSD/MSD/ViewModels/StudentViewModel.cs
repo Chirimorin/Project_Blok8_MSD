@@ -358,10 +358,11 @@ namespace MSD.ViewModels
         {
             if (Students.Count != 0)
             {
-                this.SelectedItem = null;
+                
                 this.StudentCollection.Filter = new Predicate<object>(ContainsAll);
                 this.StudentCollection.Refresh();
             }
+            SelectedItem = generateStudent();
         }
 
         private bool ContainsAll(object student)
