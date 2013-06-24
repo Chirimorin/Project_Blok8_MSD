@@ -104,7 +104,13 @@ namespace MSD.ViewModels
                 OnPropertyChanged("Education");
                 OnPropertyChanged("SecondReader");
                 OnPropertyChanged("Academy");
+                OnPropertyChanged("AanpassenEnabled");
             }
+        }
+
+        public bool AanpassenEnabled
+        {
+            get { return (SelectedItem != null); }
         }
 
         public StudentViewModel(IApplicationController app)
