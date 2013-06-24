@@ -47,8 +47,13 @@ namespace MSD.ViewModels
             {
                 _selectedCompany = value;
                 this.OnPropertyChanged("SelectedCompany");
-
+                OnPropertyChanged("AanpassenEnabled");
             }
+        }
+
+        public bool AanpassenEnabled
+        {
+            get { return (SelectedCompany != null); }
         }
 
         public RelayCommand NieuwBedrijfCommand { get { return _nieuwBedrijfCommand;}}
