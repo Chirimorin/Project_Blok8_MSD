@@ -93,6 +93,7 @@
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="ViewModels\MatchDetailsViewModel.cs" />
+    <Compile Include="ViewModels\MatchGemaaktViewModel.cs" />
     <Compile Include="ViewModels\MatchInvoerViewModel.cs" />
     <Compile Include="ViewModels\MatchMogelijkViewModel.cs" />
     <Compile Include="ViewModels\MatchSuccesViewModel.cs" />
@@ -126,6 +127,9 @@
     </Compile>
     <Compile Include="Views\MatchDetailsView.xaml.cs">
       <DependentUpon>MatchDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchGemaaktView.xaml.cs">
+      <DependentUpon>MatchGemaaktView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MatchInvoerView.xaml.cs">
       <DependentUpon>MatchInvoerView.xaml</DependentUpon>
@@ -217,6 +221,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MatchDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MatchGemaaktView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

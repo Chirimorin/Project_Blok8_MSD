@@ -29,6 +29,9 @@
         <DataTemplate DataType="{x:Type m:MatchDetailsViewModel}">
             <v:MatchDetailsView DataContext="{Binding}" />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type m:MatchGemaaktViewModel}">
+            <v:MatchGemaaktView DataContext="{Binding}" />
+        </DataTemplate>
         <DataTemplate DataType="{x:Type m:MatchInvoerViewModel}">
             <v:MatchInvoerView DataContext="{Binding}" />
         </DataTemplate>
