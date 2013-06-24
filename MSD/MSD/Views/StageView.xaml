@@ -3,11 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:models="clr-namespace:MSD.Models"
              mc:Ignorable="d" 
              d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="509">
 
     <Grid x:Name="LayoutRoot">
         <DataGrid CanUserAddRows="False" Margin="42,196,47,0" VerticalAlignment="Top" Height="251" AutoGenerateColumns="False" ItemsSource="{Binding Path=StudentCollection}">
+            <DataGrid.Resources>
+                <models:BindingProxy x:Key="proxy" Data="{Binding}" />
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Student nummer"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Student naam "/>
@@ -16,7 +20,7 @@
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Name}" Header="Opdracht naam"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Company}" Header="Stagebedrijf"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Supervisor}" Header="Begeleider"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Secondreader}" Header="Tweede lezer"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Secondreader}" Visibility="{Binding Data.Afstuderen, Converter={StaticResource BooleanToVisibilityConverter}, Source={StaticResource proxy}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Tweede lezer"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Period}" Header="Periode"/>
             </DataGrid.Columns>
         </DataGrid>

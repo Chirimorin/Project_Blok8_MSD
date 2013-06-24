@@ -248,6 +248,7 @@ namespace MSD.ViewModels
             {
                 _afstuderen = value;
                 OnPropertyChanged("Title");
+                OnPropertyChanged("Afstuderen");
             }
         }
 
