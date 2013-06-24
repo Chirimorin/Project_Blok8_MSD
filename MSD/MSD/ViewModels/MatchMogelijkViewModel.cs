@@ -128,18 +128,18 @@ namespace MSD.ViewModels
             MatchSuccesViewModel vm = (MatchSuccesViewModel)ViewFactory.getViewModel(_app, "matchSuccesViewModel");
             vm.Student.Add(Student);
             vm.Supervisor.Add(SelectedTeacher);
-            Match(SelectedTeacher);
+            Match(SelectedTeacher, "Begeleider");
             if (SelectedReader != null)
             {
                 vm.Secondreader.Add(SelectedReader);
-                Match(SelectedReader);
+                Match(SelectedReader, "Tweede lezer");
             }
            
             _app.ShowMatchSuccesView();
         }
-        public void Match(Teacher teacher)
+        public void Match(Teacher teacher, string type)
         {
-            string query = "INSERT INTO docent_has_stageopdracht VALUES(" + teacher.TeacherNo + "," + _stagenr + ", 'Begeleider');";
+            string query = "INSERT INTO docent_has_stageopdracht VALUES(" + teacher.TeacherNo + "," + _stagenr + ", '" + type + "');";
             MySqlCommand mycommand = new MySqlCommand(query);
             _database.setData(mycommand);
         }
