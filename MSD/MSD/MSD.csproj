@@ -80,6 +80,7 @@
     <Compile Include="Entity\User.cs" />
     <Compile Include="Factories\ModelFactory.cs" />
     <Compile Include="Factories\ViewFactory.cs" />
+    <Compile Include="Models\BindingProxy.cs" />
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\MD5Encryptor.cs" />
     <Compile Include="Models\PropertyChangedBase.cs" />
