@@ -23,12 +23,11 @@ namespace MSD.ViewModels
         private readonly RelayCommand _studentAanpassenCommand;
         private ObservableCollection<Student> _students = new ObservableCollection<Student>();
         private ObservableCollection<Education> _educations = new ObservableCollection<Education>();
+        private ObservableCollection<Academy> _academies = new ObservableCollection<Academy>();
         private Student _selectedItem;
         private string _selectedPeriod;
-        private string _selectedAcademy;
-        private string _selectedEducation;
-
-        
+        private Academy _selectedAcademy;
+        private Education _selectedEducation;
         private string _zoektext;
         private readonly RelayCommand _filterCommand;
         private readonly RelayCommand _resetCommand;
@@ -46,12 +45,20 @@ namespace MSD.ViewModels
             get { return _eduCollection; }
             set { _eduCollection = value; }
         }
-        
+
+        private ICollectionView _acaCollection;
+        public ICollectionView AcaCollection
+        {
+            get { return _acaCollection; }
+            set { _acaCollection = value; }
+        }
+
 
         public ObservableCollection<Student> Students
         {
             get { return _students; }
-            set { 
+            set
+            {
                 _students = value;
                 OnPropertyChanged("Students");
             }
@@ -67,10 +74,21 @@ namespace MSD.ViewModels
             }
         }
 
+        public ObservableCollection<Academy> Academies
+        {
+            get { return _academies; }
+            set
+            {
+                _academies = value;
+                OnPropertyChanged("Academies");
+            }
+        }
+
         public Student SelectedItem
         {
             get { return _selectedItem; }
-            set {
+            set
+            {
                 _selectedItem = value;
                 OnPropertyChanged("SelectedItem");
                 OnPropertyChanged("StudentName");
@@ -102,7 +120,6 @@ namespace MSD.ViewModels
             this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
             this.EduCollection = CollectionViewSource.GetDefaultView(Educations);
             SelectedPeriod = "Alle";
-            SelectedAcademy = "Alle";
         }
 
         private Database Database
@@ -147,7 +164,7 @@ namespace MSD.ViewModels
         /// </summary>
         public void makeAssignment(StageopdrachtViewModel vm2)
         {
-            string query = "SELECT o.opdrachtnaam, o.omschrijving, o.opmerking, o.opdrachtgoed, o.toestemmingvoorlopig, o.toestemmingdefinitief, o.periode_periodenaam, b.naam, o.type FROM stageopdracht o JOIN stageopdracht_has_student s ON o.stagenr = s.stageopdracht_stagenr JOIN stagebedrijf b ON o.stagebedrijf_bedrijfnr = b.bedrijfnr WHERE s.student_studentnr = " + SelectedItem.StudentNo  + ";";
+            string query = "SELECT o.opdrachtnaam, o.omschrijving, o.opmerking, o.opdrachtgoed, o.toestemmingvoorlopig, o.toestemmingdefinitief, o.periode_periodenaam, b.naam, o.type FROM stageopdracht o JOIN stageopdracht_has_student s ON o.stagenr = s.stageopdracht_stagenr JOIN stagebedrijf b ON o.stagebedrijf_bedrijfnr = b.bedrijfnr WHERE s.student_studentnr = " + SelectedItem.StudentNo + ";";
             MySqlCommand mycommand = new MySqlCommand(query);
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable data = new DataTable();
@@ -196,7 +213,7 @@ namespace MSD.ViewModels
                     Phone = table.Rows[RowNr][3].ToString(),
                     Education = table.Rows[RowNr][4].ToString(),
                     Academie = table.Rows[RowNr][5].ToString(),
-                    
+
                     Assignment = new Assignment
                     {
                         Period = table.Rows[RowNr][6].ToString(),
@@ -266,9 +283,6 @@ namespace MSD.ViewModels
         public void Reset(object command)
         {
             this.Zoektext = null;
-            SelectedPeriod = "Alle";
-            SelectedAcademy = "Alle";
-            SelectedEducation = "Alle";
             this.StudentCollection.Filter = null;
             this.StudentCollection.Refresh();
         }
@@ -290,39 +304,33 @@ namespace MSD.ViewModels
 
         private bool ContainsAll(object student)
         {
-
-            if (_selectedPeriod.Equals("Alle") && _selectedAcademy.Equals("Alle") && _selectedEducation.Equals("Alle"))
-            {
-                return ContainsSearch(student);
-            }
-            else if (_selectedAcademy.Equals("Alle"))
-            {
-                return ContainsSearch(student) && ContainsPeriod(student) && ContainsOpleiding(student);
-            }
-            else if (_selectedPeriod.Equals("Alle"))
-            {
-                return ContainsSearch(student) && ContainsAcademy(student) && ContainsOpleiding(student);
-            }
-            else if (_selectedEducation.Equals("Alle"))
-            {
-                return ContainsSearch(student) && ContainsAcademy(student) && ContainsPeriod(student);
-            }
-            else
-            {
-                return ContainsSearch(student) && ContainsPeriod(student) && ContainsAcademy(student) && ContainsOpleiding(student);
-            }
+            return ContainsSearch(student) && ContainsPeriod(student) && ContainsAcademy(student) && ContainsOpleiding(student);
         }
 
         private bool ContainsOpleiding(object obj)
         {
-            Student student = obj as Student;
-            return Regex.Match(student.Education, _selectedAcademy, RegexOptions.IgnoreCase).Success;
+            if (SelectedEducation == null)
+            {
+                return true;
+            }
+            else
+            {
+                Student student = obj as Student;
+                return Regex.Match(student.Education, SelectedEducation.Description, RegexOptions.IgnoreCase).Success;
+            }
         }
 
         private bool ContainsAcademy(object obj)
         {
-            Student student = obj as Student;
-            return Regex.Match(student.Academie, _selectedAcademy, RegexOptions.IgnoreCase).Success;
+            if (SelectedAcademy == null)
+            {
+                return true;
+            }
+            else
+            {
+                Student student = obj as Student;
+                return Regex.Match(student.Academie, SelectedAcademy.Abbreviation, RegexOptions.IgnoreCase).Success;
+            }
         }
 
         /// <summary>
@@ -353,8 +361,15 @@ namespace MSD.ViewModels
 
         private bool ContainsPeriod(object obj)
         {
-            Student student = obj as Student;
-            return Regex.Match(student.Assignment.Period, _selectedPeriod, RegexOptions.IgnoreCase).Success;
+            if (SelectedPeriod.Equals("Alle"))
+            {
+                return true;
+            }
+            else
+            {
+                Student student = obj as Student;
+                return Regex.Match(student.Assignment.Period, _selectedPeriod, RegexOptions.IgnoreCase).Success;
+            }
         }
 
         public string Zoektext
@@ -380,7 +395,7 @@ namespace MSD.ViewModels
             }
         }
 
-        public string SelectedEducation
+        public Education SelectedEducation
         {
             get { return _selectedEducation; }
             set
@@ -390,7 +405,7 @@ namespace MSD.ViewModels
             }
         }
 
-        public string SelectedAcademy
+        public Academy SelectedAcademy
         {
             get { return _selectedAcademy; }
             set
@@ -409,7 +424,7 @@ namespace MSD.ViewModels
         public bool hasEducation(object e)
         {
             Education edu = e as Education;
-            return Regex.Match(edu.Abbreviation, SelectedAcademy, RegexOptions.IgnoreCase).Success;
+            return Regex.Match(edu.Abbreviation, SelectedAcademy.Abbreviation, RegexOptions.IgnoreCase).Success;
         }
 
         private Assignment _assignment;
@@ -442,7 +457,7 @@ namespace MSD.ViewModels
         {
             get
             {
-                if(SelectedItem != null) 
+                if (SelectedItem != null)
                     return SelectedItem.Name;
                 return "";
             }
@@ -471,7 +486,7 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (SelectedItem != null) 
+                if (SelectedItem != null)
                     return SelectedItem.StudentNo;
                 return "";
             }
@@ -482,7 +497,7 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (SelectedItem != null) 
+                if (SelectedItem != null)
                     return SelectedItem.Email;
                 return "";
             }
@@ -522,7 +537,7 @@ namespace MSD.ViewModels
         {
             get
             {
-                if(SelectedItem != null)
+                if (SelectedItem != null)
                     return SelectedItem.Assignment.Company;
                 else return "";
             }
@@ -602,31 +617,20 @@ namespace MSD.ViewModels
             }
         }
 
-        private string[] _academies;
-        public string[] AcademyCollection
-        {
-            get
-            {
-                return _academies;
-            }
-            set
-            {
-                _academies = value;
-                OnPropertyChanged("AcademyCollection");
-            }
-        }
-
         public void FillAcademies()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT Afkorting FROM academie");
+            MySqlCommand cmd = new MySqlCommand("SELECT Afkorting,Omschrijving FROM academie");
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
             adapter.Fill(table);
 
-            _academies = new string[table.Rows.Count];
             for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
             {
-                AcademyCollection[RowNr] = table.Rows[RowNr][0].ToString();
+                Academies.Add(new Academy
+                {
+                    Abbreviation = table.Rows[RowNr][0].ToString(),
+                    Description = table.Rows[RowNr][1].ToString()
+                });
             }
         }
 
@@ -635,7 +639,7 @@ namespace MSD.ViewModels
         /// </summary>
         public void FillPeriode()
         {
-            
+
             MySqlCommand cmd = new MySqlCommand("SELECT periodenaam FROM periode");
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
@@ -657,7 +661,7 @@ namespace MSD.ViewModels
             adapter.Fill(table);
             for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
             {
-                Educations.Add(new Education 
+                Educations.Add(new Education
                 {
                     Description = table.Rows[RowNr][0].ToString(),
                     Abbreviation = table.Rows[RowNr][1].ToString()
@@ -665,4 +669,5 @@ namespace MSD.ViewModels
             }
         }
     }
+
 }

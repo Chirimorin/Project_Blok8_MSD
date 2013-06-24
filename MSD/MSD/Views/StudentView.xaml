@@ -48,9 +48,9 @@
         <Button Command="{Binding FilterCommand}" Content="Zoeken" Margin="503,0,149,390" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
         <ComboBox ItemsSource="{Binding PeriodCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedPeriod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="173,95,0,0" VerticalAlignment="Top" Width="98" Height="25"/>
         <Label Content="Periode" HorizontalAlignment="Left" Margin="173,60,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
-        <ComboBox ItemsSource="{Binding AcademyCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedAcademy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="295,95,0,0" VerticalAlignment="Top" Width="78" Height="25"/>
+        <ComboBox ItemsSource="{Binding Academies, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Abbreviation" SelectedItem="{Binding SelectedAcademy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="295,95,0,0" VerticalAlignment="Top" Width="78" Height="25"/>
         <Label Content="Academie" HorizontalAlignment="Left" Margin="295,59,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
-        <ComboBox ItemsSource="{Binding Educations, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="1" DisplayMemberPath="Description" SelectedItem="{Binding SelectedEducation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="395,95,0,0" VerticalAlignment="Top" Width="78" Height="25"/>
+        <ComboBox ItemsSource="{Binding Educations, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Description" SelectedItem="{Binding SelectedEducation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="395,95,0,0" VerticalAlignment="Top" Width="78" Height="25" SelectedIndex="0"/>
         <Label Content="Opleiding" HorizontalAlignment="Left" Margin="395,59,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
 
     </Grid>
