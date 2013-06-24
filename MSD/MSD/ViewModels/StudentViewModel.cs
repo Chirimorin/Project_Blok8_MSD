@@ -86,7 +86,10 @@ namespace MSD.ViewModels
 
         public Student SelectedItem
         {
-            get { return _selectedItem; }
+            get
+            {
+                return _selectedItem;
+            }
             set
             {
                 _selectedItem = value;
@@ -105,6 +108,29 @@ namespace MSD.ViewModels
                 OnPropertyChanged("SecondReader");
                 OnPropertyChanged("Academy");
                 OnPropertyChanged("AanpassenEnabled");
+
+                if (value == null)
+                {
+                    _selectedItem = generateStudent();
+                }
+                else
+                {
+                    _selectedItem = value;
+                    OnPropertyChanged("SelectedItem");
+                    OnPropertyChanged("StudentName");
+                    OnPropertyChanged("StudentNo");
+                    OnPropertyChanged("Email");
+                    OnPropertyChanged("Company");
+                    OnPropertyChanged("Period");
+                    OnPropertyChanged("Accepted");
+                    OnPropertyChanged("TempPermission");
+                    OnPropertyChanged("Permission");
+                    OnPropertyChanged("StageType");
+                    OnPropertyChanged("Teacher");
+                    OnPropertyChanged("Education");
+                    OnPropertyChanged("SecondReader");
+                    OnPropertyChanged("Academy");
+                }
             }
         }
 
@@ -125,7 +151,36 @@ namespace MSD.ViewModels
             Fillopleiding();
             this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
             this.EduCollection = CollectionViewSource.GetDefaultView(Educations);
+            if (SelectedItem == null)
+            {
+                SelectedItem = generateStudent();
+            }
             SelectedPeriod = "Alle";
+            this.SelectedAcademy = Academies.First();
+            this.SelectedEducation = Educations.First();
+        }
+
+        private Student generateStudent()
+        {
+            return new Student
+            {
+                Academie = "Niet bekend",
+                StudentNo = "Niet bekend",
+                Email = "Niet bekend",
+                Name = "Niet bekend",
+                Phone = "Niet bekend",
+                Education = "Niet bekend",
+                Assignment = new Assignment
+                {
+                    Company = "Niet bekend",
+                    Description = "Niet bekend",
+                    Name = "Niet bekend",
+                    Period = "Niet bekend",
+                    Secondreader = "Niet bekend",
+                    Supervisor = "Niet bekend",
+                    Type = "Niet bekend"
+                }
+            };
         }
 
         private Database Database
@@ -303,6 +358,7 @@ namespace MSD.ViewModels
         {
             if (Students.Count != 0)
             {
+                this.SelectedItem = null;
                 this.StudentCollection.Filter = new Predicate<object>(ContainsAll);
                 this.StudentCollection.Refresh();
             }
@@ -419,6 +475,7 @@ namespace MSD.ViewModels
                 _selectedAcademy = value;
                 this.OnPropertyChanged("SelectedAcademy");
                 filterEducation();
+                this.SelectedEducation = Educations.First();
             }
         }
 
@@ -622,7 +679,9 @@ namespace MSD.ViewModels
                 OnPropertyChanged("PeriodCollection");
             }
         }
-
+        /// <summary>
+        /// Vult de de academy combobox
+        /// </summary>
         public void FillAcademies()
         {
             MySqlCommand cmd = new MySqlCommand("SELECT Afkorting,Omschrijving FROM academie");
@@ -657,7 +716,9 @@ namespace MSD.ViewModels
                 PeriodCollection[RowNr] = table.Rows[RowNr][0].ToString();
             }
         }
-
+        /// <summary>
+        /// Vult de opleiding combobox
+        /// </summary>
         public void Fillopleiding()
         {
             Educations.Clear();

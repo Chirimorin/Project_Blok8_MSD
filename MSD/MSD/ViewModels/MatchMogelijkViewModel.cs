@@ -34,6 +34,12 @@ namespace MSD.ViewModels
             set { _teacherCollection = value; }
         }
 
+        private ICollectionView _readerCollection;
+        public ICollectionView ReaderCollection
+        {
+            get { return _readerCollection; }
+            set { _readerCollection = value; }
+        }
 
         public ObservableCollection<Teacher> Teachers
         {
@@ -58,7 +64,7 @@ namespace MSD.ViewModels
             get { return _stagenr; }
             set { _stagenr = value; }
         }
-        
+
         public bool _afstuderen;
         public bool Afstuderen
         {
@@ -104,6 +110,8 @@ namespace MSD.ViewModels
             _matchenCommand = new RelayCommand(Matchen);
             _terugCommand = new RelayCommand(Terug);
             _database = ModelFactory.Database;
+            this.ReaderCollection = CollectionViewSource.GetDefaultView(SecondReader);
+            this.ReaderCollection.SortDescriptions.Add(new SortDescription("Hours", ListSortDirection.Descending));
             this.TeacherCollection = CollectionViewSource.GetDefaultView(Teachers);
             this.TeacherCollection.SortDescriptions.Add(new SortDescription("Hours", ListSortDirection.Descending));
         }
@@ -134,7 +142,7 @@ namespace MSD.ViewModels
                 vm.Secondreader.Add(SelectedReader);
                 Match(SelectedReader, "Tweede lezer");
             }
-           
+
             _app.ShowMatchSuccesView();
         }
         public void Match(Teacher teacher, string type)
@@ -152,7 +160,7 @@ namespace MSD.ViewModels
         public void MogelijkeMatchTeacher()
         {
             teachers.Clear();
-            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr, d.mailadres FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '"+ _stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
+            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr, d.mailadres FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + _stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
             Debug.WriteLine(query);
             MySqlCommand mycommand = new MySqlCommand(query);
             DataTable data = new DataTable();
@@ -170,13 +178,13 @@ namespace MSD.ViewModels
                         City = data.Rows[RowNr][3].ToString(),
                         TeacherNo = (int)data.Rows[RowNr][4],
                         Email = data.Rows[RowNr][5].ToString(),
-                        
+
                     });
                     UpdateTeacherKnowledgeAreas(teachers[RowNr]);
                 }
             }
         }
-        
+
         public void MogelijkeMatchReader()
         {
             readers.Clear();
@@ -198,7 +206,7 @@ namespace MSD.ViewModels
                         City = data.Rows[RowNr][3].ToString(),
                         TeacherNo = (int)data.Rows[RowNr][4],
                         Email = data.Rows[RowNr][5].ToString(),
-                        
+
                     });
                     UpdateTeacherKnowledgeAreas(readers[RowNr]);
                 }
@@ -260,7 +268,7 @@ namespace MSD.ViewModels
         public string Name
         {
             get { return Student.Name; }
-            set { Student.Name= value; }
+            set { Student.Name = value; }
         }
 
         public string Education
@@ -286,6 +294,6 @@ namespace MSD.ViewModels
             get { return Student.Assignment.Name; }
             set { Student.Assignment.Name = value; }
         }
-        
     }
 }
+
