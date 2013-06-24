@@ -4,8 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+             d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="510">
+    <Grid x:Name="LayoutRoot">
+        <Label Content="Match maken" Margin="310,36,312.506,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+        <Label Content="Zoeken" HorizontalAlignment="Left" Margin="42,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
+        <TextBox Text="{Binding Path=Zoektext, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="25"/>
+        <Button IsEnabled="{Binding Path=AanpassenEnabled, UpdateSourceTrigger=PropertyChanged}" Command="{Binding MatchenCommand}" Content="Wijzigen" Margin="605,0,47,36" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
+        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" SelectedItem="{Binding Path=SelectedItem}" ItemsSource="{Binding Path=Students}" Margin="42,196,47,122">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnummer"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Type}" Header="Soort"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="Email" />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Company}" Header="Bedrijf"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Supervisor}" Header="Begeleider"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Secondreader}" Header="Tweede lezer"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Command="{Binding ResetCommand}" Content="Reset" Margin="465,0,187,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
+        <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="350,0,302,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
+        <ComboBox ItemsSource="{Binding Path=Period, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" SelectedItem="{Binding Path=SelectedPeriod, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" HorizontalAlignment="Left" Margin="183,119,0,0" VerticalAlignment="Top" Width="150" Height="25"/>
+        <Label Content="Periode" HorizontalAlignment="Left" Margin="183,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
+        <Button Command="{Binding TerugCommand}" Content="Terug" Margin="465,0,187,36" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
     </Grid>
 </UserControl>
