@@ -13,22 +13,23 @@
         <Label Content="Zoeken" HorizontalAlignment="Left" Margin="42,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
         <TextBox Text="{Binding Path=Zoektext, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="25"/>
         <Button IsEnabled="{Binding Path=AanpassenEnabled, UpdateSourceTrigger=PropertyChanged}" Command="{Binding MatchenCommand}" Content="Matchen" Margin="605,0,47,36" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
-            <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" SelectedItem="{Binding Path=SelectedItem}" ItemsSource="{Binding Path=Students}" Margin="42,196,47,122">
-                <DataGrid.Columns>
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnummer"/>
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
+        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" SelectedItem="{Binding Path=SelectedItem}" ItemsSource="{Binding Path=Students}" Margin="42,196,47,122">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding StudentNo}" Header="Studentnummer"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam student"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Type}" Header="Soort"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="Email" />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Email}" Header="Email" />
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Company}" Header="Bedrijf"/>
                 <DataGridCheckBoxColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Accepted}" Header="Opdracht"/>
                 <DataGridCheckBoxColumn IsReadOnly="True" Binding="{Binding Path=Assignment.TempPermission}" Header="Voorlopige toestemming"/>
                 <DataGridCheckBoxColumn IsReadOnly="True" Binding="{Binding Path=Assignment.Permission}" Header="Toestemming"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            </DataGrid.Columns>
+        </DataGrid>
         <Button Command="{Binding ResetCommand}" Content="Reset" Margin="465,0,187,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
         <Button Command="{Binding ZoekenCommand}" Content="Zoeken" Margin="350,0,302,366" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
         <ComboBox ItemsSource="{Binding Path=Period, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" SelectedItem="{Binding Path=SelectedPeriod, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" HorizontalAlignment="Left" Margin="183,119,0,0" VerticalAlignment="Top" Width="150" Height="25"/>
         <Label Content="Periode" HorizontalAlignment="Left" Margin="183,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
+        <Button  Command="{Binding MatchmadeCommand}" Content="Gemaakte matchen" Margin="438,0,172,36" VerticalAlignment="Bottom" Foreground="Black" Height="25" FontStyle="Italic" FontSize="15"/>
     </Grid>
 </UserControl>

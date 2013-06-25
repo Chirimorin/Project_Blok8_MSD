@@ -25,6 +25,7 @@ namespace MSD.ViewModels
         private readonly RelayCommand _zoekenCommand;
         private string _zoektext;
         private readonly RelayCommand _resetCommand;
+        private readonly RelayCommand _matchmadeCommand;
         private string _selectedPeriod;
         private int _stagenr;
         private string _fillquery;
@@ -48,6 +49,7 @@ namespace MSD.ViewModels
             _resetCommand = new RelayCommand(Reset);
             _matchenCommand = new RelayCommand(Matchen);
             _zoekenCommand = new RelayCommand(Zoeken);
+            _matchmadeCommand = new RelayCommand(Matchmade);
             _database = ModelFactory.Database;
             _fillquery = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, so.opdrachtgoed, so.toestemmingvoorlopig, so.toestemmingdefinitief, b.naam, so.periode_periodenaam, so.type FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting WHERE so.stagenr NOT IN (SELECT ds.stageopdracht_stagenr FROM docent_has_stageopdracht ds)";
             FillTable();
@@ -73,6 +75,11 @@ namespace MSD.ViewModels
             }
             mm.MogelijkeMatchTeacher();
             _app.ShowMatchMogelijkView();
+        }
+        public RelayCommand MatchmadeCommand { get { return _matchmadeCommand; } }
+        public void Matchmade(object command)
+        {
+            _app.ShowMatchGemaaktView();
         }
 
 
