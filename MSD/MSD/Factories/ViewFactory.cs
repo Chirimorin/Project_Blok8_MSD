@@ -23,6 +23,7 @@ namespace MSD.Factories
         private static MainWindowModel _mainWindowModel;
         private static MatchDetailsViewModel _matchDetailsView;
         private static MatchInvoerViewModel _matchInvoerView;
+        private static MatchGemaaktViewModel _matchGemaaktView;
         private static MatchMogelijkViewModel _matchMogelijkView;
         private static MatchSuccesViewModel _matchSuccesView;
         private static StageViewModel _stageView;
@@ -94,6 +95,12 @@ namespace MSD.Factories
                     _mainWindowModel.Display = "Matchen";
                     _matchInvoerView.FillTable();
                     return _matchInvoerView;
+                case ("matchGemaaktViewModel"):
+                    if (_matchGemaaktView == null)
+                        _matchGemaaktView = new MatchGemaaktViewModel(app);
+                    _mainWindowModel.Display = "Matchen";
+                    _matchGemaaktView.FillTable();
+                    return _matchGemaaktView;
                 case ("matchMogelijkViewModel"):
                     if (_matchMogelijkView == null)
                         _matchMogelijkView = new MatchMogelijkViewModel(app);

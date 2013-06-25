@@ -19,6 +19,7 @@ namespace MSD.Controllers
         void ShowGebruikerView();
         void ShowMatchDetailsView();
         void ShowMatchInvoerView();
+        void ShowMatchGemaaktView();
         void ShowMatchMogelijkView();
         void ShowMatchSuccesView();
         void ShowStageView();

@@ -75,6 +75,11 @@ namespace MSD.Controllers
             ShowView("matchInvoerViewModel");
         }
 
+        public void ShowMatchGemaaktView()
+        {
+            ShowView("matchGemaaktViewModel");
+        }
+
         public void ShowMatchMogelijkView()
         {
             ShowView("matchMogelijkViewModel");
@@ -144,5 +149,7 @@ namespace MSD.Controllers
         {
             ViewFactory.getViewModel(this, "wachtwoordViewModel");
         }
+
+
     }
 }
