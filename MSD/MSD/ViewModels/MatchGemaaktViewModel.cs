@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -46,7 +47,7 @@ namespace MSD.ViewModels
             _matchenCommand = new RelayCommand(Matchen);
             _zoekenCommand = new RelayCommand(Zoeken);
             _database = ModelFactory.Database;
-            _fillquery = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, b.naam, so.periode_periodenaam, so.type, so.stagenr FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting WHERE so.stagenr IN (SELECT ds.stageopdracht_stagenr FROM docent_has_stageopdracht ds)";
+            _fillquery = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, b.naam, so.periode_periodenaam, so.type, so.stagenr FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting JOIN docent_has_stageopdracht ds ON so.stagenr = ds.stageopdracht_stagenr GROUP BY ds.stageopdracht_stagenr";
             FillTable();
             FillPeriode();
             this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
@@ -64,10 +65,11 @@ namespace MSD.ViewModels
             if (SelectedItem.Assignment.Type == "Afstuderen")
             {
                 mm.MogelijkeMatchReader();
-               // mm.SelectedReader = SelectedItem.Assignment.Secondreader;
+                mm.MatchedReader = SelectedItem.Assignment.Secondreader;
                 mm.Afstuderen = true;
             }
             mm.MogelijkeMatchTeacher();
+            mm.MatchedTeacher = SelectedItem.Assignment.Supervisor;
             _app.ShowMatchMogelijkView();
         }
         /// <summary>
@@ -78,7 +80,7 @@ namespace MSD.ViewModels
         public string getSupervisor(int stagenr)
         {
             string supervisorquery = "SELECT d.naam FROM docent d JOIN docent_has_stageopdracht ds ON ds.docent_docentnr = d.docentnr WHERE ds.stageopdracht_stagenr = "+ stagenr + " AND soort = 'Begeleider'";
-            return "";//getexecuteQuery(supervisorquery);
+            return getTeacher(supervisorquery);
         }
         /// <summary>
         /// Pakt de bijbehorende tweede lezer van de stage als die er is
@@ -88,9 +90,7 @@ namespace MSD.ViewModels
         public string getSecondreader(int stagenr)
         {
                 string secondreaderquery = "SELECT d.naam FROM docent d JOIN docent_has_stageopdracht ds ON ds.docent_docentnr = d.docentnr WHERE ds.stageopdracht_stagenr = " + stagenr + " AND soort = 'Tweede lezer'";
-                //return getexecuteQuery(secondreaderquery);
-            
-            return "-";
+                return getTeacher(secondreaderquery);
         }
 
         public int getexecuteQuery(string query)
@@ -101,6 +101,19 @@ namespace MSD.ViewModels
             adapter = _database.getData(mycommand);
             adapter.Fill(data);
             return (int)data.Rows[0][0];
+        }
+        public string getTeacher(string query)
+        {
+            MySqlCommand mycommand = new MySqlCommand(query);
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable data = new DataTable();
+            adapter = _database.getData(mycommand);
+            adapter.Fill(data);
+            if (data.Rows.Count != 0)
+            {
+                return data.Rows[0][0].ToString();
+            } 
+            return " ";
         }
 
         public RelayCommand ResetCommand { get { return _resetCommand; } }

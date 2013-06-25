@@ -136,20 +136,26 @@ namespace MSD.ViewModels
             MatchSuccesViewModel vm = (MatchSuccesViewModel)ViewFactory.getViewModel(_app, "matchSuccesViewModel");
             vm.Student.Add(Student);
             vm.Supervisor.Add(SelectedTeacher);
-            Match(SelectedTeacher, "Begeleider");
+            Match(SelectedTeacher,7, "Begeleider");
             if (SelectedReader != null)
             {
                 vm.Secondreader.Add(SelectedReader);
-                Match(SelectedReader, "Tweede lezer");
+                Match(SelectedReader,0, "Tweede lezer");
             }
 
             _app.ShowMatchSuccesView();
         }
-        public void Match(Teacher teacher, string type)
+        public void Match(Teacher teacher, int uren, string type)
         {
-            string query = "INSERT INTO docent_has_stageopdracht VALUES(" + teacher.TeacherNo + "," + _stagenr + ", '" + type + "');";
-            MySqlCommand mycommand = new MySqlCommand(query);
-            _database.setData(mycommand);
+            string deletequery = "DELETE FROM docent_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr;
+            MySqlCommand mycommand = new MySqlCommand(deletequery);
+            ModelFactory.Database.setData(mycommand);
+            string query = "INSERT INTO docent_has_stageopdracht VALUES(" + teacher.TeacherNo + "," + _stagenr + ",'" + type + "');";
+            mycommand = new MySqlCommand(query);
+            ModelFactory.Database.setData(mycommand);
+            query = "UPDATE `docent` SET `Uren`= ((SELECT `Uren`)-" + uren + ") WHERE `docentnr` = " + teacher.TeacherNo;
+            mycommand = new MySqlCommand(query);
+            ModelFactory.Database.setData(mycommand);
         }
         public RelayCommand TerugCommand { get { return _terugCommand; } }
         public void Terug(object command)
@@ -160,7 +166,7 @@ namespace MSD.ViewModels
         public void MogelijkeMatchTeacher()
         {
             teachers.Clear();
-            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr, d.mailadres FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + _stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
+            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr, d.mailadres FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + _stagenr + "' AND d.uren > u.urenvergoedingstagesingle GROUP BY d.naam";
             Debug.WriteLine(query);
             MySqlCommand mycommand = new MySqlCommand(query);
             DataTable data = new DataTable();
@@ -188,7 +194,7 @@ namespace MSD.ViewModels
         public void MogelijkeMatchReader()
         {
             readers.Clear();
-            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr, d.mailadres FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + _stagenr + "' AND d.uren > u.urenvergoedingstagesingle";
+            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr, d.mailadres FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + _stagenr + "' AND d.uren > u.urenvergoedingstagesingle  GROUP BY d.naam";
             Debug.WriteLine(query);
             MySqlCommand mycommand = new MySqlCommand(query);
             DataTable data = new DataTable();
@@ -293,6 +299,19 @@ namespace MSD.ViewModels
         {
             get { return Student.Assignment.Name; }
             set { Student.Assignment.Name = value; }
+        }
+        private string _matchedTeacher;
+        public string MatchedTeacher
+        {
+            get { return _matchedTeacher; }
+            set { _matchedTeacher = value; }
+        }
+        private string _matchedReader;
+
+        public string MatchedReader
+        {
+            get { return _matchedReader; }
+            set { _matchedReader = value; }
         }
     }
 }
