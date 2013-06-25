@@ -68,6 +68,7 @@ namespace MSD.ViewModels
             mm.Student = SelectedItem;
             _stagenr = getexecuteQuery("SELECT stageopdracht_stagenr FROM stageopdracht_has_student WHERE student_studentnr = " + SelectedItem.StudentNo);
             mm.Stagenr = _stagenr;
+            mm.MatchedReader = "";
             if (SelectedItem.Assignment.Type == "Afstuderen")
             {
                 mm.MogelijkeMatchReader();

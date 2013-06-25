@@ -71,8 +71,10 @@ namespace MSD.ViewModels
             if (SelectedItem.Assignment.Type == "Afstuderen")
             {
                 mm.MogelijkeMatchReader();
+                mm.MatchedReader = "";
                 mm.Afstuderen = true;
             }
+            mm.MatchedTeacher = "";
             mm.MogelijkeMatchTeacher();
             _app.ShowMatchMogelijkView();
         }
