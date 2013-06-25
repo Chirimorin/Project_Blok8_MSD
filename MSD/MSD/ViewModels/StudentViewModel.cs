@@ -53,7 +53,6 @@ namespace MSD.ViewModels
             set { _acaCollection = value; }
         }
 
-
         public ObservableCollection<Student> Students
         {
             get { return _students; }
@@ -129,6 +128,7 @@ namespace MSD.ViewModels
                     OnPropertyChanged("Teacher");
                     OnPropertyChanged("Education");
                     OnPropertyChanged("SecondReader");
+                    OnPropertyChanged("AanpassenEnabled");
                     OnPropertyChanged("Academy");
                 }
             }
@@ -136,7 +136,16 @@ namespace MSD.ViewModels
 
         public bool AanpassenEnabled
         {
-            get { return (SelectedItem != null); }
+            get {
+                if (SelectedItem == null || SelectedItem.Name.Equals("Niet bekend"))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
 
         public StudentViewModel(IApplicationController app)
