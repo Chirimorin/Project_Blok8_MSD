@@ -158,6 +158,8 @@ namespace MSD.ViewModels
             SelectedPeriod = "Alle";
             this.SelectedAcademy = Academies.First();
             this.SelectedEducation = Educations.First();
+            this.StudentCollection.Filter = new Predicate<object>(ContainsAll);
+            this.StudentCollection.Refresh();
         }
 
         private Student generateStudent()
