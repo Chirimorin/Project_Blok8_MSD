@@ -47,6 +47,9 @@ namespace MSD.ViewModels
             MatchSuccesViewModel vm = (MatchSuccesViewModel)ViewFactory.getViewModel(_app, "matchSuccesViewModel");
             vm.Student.Add(Student[0]);
             vm.Supervisor.Add(Supervisor[0]);
+            string deletequery = "DELETE FROM docent_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr;
+            MySqlCommand mycommand = new MySqlCommand(deletequery);
+            ModelFactory.Database.setData(mycommand);
             Match(Supervisor[0], 7, "Begeleider");
             if (Secondreader.Count != 0)
             {
@@ -57,11 +60,9 @@ namespace MSD.ViewModels
         }
         public void Match(Teacher teacher, int uren, string type)
         {
-            string deletequery = "DELETE FROM docent_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr;
-            MySqlCommand mycommand = new MySqlCommand(deletequery);
-            ModelFactory.Database.setData(mycommand);
+            
             string query = "INSERT INTO docent_has_stageopdracht VALUES(" + teacher.TeacherNo + "," + _stagenr + ",'" + type + "');";
-            mycommand = new MySqlCommand(query);
+            MySqlCommand mycommand = new MySqlCommand(query);
             ModelFactory.Database.setData(mycommand);
             query = "UPDATE `docent` SET `Uren`= ((SELECT `Uren`)-"+ uren + ") WHERE `docentnr` = " + teacher.TeacherNo;
             mycommand = new MySqlCommand(query);
