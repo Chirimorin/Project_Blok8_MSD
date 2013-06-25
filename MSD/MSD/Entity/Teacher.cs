@@ -21,8 +21,8 @@ namespace MSD.Entity
             get { return _teacherNo; }
             set { _teacherNo = value; }
         }
-        private string _education;
-        public string Education
+        private Education _education;
+        public Education Education
         {
             get { return _education; }
             set { _education = value; }

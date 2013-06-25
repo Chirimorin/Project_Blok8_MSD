@@ -50,7 +50,7 @@ namespace MSD.ViewModels
             string deletequery = "DELETE FROM docent_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr;
             MySqlCommand mycommand = new MySqlCommand(deletequery);
             ModelFactory.Database.setData(mycommand);
-            Match(Supervisor[0], 7, "Begeleider");
+            Match(Supervisor[0], Supervisor[0].Education.Hours, "Begeleider");
             if (Secondreader.Count != 0)
             {
                 vm.Secondreader.Add(Secondreader[0]);

@@ -117,12 +117,12 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (Teacher.Education == null) return "";
-                return Teacher.Education;
+                if (Teacher.Education.Description == null) return "";
+                return Teacher.Education.Description;
             }
             set
             {
-                Teacher.Education = value;
+                Teacher.Education.Description = value;
                 OnPropertyChanged("Education");
             }
 

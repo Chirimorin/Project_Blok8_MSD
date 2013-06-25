@@ -30,7 +30,7 @@
         <DataGrid HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Path=Supervisor}" HorizontalAlignment="Left" Margin="164,185,0,0" VerticalAlignment="Top" Height="46" Width="547" >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Name}" Header="Naam"/>
-                <DataGridTextColumn Binding="{Binding Path=Education}" Header="Opleiding"/>
+                <DataGridTextColumn Binding="{Binding Path=Education.Description}" Header="Opleiding"/>
                 <DataGridTextColumn Binding="{Binding Path=Email}" Header="E-mailadres"/>
                 <DataGridTextColumn Binding="{Binding Path=City}" Header="Woonplaats"/>
                 <DataGridTextColumn Binding="{Binding Path=Knowledge}" Header="Kennisgebieden"/>
@@ -51,7 +51,7 @@
         <DataGrid HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Path=Secondreader}" HorizontalAlignment="Left" Margin="164,258,0,0" VerticalAlignment="Top" Height="46" Width="547">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Name}" Header="Naam"/>
-                <DataGridTextColumn Binding="{Binding Path=Education}" Header="Opleiding"/>
+                <DataGridTextColumn Binding="{Binding Path=Education.Description}" Header="Opleiding"/>
                 <DataGridTextColumn Binding="{Binding Path=Email}" Header="E-mailadres"/>
                 <DataGridTextColumn Binding="{Binding Path=City}" Header="Woonplaats"/>
                 <DataGridTextColumn Binding="{Binding Path=Knowledge}" Header="Kennisgebieden"/>

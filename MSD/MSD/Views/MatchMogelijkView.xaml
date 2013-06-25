@@ -32,7 +32,7 @@
         <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" SelectedItem="{Binding SelectedTeacher}" ItemsSource="{Binding Path=TeacherCollection}" HorizontalAlignment="Left" Margin="210,120.28,0,0" VerticalAlignment="Top" Height="266.72" Width="238">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Education.Description}" Header="Opleiding"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Knowledge}" Header="Kennisgebied"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Hours}" Header="Uren"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding City}" Header="Woonplaats"/>
@@ -42,7 +42,7 @@
         <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" SelectedItem="{Binding SelectedReader}" ItemsSource="{Binding Path=ReaderCollection}" HorizontalAlignment="Left" Margin="476,120.28,0,0" VerticalAlignment="Top" Height="266.72" Width="238">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Name}" Header="Naam"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Education}" Header="Opleiding"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Education.Description}" Header="Opleiding"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Naam}" Header="Kennisgebied"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Hours}" Header="Uren"/>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding City}" Header="Woonplaats"/>

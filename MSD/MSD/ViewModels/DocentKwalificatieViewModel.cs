@@ -54,7 +54,7 @@ namespace MSD.ViewModels
                 ModelFactory.Database.setData(new MySqlCommand("DELETE FROM docent_has_kennisgebieden WHERE Docent_Docentnr = " + Teacher.TeacherNo));
 
                 string query;
-                 int afkorting = getexecuteQuery("SELECT afkorting FROM opleiding WHERE omschrijving = '" + Teacher.Education + "';");
+                 int afkorting = getexecuteQuery("SELECT afkorting FROM opleiding WHERE omschrijving = '" + Teacher.Education.Description + "';");
            
                 if (Editing)
                 {

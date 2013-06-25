@@ -23,5 +23,12 @@ namespace MSD.Entity
             get { return _abbreviation; }
             set { _abbreviation = value; }
         }
+        private int _hours;
+
+        public int Hours
+        {
+            get { return _hours; }
+            set { _hours = value; }
+        }
     }
 }

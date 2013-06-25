@@ -139,7 +139,7 @@ namespace MSD.ViewModels
             string deletequery = "DELETE FROM docent_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr;
             MySqlCommand mycommand = new MySqlCommand(deletequery);
             ModelFactory.Database.setData(mycommand);
-            Match(SelectedTeacher,7, "Begeleider");
+            Match(SelectedTeacher,SelectedTeacher.Education.Hours, "Begeleider");
             if (SelectedReader != null)
             {
                 vm.Secondreader.Add(SelectedReader);
@@ -167,7 +167,7 @@ namespace MSD.ViewModels
         public void MogelijkeMatchTeacher()
         {
             teachers.Clear();
-            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr, d.mailadres FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + _stagenr + "' AND d.uren > u.urenvergoedingstagesingle GROUP BY d.naam";
+            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr, d.mailadres, u.urenvergoedingstagesingle FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + _stagenr + "' AND d.uren > u.urenvergoedingstagesingle GROUP BY d.naam";
             Debug.WriteLine(query);
             MySqlCommand mycommand = new MySqlCommand(query);
             DataTable data = new DataTable();
@@ -181,10 +181,15 @@ namespace MSD.ViewModels
                     {
                         Name = data.Rows[RowNr][0].ToString(),
                         Hours = (int)data.Rows[RowNr][1],
-                        Education = data.Rows[RowNr][2].ToString(),
+
                         City = data.Rows[RowNr][3].ToString(),
                         TeacherNo = (int)data.Rows[RowNr][4],
                         Email = data.Rows[RowNr][5].ToString(),
+                        Education = new Education
+                        {
+                            Description = data.Rows[RowNr][2].ToString(),
+                            Hours = (int)data.Rows[RowNr][6],
+                        }
 
                     });
                     UpdateTeacherKnowledgeAreas(teachers[RowNr]);
@@ -195,7 +200,7 @@ namespace MSD.ViewModels
         public void MogelijkeMatchReader()
         {
             readers.Clear();
-            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr, d.mailadres FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + _stagenr + "' AND d.uren > u.urenvergoedingstagesingle  GROUP BY d.naam";
+            string query = "SELECT d.naam, d.uren, o.omschrijving, d.plaats, d.docentnr, d.mailadres, u.urenvergoedingstagesingle FROM docent d JOIN docent_has_kennisgebieden dk ON d.docentnr = dk.docent_docentnr JOIN kennisgebieden k ON dk.kennisgebieden_kennisnr = k.kennisnr JOIN kennisgebieden_has_stageopdracht ks ON k.kennisnr = ks.kennisgebieden_kennisnr JOIN docent_has_opleiding dho ON d.docentnr = dho.docent_docentnr JOIN opleiding o ON dho.opleiding_afkorting = o.afkorting JOIN stageuren u ON o.stageuren_stageurennr = u.stageurennr WHERE ks.stageopdracht_stagenr = '" + _stagenr + "' AND d.uren > u.urenvergoedingstagesingle  GROUP BY d.naam";
             Debug.WriteLine(query);
             MySqlCommand mycommand = new MySqlCommand(query);
             DataTable data = new DataTable();
@@ -209,10 +214,15 @@ namespace MSD.ViewModels
                     {
                         Name = data.Rows[RowNr][0].ToString(),
                         Hours = (int)data.Rows[RowNr][1],
-                        Education = data.Rows[RowNr][2].ToString(),
+
                         City = data.Rows[RowNr][3].ToString(),
                         TeacherNo = (int)data.Rows[RowNr][4],
                         Email = data.Rows[RowNr][5].ToString(),
+                        Education = new Education
+                        {
+                            Description = data.Rows[RowNr][2].ToString(),
+                            Hours = (int)data.Rows[RowNr][6],
+                        }
 
                     });
                     UpdateTeacherKnowledgeAreas(readers[RowNr]);

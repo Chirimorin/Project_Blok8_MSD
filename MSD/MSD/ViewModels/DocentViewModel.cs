@@ -131,9 +131,12 @@ namespace MSD.ViewModels
                     Phone = table.Rows[RowNr][5].ToString(),
                     Preference = table.Rows[RowNr][6].ToString(),
                     Hours = Convert.ToInt32(table.Rows[RowNr][7].ToString()),
-                    Education = table.Rows[RowNr][8].ToString(),
+
                     Academie = table.Rows[RowNr][9].ToString(),
-                    
+                    Education = new Education
+                    {
+                        Description = table.Rows[RowNr][8].ToString(),
+                    }
                 });
             }
         }
