@@ -18,7 +18,6 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _nieuwBedrijfCommand;
         private readonly RelayCommand _bedrijfAanpassenCommand;
-        private Database _database;
         private ObservableCollection<Company> _companys = new ObservableCollection<Company>();
         private Company _selectedCompany;
 

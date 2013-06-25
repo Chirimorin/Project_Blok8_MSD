@@ -187,7 +187,6 @@ namespace MSD.ViewModels
             }
             set { Company.Adress = value; this.OnPropertyChanged("Adress"); }
         }
-        private string _city;
 
         public string City
         {

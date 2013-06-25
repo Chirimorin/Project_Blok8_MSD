@@ -19,7 +19,6 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _opslaanCommand;
         private readonly RelayCommand _terugCommand;
-        private Assignment _assignment;
         private Student _student;
         private Database _database;
         private bool _wijzig;
