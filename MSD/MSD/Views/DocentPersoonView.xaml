@@ -31,7 +31,9 @@
             <Label Content="Academie" HorizontalContentAlignment="Right" Margin="0,276,392,0" VerticalAlignment="Top" Width="140"/>
             <ComboBox SelectedValue="{Binding SelectedAcademie, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Academie, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="157,276,0,0" VerticalAlignment="Top" Width="120"/>
             <ComboBox SelectedValue="{Binding SelectedEducation, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Education, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="356,276,0,0" VerticalAlignment="Top" Width="120"/>
-
+            <TextBox Text="{Binding City, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="156,225,56,0" BorderBrush="#FFAEAEAE" Width="320"/>
+            <!--<TextBox Text="{Binding DocentNummer, UpdateSourceTrigger=PropertyChanged}" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="156,315,56,0" BorderBrush="#FFAEAEAE" Width="320"/>
+            <Label Content="Docentnummer"          HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="0,315,0,0" VerticalAlignment="Top" Width="140" Height="25"/>-->
         </Grid>
         <Label Content="1" HorizontalAlignment="Left" Height="23" Margin="28,124,0,0" VerticalAlignment="Top" Width="25"/>
         <Label Content="2" HorizontalAlignment="Left" Height="23" Margin="28,322,0,0" VerticalAlignment="Top" Width="25"/>

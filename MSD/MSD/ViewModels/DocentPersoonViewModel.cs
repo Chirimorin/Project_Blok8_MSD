@@ -193,5 +193,15 @@ namespace MSD.ViewModels
                 OnPropertyChanged("City");
             }
         }
+
+        public int DocentNummer
+        {
+            get { return Teacher.TeacherNo; }
+            set
+            {
+                Teacher.TeacherNo = value;
+                OnPropertyChanged("DocentNummer");
+            }
+        }
     }
 }
