@@ -24,6 +24,7 @@ namespace MSD.ViewModels
         private readonly RelayCommand _zoekenCommand;
         private string _zoektext;
         private readonly RelayCommand _resetCommand;
+        private readonly RelayCommand _terugCommand;
         private string _selectedPeriod;
         private int _stagenr;
         private string _fillquery;
@@ -46,6 +47,7 @@ namespace MSD.ViewModels
             _resetCommand = new RelayCommand(Reset);
             _matchenCommand = new RelayCommand(Matchen);
             _zoekenCommand = new RelayCommand(Zoeken);
+            _terugCommand = new RelayCommand(Terug);
             _database = ModelFactory.Database;
             _fillquery = "SELECT s.studentnr, s.naam, s.mailadres, o.omschrijving, so.opdrachtnaam, b.naam, so.periode_periodenaam, so.type, so.stagenr FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON so.stagenr = ss.stageopdracht_stagenr JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting JOIN docent_has_stageopdracht ds ON so.stagenr = ds.stageopdracht_stagenr GROUP BY ds.stageopdracht_stagenr";
             FillTable();
@@ -53,7 +55,11 @@ namespace MSD.ViewModels
             this.StudentCollection = CollectionViewSource.GetDefaultView(Students);
             SelectedPeriod = "Alle";
         }
-               
+        public RelayCommand TerugCommand { get { return _terugCommand; } }
+        public void Terug(object command)
+        {
+            _app.ShowMatchInvoerView();
+        }
 
         public RelayCommand MatchenCommand { get { return _matchenCommand; } }
         public void Matchen(object command)

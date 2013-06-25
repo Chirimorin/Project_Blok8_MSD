@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignWidth="640" d:DesignHeight="480" Width="752" Height="510">
     <Grid x:Name="LayoutRoot">
-        <Label Content="Match maken" Margin="310,36,312.506,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+        <Label Content="Gemaakte Matchen" Margin="285,38,285,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
         <Label Content="Zoeken" HorizontalAlignment="Left" Margin="42,84,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic"/>
         <TextBox Text="{Binding Path=Zoektext, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="42,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="25"/>
         <Button IsEnabled="{Binding Path=AanpassenEnabled, UpdateSourceTrigger=PropertyChanged}" Command="{Binding MatchenCommand}" Content="Wijzigen" Margin="605,0,47,36" VerticalAlignment="Bottom" Foreground="Black" Height="25" Width="100" FontStyle="Italic" FontSize="15"/>
