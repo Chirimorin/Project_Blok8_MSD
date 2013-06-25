@@ -12,7 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Microsoft.VisualBasic;
 
 namespace MSD.ViewModels
 {
@@ -21,7 +20,6 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _opslaanCommand;
         private readonly RelayCommand _terugCommand;
-        private readonly RelayCommand _kennisCommand;
         private string[] _knowledgeAreas;
 
         private bool _editing;
@@ -32,7 +30,6 @@ namespace MSD.ViewModels
             _app = app;
             _opslaanCommand = new RelayCommand(Opslaan);
             _terugCommand = new RelayCommand(Terug);
-            _kennisCommand = new RelayCommand(Kennis);
         }
 
         public string[] KnowledgeAreas
@@ -42,17 +39,6 @@ namespace MSD.ViewModels
             {
                 _knowledgeAreas = value;
                 OnPropertyChanged("KnowledgeAreas");
-            }
-        }
-        public RelayCommand KennisCommand { get { return _kennisCommand; } }
-        public void Kennis(object command)
-        {
-            string value = Interaction.InputBox("Kennisgebied toevoegen:", "Kennnisgebied");
-            if (value != "")
-            {
-                string query = "INSERT INTO kennisgebieden (kennisnaam) VALUES ('" + value + "');";
-                ModelFactory.Database.setData(new MySqlCommand(query));
-                FillKnowledgeAreas();
             }
         }
 
