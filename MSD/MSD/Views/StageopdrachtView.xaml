@@ -40,5 +40,6 @@
         <ComboBox SelectedValue="{Binding Path=SelectedCompany, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Company, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="561,210,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Type:" HorizontalAlignment="Left" Margin="492,248,0,0" VerticalAlignment="Top"/>
         <ComboBox SelectedValue="{Binding Path=SelectedType, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Type, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="561,249,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Command="{Binding KennisCommand}" Content="Toevoegen" Margin="433,137,210,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="1.107,1.211" Height="26" FontStyle="Italic" FontSize="14.667"/>
     </Grid>
 </UserControl>

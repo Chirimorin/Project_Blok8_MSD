@@ -1,4 +1,5 @@
-﻿using MSD.Controllers;
+﻿using Microsoft.VisualBasic;
+using MSD.Controllers;
 using MSD.Entity;
 using MSD.Factories;
 using MSD.Models;
@@ -19,6 +20,7 @@ namespace MSD.ViewModels
         private readonly IApplicationController _app;
         private readonly RelayCommand _opslaanCommand;
         private readonly RelayCommand _terugCommand;
+        private readonly RelayCommand _kennisCommand;
         private Assignment _assignment;
         private Student _student;
         private Database _database;
@@ -37,6 +39,7 @@ namespace MSD.ViewModels
             _app = app;
             _opslaanCommand = new RelayCommand(Save);
             _terugCommand = new RelayCommand(Back);
+            _kennisCommand = new RelayCommand(Kennis);
             _database = ModelFactory.Database;
             fillBox();
             FillKnowledgeAreas();
@@ -57,6 +60,18 @@ namespace MSD.ViewModels
             {
                 _stagenr = getexecuteQuery("SELECT stageopdracht_stagenr FROM stageopdracht_has_student WHERE student_studentnr = " + Student.StudentNo);
             }
+        }
+        public RelayCommand KennisCommand { get { return _kennisCommand; } }
+        public void Kennis(object command)
+        {
+            string value = Interaction.InputBox("Kennisgebied toevoegen:", "Kennnisgebied");
+            if (value != "")
+            {
+                string query = "INSERT INTO kennisgebieden (kennisnaam) VALUES ('" + value + "');";
+                ModelFactory.Database.setData(new MySqlCommand(query));
+                FillKnowledgeAreas();
+            }
+
         }
 
         public RelayCommand TerugCommand { get { return _terugCommand; } }
