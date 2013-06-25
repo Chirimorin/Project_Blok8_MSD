@@ -71,11 +71,11 @@ namespace MSD.ViewModels
             if (SelectedItem.Assignment.Type == "Afstuderen")
             {
                 mm.MogelijkeMatchReader();
-                mm.MatchedReader = SelectedItem.Assignment.Secondreader;
+                mm.MatchedReader = "Huidige: " + SelectedItem.Assignment.Secondreader;
                 mm.Afstuderen = true;
             }
             mm.MogelijkeMatchTeacher();
-            mm.MatchedTeacher = SelectedItem.Assignment.Supervisor;
+            mm.MatchedTeacher = "Huidige: " + SelectedItem.Assignment.Supervisor;
             _app.ShowMatchMogelijkView();
         }
         /// <summary>
