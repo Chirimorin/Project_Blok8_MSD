@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Data;
+using System.Windows;
 
 namespace MSD.ViewModels
 {
@@ -133,20 +134,58 @@ namespace MSD.ViewModels
         public RelayCommand MatchenCommand { get { return _matchenCommand; } }
         public void Matchen(object command)
         {
-            MatchSuccesViewModel vm = (MatchSuccesViewModel)ViewFactory.getViewModel(_app, "matchSuccesViewModel");
-            vm.Student.Add(Student);
-            vm.Supervisor.Add(SelectedTeacher);
-            string deletequery = "DELETE FROM docent_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr;
-            MySqlCommand mycommand = new MySqlCommand(deletequery);
-            ModelFactory.Database.setData(mycommand);
-            Match(SelectedTeacher,SelectedTeacher.Education.Hours, "Begeleider");
-            if (SelectedReader != null)
+            if (SelectedReader != null && SelectedReader.TeacherNo == SelectedTeacher.TeacherNo)
             {
-                vm.Secondreader.Add(SelectedReader);
-                Match(SelectedReader,0, "Tweede lezer");
+                MessageBox.Show("De begeleider en tweede lezer mag niet hetzelfde zijn");
             }
+            else
+            {
+                MatchSuccesViewModel vm = (MatchSuccesViewModel)ViewFactory.getViewModel(_app, "matchSuccesViewModel");
+                vm.Student.Add(Student);
+                vm.Supervisor.Add(SelectedTeacher);
+                string deletequery = "DELETE FROM docent_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr;
+                MySqlCommand mycommand = new MySqlCommand(deletequery);
+                ModelFactory.Database.setData(mycommand);
+                Match(SelectedTeacher, SelectedTeacher.Education.Hours, "Begeleider");
+                if (SelectedReader != null)
+                {
+                     vm.Secondreader.Add(SelectedReader);
+                        Match(SelectedReader, 0, "Tweede lezer");
+                }
+                _app.ShowMatchSuccesView();
+            }
+              /*  if (SelectedReader != null)
+                {
+                    if (SelectedReader.TeacherNo != SelectedTeacher.TeacherNo)
+                    {
+                        MatchSuccesViewModel vm = (MatchSuccesViewModel)ViewFactory.getViewModel(_app, "matchSuccesViewModel");
+                        vm.Student.Add(Student);
+                        vm.Supervisor.Add(SelectedTeacher);
+                        string deletequery = "DELETE FROM docent_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr;
+                        MySqlCommand mycommand = new MySqlCommand(deletequery);
+                        ModelFactory.Database.setData(mycommand);
+                        Match(SelectedTeacher, SelectedTeacher.Education.Hours, "Begeleider");
+                        vm.Secondreader.Add(SelectedReader);
+                        Match(SelectedReader, 0, "Tweede lezer");
+                        _app.ShowMatchSuccesView();
+                    }
+                    else
+                    {
+                        MessageBox.Show("De begeleider en tweede lezer mag niet hetzelfde zijn");
+                    }
 
-            _app.ShowMatchSuccesView();
+                }
+                else
+                {
+                    MatchSuccesViewModel vm = (MatchSuccesViewModel)ViewFactory.getViewModel(_app, "matchSuccesViewModel");
+                    vm.Student.Add(Student);
+                    vm.Supervisor.Add(SelectedTeacher);
+                    string deletequery = "DELETE FROM docent_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr;
+                    MySqlCommand mycommand = new MySqlCommand(deletequery);
+                    ModelFactory.Database.setData(mycommand);
+                    Match(SelectedTeacher, SelectedTeacher.Education.Hours, "Begeleider");
+                    _app.ShowMatchSuccesView();
+                }*/
         }
         public void Match(Teacher teacher, int uren, string type)
         {
