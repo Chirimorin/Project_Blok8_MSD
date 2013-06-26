@@ -60,15 +60,6 @@ namespace MSD.Entity
             set { _assignment = value; }
         }
 
-        private string _stagePartner;
-
-        public string StagePartner
-        {
-            get { return _stagePartner; }
-            set { _stagePartner = value; }
-        }
-
-        
         static readonly string[] ValidatedProp =
         {
             /*"Initials",

@@ -5,7 +5,6 @@ using MSD.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
@@ -40,7 +39,6 @@ namespace MSD.ViewModels
             _database = ModelFactory.Database;
             fillBox();
             FillKnowledgeAreas();
-            fillStagePartner();
             
             _type = new string[2];
             _type[0] = "Stage";
@@ -78,16 +76,16 @@ namespace MSD.ViewModels
 
                 if (_wijzig == false)
                 {
-                    string studentquery = "INSERT INTO student VALUES(" + Student.StudentNo + ",'" + Student.Name + "','" + Student.Email + "','" + Student.Phone + "'," + afkorting + ",'" + Student.Academie + "', " + StageKoppel.StudentNo + ")";
+                    string studentquery = "INSERT INTO student VALUES(" + Student.StudentNo + ",'" + Student.Name + "','" + Student.Email + "','" + Student.Phone + "'," + afkorting + ",'" + Student.Academie + "');";
                     executeQuery(studentquery);
-                    string opdrachtquery = "INSERT INTO stageopdracht VALUES (" + _stagenr + ",'" + Student.Assignment.Name + "','" + Student.Assignment.Description + "','" + Student.Assignment.Comments + "'," + Student.Assignment.Accepted + "," + Student.Assignment.TempPermission + "," + Student.Assignment.Permission + "," + bedrijf + ",'" + Student.Assignment.Period + "','"+ Student.Assignment.Type +"')";
+                    string opdrachtquery = "INSERT INTO stageopdracht () VALUES (" + _stagenr + ",'" + Student.Assignment.Name + "','" + Student.Assignment.Description + "','" + Student.Assignment.Comments + "'," + Student.Assignment.Accepted + "," + Student.Assignment.TempPermission + "," + Student.Assignment.Permission + "," + bedrijf + ",'" + Student.Assignment.Period + "','"+ Student.Assignment.Type +"')";
                     executeQuery(opdrachtquery);
                     string studentopdrachtquery = "INSERT INTO stageopdracht_has_student VALUES (" + _stagenr + "," + Student.StudentNo + ")";
                     executeQuery(studentopdrachtquery);
                 }
                 if (_wijzig == true)
                 {
-                    string studentquery = "UPDATE student SET naam = '" + Student.Name + "', mailadres = '" + Student.Email + "', telefoonnr = " + Student.Phone + ", opleiding_afkorting = " + afkorting + ", opleiding_academie_afkorting = '" + Student.Academie + "', TweeTalLid = " + StageKoppel.StudentNo +" WHERE studentnr = " + Student.StudentNo;
+                    string studentquery = "UPDATE student SET naam = '" + Student.Name + "', mailadres = '" + Student.Email + "', telefoonnr = " + Student.Phone + ", opleiding_afkorting = " + afkorting + ", opleiding_academie_afkorting = '" + Student.Academie + "' WHERE studentnr = " + Student.StudentNo;
                     executeQuery(studentquery);
                     string opdrachtquery = "UPDATE stageopdracht SET stagenr=" + _stagenr + ", opdrachtnaam ='" + Student.Assignment.Name + "', omschrijving ='" + Student.Assignment.Description + "', opmerking ='" + Student.Assignment.Comments + "', opdrachtgoed = " + Student.Assignment.Accepted + ", toestemmingvoorlopig =" + Student.Assignment.TempPermission + ", toestemmingdefinitief =" + Student.Assignment.Permission + ", stagebedrijf_bedrijfnr = " + bedrijf + ", periode_periodenaam = '" + Student.Assignment.Period + "', type = '" + Student.Assignment.Type + "' WHERE stagenr = " + _stagenr;
                     executeQuery(opdrachtquery);
@@ -213,29 +211,13 @@ namespace MSD.ViewModels
                 Student.Assignment.Knowledge[2] = table.Rows[2][1].ToString();
         }
 
-        public void fillStagePartner()
-        {
-            MySqlCommand cmd = new MySqlCommand("SELECT s.naam, s.Studentnr FROM student s JOIN stageopdracht_has_student ss ON s.studentnr = ss.student_studentnr JOIN stageopdracht so ON ss.stageopdracht_stagenr =  so.stagenr JOIN opleiding o ON s.opleiding_afkorting = o.afkorting JOIN stagebedrijf b ON so.stagebedrijf_bedrijfnr = b.bedrijfnr WHERE so.type = 'Afstuderen'");
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = ModelFactory.Database.getData(cmd);
-            adapter.Fill(table);
-
-            for (int RowNr = 0; RowNr < table.Rows.Count; RowNr++)
-            {
-                Students.Add(new Student
-                {
-                    Name = table.Rows[RowNr][0].ToString(),
-                    StudentNo = table.Rows[RowNr][1].ToString()
-                });
-            }
-        }
-
-
+        
         public Student Student
         {
             get { return _student; }
             set
             {
+
                 _student = value;
             }
         }
@@ -340,44 +322,6 @@ namespace MSD.ViewModels
             }
 
         }
-        
-        //private string[] _stagePartner;
-        //public string[] StagePartner
-        //{
-        //    get
-        //    {
-        //        return _stagePartner;
-        //    }
-        //    set
-        //    {
-        //        _stagePartner = value;
-        //        OnPropertyChanged("StagePartner");
-        //    }
-        //}
-
-        private ObservableCollection<Student> _students = new ObservableCollection<Student>();
-        public ObservableCollection<Student> Students
-        {
-            get { return _students; }
-            set
-            {
-                _students = value;
-                OnPropertyChanged("Students");
-            }
-        }
-
-        private Student _selectedStagePartner;
-
-        public Student StageKoppel
-        {
-            get { return _selectedStagePartner; }
-            set
-            {
-                _selectedStagePartner = value;
-                OnPropertyChanged("StageKoppel");
-            }
-        }
-
         public string[] _type;
         public string[] Type
         {
