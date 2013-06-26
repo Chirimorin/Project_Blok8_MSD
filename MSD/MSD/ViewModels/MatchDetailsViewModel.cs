@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MSD.ViewModels
 {
@@ -44,19 +45,28 @@ namespace MSD.ViewModels
         public RelayCommand MatchMakenCommand { get { return _matchMakenCommand; } }
         public void MatchMaken(object command)
         {
-            MatchSuccesViewModel vm = (MatchSuccesViewModel)ViewFactory.getViewModel(_app, "matchSuccesViewModel");
-            vm.Student.Add(Student[0]);
-            vm.Supervisor.Add(Supervisor[0]);
-            string deletequery = "DELETE FROM docent_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr;
-            MySqlCommand mycommand = new MySqlCommand(deletequery);
-            ModelFactory.Database.setData(mycommand);
-            Match(Supervisor[0], Supervisor[0].Education.Hours, "Begeleider");
-            if (Secondreader.Count != 0)
+            
+            if (Secondreader.Count != 0 && Secondreader[0].TeacherNo == Supervisor[0].TeacherNo)
             {
-                vm.Secondreader.Add(Secondreader[0]);
-                Match(Secondreader[0], 0, "Tweede lezer");
+                MessageBox.Show("De begeleider en tweede lezer mag niet hetzelfde zijn");
             }
-            _app.ShowMatchSuccesView();
+            else
+            {
+                MatchSuccesViewModel vm = (MatchSuccesViewModel)ViewFactory.getViewModel(_app, "matchSuccesViewModel");
+                vm.Student.Add(Student[0]);
+                vm.Supervisor.Add(Supervisor[0]);
+                string deletequery = "DELETE FROM docent_has_stageopdracht WHERE stageopdracht_stagenr = " + _stagenr;
+                MySqlCommand mycommand = new MySqlCommand(deletequery);
+                ModelFactory.Database.setData(mycommand);
+                Match(Supervisor[0], Supervisor[0].Education.Hours, "Begeleider");
+                if (Secondreader.Count != 0)
+                {
+                    vm.Secondreader.Add(Secondreader[0]);
+                    Match(Secondreader[0], 0, "Tweede lezer");
+                }
+                _app.ShowMatchSuccesView();
+            }
+            
         }
         public void Match(Teacher teacher, int uren, string type)
         {
