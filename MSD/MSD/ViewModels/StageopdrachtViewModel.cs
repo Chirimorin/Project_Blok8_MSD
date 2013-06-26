@@ -170,7 +170,7 @@ namespace MSD.ViewModels
             {
                 Company[RowNr] = table.Rows[RowNr][0].ToString();
             }
-            cmd = new MySqlCommand("SELECT periodenaam FROM periode");
+            cmd = new MySqlCommand("SELECT periodenaam FROM periode where periodenaam <> 'Alle' ");
             table = new DataTable();
             adapter = ModelFactory.Database.getData(cmd);
             adapter.Fill(table);
