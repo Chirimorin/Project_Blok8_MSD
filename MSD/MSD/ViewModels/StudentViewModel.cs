@@ -92,23 +92,6 @@ namespace MSD.ViewModels
             }
             set
             {
-                _selectedItem = value;
-                OnPropertyChanged("SelectedItem");
-                OnPropertyChanged("StudentName");
-                OnPropertyChanged("StudentNo");
-                OnPropertyChanged("Email");
-                OnPropertyChanged("Company");
-                OnPropertyChanged("Period");
-                OnPropertyChanged("Accepted");
-                OnPropertyChanged("TempPermission");
-                OnPropertyChanged("Permission");
-                OnPropertyChanged("StageType");
-                OnPropertyChanged("Teacher");
-                OnPropertyChanged("Education");
-                OnPropertyChanged("SecondReader");
-                OnPropertyChanged("Academy");
-                OnPropertyChanged("AanpassenEnabled");
-
                 if (value == null)
                 {
                     _selectedItem = generateStudent();
@@ -168,8 +151,9 @@ namespace MSD.ViewModels
             SelectedPeriod = "Alle";
             this.SelectedAcademy = Academies.First();
             this.SelectedEducation = Educations.First();
-            this.StudentCollection.Filter = new Predicate<object>(ContainsAll);
-            this.StudentCollection.Refresh();
+            
+            //this.StudentCollection.Filter = new Predicate<object>(ContainsAll);
+            //this.StudentCollection.Refresh();
         }
 
         private Student generateStudent()
@@ -373,8 +357,22 @@ namespace MSD.ViewModels
                 
                 this.StudentCollection.Filter = new Predicate<object>(ContainsAll);
                 this.StudentCollection.Refresh();
+                if (!StudentCollection.IsEmpty)
+                {
+                    var enumerator = StudentCollection.GetEnumerator();
+                    enumerator.MoveNext(); // sets it to the first element
+                    var firstElement = enumerator.Current;
+                    this.SelectedItem = (Student)firstElement;
+                }
+                else
+                {
+                    SelectedItem = generateStudent();
+                }
             }
-            SelectedItem = generateStudent();
+            else
+            {
+                SelectedItem = generateStudent();
+            }
         }
 
         private bool ContainsAll(object student)

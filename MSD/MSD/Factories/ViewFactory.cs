@@ -129,6 +129,7 @@ namespace MSD.Factories
                     if (_studentView == null)
                         _studentView = new StudentViewModel(app);
                     _studentView.fillStudentTable();
+                    _studentView.Filter(true);
                     _mainWindowModel.Display = "Studenten";
                     return _studentView;
                 case ("wachtwoordViewModel"):
