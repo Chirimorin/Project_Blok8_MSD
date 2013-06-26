@@ -130,14 +130,24 @@ namespace MSD.ViewModels
                     OnPropertyChanged("Education");
                     OnPropertyChanged("SecondReader");
                     OnPropertyChanged("Academy");
+                    OnPropertyChanged("AanpassenEnabled");
                 }
             }
         }
 
         public bool AanpassenEnabled
-        {
-            get { return (SelectedItem != null); }
-        }
+         {
+            get {
+                if (SelectedItem == null || SelectedItem.Name.Equals("Niet bekend"))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+         }
 
         public StudentViewModel(IApplicationController app)
         {
