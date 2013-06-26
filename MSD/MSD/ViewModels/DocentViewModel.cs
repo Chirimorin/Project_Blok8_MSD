@@ -85,6 +85,7 @@ namespace MSD.ViewModels
             DocentKwalificatieViewModel vm2 = (DocentKwalificatieViewModel)ViewFactory.getViewModel(_app, "docentKwalificatieViewModel");
 
             vm.Teacher = new Teacher();
+            vm.Teacher.Education = new Education();
             vm.Editing = false;
 
             vm2.Teacher = vm.Teacher;

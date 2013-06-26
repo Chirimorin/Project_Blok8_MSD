@@ -117,7 +117,7 @@ namespace MSD.ViewModels
         {
             get
             {
-                if (Teacher.Education.Description == null) return "";
+                if (Teacher.Education == null) return "";
                 return Teacher.Education.Description;
             }
             set
@@ -141,7 +141,8 @@ namespace MSD.ViewModels
         public Teacher Teacher
         {
             get { return _teacher; }
-            set { _teacher = value;}
+            set { _teacher = value;
+            }
         }
 
         public string Name
